@@ -5,28 +5,30 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import fiuba.algo3.CeldaCarcel;
+import fiuba.algo3.CeldaPolicia;
 import fiuba.algo3.Jugador;
 import fiuba.algo3.JugadorNoPuedeSalirDeLaCarcel;
 import fiuba.algo3.JugadorNoTieneFondosParaPagar;
 
-public class CarcelTest {
+public class PoliciaTest {
 
 	@Test (expected=JugadorNoPuedeSalirDeLaCarcel.class)
-	public void testJugadorCaeEnLaCarcelYNoPuedeMoverse() {
+	public void policiaMandaALaCarcelAJugadorYEsteNoPuedeSalir(){
 		CeldaCarcel carcel = new CeldaCarcel();
-		Jugador jugador = new Jugador();
+		Jugador unJugador = new Jugador();
+		CeldaPolicia policia = new CeldaPolicia(carcel);
 		
-		carcel.recibirJugador(jugador);
-		
-		carcel.sacarDeLaCarcelA(jugador);
+		policia.recibirJugador(unJugador);
+		carcel.sacarDeLaCarcelA(unJugador);
 	}
 	
 	@Test
-	public void testJugadorCaeEnCarcelYParaSalirTieneQuePagarFianzaDespuesDeUnTurno() {
+	public void policiaMandaALaCarcelAJugadorYPasadoUnTurnoPuedeSalirConFianza() {
 		CeldaCarcel carcel = new CeldaCarcel();
 		Jugador jugador = new Jugador();
+		CeldaPolicia policia = new CeldaPolicia(carcel);
 		
-		carcel.recibirJugador(jugador);
+		policia.recibirJugador(jugador);
 		carcel.reducirTurnosDeEsperaDe(jugador);
 		
 		carcel.sacarDeLaCarcelA(jugador);
@@ -38,8 +40,9 @@ public class CarcelTest {
 	public void testJugadorCaeEnCarcelYParaSalirTieneQuePagarFianzaDespuesDeDosTurnos() {
 		CeldaCarcel carcel = new CeldaCarcel();
 		Jugador jugador = new Jugador();
+		CeldaPolicia policia = new CeldaPolicia(carcel);
 		
-		carcel.recibirJugador(jugador);
+		policia.recibirJugador(jugador);
 		carcel.reducirTurnosDeEsperaDe(jugador);
 		carcel.reducirTurnosDeEsperaDe(jugador);
 		
@@ -52,8 +55,9 @@ public class CarcelTest {
 	public void testJugadorCaeEnCarcelYSaleDespuesDeTresTurnos() {
 		CeldaCarcel carcel = new CeldaCarcel();
 		Jugador jugador = new Jugador();
+		CeldaPolicia policia = new CeldaPolicia(carcel);
 		
-		carcel.recibirJugador(jugador);
+		policia.recibirJugador(jugador);
 		carcel.reducirTurnosDeEsperaDe(jugador);
 		carcel.reducirTurnosDeEsperaDe(jugador);
 		carcel.reducirTurnosDeEsperaDe(jugador);
@@ -67,10 +71,11 @@ public class CarcelTest {
 	public void jugadorNoPuedePagarFianzaPorFondosInsuficientes(){
 		CeldaCarcel carcel = new CeldaCarcel();
 		Jugador jugador = new Jugador();
+		CeldaPolicia policia = new CeldaPolicia(carcel);
 		
 		jugador.pagar(60000);
-		
-		carcel.recibirJugador(jugador);
+				
+		policia.recibirJugador(jugador);
 		carcel.reducirTurnosDeEsperaDe(jugador);
 		
 		carcel.sacarDeLaCarcelA(jugador);
@@ -81,8 +86,9 @@ public class CarcelTest {
 		CeldaCarcel carcel = new CeldaCarcel();
 		Jugador Mordecai = new Jugador();
 		Jugador Rigby = new Jugador();
+		CeldaPolicia policia = new CeldaPolicia(carcel);
 		
-		carcel.recibirJugador(Mordecai);
+		policia.recibirJugador(Mordecai);
 		carcel.reducirTurnosDeEsperaDe(Mordecai);
 		Mordecai.pagar(60000);
 		
@@ -96,8 +102,9 @@ public class CarcelTest {
 		CeldaCarcel carcel = new CeldaCarcel();
 		Jugador Mordecai = new Jugador();
 		Jugador Rigby = new Jugador();
+		CeldaPolicia policia = new CeldaPolicia(carcel);
 		
-		carcel.recibirJugador(Mordecai);
+		policia.recibirJugador(Mordecai);
 		carcel.reducirTurnosDeEsperaDe(Mordecai);
 		
 		carcel.recibirJugador(Rigby);
@@ -110,8 +117,9 @@ public class CarcelTest {
 		CeldaCarcel carcel = new CeldaCarcel();
 		Jugador Mordecai = new Jugador();
 		Jugador Rigby = new Jugador();
+		CeldaPolicia policia = new CeldaPolicia(carcel);
 		
-		carcel.recibirJugador(Mordecai);
+		policia.recibirJugador(Mordecai);
 		carcel.reducirTurnosDeEsperaDe(Mordecai);
 		
 		carcel.recibirJugador(Rigby);
@@ -126,8 +134,9 @@ public class CarcelTest {
 		CeldaCarcel carcel = new CeldaCarcel();
 		Jugador Mordecai = new Jugador();
 		Jugador Rigby = new Jugador();
+		CeldaPolicia policia = new CeldaPolicia(carcel);
 		
-		carcel.recibirJugador(Mordecai);
+		policia.recibirJugador(Mordecai);
 		carcel.reducirTurnosDeEsperaDe(Mordecai);
 		carcel.reducirTurnosDeEsperaDe(Mordecai);
 		carcel.reducirTurnosDeEsperaDe(Mordecai);
@@ -136,5 +145,5 @@ public class CarcelTest {
 		
 		carcel.sacarDeLaCarcelA(Mordecai);
 	}
-	
+
 }
