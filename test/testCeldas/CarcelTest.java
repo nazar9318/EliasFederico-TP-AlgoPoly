@@ -4,10 +4,10 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import fiuba.algo3.CeldaCarcel;
+import fiuba.algo3.celdas.especiales.CeldaCarcel;
 import fiuba.algo3.Jugador;
-import fiuba.algo3.JugadorNoPuedeSalirDeLaCarcel;
-import fiuba.algo3.JugadorNoTieneFondosParaPagar;
+import fiuba.algo3.excepciones.JugadorNoPuedeSalirDeLaCarcel;
+import fiuba.algo3.excepciones.JugadorNoTieneFondosParaPagar;
 
 public class CarcelTest {
 

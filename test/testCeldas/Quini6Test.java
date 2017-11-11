@@ -3,8 +3,8 @@ package testCeldas;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import fiuba.algo3.Celda;
-import fiuba.algo3.CeldaQuini6;
+import fiuba.algo3.celdas.Celda;
+import fiuba.algo3.celdas.especiales.CeldaQuini6;
 import fiuba.algo3.Jugador;
 
 public class Quini6Test {

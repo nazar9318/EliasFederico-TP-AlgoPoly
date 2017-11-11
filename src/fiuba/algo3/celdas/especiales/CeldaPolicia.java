@@ -1,4 +1,8 @@
-package fiuba.algo3;
+package fiuba.algo3.celdas.especiales;
+
+import fiuba.algo3.Jugador;
+import fiuba.algo3.celdas.Celda;
+import fiuba.algo3.celdas.especiales.CeldaCarcel;
 
 public class CeldaPolicia implements Celda {
 

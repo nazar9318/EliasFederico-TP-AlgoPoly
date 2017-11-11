@@ -1,5 +1,7 @@
 package fiuba.algo3;
 
+import fiuba.algo3.excepciones.JugadorNoTieneFondosParaPagar;
+
 public class Jugador {
 
 	private int dinero;
