@@ -11,17 +11,35 @@ public class CeldaQuini6 implements Celda {
 		jugadores = new HashMap<>();
 	}
 
+	private boolean primeraCaida(Jugador unJugador){
+		return !this.jugadores.containsKey(unJugador);
+	}
+
+	private boolean segundaCaida(Jugador unJugador){
+		return (this.jugadores.get(unJugador) == 1);
+	}
+
+	private void cobrarCaidaRepetida(Jugador unJugador){
+		if(segundaCaida(unJugador)) {
+			sumarCaida(unJugador);
+			unJugador.cobrar(30000);
+			return;
+		}
+		unJugador.cobrar(0);
+	}
+
+	private void sumarCaida(Jugador unJugador) {
+		this.jugadores.put(unJugador, 2);
+	}
+
 	@Override
 	public void recibirJugador(Jugador unJugador) {
-		if (!this.jugadores.containsKey(unJugador)){
+		if (primeraCaida(unJugador)) {
 			jugadores.put(unJugador, 1);
 			unJugador.cobrar(50000);
-		}else if (this.jugadores.containsValue(1)){
-			this.jugadores.put(unJugador, 2);
-			unJugador.cobrar(30000);
-		}else if (this.jugadores.containsValue(2)){
-			unJugador.cobrar(0);
+			return;
 		}
+		cobrarCaidaRepetida(unJugador);
 	}
 
 }
