@@ -16,4 +16,11 @@ public class Jugador {
 		this.dinero += monto;
 	}
 
+	public void pagar(int monto) {
+		if(this.dinero < monto){
+			throw new JugadorNoTieneFondosParaPagar();
+		}
+		this.dinero -= monto;
+	}
+
 }
