@@ -5,8 +5,12 @@ import java.util.HashMap;
 
 public class CeldaQuini6 implements Celda {
 	
-	private HashMap<Jugador, Object> jugadores = new HashMap<>(); 
-		
+	private HashMap<Jugador, Integer> jugadores;
+
+	public CeldaQuini6() {
+		jugadores = new HashMap<>();
+	}
+
 	@Override
 	public void recibirJugador(Jugador unJugador) {
 		if (!this.jugadores.containsKey(unJugador)){

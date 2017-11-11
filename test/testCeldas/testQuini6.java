@@ -1,6 +1,6 @@
 package testCeldas;
-import static org.junit.Assert.*;
 
+import static org.junit.Assert.*;
 import org.junit.Test;
 
 import fiuba.algo3.Celda;
@@ -15,7 +15,7 @@ public class testQuini6 {
 		Jugador unJugador = new Jugador();
 		
 		celda.recibirJugador(unJugador);
-		
+
 		assertEquals(150000, unJugador.obtenerDinero());
 	}
 	
