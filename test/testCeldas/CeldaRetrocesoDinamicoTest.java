@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Assert;
 import org.junit.Test;
 
-import fiuba.algo3.CeldaRetrocesoDinamico;
+import fiuba.algo3.celdas.especiales.CeldaRetrocesoDinamico;
 import fiuba.algo3.Dado;
 import fiuba.algo3.Jugador;
 
