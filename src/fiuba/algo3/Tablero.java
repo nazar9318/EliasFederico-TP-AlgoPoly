@@ -11,13 +11,18 @@ import fiuba.algo3.celdas.CeldaSalida;
 
 public class Tablero {
 	
+	
 	private HashMap<Jugador, Celda> jugadores;
 
 	private List<Celda> celdas; 
 
 	private Iterator<Celda> iteratorTablero;
+	private	Dado dado1 = new Dado();
+	private	Dado dado2 = new Dado();
 
 	public Tablero() {
+		dado1 = new Dado();
+		dado2 = new Dado();
 		jugadores = new HashMap<>();
 		celdas = new ArrayList<Celda>();
 		CeldaSalida salida = new CeldaSalida();
@@ -65,6 +70,21 @@ public class Tablero {
 		celdaNueva.recibirJugador(jugador);
 		
 		return celdaNueva;
+	}
+	
+	public int lanzarDados() {
+	int numero1=0;
+	int numero2=0;
+	numero1 = dado1.tirar();
+	numero2 = dado2.tirar();
+	if (numero1 == numero2) {
+		numero1 = dado1.tirar() ;
+		numero2 =	dado2.tirar();
+		if (numero1 == numero2) {
+			return 0;
+		}
+	}
+	return numero1 + numero2;
 	}
 
 }
