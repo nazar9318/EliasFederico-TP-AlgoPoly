@@ -8,9 +8,9 @@ import org.junit.Test;
 import fiuba.algo3.celdas.especiales.CeldaRetrocesoDinamico;
 import fiuba.algo3.Dado;
 import fiuba.algo3.Jugador;
-
-public class CeldaRetrocesoDinamicoTest {
 /*
+public class CeldaRetrocesoDinamicoTest {
+
 	@Test
 	public void CeldaRetrocesoDinamicoRecienCreadaDeveriaExistir() {
 		CeldaRetrocesoDinamico unaCelda = new CeldaRetrocesoDinamico();
@@ -52,5 +52,6 @@ public class CeldaRetrocesoDinamicoTest {
 		int resultado = retrocesoDinamico.calcularRetroceso(jugador,dado1,dado2);
 		Assert.assertEquals(10, resultado);
 	}
-*/
+
 }
+*/

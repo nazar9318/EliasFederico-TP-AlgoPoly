@@ -9,9 +9,9 @@ import fiuba.algo3.celdas.especiales.CeldaPolicia;
 import fiuba.algo3.Jugador;
 import fiuba.algo3.excepciones.JugadorNoPuedeSalirDeLaCarcel;
 import fiuba.algo3.excepciones.JugadorNoTieneFondosParaPagar;
-
-public class PoliciaTest {
 /*
+public class PoliciaTest {
+
 	@Test (expected=JugadorNoPuedeSalirDeLaCarcel.class)
 	public void policiaMandaALaCarcelAJugadorYEsteNoPuedeSalir(){
 		CeldaCarcel carcel = new CeldaCarcel();
@@ -145,5 +145,6 @@ public class PoliciaTest {
 		
 		carcel.sacarJugador(Mordecai);
 	}
-*/
+
 }
+*/

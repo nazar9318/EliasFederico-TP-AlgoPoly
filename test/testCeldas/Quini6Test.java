@@ -6,9 +6,9 @@ import org.junit.Test;
 import fiuba.algo3.celdas.Celda;
 import fiuba.algo3.celdas.especiales.CeldaQuini6;
 import fiuba.algo3.Jugador;
-
-public class Quini6Test {
 /*
+public class Quini6Test {
+
 	@Test
 	public void jugadorCaeEnQuini6SinHaberCaidoAntesYCobra50000() {
 		Celda celda = new CeldaQuini6();
@@ -67,5 +67,6 @@ public class Quini6Test {
 
 		assertEquals(180000, miguel.obtenerDinero());
 	}
-*/
+
 }
+*/

@@ -8,9 +8,9 @@ import org.junit.Test;
 import fiuba.algo3.celdas.especiales.CeldaAvanceDinamico;
 import fiuba.algo3.Dado;
 import fiuba.algo3.Jugador;
-
-public class CeldaAvanceDinamicoTest {
 /*
+public class CeldaAvanceDinamicoTest {
+
 	@Test
 	public void CeldaAvanceDinamicoRecienCreadaDeveriaExistir() {
 		CeldaAvanceDinamico unaCelda = new CeldaAvanceDinamico();
@@ -66,5 +66,6 @@ public class CeldaAvanceDinamicoTest {
 		int resultado = avanceDinamico.calcularAvance(jugador,dado1,dado2);
 		Assert.assertEquals(3, resultado);
 	}
-*/
+
 }
+*/
