@@ -18,7 +18,7 @@ public class PoliciaTest {
 		Jugador unJugador = new Jugador();
 		CeldaPolicia policia = new CeldaPolicia(carcel);
 		
-		policia.recibirJugador(unJugador);
+		policia.recibirJugador(, unJugador, );
 		carcel.sacarJugador(unJugador);
 	}
 	
@@ -28,7 +28,7 @@ public class PoliciaTest {
 		Jugador jugador = new Jugador();
 		CeldaPolicia policia = new CeldaPolicia(carcel);
 		
-		policia.recibirJugador(jugador);
+		policia.recibirJugador(, jugador, );
 		carcel.reducirTurnosDeEsperaDe(jugador);
 		
 		carcel.sacarJugador(jugador);
@@ -42,7 +42,7 @@ public class PoliciaTest {
 		Jugador jugador = new Jugador();
 		CeldaPolicia policia = new CeldaPolicia(carcel);
 		
-		policia.recibirJugador(jugador);
+		policia.recibirJugador(, jugador, );
 		carcel.reducirTurnosDeEsperaDe(jugador);
 		carcel.reducirTurnosDeEsperaDe(jugador);
 		
@@ -57,7 +57,7 @@ public class PoliciaTest {
 		Jugador jugador = new Jugador();
 		CeldaPolicia policia = new CeldaPolicia(carcel);
 		
-		policia.recibirJugador(jugador);
+		policia.recibirJugador(, jugador, );
 		carcel.reducirTurnosDeEsperaDe(jugador);
 		carcel.reducirTurnosDeEsperaDe(jugador);
 		carcel.reducirTurnosDeEsperaDe(jugador);
@@ -75,7 +75,7 @@ public class PoliciaTest {
 		
 		jugador.pagar(60000);
 				
-		policia.recibirJugador(jugador);
+		policia.recibirJugador(, jugador, );
 		carcel.reducirTurnosDeEsperaDe(jugador);
 		
 		carcel.sacarJugador(jugador);
@@ -88,11 +88,11 @@ public class PoliciaTest {
 		Jugador Rigby = new Jugador();
 		CeldaPolicia policia = new CeldaPolicia(carcel);
 		
-		policia.recibirJugador(Mordecai);
+		policia.recibirJugador(, Mordecai, );
 		carcel.reducirTurnosDeEsperaDe(Mordecai);
 		Mordecai.pagar(60000);
 		
-		carcel.recibirJugador(Rigby);
+		carcel.recibirJugador(, Rigby, );
 		
 		carcel.sacarJugador(Mordecai);
 	}
@@ -104,10 +104,10 @@ public class PoliciaTest {
 		Jugador Rigby = new Jugador();
 		CeldaPolicia policia = new CeldaPolicia(carcel);
 		
-		policia.recibirJugador(Mordecai);
+		policia.recibirJugador(, Mordecai, );
 		carcel.reducirTurnosDeEsperaDe(Mordecai);
 		
-		carcel.recibirJugador(Rigby);
+		carcel.recibirJugador(, Rigby, );
 		
 		carcel.sacarJugador(Rigby);
 	}
@@ -119,10 +119,10 @@ public class PoliciaTest {
 		Jugador Rigby = new Jugador();
 		CeldaPolicia policia = new CeldaPolicia(carcel);
 		
-		policia.recibirJugador(Mordecai);
+		policia.recibirJugador(, Mordecai, );
 		carcel.reducirTurnosDeEsperaDe(Mordecai);
 		
-		carcel.recibirJugador(Rigby);
+		carcel.recibirJugador(, Rigby, );
 		
 		carcel.sacarJugador(Mordecai);
 		
@@ -136,12 +136,12 @@ public class PoliciaTest {
 		Jugador Rigby = new Jugador();
 		CeldaPolicia policia = new CeldaPolicia(carcel);
 		
-		policia.recibirJugador(Mordecai);
+		policia.recibirJugador(, Mordecai, );
 		carcel.reducirTurnosDeEsperaDe(Mordecai);
 		carcel.reducirTurnosDeEsperaDe(Mordecai);
 		carcel.reducirTurnosDeEsperaDe(Mordecai);
 		
-		carcel.recibirJugador(Rigby);
+		carcel.recibirJugador(, Rigby, );
 		
 		carcel.sacarJugador(Mordecai);
 	}

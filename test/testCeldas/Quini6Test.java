@@ -14,7 +14,7 @@ public class Quini6Test {
 		Celda celda = new CeldaQuini6();
 		Jugador unJugador = new Jugador();
 		
-		celda.recibirJugador(unJugador);
+		celda.recibirJugador(, unJugador, );
 
 		assertEquals(150000, unJugador.obtenerDinero());
 	}
@@ -24,8 +24,8 @@ public class Quini6Test {
 		Celda celda = new CeldaQuini6();
 		Jugador unJugador = new Jugador();
 		
-		celda.recibirJugador(unJugador);
-		celda.recibirJugador(unJugador);
+		celda.recibirJugador(, unJugador, );
+		celda.recibirJugador(, unJugador, );
 		
 		assertEquals(180000, unJugador.obtenerDinero());
 	}
@@ -35,9 +35,9 @@ public class Quini6Test {
 		Celda celda = new CeldaQuini6();
 		Jugador unJugador = new Jugador();
 		
-		celda.recibirJugador(unJugador);
-		celda.recibirJugador(unJugador);
-		celda.recibirJugador(unJugador);
+		celda.recibirJugador(, unJugador, );
+		celda.recibirJugador(, unJugador, );
+		celda.recibirJugador(, unJugador, );
 		
 		assertEquals(180000, unJugador.obtenerDinero());
 	}
@@ -48,8 +48,8 @@ public class Quini6Test {
 		Jugador pablo = new Jugador();
 		Jugador miguel = new Jugador();
 
-		celda.recibirJugador(pablo);
-		celda.recibirJugador(miguel);
+		celda.recibirJugador(, pablo, );
+		celda.recibirJugador(, miguel, );
 
 		assertEquals(150000, miguel.obtenerDinero());
 	}
@@ -60,10 +60,10 @@ public class Quini6Test {
 		Jugador pablo = new Jugador();
 		Jugador miguel = new Jugador();
 
-		celda.recibirJugador(pablo);
-		celda.recibirJugador(miguel);
-		celda.recibirJugador(miguel);
-		celda.recibirJugador(miguel);
+		celda.recibirJugador(, pablo, );
+		celda.recibirJugador(, miguel, );
+		celda.recibirJugador(, miguel, );
+		celda.recibirJugador(, miguel, );
 
 		assertEquals(180000, miguel.obtenerDinero());
 	}

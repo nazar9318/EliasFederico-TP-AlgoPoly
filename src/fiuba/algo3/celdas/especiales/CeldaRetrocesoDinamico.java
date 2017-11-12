@@ -2,6 +2,7 @@ package fiuba.algo3.celdas.especiales;
 
 import fiuba.algo3.Dado;
 import fiuba.algo3.Jugador;
+import fiuba.algo3.Tablero;
 import fiuba.algo3.celdas.Celda;
 
 public class CeldaRetrocesoDinamico implements Celda {
@@ -19,7 +20,7 @@ public class CeldaRetrocesoDinamico implements Celda {
 	}
 
 	@Override
-	public void recibirJugador(Jugador unJugador) {
+	public void recibirJugador(Tablero tablero, Jugador unJugador) {
 		// TODO Auto-generated method stub
 		
 	}

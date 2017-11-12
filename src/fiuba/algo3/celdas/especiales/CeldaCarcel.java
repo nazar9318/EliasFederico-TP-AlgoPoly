@@ -1,6 +1,7 @@
 package fiuba.algo3.celdas.especiales;
 
 import fiuba.algo3.Jugador;
+import fiuba.algo3.Tablero;
 import fiuba.algo3.excepciones.JugadorNoPuedeSalirDeLaCarcel;
 import fiuba.algo3.celdas.Celda;
 
@@ -15,7 +16,7 @@ public class CeldaCarcel implements Celda {
 	}
 	
 	@Override
-	public void recibirJugador(Jugador jugador) {
+	public void recibirJugador(Tablero tablero, Jugador jugador) {
 		jugadores.put(jugador, 3);
 	}
 

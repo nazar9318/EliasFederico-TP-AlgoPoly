@@ -16,7 +16,7 @@ public class CarcelTest {
 		CeldaCarcel carcel = new CeldaCarcel();
 		Jugador jugador = new Jugador();
 		
-		carcel.recibirJugador(jugador);
+		carcel.recibirJugador(, jugador, );
 		
 		carcel.sacarJugador(jugador);
 	}
@@ -26,7 +26,7 @@ public class CarcelTest {
 		CeldaCarcel carcel = new CeldaCarcel();
 		Jugador jugador = new Jugador();
 		
-		carcel.recibirJugador(jugador);
+		carcel.recibirJugador(, jugador, );
 		carcel.reducirTurnosDeEsperaDe(jugador);
 		
 		carcel.sacarJugador(jugador);
@@ -39,7 +39,7 @@ public class CarcelTest {
 		CeldaCarcel carcel = new CeldaCarcel();
 		Jugador jugador = new Jugador();
 		
-		carcel.recibirJugador(jugador);
+		carcel.recibirJugador(, jugador, );
 		carcel.reducirTurnosDeEsperaDe(jugador);
 		carcel.reducirTurnosDeEsperaDe(jugador);
 		
@@ -53,7 +53,7 @@ public class CarcelTest {
 		CeldaCarcel carcel = new CeldaCarcel();
 		Jugador jugador = new Jugador();
 		
-		carcel.recibirJugador(jugador);
+		carcel.recibirJugador(, jugador, );
 		carcel.reducirTurnosDeEsperaDe(jugador);
 		carcel.reducirTurnosDeEsperaDe(jugador);
 		carcel.reducirTurnosDeEsperaDe(jugador);
@@ -70,7 +70,7 @@ public class CarcelTest {
 		
 		jugador.pagar(60000);
 		
-		carcel.recibirJugador(jugador);
+		carcel.recibirJugador(, jugador, );
 		carcel.reducirTurnosDeEsperaDe(jugador);
 		
 		carcel.sacarJugador(jugador);
@@ -82,11 +82,11 @@ public class CarcelTest {
 		Jugador Mordecai = new Jugador();
 		Jugador Rigby = new Jugador();
 		
-		carcel.recibirJugador(Mordecai);
+		carcel.recibirJugador(, Mordecai, );
 		carcel.reducirTurnosDeEsperaDe(Mordecai);
 		Mordecai.pagar(60000);
 		
-		carcel.recibirJugador(Rigby);
+		carcel.recibirJugador(, Rigby, );
 		
 		carcel.sacarJugador(Mordecai);
 	}
@@ -97,10 +97,10 @@ public class CarcelTest {
 		Jugador Mordecai = new Jugador();
 		Jugador Rigby = new Jugador();
 		
-		carcel.recibirJugador(Mordecai);
+		carcel.recibirJugador(, Mordecai, );
 		carcel.reducirTurnosDeEsperaDe(Mordecai);
 		
-		carcel.recibirJugador(Rigby);
+		carcel.recibirJugador(, Rigby, );
 		
 		carcel.sacarJugador(Rigby);
 	}
@@ -111,10 +111,10 @@ public class CarcelTest {
 		Jugador Mordecai = new Jugador();
 		Jugador Rigby = new Jugador();
 		
-		carcel.recibirJugador(Mordecai);
+		carcel.recibirJugador(, Mordecai, );
 		carcel.reducirTurnosDeEsperaDe(Mordecai);
 		
-		carcel.recibirJugador(Rigby);
+		carcel.recibirJugador(, Rigby, );
 		
 		carcel.sacarJugador(Mordecai);
 		
@@ -127,12 +127,12 @@ public class CarcelTest {
 		Jugador Mordecai = new Jugador();
 		Jugador Rigby = new Jugador();
 		
-		carcel.recibirJugador(Mordecai);
+		carcel.recibirJugador(, Mordecai, );
 		carcel.reducirTurnosDeEsperaDe(Mordecai);
 		carcel.reducirTurnosDeEsperaDe(Mordecai);
 		carcel.reducirTurnosDeEsperaDe(Mordecai);
 		
-		carcel.recibirJugador(Rigby);
+		carcel.recibirJugador(, Rigby, );
 		
 		carcel.sacarJugador(Mordecai);
 	}

@@ -1,6 +1,7 @@
 package fiuba.algo3.celdas.especiales;
 
 import fiuba.algo3.Jugador;
+import fiuba.algo3.Tablero;
 import fiuba.algo3.celdas.Celda;
 
 import java.util.HashMap;
@@ -36,7 +37,7 @@ public class CeldaQuini6 implements Celda {
 	}
 
 	@Override
-	public void recibirJugador(Jugador unJugador) {
+	public void recibirJugador(Tablero tablero, Jugador unJugador) {
 		if (primeraCaida(unJugador)) {
 			jugadores.put(unJugador, 1);
 			unJugador.cobrar(50000);

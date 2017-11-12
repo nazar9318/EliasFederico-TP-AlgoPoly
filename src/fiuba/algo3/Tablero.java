@@ -2,9 +2,7 @@ package fiuba.algo3;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.Map;
 
 import fiuba.algo3.celdas.Celda;
 import fiuba.algo3.celdas.CeldaSalida;
@@ -13,11 +11,18 @@ public class Tablero {
 
 	private HashMap<Jugador, Celda> jugadores;
 	private ArrayList<Celda> celdas;
+	private Map<Propiedad, Jugador> propiedades = new HashMap<>();
 
 	public Tablero() {
 		jugadores = new HashMap<>();
 		celdas = new ArrayList<>();
+		generarCeldas(propiedades, celdas);
 		this.agregarCelda(new CeldaSalida());
+	}
+
+	private Map<Propiedad,Jugador> generarCeldas(Map<Propiedad, Jugador> propiedades, ArrayList<Celda> celdas) {
+		//TODO generar propiedades con PropiedadFactory
+		return null;
 	}
 
 	public int getCantidadDeCeldas() {
@@ -56,6 +61,14 @@ public class Tablero {
 		celdaActual.sacarJugador(jugador); //TODO: reemplazar sacar jugador por metodo mas integral que valide habilitacion de moverse
 
 		Celda celdaNueva = reposicionarJugador(jugador, index, avance);
-		celdaNueva.recibirJugador(jugador);
+		celdaNueva.recibirJugador(this, jugador);
+	}
+
+	public HashMap<Jugador, Celda> getJugadores() {
+		return jugadores;
+	}
+
+	public Map<Propiedad, Jugador> getPropiedades() {
+		return propiedades;
 	}
 }
