@@ -100,9 +100,11 @@ private int precioconstruirhotel;
 	}
 	public void comprarBarrio(Jugador jugador) {
 		if ((jugador.obtenerDinero()>= this.getPrecioterreno()) && (this.getDuenio() == null)) {
-		this.setDuenio(jugador);
-		jugador.pagar(this.getPrecioterreno());
-		}else {throw new JugadorNoTieneFondosParaPagar();
+			this.setDuenio(jugador);
+			jugador.pagar(this.getPrecioterreno());
+		}
+		else {	
+			throw new JugadorNoTieneFondosParaPagar();
 		}
 	}
 }
