@@ -18,7 +18,7 @@ public class CarcelTest {
 		
 		carcel.recibirJugador(jugador);
 		
-		carcel.sacarDeLaCarcelA(jugador);
+		carcel.sacarJugador(jugador);
 	}
 	
 	@Test
@@ -29,7 +29,7 @@ public class CarcelTest {
 		carcel.recibirJugador(jugador);
 		carcel.reducirTurnosDeEsperaDe(jugador);
 		
-		carcel.sacarDeLaCarcelA(jugador);
+		carcel.sacarJugador(jugador);
 		
 		assertEquals(55000, jugador.obtenerDinero());
 	}
@@ -43,7 +43,7 @@ public class CarcelTest {
 		carcel.reducirTurnosDeEsperaDe(jugador);
 		carcel.reducirTurnosDeEsperaDe(jugador);
 		
-		carcel.sacarDeLaCarcelA(jugador);
+		carcel.sacarJugador(jugador);
 		
 		assertEquals(55000, jugador.obtenerDinero());
 	}
@@ -58,7 +58,7 @@ public class CarcelTest {
 		carcel.reducirTurnosDeEsperaDe(jugador);
 		carcel.reducirTurnosDeEsperaDe(jugador);
 		
-		carcel.sacarDeLaCarcelA(jugador);
+		carcel.sacarJugador(jugador);
 		
 		assertEquals(100000, jugador.obtenerDinero());
 	}
@@ -73,7 +73,7 @@ public class CarcelTest {
 		carcel.recibirJugador(jugador);
 		carcel.reducirTurnosDeEsperaDe(jugador);
 		
-		carcel.sacarDeLaCarcelA(jugador);
+		carcel.sacarJugador(jugador);
 	}
 	
 	@Test (expected = JugadorNoTieneFondosParaPagar.class)
@@ -88,7 +88,7 @@ public class CarcelTest {
 		
 		carcel.recibirJugador(Rigby);
 		
-		carcel.sacarDeLaCarcelA(Mordecai);
+		carcel.sacarJugador(Mordecai);
 	}
 	
 	@Test (expected=JugadorNoPuedeSalirDeLaCarcel.class)
@@ -102,7 +102,7 @@ public class CarcelTest {
 		
 		carcel.recibirJugador(Rigby);
 		
-		carcel.sacarDeLaCarcelA(Rigby);
+		carcel.sacarJugador(Rigby);
 	}
 	
 	@Test
@@ -116,7 +116,7 @@ public class CarcelTest {
 		
 		carcel.recibirJugador(Rigby);
 		
-		carcel.sacarDeLaCarcelA(Mordecai);
+		carcel.sacarJugador(Mordecai);
 		
 		assertEquals(55000, Mordecai.obtenerDinero());
 	}
@@ -134,7 +134,7 @@ public class CarcelTest {
 		
 		carcel.recibirJugador(Rigby);
 		
-		carcel.sacarDeLaCarcelA(Mordecai);
+		carcel.sacarJugador(Mordecai);
 	}
 	
 }

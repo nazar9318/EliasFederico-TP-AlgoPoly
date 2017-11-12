@@ -45,4 +45,10 @@ public class CeldaQuini6 implements Celda {
 		cobrarCaidaRepetida(unJugador);
 	}
 
+	@Override
+	public void sacarJugador(Jugador jugador) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

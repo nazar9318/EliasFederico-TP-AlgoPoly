@@ -10,4 +10,10 @@ public class CeldaSalida implements Celda{
 		
 	}
 
+	@Override
+	public void sacarJugador(Jugador jugador) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

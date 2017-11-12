@@ -5,5 +5,7 @@ import fiuba.algo3.Jugador;
 public interface Celda {
 
 	void recibirJugador(Jugador unJugador);
+	
+	void sacarJugador(Jugador jugador);
 
 }

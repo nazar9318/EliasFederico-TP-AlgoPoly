@@ -18,8 +18,17 @@ public class CeldaCarcel implements Celda {
 	public void recibirJugador(Jugador jugador) {
 		jugadores.put(jugador, 3);
 	}
-	
-	public void sacarDeLaCarcelA(Jugador jugador){
+
+	public void reducirTurnosDeEsperaDe(Jugador jugador) {
+		if(jugadores.containsKey(jugador)){
+			int turnosDeEsperaActuales = jugadores.get(jugador);
+			turnosDeEsperaActuales --;
+			jugadores.put(jugador, turnosDeEsperaActuales);
+		}
+	}
+
+	@Override
+	public void sacarJugador(Jugador jugador) {
 		if (jugadores.containsKey(jugador)){
 			if (jugadores.get(jugador) == 3){
 				throw new JugadorNoPuedeSalirDeLaCarcel();
@@ -30,14 +39,6 @@ public class CeldaCarcel implements Celda {
 				jugadores.remove(jugador);
 			}
 		}		
-	}
-
-	public void reducirTurnosDeEsperaDe(Jugador jugador) {
-		if(jugadores.containsKey(jugador)){
-			int turnosDeEsperaActuales = jugadores.get(jugador);
-			turnosDeEsperaActuales --;
-			jugadores.put(jugador, turnosDeEsperaActuales);
-		}
 	}
 
 }

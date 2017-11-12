@@ -17,4 +17,10 @@ public class CeldaPolicia implements Celda {
 		this.carcel.recibirJugador(unJugador);
 	}
 
+	@Override
+	public void sacarJugador(Jugador jugador) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
