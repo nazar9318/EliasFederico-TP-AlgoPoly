@@ -6,11 +6,9 @@ public class PropiedadFactory {
 
     public static Propiedad getPropiedad(String nombre) {
         if (nombre.equals("Buenos Aires Norte"))
-            return new Propiedad(nombre, 5000, 3000, 1000);
+            return new Propiedad(nombre, 25000, 5500, 2500);
         else if (nombre.equals("Buenos Aires Sur"))
-            return new Propiedad(nombre, 5000, 3000, 1000);
-        else if(nombre.equals("Buenos Aires Centro"))
-            return new Propiedad(nombre, 5000, 3000, 1000);
+            return new Propiedad(nombre, 20000, 5000, 2000);
         return null;
     }
 

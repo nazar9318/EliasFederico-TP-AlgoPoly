@@ -7,6 +7,7 @@ import fiuba.algo3.celdas.Celda;
 
 import java.util.HashMap;
 
+//TODO: revisar clase con nueva funcionalidad
 public class CeldaCarcel implements Celda {
 	
 	private HashMap<Jugador, Integer> jugadores;
@@ -16,7 +17,7 @@ public class CeldaCarcel implements Celda {
 	}
 	
 	@Override
-	public void recibirJugador(Tablero tablero, Jugador jugador) {
+	public void accionDeCelda(Tablero tablero, Jugador jugador) {
 		jugadores.put(jugador, 3);
 	}
 
@@ -28,7 +29,6 @@ public class CeldaCarcel implements Celda {
 		}
 	}
 
-	@Override
 	public void sacarJugador(Jugador jugador) {
 		if (jugadores.containsKey(jugador)){
 			if (jugadores.get(jugador) == 3){

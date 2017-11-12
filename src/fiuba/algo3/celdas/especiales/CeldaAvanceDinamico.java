@@ -7,10 +7,12 @@ import fiuba.algo3.Jugador;
 import fiuba.algo3.Tablero;
 import fiuba.algo3.celdas.Celda;
 
+
+//TODO: revisar clase con nueva funcionalidad
 public class CeldaAvanceDinamico implements Celda {
 	
 	@Override
-	public void recibirJugador(Tablero tablero, Jugador unJugador) {
+	public void accionDeCelda(Tablero tablero, Jugador unJugador) {
 
 		
 	}
@@ -27,10 +29,4 @@ public class CeldaAvanceDinamico implements Celda {
 		return totalTiro - unJugador.getCantidadDePropiedades();
 	}
 
-	@Override
-	public void sacarJugador(Jugador jugador) {
-		// TODO Auto-generated method stub
-		
-	}
-		
 }

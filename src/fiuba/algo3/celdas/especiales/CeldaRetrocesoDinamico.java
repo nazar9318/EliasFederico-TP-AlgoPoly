@@ -5,6 +5,8 @@ import fiuba.algo3.Jugador;
 import fiuba.algo3.Tablero;
 import fiuba.algo3.celdas.Celda;
 
+
+//TODO: revisar clase con nueva funcionalidad
 public class CeldaRetrocesoDinamico implements Celda {
 
 	public int calcularRetroceso(Jugador unJugador, Dado dado1, Dado dado2) {
@@ -20,16 +22,9 @@ public class CeldaRetrocesoDinamico implements Celda {
 	}
 
 	@Override
-	public void recibirJugador(Tablero tablero, Jugador unJugador) {
+	public void accionDeCelda(Tablero tablero, Jugador unJugador) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
-	public void sacarJugador(Jugador jugador) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
 }

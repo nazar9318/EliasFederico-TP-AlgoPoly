@@ -7,6 +7,7 @@ import fiuba.algo3.celdas.Celda;
 import java.util.HashMap;
 
 
+//TODO: revisar clase con nueva funcionalidad
 public class CeldaQuini6 implements Celda {
 	
 	private HashMap<Jugador, Integer> jugadores;
@@ -37,19 +38,13 @@ public class CeldaQuini6 implements Celda {
 	}
 
 	@Override
-	public void recibirJugador(Tablero tablero, Jugador unJugador) {
+	public void accionDeCelda(Tablero tablero, Jugador unJugador) {
 		if (primeraCaida(unJugador)) {
 			jugadores.put(unJugador, 1);
 			unJugador.cobrar(50000);
 			return;
 		}
 		cobrarCaidaRepetida(unJugador);
-	}
-
-	@Override
-	public void sacarJugador(Jugador jugador) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

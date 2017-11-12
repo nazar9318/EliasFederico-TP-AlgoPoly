@@ -3,14 +3,10 @@ package fiuba.algo3;
 public class Propiedad {
 
     private String nombre;
-
     private int precio;
-
-    private int precioCasa;
-
-    private int casas = 0;
-
     private int precioAlquiler;
+    private int precioCasa;
+    private int casas = 0;
 
     public Propiedad(String nombre, int precio, int precioCasa, int precioAlquiler) {
         this.nombre = nombre;

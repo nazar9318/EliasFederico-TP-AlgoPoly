@@ -1,7 +1,8 @@
 package fiuba.algo3;
 
+//TODO: revisar clase con nueva funcionalidad
 public class Dado {
-	
+
 	private int valor;
 	
 	public int tirar() {

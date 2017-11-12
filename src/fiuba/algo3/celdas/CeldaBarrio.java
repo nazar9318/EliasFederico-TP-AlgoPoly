@@ -4,20 +4,19 @@ import fiuba.algo3.Jugador;
 import fiuba.algo3.Propiedad;
 import fiuba.algo3.Tablero;
 import fiuba.algo3.excepciones.JugadorNoTieneFondosParaPagar;
+import fiuba.algo3.factory.PropiedadFactory;
 
 public class CeldaBarrio implements Celda{
 
-private Celda celdaasociada;
-private Propiedad propiedad;
-	
-	@Override
-	public void recibirJugador(Tablero tablero, Jugador unJugador) {
-		// TODO Auto-generated method stub
-		
+	private Celda celdaasociada;
+	private Propiedad propiedad;
+
+	public CeldaBarrio(Propiedad propiedad){
+		this.propiedad = propiedad;
 	}
 
 	@Override
-	public void sacarJugador(Jugador jugador) {
+	public void accionDeCelda(Tablero tablero, Jugador unJugador) {
 		// TODO Auto-generated method stub
 		
 	}

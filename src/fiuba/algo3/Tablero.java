@@ -5,7 +5,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import fiuba.algo3.celdas.Celda;
+import fiuba.algo3.celdas.CeldaBarrio;
 import fiuba.algo3.celdas.CeldaSalida;
+import fiuba.algo3.celdas.especiales.CeldaCarcel;
+import fiuba.algo3.factory.PropiedadFactory;
 
 public class Tablero {
 
@@ -17,12 +20,21 @@ public class Tablero {
 		jugadores = new HashMap<>();
 		celdas = new ArrayList<>();
 		generarCeldas(propiedades, celdas);
-		this.agregarCelda(new CeldaSalida());
+
 	}
 
-	private Map<Propiedad,Jugador> generarCeldas(Map<Propiedad, Jugador> propiedades, ArrayList<Celda> celdas) {
+	private void generarCeldas(Map<Propiedad, Jugador> propiedades, ArrayList<Celda> celdas) {
 		//TODO generar propiedades con PropiedadFactory
-		return null;
+		Propiedad BsAsSur = PropiedadFactory.getPropiedad("Buenos Aires Sur");
+
+		this.agregarCelda(new CeldaSalida());
+		llenarTerreno(BsAsSur);
+		this.agregarCelda(new CeldaCarcel());
+	}
+
+	private void llenarTerreno(Propiedad propiedad){
+		this.agregarCelda(new CeldaBarrio(propiedad));
+		this.agregarPropiedad(propiedad);
 	}
 
 	public int getCantidadDeCeldas() {
@@ -33,8 +45,12 @@ public class Tablero {
 		return this.celdas.get(0);
 	}
 
-	public void agregarCelda(Celda c1) {
-		celdas.add(c1);
+	public void agregarCelda(Celda celda) {
+		celdas.add(celda);
+	}
+
+	private void agregarPropiedad(Propiedad propiedad){
+		propiedades.put(propiedad, null);
 	}
 
 	public void agregarJugador(Jugador j1) {
@@ -53,7 +69,7 @@ public class Tablero {
 
 		return this.jugadores.get(j1);
 	}
-	
+/*
 	public void avanzarJugador(Jugador jugador, int avance) {
 
 		Celda celdaActual = this.jugadores.get(jugador);
@@ -61,9 +77,9 @@ public class Tablero {
 		celdaActual.sacarJugador(jugador); //TODO: reemplazar sacar jugador por metodo mas integral que valide habilitacion de moverse
 
 		Celda celdaNueva = reposicionarJugador(jugador, index, avance);
-		celdaNueva.recibirJugador(this, jugador);
+		celdaNueva.accionDeCelda(this, jugador);
 	}
-
+*/
 	public HashMap<Jugador, Celda> getJugadores() {
 		return jugadores;
 	}
