@@ -87,4 +87,18 @@ public class TableroTest {
 
 		assertEquals(180000, jugador1.obtenerDinero());
 	}
+/*	avanzar se va de rango???
+	@Test
+	public void avanceConDados() {
+		Tablero tablero = new Tablero();
+    	CeldaQuini6 quini = new CeldaQuini6();
+    	
+    	tablero.agregarCelda(quini);
+    	
+    	Jugador jugador1 = new Jugador();
+		tablero.cargarJugador(jugador1);
+		
+		assertEquals(quini,tablero.jugadorAvanza(jugador1,tablero.lanzarDados()));
+	}
+	*/
 }
