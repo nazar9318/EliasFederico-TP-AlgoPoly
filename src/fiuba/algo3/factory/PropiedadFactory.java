@@ -11,5 +11,4 @@ public class PropiedadFactory {
             return new Propiedad(nombre, 20000, 5000, 2000);
         return null;
     }
-
 }

@@ -10,7 +10,6 @@ public class Jugador {
 
 	private int dinero;
 	private ArrayList<Celda> propiedades;
-	//TODO: muy buena idea poner enum para las "familias" de propiedades y que cada propiedad tenga de atributo (string) su flia
 
 	public Jugador(){
 		this.dinero = 100000;

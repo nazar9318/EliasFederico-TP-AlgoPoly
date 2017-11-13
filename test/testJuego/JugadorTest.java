@@ -16,20 +16,20 @@ public class JugadorTest {
 	}
 	
 	@Test
-	public void jugadorRecienCreadoDeberiaTenerUnCapitalDe100MilPesos() {
+	public void jugadorRecienCreadoDebeTenerUnCapitalDe100MilPesos() {
 		Jugador jugador = new Jugador();
 		int capital = 100000;
 		assertEquals(capital, jugador.obtenerDinero());
 	}
 	
 	@Test
-	public void jugadorRecienCreadoNoDeberiaTenerPropiedades() {
+	public void jugadorRecienCreadoNoDebeTenerPropiedades() {
 		Jugador jugador = new Jugador();
 		assertEquals(0, jugador.getCantidadDePropiedades());
 	}
 	
 	@Test 
-	public void jugadorPagar50MilDeberiaDisminuirElCapitalDelJugadorEn50Mil() {
+	public void jugadorPagar50MilDebeDisminuirElCapitalDelJugadorEn50Mil() {
 		Jugador jugador = new Jugador();
 		int monto = 50000;
 		jugador.pagar(monto);
@@ -37,7 +37,7 @@ public class JugadorTest {
 	}
 	
 	@Test
-	public void jugadorCobrar30MilDeberiaAumentarElCapitalDelJugadorEn30Mil() {
+	public void jugadorCobrar30MilDebeAumentarElCapitalDelJugadorEn30Mil() {
 		Jugador jugador = new Jugador();
 		int monto = 30000;
 		jugador.cobrar(monto);
