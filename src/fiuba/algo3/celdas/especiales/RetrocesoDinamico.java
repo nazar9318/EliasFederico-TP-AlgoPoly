@@ -9,12 +9,12 @@ public class RetrocesoDinamico implements Visitable {
 		int resta = 2;
 		int totalTiro = unJugador.pedirTiro();
 		if(totalTiro <= 6) {
-			return totalTiro - unJugador.getCantidadDePropiedades();
+			return -(totalTiro - unJugador.getCantidadDePropiedades());
 		}
 		else if (totalTiro > 6 && totalTiro <= 10) {
-			return unJugador.obtenerDinero() % totalTiro;
+			return -(unJugador.obtenerDinero() % totalTiro);
 		}
-		return totalTiro - resta;
+		return -(totalTiro - resta);
 	}
 	
 	@Override
