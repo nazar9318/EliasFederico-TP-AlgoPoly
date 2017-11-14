@@ -5,21 +5,21 @@ import static org.junit.Assert.*;
 import org.junit.Assert;
 import org.junit.Test;
 
-import fiuba.algo3.celdas.especiales.CeldaAvanceDinamico;
+import fiuba.algo3.celdas.especiales.AvanceDinamico;
 import fiuba.algo3.Dado;
 import fiuba.algo3.Jugador;
 
-public class CeldaAvanceDinamicoTest {
+public class AvanceDinamicoTest {
 
 	@Test
-	public void CeldaAvanceDinamicoRecienCreadaDeveriaExistir() {
-		CeldaAvanceDinamico unaCelda = new CeldaAvanceDinamico();
+	public void AvanceDinamicoRecienCreadaDeveriaExistir() {
+		AvanceDinamico unaCelda = new AvanceDinamico();
 		assertNotNull(unaCelda);
 	}
 	
 	@Test
-	public void JugadorCaeEnCeldaAvanceDinamicoSacandoUnDosElAvanceDeberiaSerCero() {
-		CeldaAvanceDinamico avanceDinamico = new CeldaAvanceDinamico();
+	public void JugadorCaeEnAvanceDinamicoSacandoUnDosElAvanceDeberiaSerCero() {
+		AvanceDinamico avanceDinamico = new AvanceDinamico();
 		Jugador jugador = new Jugador();
 		Dado dado1 = new Dado();
 		Dado dado2 = new Dado();
@@ -30,8 +30,8 @@ public class CeldaAvanceDinamicoTest {
 	}
 
 	@Test
-	public void JugadorCaeEnCeldaAvanceDinamicoSacandoUnSieteElAvanceDeberiaSer5() {
-		CeldaAvanceDinamico avanceDinamico = new CeldaAvanceDinamico();
+	public void JugadorCaeEnAvanceDinamicoSacandoUnSieteElAvanceDeberiaSer5() {
+		AvanceDinamico avanceDinamico = new AvanceDinamico();
 		Jugador jugador = new Jugador();
 		Dado dado1 = new Dado();
 		Dado dado2 = new Dado();
@@ -42,8 +42,8 @@ public class CeldaAvanceDinamicoTest {
 	}
 
 	@Test
-	public void JugadorSinProiedadesCaeEnCeldaAvanceDinamicoSacandoUn12ElAvanceDeberiaSer12() {
-		CeldaAvanceDinamico avanceDinamico = new CeldaAvanceDinamico();
+	public void JugadorSinProiedadesCaeEnAvanceDinamicoSacandoUn12ElAvanceDeberiaSer12() {
+		AvanceDinamico avanceDinamico = new AvanceDinamico();
 		Jugador jugador = new Jugador();
 		Dado dado1 = new Dado();
 		Dado dado2 = new Dado();
@@ -54,8 +54,8 @@ public class CeldaAvanceDinamicoTest {
 	}
 	
 	@Test
-	public void JugadorCaeEnCeldaAvanceDinamicoSacandoUn10ConCapital333ElAvanceDeberiaSer3() {
-		CeldaAvanceDinamico avanceDinamico = new CeldaAvanceDinamico();
+	public void JugadorCaeEnAvanceDinamicoSacandoUn10ConCapital333ElAvanceDeberiaSer3() {
+		AvanceDinamico avanceDinamico = new AvanceDinamico();
 		Jugador jugador = new Jugador();
 		int monto = 99667;
 		jugador.pagar(monto);

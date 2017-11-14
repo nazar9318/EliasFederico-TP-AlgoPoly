@@ -5,21 +5,21 @@ import static org.junit.Assert.*;
 import org.junit.Assert;
 import org.junit.Test;
 
-import fiuba.algo3.celdas.especiales.CeldaRetrocesoDinamico;
+import fiuba.algo3.celdas.especiales.RetrocesoDinamico;
 import fiuba.algo3.Dado;
 import fiuba.algo3.Jugador;
 
-public class CeldaRetrocesoDinamicoTest {
+public class RetrocesoDinamicoTest {
 
 	@Test
-	public void CeldaRetrocesoDinamicoRecienCreadaDeveriaExistir() {
-		CeldaRetrocesoDinamico unaCelda = new CeldaRetrocesoDinamico();
+	public void RetrocesoDinamicoRecienCreadaDeveriaExistir() {
+		RetrocesoDinamico unaCelda = new RetrocesoDinamico();
 		assertNotNull(unaCelda);
 	}
 	
 	@Test
-	public void JugadorRecienCreadoCaeEnCeldaRetrocesoDinamicoSacandoDiezElRetrocesoDeberiaSerCero() {
-		CeldaRetrocesoDinamico retrocesoDinamico = new CeldaRetrocesoDinamico();
+	public void JugadorRecienCreadoCaeEnRetrocesoDinamicoSacandoDiezElRetrocesoDeberiaSerCero() {
+		RetrocesoDinamico retrocesoDinamico = new RetrocesoDinamico();
 		Jugador jugador = new Jugador();
 		Dado dado1 = new Dado();
 		Dado dado2 = new Dado();
@@ -30,8 +30,8 @@ public class CeldaRetrocesoDinamicoTest {
 	}
 	
 	@Test
-	public void JugadorSinPropiedadesCaeEnCeldaRetrocesoDinamicoSacandoUnSeisElRetrocesoDeberiaSer6() {
-		CeldaRetrocesoDinamico retrocesoDinamico = new CeldaRetrocesoDinamico();
+	public void JugadorSinPropiedadesCaeEnRetrocesoDinamicoSacandoUnSeisElRetrocesoDeberiaSer6() {
+		RetrocesoDinamico retrocesoDinamico = new RetrocesoDinamico();
 		Jugador jugador = new Jugador();
 		Dado dado1 = new Dado();
 		Dado dado2 = new Dado();
@@ -42,8 +42,8 @@ public class CeldaRetrocesoDinamicoTest {
 	}
 	
 	@Test
-	public void JugadorCaeEnCeldaRetrocesoDinamicoSacandoUn12ElRetrocesoDeberiaSer10() {
-		CeldaRetrocesoDinamico retrocesoDinamico = new CeldaRetrocesoDinamico();
+	public void JugadorCaeEnRetrocesoDinamicoSacandoUn12ElRetrocesoDeberiaSer10() {
+		RetrocesoDinamico retrocesoDinamico = new RetrocesoDinamico();
 		Jugador jugador = new Jugador();
 		Dado dado1 = new Dado();
 		Dado dado2 = new Dado();

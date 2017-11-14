@@ -1,16 +1,15 @@
 package fiuba.algo3.celdas.especiales;
 
 import fiuba.algo3.Jugador;
-import fiuba.algo3.celdas.Celda;
+import fiuba.algo3.celdas.Visitable;
 
 import java.util.HashMap;
 
-
-public class CeldaQuini6 implements Celda {
+public class Quini6 implements Visitable {
 	
 	private HashMap<Jugador, Integer> jugadores;
 
-	public CeldaQuini6() {
+	public Quini6() {
 		jugadores = new HashMap<>();
 	}
 
@@ -35,8 +34,7 @@ public class CeldaQuini6 implements Celda {
 		this.jugadores.put(unJugador, 2);
 	}
 
-	@Override
-	public void recibirJugador(Jugador unJugador) {
+	public void pagarPremioAJugador(Jugador unJugador) {
 		if (primeraCaida(unJugador)) {
 			jugadores.put(unJugador, 1);
 			unJugador.cobrar(50000);
@@ -44,11 +42,10 @@ public class CeldaQuini6 implements Celda {
 		}
 		cobrarCaidaRepetida(unJugador);
 	}
-
+	
 	@Override
-	public void sacarJugador(Jugador jugador) {
-		// TODO Auto-generated method stub
-		
+	public void aceptar(Jugador jugador) {
+		jugador.visitar(this);
 	}
 
 }

@@ -1,12 +1,13 @@
 package fiuba.algo3.celdas;
 
 import fiuba.algo3.Jugador;
+import fiuba.algo3.excepciones.FondoInsuficienteParaComprar;
 import fiuba.algo3.excepciones.JugadorNoTieneFondosParaPagar;
 
-public class CeldaBarrio implements Celda{
+public class Barrio implements Visitable{
 
 private Jugador duenio;
-private Celda celdaasociada;
+private Visitable celdaAsociada;
 private int valoralquiler;
 private int precioterreno;
 private int alquilercon1casa;
@@ -15,24 +16,12 @@ private int alquilerconhotel;
 private int precioconstruircasa;
 private int precioconstruirhotel;
 	
-	@Override
-	public void recibirJugador(Jugador unJugador) {
-		// TODO Auto-generated method stub
-		
+	public Visitable getCeldaasociada() {
+		return this.celdaAsociada;
 	}
 
-	@Override
-	public void sacarJugador(Jugador jugador) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public Celda getCeldaasociada() {
-		return celdaasociada;
-	}
-
-	public void setCeldaasociada(Celda celdaasociada) {
-		this.celdaasociada = celdaasociada;
+	public void setCeldaasociada(Visitable celdaAsociada) {
+		this.celdaAsociada = celdaAsociada;
 	}
 
 	public int getValoralquiler() {
@@ -106,5 +95,20 @@ private int precioconstruirhotel;
 		else {	
 			throw new JugadorNoTieneFondosParaPagar();
 		}
+	}
+
+	@Override
+	public void aceptar(Jugador jugador) {
+		jugador.visitar(this);
+	}
+
+	public void venderseAJugador(Jugador jugador, int dinero) {
+		if(jugador != this.getDuenio() && this.getDuenio() != null){
+			throw new BarrioConDuenioException();
+		}else if (dinero < this.getPrecioterreno()){
+			throw new FondoInsuficienteParaComprar();
+		}
+		this.duenio = jugador;
+		jugador.pagar(this.getPrecioterreno());
 	}
 }

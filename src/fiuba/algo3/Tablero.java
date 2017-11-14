@@ -6,29 +6,29 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-import fiuba.algo3.celdas.Celda;
-import fiuba.algo3.celdas.CeldaSalida;
+import fiuba.algo3.celdas.Visitable;
+import fiuba.algo3.celdas.Salida;
 
 public class Tablero {
 
-	private HashMap<Jugador, Celda> jugadores;
-	private ArrayList<Celda> celdas;
+	private HashMap<Jugador, Visitable> jugadores;
+	private ArrayList<Visitable> celdas;
 
 	public Tablero() {
 		jugadores = new HashMap<>();
 		celdas = new ArrayList<>();
-		this.agregarCelda(new CeldaSalida());
+		this.agregarCelda(new Salida());
 	}
 
 	public int getCantidadDeCeldas() {
 		return celdas.size();
 	}
 
-	public Celda getSalida() {
+	public Visitable getSalida() {
 		return this.celdas.get(0);
 	}
 
-	public void agregarCelda(Celda c1) {
+	public void agregarCelda(Visitable c1) {
 		celdas.add(c1);
 	}
 
@@ -36,11 +36,11 @@ public class Tablero {
 		this.jugadores.put(j1, getSalida());
 	}
 
-	public Celda getPosicionDeJugador(Jugador j1) {
+	public Visitable getPosicionDeJugador(Jugador j1) {
 		return this.jugadores.get(j1);
 	}
 
-	private Celda reposicionarJugador(Jugador j1, int index, int avance){
+	private Visitable reposicionarJugador(Jugador j1, int index, int avance){
 		if(index + avance >= getCantidadDeCeldas())
 			this.jugadores.put(j1, this.celdas.get(index + avance - getCantidadDeCeldas()));
 		else
@@ -51,11 +51,11 @@ public class Tablero {
 	
 	public void avanzarJugador(Jugador jugador, int avance) {
 
-		Celda celdaActual = this.jugadores.get(jugador);
+		Visitable celdaActual = this.jugadores.get(jugador);
 		int index = this.celdas.indexOf(celdaActual);
-		celdaActual.sacarJugador(jugador); //TODO: reemplazar sacar jugador por metodo mas integral que valide habilitacion de moverse
+		//celdaActual.sacarJugador(jugador); //TODO: reemplazar sacar jugador por metodo mas integral que valide habilitacion de moverse
 
-		Celda celdaNueva = reposicionarJugador(jugador, index, avance);
-		celdaNueva.recibirJugador(jugador);
+		Visitable celdaNueva = reposicionarJugador(jugador, index, avance);
+		celdaNueva.aceptar(jugador);
 	}
 }

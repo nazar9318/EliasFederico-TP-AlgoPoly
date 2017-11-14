@@ -2,9 +2,9 @@ package fiuba.algo3.celdas.especiales;
 
 import fiuba.algo3.Dado;
 import fiuba.algo3.Jugador;
-import fiuba.algo3.celdas.Celda;
+import fiuba.algo3.celdas.Visitable;
 
-public class CeldaRetrocesoDinamico implements Celda {
+public class RetrocesoDinamico implements Visitable {
 
 	public int calcularRetroceso(Jugador unJugador, Dado dado1, Dado dado2) {
 		int resta = 2;
@@ -17,18 +17,10 @@ public class CeldaRetrocesoDinamico implements Celda {
 		}
 		return totalTiro - resta;
 	}
-
-	@Override
-	public void recibirJugador(Jugador unJugador) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void sacarJugador(Jugador jugador) {
-		// TODO Auto-generated method stub
-		
-	}
 	
+	@Override
+	public void aceptar(Jugador jugador) {
+		jugador.visitar(this);
+	}
 	
 }

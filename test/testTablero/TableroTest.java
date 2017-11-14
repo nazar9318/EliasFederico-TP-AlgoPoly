@@ -1,12 +1,8 @@
 package testTablero;
 
 import static org.junit.Assert.*;
-
-import fiuba.algo3.celdas.Celda;
-import fiuba.algo3.celdas.CeldaSalida;
-import fiuba.algo3.celdas.especiales.CeldaCarcel;
-import fiuba.algo3.celdas.especiales.CeldaQuini6;
-import fiuba.algo3.excepciones.JugadorNoPuedeSalirDeLaCarcel;
+import fiuba.algo3.celdas.especiales.Carcel;
+import fiuba.algo3.celdas.especiales.Quini6;
 import fiuba.algo3.Jugador;
 import fiuba.algo3.Tablero;
 import org.junit.Assert;
@@ -24,7 +20,7 @@ public class TableroTest {
 	@Test
 	public void SeCreaJugadorEnPosicionInicial() {
 		Tablero tablero = new Tablero();
-		Celda celda2 = new CeldaQuini6();
+		Quini6 celda2 = new Quini6();
 		Jugador jugador1 = new Jugador();
 
 		tablero.agregarCelda(celda2);
@@ -38,8 +34,8 @@ public class TableroTest {
 	public void testJugadorAvanzaPosicion() {
 		Tablero tab = new Tablero();
 		Jugador j1 = new Jugador();
-		Celda c1 = new CeldaQuini6();
-		Celda c2 = new CeldaCarcel();
+		Quini6 c1 = new Quini6();
+		Carcel c2 = new Carcel();
 
 		tab.agregarCelda(c1);
 		tab.agregarCelda(c2);
@@ -54,7 +50,7 @@ public class TableroTest {
 	@Test
 	public void tableroMueveAJugadorALaCarcelYEnElSiguienteTurnoJugadorPagaFianzaParaMoverse(){
 		Tablero tablero = new Tablero();
-    	CeldaCarcel carcel = new CeldaCarcel();
+    	Carcel carcel = new Carcel();
 		Jugador jugador1 = new Jugador();
 
     	tablero.agregarCelda(carcel);
@@ -70,7 +66,7 @@ public class TableroTest {
 	@Test
 	public void tableroAvanzaJugadorAQuini6YCobraBono() {
 		Tablero tablero = new Tablero();
-    	CeldaQuini6 quini = new CeldaQuini6();
+    	Quini6 quini = new Quini6();
     	
     	tablero.agregarCelda(quini);
     	
@@ -84,7 +80,7 @@ public class TableroTest {
 	@Test
 	public void tableroAvanzaJugadorAQuini6DosVecesYCobraBonosCorrespondientes() {
 		Tablero tablero = new Tablero();
-    	CeldaQuini6 quini = new CeldaQuini6();
+    	Quini6 quini = new Quini6();
     	
     	tablero.agregarCelda(quini);
     	
