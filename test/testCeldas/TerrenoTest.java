@@ -15,7 +15,7 @@ public class TerrenoTest {
 	public void jugadorCompraTerreno() {
 		Jugador jugador = new Jugador();
 		Barrio barrio = new Barrio();
-		barrio.setPrecioterreno(100000);
+		barrio.setPrecioTerreno(100000);
 		barrio.comprarBarrio(jugador);
 		assertEquals(barrio.getDuenio(),jugador);
 	}
@@ -24,7 +24,7 @@ public class TerrenoTest {
 	public void jugadorCompraTerrenoYNoTieneFondos() {
 		Jugador jugador = new Jugador();
 		Barrio barrio = new Barrio();
-		barrio.setPrecioterreno(100001);
+		barrio.setPrecioTerreno(100001);
 		barrio.comprarBarrio(jugador);
 		assertEquals(barrio.getDuenio(),null);
 	}
@@ -33,7 +33,7 @@ public class TerrenoTest {
 	public void jugadorVisitaYCompraTerreno(){
 		Jugador jugador = new Jugador();
 		Barrio barrio = new Barrio();
-		barrio.setPrecioterreno(100000);
+		barrio.setPrecioTerreno(100000);
 		jugador.visitar(barrio);
 		
 		Jugador otroJugador = new Jugador();

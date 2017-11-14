@@ -9,13 +9,13 @@ public class Barrio implements Visitable{
 
 private Jugador duenio;
 private Visitable celdaAsociada;
-private int valoralquiler;
-private int precioterreno;
-private int alquilercon1casa;
-private int alquilercon2casas;
-private int alquilerconhotel;
-private int precioconstruircasa;
-private int precioconstruirhotel;
+private int valorAlquiler;
+private int precioTerreno;
+private int alquilerCon1Casa;
+private int alquilerCon2Casas;
+private int alquilerConHotel;
+private int precioConstruirCasa;
+private int precioConstruirHotel;
 	
 	public Visitable getCeldaasociada() {
 		return this.celdaAsociada;
@@ -25,52 +25,52 @@ private int precioconstruirhotel;
 		this.celdaAsociada = celdaAsociada;
 	}
 
-	public int getValoralquiler() {
-		return valoralquiler;
+	public int getValorAlquiler() {
+		return this.valorAlquiler;
 	}
 
-	public void setValoralquiler(int valoralquiler) {
-		this.valoralquiler = valoralquiler;
+	public void setValorAlquiler(int valoralquiler) {
+		this.valorAlquiler = valoralquiler;
 	}
 
-	public int getAlquilercon1casa() {
-		return alquilercon1casa;
+	public int getAlquilerCon1Casa() {
+		return alquilerCon1Casa;
 	}
 
-	public void setAlquilercon1casa(int alquilercon1casa) {
-		this.alquilercon1casa = alquilercon1casa;
+	public void setAlquilerCon1Casa(int alquilercon1casa) {
+		this.alquilerCon1Casa = alquilercon1casa;
 	}
 
-	public int getAlquilercon2casas() {
-		return alquilercon2casas;
+	public int getAlquilerCon2Casas() {
+		return this.alquilerCon2Casas;
 	}
 
-	public void setAlquilercon2casas(int alquilercon2casas) {
-		this.alquilercon2casas = alquilercon2casas;
+	public void setAlquilerCon2Casas(int alquilercon2casas) {
+		this.alquilerCon2Casas = alquilercon2casas;
 	}
 
-	public int getAlquilerconhotel() {
-		return alquilerconhotel;
+	public int getAlquilerConHotel() {
+		return this.alquilerConHotel;
 	}
 
-	public void setAlquilerconhotel(int alquilerconhotel) {
-		this.alquilerconhotel = alquilerconhotel;
+	public void setAlquilerConHotel(int alquilerconhotel) {
+		this.alquilerConHotel = alquilerconhotel;
 	}
 
-	public int getPrecioconstruircasa() {
-		return precioconstruircasa;
+	public int getPrecioConstruirCasa() {
+		return precioConstruirCasa;
 	}
 
-	public void setPrecioconstruircasa(int precioconstruircasa) {
-		this.precioconstruircasa = precioconstruircasa;
+	public void setPrecioConstruirCasa(int precioconstruircasa) {
+		this.precioConstruirCasa = precioconstruircasa;
 	}
 
-	public int getPrecioconstruirhotel() {
-		return precioconstruirhotel;
+	public int getPrecioConstruirHotel() {
+		return precioConstruirHotel;
 	}
 
-	public void setPrecioconstruirhotel(int precioconstruirhotel) {
-		this.precioconstruirhotel = precioconstruirhotel;
+	public void setPrecioConstruirHotel(int precioconstruirhotel) {
+		this.precioConstruirHotel = precioconstruirhotel;
 	}
 
 	public Jugador getDuenio() {
@@ -81,17 +81,17 @@ private int precioconstruirhotel;
 		this.duenio = duenio;
 	}
 
-	public int getPrecioterreno() {
-		return precioterreno;
+	public int getPrecioTerreno() {
+		return precioTerreno;
 	}
 
-	public void setPrecioterreno(int precioterreno) {
-		this.precioterreno = precioterreno;
+	public void setPrecioTerreno(int precioterreno) {
+		this.precioTerreno = precioterreno;
 	}
 	public void comprarBarrio(Jugador jugador) {
-		if ((jugador.obtenerDinero()>= this.getPrecioterreno()) && (this.getDuenio() == null)) {
+		if ((jugador.obtenerDinero()>= this.getPrecioTerreno()) && (this.getDuenio() == null)) {
 			this.setDuenio(jugador);
-			jugador.pagar(this.getPrecioterreno());
+			jugador.pagar(this.getPrecioTerreno());
 		}
 		else {	
 			throw new JugadorNoTieneFondosParaPagar();
@@ -106,10 +106,10 @@ private int precioconstruirhotel;
 	public void venderseAJugador(Jugador jugador, int dinero) {
 		if(jugador != this.getDuenio() && this.getDuenio() != null){
 			throw new BarrioConDuenioException();
-		}else if (dinero < this.getPrecioterreno()){
+		}else if (dinero < this.getPrecioTerreno()){
 			throw new FondoInsuficienteParaComprar();
 		}
 		this.duenio = jugador;
-		jugador.pagar(this.getPrecioterreno());
+		jugador.pagar(this.getPrecioTerreno());
 	}
 }
