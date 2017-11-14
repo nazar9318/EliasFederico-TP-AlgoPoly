@@ -7,7 +7,6 @@ import fiuba.algo3.Dado;
 import fiuba.algo3.Jugador;
 import fiuba.algo3.Tablero;
 import fiuba.algo3.celdas.Visitable;
-import fiuba.algo3.celdas.especiales.AvanceDinamico;
 import fiuba.algo3.celdas.especiales.RetrocesoDinamico;
 
 public class retrocesoDinamicoTest {

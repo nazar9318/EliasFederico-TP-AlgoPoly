@@ -8,9 +8,6 @@ import fiuba.algo3.Jugador;
 import fiuba.algo3.Tablero;
 import fiuba.algo3.celdas.Visitable;
 import fiuba.algo3.celdas.especiales.AvanceDinamico;
-import fiuba.algo3.celdas.especiales.Carcel;
-import fiuba.algo3.celdas.especiales.Policia;
-import fiuba.algo3.celdas.especiales.Quini6;
 
 public class avanceDinamicoTest {
 
