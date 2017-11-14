@@ -46,7 +46,7 @@ public class TableroTest {
 		Assert.assertEquals(tab.getPosicionDeJugador(j1), c2);
 	}
 
-	
+	/*
 	@Test
 	public void tableroMueveAJugadorALaCarcelYEnElSiguienteTurnoJugadorPagaFianzaParaMoverse(){
 		Tablero tablero = new Tablero();
@@ -61,7 +61,7 @@ public class TableroTest {
 		tablero.avanzarJugador(jugador1,1);
 
 		assertEquals(55000, jugador1.obtenerDinero());
-	}
+	}*/
 	
 	@Test
 	public void tableroAvanzaJugadorAQuini6YCobraBono() {
