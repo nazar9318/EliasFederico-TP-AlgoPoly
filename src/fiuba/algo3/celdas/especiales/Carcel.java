@@ -1,7 +1,7 @@
 package fiuba.algo3.celdas.especiales;
 
 import fiuba.algo3.Jugador;
-import fiuba.algo3.excepciones.JugadorNoPuedeSalirDeLaCarcel;
+import fiuba.algo3.excepciones.JugadorNoPuedeSalirDeLaCarcelException;
 import fiuba.algo3.celdas.Visitable;
 
 import java.util.HashMap;
@@ -29,7 +29,7 @@ public class Carcel implements Visitable {
 	public void sacarJugador(Jugador jugador) {
 		if (jugadores.containsKey(jugador)){
 			if (jugadores.get(jugador) == 3){
-				throw new JugadorNoPuedeSalirDeLaCarcel();
+				throw new JugadorNoPuedeSalirDeLaCarcelException();
 			}else if (jugadores.get(jugador) == 0) {
 				jugadores.remove(jugador);
 			}else {

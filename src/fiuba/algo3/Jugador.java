@@ -10,7 +10,7 @@ import fiuba.algo3.celdas.especiales.Carcel;
 import fiuba.algo3.celdas.especiales.Policia;
 import fiuba.algo3.celdas.especiales.Quini6;
 import fiuba.algo3.celdas.especiales.RetrocesoDinamico;
-import fiuba.algo3.excepciones.JugadorNoTieneFondosParaPagar;
+import fiuba.algo3.excepciones.JugadorNoTieneFondosParaPagarException;
 
 public class Jugador implements Visitante {
 
@@ -33,7 +33,7 @@ public class Jugador implements Visitante {
 
 	public void pagar(int monto) {
 		if(this.dinero < monto){
-			throw new JugadorNoTieneFondosParaPagar();
+			throw new JugadorNoTieneFondosParaPagarException();
 		}
 		this.dinero -= monto;
 	}
@@ -51,17 +51,13 @@ public class Jugador implements Visitante {
 		return propiedades.size();
 	}
 	
-	public void comprar(Visitable unaCelda) {
+	public void agregarPropiedad(Visitable unaCelda) {
 		propiedades.add(unaCelda);
-	}
-	
-	public void comprarBarrio(Barrio barrio) {
-		barrio.venderseAJugador(this, this.obtenerDinero());		
 	}
 
 	@Override
 	public void visitar(Barrio barrio) {
-		this.comprarBarrio(barrio);
+		barrio.comprarBarrio(this);
 	}
 
 	@Override

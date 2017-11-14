@@ -7,12 +7,12 @@ import org.junit.Test;
 import fiuba.algo3.celdas.especiales.Carcel;
 import fiuba.algo3.celdas.especiales.Policia;
 import fiuba.algo3.Jugador;
-import fiuba.algo3.excepciones.JugadorNoPuedeSalirDeLaCarcel;
-import fiuba.algo3.excepciones.JugadorNoTieneFondosParaPagar;
+import fiuba.algo3.excepciones.JugadorNoPuedeSalirDeLaCarcelException;
+import fiuba.algo3.excepciones.JugadorNoTieneFondosParaPagarException;
 
 public class PoliciaTest {
 
-	@Test (expected=JugadorNoPuedeSalirDeLaCarcel.class)
+	@Test (expected=JugadorNoPuedeSalirDeLaCarcelException.class)
 	public void policiaMandaALaCarcelAJugadorYEsteNoPuedeSalir(){
 		Carcel carcel = new Carcel();
 		Jugador unJugador = new Jugador();
@@ -67,7 +67,7 @@ public class PoliciaTest {
 		assertEquals(100000, jugador.obtenerDinero());
 	}
 	
-	@Test (expected = JugadorNoTieneFondosParaPagar.class)
+	@Test (expected = JugadorNoTieneFondosParaPagarException.class)
 	public void jugadorNoPuedePagarFianzaPorFondosInsuficientes(){
 		Carcel carcel = new Carcel();
 		Jugador jugador = new Jugador();
@@ -81,7 +81,7 @@ public class PoliciaTest {
 		carcel.sacarJugador(jugador);
 	}
 	
-	@Test (expected = JugadorNoTieneFondosParaPagar.class)
+	@Test (expected = JugadorNoTieneFondosParaPagarException.class)
 	public void jugadorNoPuedePagarFianzaPorFondosInsuficientesCuandoOtroYaCayoEnLaCarcel(){
 		Carcel carcel = new Carcel();
 		Jugador Mordecai = new Jugador();
@@ -97,7 +97,7 @@ public class PoliciaTest {
 		carcel.sacarJugador(Mordecai);
 	}
 	
-	@Test (expected=JugadorNoPuedeSalirDeLaCarcel.class)
+	@Test (expected=JugadorNoPuedeSalirDeLaCarcelException.class)
 	public void jugadorCaePorPrimeraVezEnCarcelYNoPuedeSalirCuandoOtroYaEstuvoMasDeUnTurno(){
 		Carcel carcel = new Carcel();
 		Jugador Mordecai = new Jugador();

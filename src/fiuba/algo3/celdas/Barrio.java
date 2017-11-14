@@ -2,8 +2,7 @@ package fiuba.algo3.celdas;
 
 import fiuba.algo3.Jugador;
 import fiuba.algo3.excepciones.BarrioConDuenioException;
-import fiuba.algo3.excepciones.FondoInsuficienteParaComprar;
-import fiuba.algo3.excepciones.JugadorNoTieneFondosParaPagar;
+import fiuba.algo3.excepciones.JugadorNoTieneFondosParaPagarException;
 
 public class Barrio implements Visitable{
 
@@ -17,61 +16,6 @@ private int alquilerConHotel;
 private int precioConstruirCasa;
 private int precioConstruirHotel;
 	
-	public Visitable getCeldaasociada() {
-		return this.celdaAsociada;
-	}
-
-	public void setCeldaasociada(Visitable celdaAsociada) {
-		this.celdaAsociada = celdaAsociada;
-	}
-
-	public int getValorAlquiler() {
-		return this.valorAlquiler;
-	}
-
-	public void setValorAlquiler(int valoralquiler) {
-		this.valorAlquiler = valoralquiler;
-	}
-
-	public int getAlquilerCon1Casa() {
-		return alquilerCon1Casa;
-	}
-
-	public void setAlquilerCon1Casa(int alquilercon1casa) {
-		this.alquilerCon1Casa = alquilercon1casa;
-	}
-
-	public int getAlquilerCon2Casas() {
-		return this.alquilerCon2Casas;
-	}
-
-	public void setAlquilerCon2Casas(int alquilercon2casas) {
-		this.alquilerCon2Casas = alquilercon2casas;
-	}
-
-	public int getAlquilerConHotel() {
-		return this.alquilerConHotel;
-	}
-
-	public void setAlquilerConHotel(int alquilerconhotel) {
-		this.alquilerConHotel = alquilerconhotel;
-	}
-
-	public int getPrecioConstruirCasa() {
-		return precioConstruirCasa;
-	}
-
-	public void setPrecioConstruirCasa(int precioconstruircasa) {
-		this.precioConstruirCasa = precioconstruircasa;
-	}
-
-	public int getPrecioConstruirHotel() {
-		return precioConstruirHotel;
-	}
-
-	public void setPrecioConstruirHotel(int precioconstruirhotel) {
-		this.precioConstruirHotel = precioconstruirhotel;
-	}
 
 	public Jugador getDuenio() {
 		return duenio;
@@ -89,27 +33,23 @@ private int precioConstruirHotel;
 		this.precioTerreno = precioterreno;
 	}
 	public void comprarBarrio(Jugador jugador) {
-		if ((jugador.obtenerDinero()>= this.getPrecioTerreno()) && (this.getDuenio() == null)) {
+		if (this.getDuenio() == null) {
+			try {
+				jugador.pagar(this.getPrecioTerreno());
+			}catch(JugadorNoTieneFondosParaPagarException e){
+				throw new JugadorNoTieneFondosParaPagarException();
+			}
+
+			jugador.agregarPropiedad(this);
 			this.setDuenio(jugador);
-			jugador.pagar(this.getPrecioTerreno());
 		}
 		else {	
-			throw new JugadorNoTieneFondosParaPagar();
+			throw new BarrioConDuenioException();
 		}
 	}
 
 	@Override
 	public void aceptar(Jugador jugador) {
 		jugador.visitar(this);
-	}
-
-	public void venderseAJugador(Jugador jugador, int dinero) {
-		if(jugador != this.getDuenio() && this.getDuenio() != null){
-			throw new BarrioConDuenioException();
-		}else if (dinero < this.getPrecioTerreno()){
-			throw new FondoInsuficienteParaComprar();
-		}
-		this.duenio = jugador;
-		jugador.pagar(this.getPrecioTerreno());
 	}
 }

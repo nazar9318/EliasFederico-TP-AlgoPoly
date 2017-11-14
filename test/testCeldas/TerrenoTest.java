@@ -7,7 +7,7 @@ import org.junit.Test;
 import fiuba.algo3.Jugador;
 import fiuba.algo3.celdas.Barrio;
 import fiuba.algo3.excepciones.BarrioConDuenioException;
-import fiuba.algo3.excepciones.JugadorNoTieneFondosParaPagar;
+import fiuba.algo3.excepciones.JugadorNoTieneFondosParaPagarException;
 
 public class TerrenoTest {
 
@@ -15,29 +15,33 @@ public class TerrenoTest {
 	public void jugadorCompraTerreno() {
 		Jugador jugador = new Jugador();
 		Barrio barrio = new Barrio();
+
 		barrio.setPrecioTerreno(100000);
 		barrio.comprarBarrio(jugador);
-		assertEquals(barrio.getDuenio(),jugador);
+
+		assertEquals(barrio.getDuenio(), jugador);
 	}
 	
-	@Test (expected = JugadorNoTieneFondosParaPagar.class)
+	@Test (expected = JugadorNoTieneFondosParaPagarException.class)
 	public void jugadorCompraTerrenoYNoTieneFondos() {
 		Jugador jugador = new Jugador();
 		Barrio barrio = new Barrio();
+
 		barrio.setPrecioTerreno(100001);
-		barrio.comprarBarrio(jugador);
-		assertEquals(barrio.getDuenio(),null);
+		jugador.visitar(barrio);
+
+		assertNull(barrio.getDuenio());
 	}
 	
 	@Test (expected = BarrioConDuenioException.class)
 	public void jugadorVisitaYCompraTerreno(){
 		Jugador jugador = new Jugador();
 		Barrio barrio = new Barrio();
+
 		barrio.setPrecioTerreno(100000);
 		jugador.visitar(barrio);
 		
 		Jugador otroJugador = new Jugador();
-		otroJugador.comprarBarrio(barrio);
+		otroJugador.visitar(barrio);
 	}
-
 }
