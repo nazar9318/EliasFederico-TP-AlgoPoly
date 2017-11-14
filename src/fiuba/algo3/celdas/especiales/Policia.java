@@ -14,11 +14,7 @@ public class Policia implements Visitable {
 		
 	@Override
 	public void aceptar(Jugador jugador) {
-		jugador.visitar(this);
-	}
-
-	public void arrestarJugador(Jugador jugador) {
-		this.carcel.aceptar(jugador);
+		jugador.visitar(carcel);
 	}
 
 }

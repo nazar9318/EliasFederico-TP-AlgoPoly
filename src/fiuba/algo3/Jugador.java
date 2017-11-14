@@ -78,7 +78,7 @@ public class Jugador implements Visitante {
 
 	@Override
 	public void visitar(Policia policia) {
-		policia.arrestarJugador(this);
+		policia.aceptar(this);
 	}
 	
 	@Override

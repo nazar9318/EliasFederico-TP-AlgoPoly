@@ -18,7 +18,7 @@ public class PoliciaTest {
 		Jugador unJugador = new Jugador();
 		Policia policia = new Policia(carcel);
 		
-		policia.arrestarJugador(unJugador);
+		policia.aceptar(unJugador);
 		carcel.sacarJugador(unJugador);
 	}
 	
@@ -28,7 +28,7 @@ public class PoliciaTest {
 		Jugador jugador = new Jugador();
 		Policia policia = new Policia(carcel);
 		
-		policia.arrestarJugador(jugador);
+		policia.aceptar(jugador);
 		carcel.reducirTurnosDeEsperaDe(jugador);
 		
 		carcel.sacarJugador(jugador);
@@ -42,7 +42,7 @@ public class PoliciaTest {
 		Jugador jugador = new Jugador();
 		Policia policia = new Policia(carcel);
 		
-		policia.arrestarJugador(jugador);
+		policia.aceptar(jugador);
 		carcel.reducirTurnosDeEsperaDe(jugador);
 		carcel.reducirTurnosDeEsperaDe(jugador);
 		
@@ -57,7 +57,7 @@ public class PoliciaTest {
 		Jugador jugador = new Jugador();
 		Policia policia = new Policia(carcel);
 		
-		policia.arrestarJugador(jugador);
+		policia.aceptar(jugador);
 		carcel.reducirTurnosDeEsperaDe(jugador);
 		carcel.reducirTurnosDeEsperaDe(jugador);
 		carcel.reducirTurnosDeEsperaDe(jugador);
@@ -75,7 +75,7 @@ public class PoliciaTest {
 		
 		jugador.pagar(60000);
 				
-		policia.arrestarJugador(jugador);
+		policia.aceptar(jugador);
 		carcel.reducirTurnosDeEsperaDe(jugador);
 		
 		carcel.sacarJugador(jugador);
@@ -88,7 +88,7 @@ public class PoliciaTest {
 		Jugador Rigby = new Jugador();
 		Policia policia = new Policia(carcel);
 		
-		policia.arrestarJugador(Mordecai);
+		policia.aceptar(Mordecai);
 		carcel.reducirTurnosDeEsperaDe(Mordecai);
 		Mordecai.pagar(60000);
 		
@@ -104,7 +104,7 @@ public class PoliciaTest {
 		Jugador Rigby = new Jugador();
 		Policia policia = new Policia(carcel);
 		
-		policia.arrestarJugador(Mordecai);
+		policia.aceptar(Mordecai);
 		carcel.reducirTurnosDeEsperaDe(Mordecai);
 		
 		carcel.encarcelarJugador(Rigby);
@@ -119,7 +119,7 @@ public class PoliciaTest {
 		Jugador Rigby = new Jugador();
 		Policia policia = new Policia(carcel);
 		
-		policia.arrestarJugador(Mordecai);
+		policia.aceptar(Mordecai);
 		carcel.reducirTurnosDeEsperaDe(Mordecai);
 		
 		carcel.encarcelarJugador(Rigby);
@@ -136,7 +136,7 @@ public class PoliciaTest {
 		Jugador Rigby = new Jugador();
 		Policia policia = new Policia(carcel);
 		
-		policia.arrestarJugador(Mordecai);
+		policia.aceptar(Mordecai);
 		carcel.reducirTurnosDeEsperaDe(Mordecai);
 		carcel.reducirTurnosDeEsperaDe(Mordecai);
 		carcel.reducirTurnosDeEsperaDe(Mordecai);
