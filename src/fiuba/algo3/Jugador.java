@@ -16,6 +16,7 @@ public class Jugador implements Visitante {
 
 	private int dinero;
 	private ArrayList<Visitable> propiedades;
+	private int valorDeTiro;
 	
 	public Jugador(){
 		this.dinero = 100000;
@@ -37,6 +38,15 @@ public class Jugador implements Visitante {
 		this.dinero -= monto;
 	}
 
+	public void setValorDeTiro(int valorTiro) {
+		valorDeTiro = valorTiro;
+	}
+	
+	public int pedirTiro() {
+		return valorDeTiro;
+	}
+
+	
 	public int getCantidadDePropiedades() {
 		return propiedades.size();
 	}
@@ -74,15 +84,16 @@ public class Jugador implements Visitante {
 	public void visitar(Policia policia) {
 		policia.arrestarJugador(this);
 	}
-
+	
 	@Override
 	public void visitar(AvanceDinamico avance) {
-		// TODO Auto-generated method stub	
+		avance.calcularAvance(this);
 	}
 
 	@Override
 	public void visitar(RetrocesoDinamico retroceso) {
-		// TODO Auto-generated method stub
+		retroceso.calcularRetroceso(this);
 	}
 
+	
 }

@@ -5,8 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import fiuba.algo3.Jugador;
-import fiuba.algo3.celdas.BarrioConDuenioException;
 import fiuba.algo3.celdas.Barrio;
+import fiuba.algo3.excepciones.BarrioConDuenioException;
 import fiuba.algo3.excepciones.JugadorNoTieneFondosParaPagar;
 
 public class TerrenoTest {

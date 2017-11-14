@@ -25,7 +25,8 @@ public class RetrocesoDinamicoTest {
 		Dado dado2 = new Dado();
 		dado1.setValor(5);
 		dado2.setValor(5);
-		int resultado = retrocesoDinamico.calcularRetroceso(jugador,dado1,dado2);
+		jugador.setValorDeTiro(dado1.getValor() + dado2.getValor());
+		int resultado = retrocesoDinamico.calcularRetroceso(jugador);
 		Assert.assertEquals(0, resultado);
 	}
 	
@@ -37,7 +38,8 @@ public class RetrocesoDinamicoTest {
 		Dado dado2 = new Dado();
 		dado1.setValor(1);
 		dado2.setValor(5);
-		int resultado = retrocesoDinamico.calcularRetroceso(jugador,dado1,dado2);
+		jugador.setValorDeTiro(dado1.getValor() + dado2.getValor());
+		int resultado = retrocesoDinamico.calcularRetroceso(jugador);
 		Assert.assertEquals(6, resultado);
 	}
 	
@@ -49,7 +51,8 @@ public class RetrocesoDinamicoTest {
 		Dado dado2 = new Dado();
 		dado1.setValor(6);
 		dado2.setValor(6);
-		int resultado = retrocesoDinamico.calcularRetroceso(jugador,dado1,dado2);
+		jugador.setValorDeTiro(dado1.getValor() + dado2.getValor());
+		int resultado = retrocesoDinamico.calcularRetroceso(jugador);
 		Assert.assertEquals(10, resultado);
 	}
 

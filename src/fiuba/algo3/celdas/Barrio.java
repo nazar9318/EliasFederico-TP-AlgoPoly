@@ -1,6 +1,7 @@
 package fiuba.algo3.celdas;
 
 import fiuba.algo3.Jugador;
+import fiuba.algo3.excepciones.BarrioConDuenioException;
 import fiuba.algo3.excepciones.FondoInsuficienteParaComprar;
 import fiuba.algo3.excepciones.JugadorNoTieneFondosParaPagar;
 
