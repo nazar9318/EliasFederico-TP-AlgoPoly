@@ -4,17 +4,13 @@ import fiuba.algo3.Jugador;
 import fiuba.algo3.excepciones.BarrioConDuenioException;
 import fiuba.algo3.excepciones.JugadorNoTieneFondosParaPagarException;
 
-public class Barrio implements Visitable{
+public class Barrio implements Visitable, Propiedad{
 
 private Jugador duenio;
 private Visitable celdaAsociada;
-private int valorAlquiler;
 private int precioTerreno;
-private int alquilerCon1Casa;
-private int alquilerCon2Casas;
-private int alquilerConHotel;
-private int precioConstruirCasa;
-private int precioConstruirHotel;
+private int alquiler;
+
 	
 
 	public Jugador getDuenio() {
@@ -44,7 +40,7 @@ private int precioConstruirHotel;
 			this.setDuenio(jugador);
 		}
 		else {	
-			throw new BarrioConDuenioException();
+			throw new BarrioConDuenioException();//pagar alquiler
 		}
 	}
 
@@ -52,4 +48,21 @@ private int precioConstruirHotel;
 	public void aceptar(Jugador jugador) {
 		jugador.visitar(this);
 	}
+
+
+
+	@Override
+	public void cobrar(Jugador jugador) {
+		jugador.pagar(getAlquiler());
+		
+	}
+
+	public int getAlquiler() {
+		return alquiler;
+	}
+
+	public void setAlquiler(int alquiler) {
+		this.alquiler = alquiler;
+	}
+
 }
