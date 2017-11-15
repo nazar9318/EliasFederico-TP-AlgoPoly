@@ -1,4 +1,4 @@
-package testCeldas;
+package primeraEntregaTests;
 
 import static org.junit.Assert.*;
 
