@@ -10,13 +10,8 @@ public class PropiedadDecorator implements Propiedad {
 		this.item=c;
 	}
 
-	
 	@Override
 	public void cobrar(Jugador jugador) {
-	 this.item.cobrar(jugador);		
+		this.item.cobrar(jugador);
 	}
-
-
-	
-
 }

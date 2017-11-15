@@ -46,7 +46,6 @@ public class Jugador implements Visitante {
 		return valorDeTiro;
 	}
 
-	
 	public int getCantidadDePropiedades() {
 		return propiedades.size();
 	}
@@ -68,7 +67,6 @@ public class Jugador implements Visitante {
 	@Override
 	public void visitar(Salida salida) {
 		// TODO Auto-generated method stub
-		
 	}
 	
 	@Override
@@ -90,6 +88,4 @@ public class Jugador implements Visitante {
 	public void visitar(RetrocesoDinamico retroceso) {
 		retroceso.calcularRetroceso(this);
 	}
-
-	
 }

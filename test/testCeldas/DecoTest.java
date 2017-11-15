@@ -18,55 +18,61 @@ public class DecoTest {
 	public void CobroDeAlquilerSinAlquiler() {
 		Jugador jugador = new Jugador();
 		Barrio barrio = new Barrio();
+
 		barrio.cobrar(jugador);
 		assertEquals(jugador.obtenerDinero(),100000);
-			}
+	}
+
 	@Test
 	public void CobroDeAlquilerSinCasas() {
 		Jugador jugador = new Jugador();
 		Barrio barrio = new Barrio();
+
 		barrio.setAlquiler(200);
 		barrio.cobrar(jugador);
+
 		assertEquals(jugador.obtenerDinero(),100000-200);
-			}
+	}
 	
 	@Test
 	public void CobroDeAlquilerConUnaCasa() {
 		Jugador jugador = new Jugador();
 		Casa casa = new Casa();
-		casa.setAlquiler(1000);
 		Barrio barrio = new Barrio();
+		Propiedad propiedad = new ConCasa(barrio, casa);
+
+		casa.setAlquiler(1000);
 		barrio.setAlquiler(200);
-		Propiedad propiedad = new ConCasa(barrio,casa);
 		propiedad.cobrar(jugador);
+
 		assertEquals(jugador.obtenerDinero(),100000-1200);
-				
-			
-			}
+	}
 	
 	@Test
 	public void CobroDeAlquilerConDosCasa() {
 		Jugador jugador = new Jugador();
 		Casa casa = new Casa();
-		casa.setAlquiler(1000);
 		Barrio barrio = new Barrio();
-		barrio.setAlquiler(200);
 		Propiedad propiedad = new ConCasa(new ConCasa(barrio,casa),casa);
+
+		casa.setAlquiler(1000);
+		barrio.setAlquiler(200);
 		propiedad.cobrar(jugador);
+
 		assertEquals(jugador.obtenerDinero(),100000-2200);
-		}
+	}
 	
 	@Test
 	public void CobroDeAlquilerConHotel() {
 		Jugador jugador = new Jugador();
 		Hotel hotel = new Hotel();
-		hotel.setAlquiler(1000);
 		Barrio barrio = new Barrio();
-		barrio.setAlquiler(200);
 		Propiedad propiedad = new ConHotel(barrio,hotel);
+
+		hotel.setAlquiler(1000);
+		barrio.setAlquiler(200);
 		propiedad.cobrar(jugador);
+
 		assertEquals(jugador.obtenerDinero(),100000-1200);
-		}
-
-
+	}
 }

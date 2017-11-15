@@ -6,12 +6,11 @@ import fiuba.algo3.excepciones.JugadorNoTieneFondosParaPagarException;
 
 public class Barrio implements Visitable, Propiedad{
 
-private Jugador duenio;
-private Visitable celdaAsociada;
-private int precioTerreno;
-private int alquiler;
+	private Jugador duenio;
+	private Visitable celdaAsociada;
+	private int precioTerreno;
+	private int alquiler;
 
-	
 
 	public Jugador getDuenio() {
 		return duenio;
@@ -28,6 +27,7 @@ private int alquiler;
 	public void setPrecioTerreno(int precioterreno) {
 		this.precioTerreno = precioterreno;
 	}
+
 	public void comprarBarrio(Jugador jugador) {
 		if (this.getDuenio() == null) {
 			try {
@@ -49,12 +49,9 @@ private int alquiler;
 		jugador.visitar(this);
 	}
 
-
-
 	@Override
 	public void cobrar(Jugador jugador) {
 		jugador.pagar(getAlquiler());
-		
 	}
 
 	public int getAlquiler() {
