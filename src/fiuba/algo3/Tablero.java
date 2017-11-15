@@ -43,6 +43,10 @@ public class Tablero {
 	private Visitable reposicionarJugador(Jugador j1, int index, int avance){
 		if(index + avance >= getCantidadDeCeldas())
 			this.jugadores.put(j1, this.celdas.get(index + avance - getCantidadDeCeldas()));
+		else if (index + avance < 0) { 	
+			//el indice se iba de rango con los valores negativos del retroceso
+			this.jugadores.put(j1, this.celdas.get(getCantidadDeCeldas()+ (index + avance)));
+		}
 		else
 			this.jugadores.put(j1, this.celdas.get(index+avance));
 
