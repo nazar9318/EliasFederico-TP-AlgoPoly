@@ -32,16 +32,4 @@ public class TerrenoTest {
 
 		assertNull(barrio.getDuenio());
 	}
-	
-	@Test (expected = BarrioConDuenioException.class)
-	public void jugadorVisitaYCompraTerreno(){
-		Jugador jugador = new Jugador();
-		Barrio barrio = new Barrio();
-
-		barrio.setPrecioTerreno(100000);
-		jugador.visitar(barrio);
-		
-		Jugador otroJugador = new Jugador();
-		otroJugador.visitar(barrio);
-	}
 }
