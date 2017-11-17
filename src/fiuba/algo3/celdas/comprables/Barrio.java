@@ -1,16 +1,26 @@
-package fiuba.algo3.celdas;
+package fiuba.algo3.celdas.comprables;
 
 import fiuba.algo3.Jugador;
+import fiuba.algo3.celdas.Propiedad;
+import fiuba.algo3.celdas.Visitable;
 import fiuba.algo3.excepciones.BarrioConDuenioException;
 import fiuba.algo3.excepciones.JugadorNoTieneFondosParaPagarException;
 
-public class Barrio implements Visitable, Propiedad{
+public abstract class Barrio implements Visitable, Propiedad {
 
 	private Jugador duenio;
-	private Visitable celdaAsociada;
-	private int precioTerreno;
-	private int alquiler;
+	protected Visitable celdaAsociada;
+	protected final int precioTerreno;
+	protected final int alquiler;
 
+	protected Barrio(int precioTerreno, int alquiler) {
+		this.precioTerreno = precioTerreno;
+		this.alquiler = alquiler;
+	}
+
+	public Visitable getCeldaAsociada() {
+		return celdaAsociada;
+	}
 
 	public Jugador getDuenio() {
 		return duenio;
@@ -24,10 +34,6 @@ public class Barrio implements Visitable, Propiedad{
 		return precioTerreno;
 	}
 
-	public void setPrecioTerreno(int precioterreno) {
-		this.precioTerreno = precioterreno;
-	}
-
 	public void comprarBarrio(Jugador jugador) {
 		if (this.getDuenio() == null) {
 			try {
@@ -35,7 +41,6 @@ public class Barrio implements Visitable, Propiedad{
 			}catch(JugadorNoTieneFondosParaPagarException e){
 				throw new JugadorNoTieneFondosParaPagarException();
 			}
-
 			jugador.agregarPropiedad(this);
 			this.setDuenio(jugador);
 		}
@@ -58,8 +63,7 @@ public class Barrio implements Visitable, Propiedad{
 		return alquiler;
 	}
 
-	public void setAlquiler(int alquiler) {
-		this.alquiler = alquiler;
+	public void conocer(Barrio conocida) {
+		this.celdaAsociada = conocida;
 	}
-
 }

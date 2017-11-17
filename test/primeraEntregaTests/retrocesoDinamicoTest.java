@@ -1,12 +1,13 @@
 package primeraEntregaTests;
 
+import fiuba.algo3.celdas.comprables.BuenosAiresSur;
 import org.junit.Assert;
 import org.junit.Test;
 
 import fiuba.algo3.Dado;
 import fiuba.algo3.Jugador;
 import fiuba.algo3.Tablero;
-import fiuba.algo3.celdas.Barrio;
+import fiuba.algo3.celdas.comprables.Barrio;
 import fiuba.algo3.celdas.Visitable;
 import fiuba.algo3.celdas.especiales.Carcel;
 import fiuba.algo3.celdas.especiales.Quini6;
@@ -18,20 +19,23 @@ public class retrocesoDinamicoTest {
 	public void jugadorSinPropiedadesCaeEnRetrocesoDinamicoSumando2SuPosicionDeberiaRetroceder2() {
 		Tablero tablero = new Tablero();
 		RetrocesoDinamico retrocesoDinamico = new RetrocesoDinamico();
-		Jugador jugador = new Jugador();
-		tablero.agregarCelda(retrocesoDinamico);
-		tablero.agregarCelda(new Barrio());
 		Visitable carcel = new Carcel();
-		tablero.agregarCelda(carcel);
-		tablero.agregarJugador(jugador);
+		Jugador jugador = new Jugador();
 		Dado dado1 = new Dado();
 		Dado dado2 = new Dado();
+
+
+		tablero.agregarCelda(retrocesoDinamico);
+		tablero.agregarCelda(new BuenosAiresSur(2500, 120));
+		tablero.agregarCelda(carcel);
+		tablero.agregarJugador(jugador);
 		dado1.setValor(1);
 		dado2.setValor(1);
 		jugador.setValorDeTiro(dado1.getValor() + dado2.getValor());
 		tablero.avanzarJugador(jugador, 1);
 		tablero.avanzarJugador(jugador, retrocesoDinamico.calcularRetroceso(jugador));
 		Visitable resultado = tablero.getPosicionDeJugador(jugador);
+
 		Assert.assertEquals(carcel, resultado);
 	}
 	@Test
@@ -39,10 +43,11 @@ public class retrocesoDinamicoTest {
 		Tablero tablero = new Tablero();
 		RetrocesoDinamico retrocesoDinamico = new RetrocesoDinamico();
 		Jugador jugador = new Jugador();
-		tablero.agregarCelda(retrocesoDinamico);
-		tablero.agregarJugador(jugador);
 		Dado dado1 = new Dado();
 		Dado dado2 = new Dado();
+
+		tablero.agregarCelda(retrocesoDinamico);
+		tablero.agregarJugador(jugador);
 		dado1.setValor(1);
 		dado2.setValor(8);
 		jugador.setValorDeTiro(dado1.getValor() + dado2.getValor());
@@ -50,6 +55,7 @@ public class retrocesoDinamicoTest {
 		tablero.avanzarJugador(jugador, 1);
 		tablero.avanzarJugador(jugador, retrocesoDinamico.calcularRetroceso(jugador));
 		Visitable resultado = tablero.getPosicionDeJugador(jugador);
+
 		Assert.assertEquals(esperado, resultado);
 	}
 	
@@ -57,20 +63,24 @@ public class retrocesoDinamicoTest {
 	public void jugadorCaeEnRetrocesoDinamicoSumando11SuPosicionDeberiaRetroceder9() {
 		Tablero tablero = new Tablero();
 		RetrocesoDinamico retrocesoDinamico = new RetrocesoDinamico();
-		Jugador jugador = new Jugador();
-		tablero.agregarCelda(retrocesoDinamico);
 		Visitable esperado = new Quini6();
-		tablero.agregarCelda(esperado);
-		for (int i=0; i < 7; i++) tablero.agregarCelda(new Barrio());
-		tablero.agregarJugador(jugador);
+		Jugador jugador = new Jugador();
 		Dado dado1 = new Dado();
 		Dado dado2 = new Dado();
+
+		tablero.agregarCelda(retrocesoDinamico);
+		tablero.agregarCelda(esperado);
+		for (int i=0; i < 7; i++)
+			tablero.agregarCelda(new BuenosAiresSur(2500, 120));
+
+		tablero.agregarJugador(jugador);
 		dado1.setValor(3);
 		dado2.setValor(8);
 		jugador.setValorDeTiro(dado1.getValor() + dado2.getValor());
 		tablero.avanzarJugador(jugador, 1);
 		tablero.avanzarJugador(jugador, retrocesoDinamico.calcularRetroceso(jugador));
 		Visitable resultado = tablero.getPosicionDeJugador(jugador);
+
 		Assert.assertEquals(esperado, resultado);
 	}
 

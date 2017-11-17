@@ -2,24 +2,23 @@ package primeraEntregaTests;
 
 import static org.junit.Assert.*;
 
+import fiuba.algo3.celdas.comprables.BuenosAiresSur;
 import fiuba.algo3.excepciones.JugadorNoTieneFondosParaPagarException;
 import org.junit.Test;
 
 import fiuba.algo3.Jugador;
-import fiuba.algo3.celdas.Barrio;
+import fiuba.algo3.celdas.comprables.Barrio;
 import fiuba.algo3.celdas.especiales.Quini6;
 
 public class quini6Test {
 
 	@Test
 	public void unJugadorCaeEnQuini6PorPrimeraVezYSuCapitalSeIncrementaEn50000Pesos() {
-		Quini6 celda = new Quini6();
+		Quini6 quini = new Quini6();
 		Jugador unJugador = new Jugador();
-		Barrio barrio = new Barrio();
-		barrio.setPrecioTerreno(150000);
-		
-		unJugador.visitar(celda);
-		
+		Barrio barrio = new BuenosAiresSur(150000, 100);
+
+		unJugador.visitar(quini);
 		unJugador.visitar(barrio);
 		
 		assertEquals(barrio.getDuenio(),unJugador);
@@ -27,13 +26,12 @@ public class quini6Test {
 	
 	@Test
 	public void unJugadorCaeEnQuini6PorSegundaVezYSuCapitalSeIncrementaEn30000Pesos() {
-		Quini6 celda = new Quini6();
+		Quini6 quini = new Quini6();
 		Jugador unJugador = new Jugador();
-		Barrio barrio = new Barrio();
-		barrio.setPrecioTerreno(180000);
-		
-		unJugador.visitar(celda);
-		unJugador.visitar(celda);
+		Barrio barrio = new BuenosAiresSur(180000, 120);
+
+		unJugador.visitar(quini);
+		unJugador.visitar(quini);
 		
 		unJugador.visitar(barrio);
 		
@@ -42,14 +40,13 @@ public class quini6Test {
 	
 	@Test (expected = JugadorNoTieneFondosParaPagarException.class)
 	public void unJugadorCaeEnQuini6PorTerceraVezYSuCapitalNoSeIncrementaMas() {
-		Quini6 celda = new Quini6();
+		Quini6 quini = new Quini6();
 		Jugador unJugador = new Jugador();
-		Barrio barrio = new Barrio();
-		barrio.setPrecioTerreno(200000);
+		Barrio barrio = new BuenosAiresSur(200000, 250);
 		
-		unJugador.visitar(celda);
-		unJugador.visitar(celda);
-		unJugador.visitar(celda);
+		unJugador.visitar(quini);
+		unJugador.visitar(quini);
+		unJugador.visitar(quini);
 		
 		unJugador.visitar(barrio);
 	}

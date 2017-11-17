@@ -32,8 +32,9 @@ public class Tablero {
 		celdas.add(c1);
 	}
 
-	public void agregarJugador(Jugador j1) {
+	public Jugador agregarJugador(Jugador j1) {
 		this.jugadores.put(j1, getSalida());
+		return j1;
 	}
 
 	public Visitable getPosicionDeJugador(Jugador j1) {

@@ -4,5 +4,5 @@ import fiuba.algo3.Jugador;
 
 public interface Propiedad {
 
-	public void cobrar(Jugador jugador);
+	void cobrar(Jugador jugador);
 }

@@ -5,14 +5,6 @@ public class Hotel {
 	private int alquiler;
 	private int valor;
 
-	public int getValor() {
-		return valor;
-	}
-
-	public void setValor(int valor) {
-		this.valor = valor;
-	}
-
 	public int getAlquiler() {
 		return alquiler;
 	}

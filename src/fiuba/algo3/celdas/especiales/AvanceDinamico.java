@@ -20,5 +20,5 @@ public class AvanceDinamico implements Visitable {
 	public void aceptar(Jugador jugador) {
 		jugador.visitar(this);
 	}
-		
+
 }

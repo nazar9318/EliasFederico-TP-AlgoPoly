@@ -11,10 +11,11 @@ public class Quini6Test {
 	public void jugadorCaeEnQuini6SinHaberCaidoAntesYCobra50000() {
 		Quini6 celda = new Quini6();
 		Jugador unJugador = new Jugador();
-		
+		int antes = unJugador.obtenerDinero();
+
 		celda.pagarPremioAJugador(unJugador);
 
-		assertEquals(150000, unJugador.obtenerDinero());
+		assertEquals(antes+50000, unJugador.obtenerDinero());
 	}
 	
 	@Test
