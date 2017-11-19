@@ -9,7 +9,7 @@ import fiuba.algo3.excepciones.JugadorNoTieneFondosParaPagarException;
 public abstract class Barrio implements Visitable, Propiedad {
 
 	private Jugador duenio;
-	protected Visitable celdaAsociada;
+	protected Barrio celdaAsociada;
 	protected final int precioTerreno;
 	protected final int alquiler;
 
@@ -18,7 +18,7 @@ public abstract class Barrio implements Visitable, Propiedad {
 		this.alquiler = alquiler;
 	}
 
-	public Visitable getCeldaAsociada() {
+	public Barrio getCeldaAsociada() {
 		return celdaAsociada;
 	}
 

@@ -15,12 +15,16 @@ import fiuba.algo3.excepciones.JugadorNoTieneFondosParaPagarException;
 public class Jugador implements Visitante {
 
 	private int dinero;
-	private ArrayList<Visitable> propiedades;
+	private ArrayList<Barrio> propiedades;
 	private int valorDeTiro;
 	
 	public Jugador(){
 		this.dinero = 100000;
-		this.propiedades = new ArrayList<Visitable>();
+		this.propiedades = new ArrayList<Barrio>();
+	}
+
+	public ArrayList<Barrio> getPropiedades() {
+		return propiedades;
 	}
 
 	public int obtenerDinero() {
@@ -50,7 +54,7 @@ public class Jugador implements Visitante {
 		return propiedades.size();
 	}
 	
-	public void agregarPropiedad(Visitable unaCelda) {
+	public void agregarPropiedad(Barrio unaCelda) {
 		propiedades.add(unaCelda);
 	}
 
@@ -87,5 +91,9 @@ public class Jugador implements Visitante {
 	@Override
 	public void visitar(RetrocesoDinamico retroceso) {
 		retroceso.calcularRetroceso(this);
+	}
+
+	public boolean puedeEdificarEn(Barrio barrio) {
+		return (barrio.getCeldaAsociada().getDuenio() == this);
 	}
 }

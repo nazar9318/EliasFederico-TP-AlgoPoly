@@ -20,4 +20,6 @@ public class AlgoPolyTest {
 
         Assert.assertEquals(jugador.getCantidadDePropiedades(), 1);
     }
+
+
 }
