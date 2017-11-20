@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import fiuba.algo3.celdas.Salida;
 import fiuba.algo3.celdas.especiales.Carcel;
 import fiuba.algo3.celdas.especiales.Policia;
 import fiuba.algo3.Jugador;
@@ -17,9 +18,10 @@ public class PoliciaTest {
 		Carcel carcel = new Carcel();
 		Jugador unJugador = new Jugador();
 		Policia policia = new Policia(carcel);
+		Salida salida = new Salida();
 		
-		policia.aceptar(unJugador);
-		carcel.sacarJugador(unJugador);
+		policia.aceptar(unJugador);		
+		unJugador.visitar(salida);
 	}
 	
 	@Test
@@ -27,11 +29,14 @@ public class PoliciaTest {
 		Carcel carcel = new Carcel();
 		Jugador jugador = new Jugador();
 		Policia policia = new Policia(carcel);
+		Salida salida = new Salida();
 		
 		policia.aceptar(jugador);
-		carcel.reducirTurnosDeEsperaDe(jugador);
+		try{
+			jugador.visitar(salida);
+		} catch(JugadorNoPuedeSalirDeLaCarcelException e){}
 		
-		carcel.sacarJugador(jugador);
+		jugador.visitar(salida);
 		
 		assertEquals(55000, jugador.obtenerDinero());
 	}
@@ -41,12 +46,20 @@ public class PoliciaTest {
 		Carcel carcel = new Carcel();
 		Jugador jugador = new Jugador();
 		Policia policia = new Policia(carcel);
+		Salida salida = new Salida();
+		jugador.pagar(60000);
+		policia.aceptar(jugador);
 		
 		policia.aceptar(jugador);
-		carcel.reducirTurnosDeEsperaDe(jugador);
-		carcel.reducirTurnosDeEsperaDe(jugador);
+		try{
+			jugador.visitar(salida);
+		} catch(JugadorNoPuedeSalirDeLaCarcelException e){}
 		
-		carcel.sacarJugador(jugador);
+		//En este intento de salir no puede pagar la fianza por fondos insuficientes
+		jugador.visitar(salida);
+				
+		jugador.cobrar(60000);
+		jugador.visitar(salida);
 		
 		assertEquals(55000, jugador.obtenerDinero());
 	}
@@ -56,13 +69,21 @@ public class PoliciaTest {
 		Carcel carcel = new Carcel();
 		Jugador jugador = new Jugador();
 		Policia policia = new Policia(carcel);
+		Salida salida = new Salida();
+		jugador.pagar(60000);
+		policia.aceptar(jugador);
 		
 		policia.aceptar(jugador);
-		carcel.reducirTurnosDeEsperaDe(jugador);
-		carcel.reducirTurnosDeEsperaDe(jugador);
-		carcel.reducirTurnosDeEsperaDe(jugador);
+		try{
+			jugador.visitar(salida);
+		} catch(JugadorNoPuedeSalirDeLaCarcelException e){}
 		
-		carcel.sacarJugador(jugador);
+		//En este intento de salir no puede pagar la fianza por fondos insuficientes
+		jugador.visitar(salida);
+		jugador.visitar(salida);
+		
+		jugador.cobrar(60000);
+		jugador.visitar(salida);
 		
 		assertEquals(100000, jugador.obtenerDinero());
 	}
@@ -72,13 +93,17 @@ public class PoliciaTest {
 		Carcel carcel = new Carcel();
 		Jugador jugador = new Jugador();
 		Policia policia = new Policia(carcel);
-		
+		Salida salida = new Salida();
 		jugador.pagar(60000);
 				
 		policia.aceptar(jugador);
-		carcel.reducirTurnosDeEsperaDe(jugador);
 		
-		carcel.sacarJugador(jugador);
+		try{
+			jugador.visitar(salida);
+		} catch(JugadorNoPuedeSalirDeLaCarcelException e){}
+		
+		//Asumiendo que ya paso un turno desde que llego a la carcel		
+		carcel.sacarJugador(jugador,2);
 	}
 	
 	@Test (expected = JugadorNoTieneFondosParaPagarException.class)
@@ -89,12 +114,11 @@ public class PoliciaTest {
 		Policia policia = new Policia(carcel);
 		
 		policia.aceptar(Mordecai);
-		carcel.reducirTurnosDeEsperaDe(Mordecai);
 		Mordecai.pagar(60000);
 		
-		carcel.encarcelarJugador(Rigby);
+		policia.aceptar(Rigby);
 		
-		carcel.sacarJugador(Mordecai);
+		carcel.sacarJugador(Mordecai, 2);
 	}
 	
 	@Test (expected=JugadorNoPuedeSalirDeLaCarcelException.class)
@@ -103,13 +127,17 @@ public class PoliciaTest {
 		Jugador Mordecai = new Jugador();
 		Jugador Rigby = new Jugador();
 		Policia policia = new Policia(carcel);
+		Salida salida = new Salida();
 		
 		policia.aceptar(Mordecai);
-		carcel.reducirTurnosDeEsperaDe(Mordecai);
+
+		try{
+			Mordecai.visitar(salida);
+		} catch(JugadorNoPuedeSalirDeLaCarcelException e){}
 		
-		carcel.encarcelarJugador(Rigby);
+		policia.aceptar(Rigby);
 		
-		carcel.sacarJugador(Rigby);
+		Rigby.visitar(salida);
 	}
 	
 	@Test
@@ -118,13 +146,17 @@ public class PoliciaTest {
 		Jugador Mordecai = new Jugador();
 		Jugador Rigby = new Jugador();
 		Policia policia = new Policia(carcel);
+		Salida salida = new Salida();
 		
 		policia.aceptar(Mordecai);
-		carcel.reducirTurnosDeEsperaDe(Mordecai);
 		
-		carcel.encarcelarJugador(Rigby);
+		try{
+			Mordecai.visitar(salida);
+		} catch(JugadorNoPuedeSalirDeLaCarcelException e){}
 		
-		carcel.sacarJugador(Mordecai);
+		policia.aceptar(Rigby);
+		
+		Mordecai.visitar(salida);
 		
 		assertEquals(55000, Mordecai.obtenerDinero());
 	}
@@ -135,15 +167,26 @@ public class PoliciaTest {
 		Jugador Mordecai = new Jugador();
 		Jugador Rigby = new Jugador();
 		Policia policia = new Policia(carcel);
+		Salida salida = new Salida();
+		Mordecai.cobrar(80000);
 		
 		policia.aceptar(Mordecai);
-		carcel.reducirTurnosDeEsperaDe(Mordecai);
-		carcel.reducirTurnosDeEsperaDe(Mordecai);
-		carcel.reducirTurnosDeEsperaDe(Mordecai);
 		
-		carcel.encarcelarJugador(Rigby);
+		try{
+			Mordecai.visitar(salida);
+		} catch(JugadorNoPuedeSalirDeLaCarcelException e){}
+
+		try{
+			Mordecai.visitar(salida);
+		} catch(JugadorNoTieneFondosParaPagarException e){}
+
+		try{
+			Mordecai.visitar(salida);
+		} catch(JugadorNoTieneFondosParaPagarException e){}
 		
-		carcel.sacarJugador(Mordecai);
+		policia.aceptar(Rigby);
+		
+		Mordecai.visitar(salida);
 	}
 
 }

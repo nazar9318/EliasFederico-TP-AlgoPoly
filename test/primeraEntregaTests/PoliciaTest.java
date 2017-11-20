@@ -2,6 +2,7 @@ package primeraEntregaTests;
 
 import org.junit.Test;
 import fiuba.algo3.Jugador;
+import fiuba.algo3.celdas.Salida;
 import fiuba.algo3.celdas.especiales.Carcel;
 import fiuba.algo3.celdas.especiales.Policia;
 import fiuba.algo3.excepciones.JugadorNoPuedeSalirDeLaCarcelException;
@@ -13,9 +14,10 @@ public class PoliciaTest {
 		Carcel carcel = new Carcel();
 		Jugador unJugador = new Jugador();
 		Policia policia = new Policia(carcel);
+		Salida salida = new Salida();
 		
 		policia.aceptar(unJugador);
-		carcel.sacarJugador(unJugador);
+		unJugador.visitar(salida);
 	}
 
 }

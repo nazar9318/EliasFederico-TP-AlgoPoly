@@ -17,14 +17,12 @@ public class Jugador implements Visitante {
 	private int dinero;
 	private ArrayList<Barrio> propiedades;
 	private int valorDeTiro;
+	private EstadoJugador estado;
 	
 	public Jugador(){
 		this.dinero = 100000;
 		this.propiedades = new ArrayList<Barrio>();
-	}
-
-	public ArrayList<Barrio> getPropiedades() {
-		return propiedades;
+		this.estado = new EstadoJugadorNormal();
 	}
 
 	public int obtenerDinero() {
@@ -49,9 +47,13 @@ public class Jugador implements Visitante {
 	public int pedirTiro() {
 		return valorDeTiro;
 	}
-
+	
 	public int getCantidadDePropiedades() {
 		return propiedades.size();
+	}
+
+	public ArrayList<Barrio> getPropiedades() {
+		return propiedades;
 	}
 	
 	public void agregarPropiedad(Barrio unaCelda) {
@@ -60,39 +62,47 @@ public class Jugador implements Visitante {
 
 	@Override
 	public void visitar(Barrio barrio) {
-		barrio.comprarBarrio(this);
+		this.estado.visitar(barrio, this);
 	}
 
 	@Override
 	public void visitar(Quini6 quini6) {
-		quini6.pagarPremioAJugador(this);
+		this.estado.visitar(quini6, this);
 	}
 
 	@Override
 	public void visitar(Salida salida) {
-		// TODO Auto-generated method stub
+		this.estado.visitar(salida, this);
 	}
 	
 	@Override
 	public void visitar(Carcel carcel) {
-		carcel.encarcelarJugador(this);
+		this.estado = new EstadoJugadorCarcel(carcel);
+		//carcel.encarcelarJugador(this);
 	}
 
 	@Override
-	public void visitar(Policia policia) {
-		policia.aceptar(this);
-	}
-	
-	@Override
 	public void visitar(AvanceDinamico avance) {
-		avance.calcularAvance(this);
+		this.estado.visitar(avance, this);
+//		avance.calcularAvance(this);
 	}
 
 	@Override
 	public void visitar(RetrocesoDinamico retroceso) {
-		retroceso.calcularRetroceso(this);
+		this.estado.visitar(retroceso, this);
+	//	retroceso.calcularRetroceso(this);
 	}
 
+	public void salirDeLaCarcel() {
+		this.estado = new EstadoJugadorNormal();
+	}
+
+	@Override
+	public void visitar(Policia policia) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	public boolean puedeEdificarEn(Barrio barrio) {
 		return (barrio.getCeldaAsociada().getDuenio() == this);
 	}
