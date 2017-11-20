@@ -8,9 +8,15 @@ import java.util.HashMap;
 public class Quini6 implements Visitable {
 	
 	private HashMap<Jugador, Integer> jugadores;
+	private int premioPrimeraCaida;
+	private int premioSegundaCaida;
+	private int premioTerceraCaida;
 
 	public Quini6() {
 		jugadores = new HashMap<>();
+		this.premioPrimeraCaida = 50000;
+		this.premioSegundaCaida = 30000;
+		this.premioTerceraCaida = 0;
 	}
 
 	private boolean primeraCaida(Jugador unJugador){
@@ -24,10 +30,10 @@ public class Quini6 implements Visitable {
 	private void cobrarCaidaRepetida(Jugador unJugador){
 		if(segundaCaida(unJugador)) {
 			sumarCaida(unJugador);
-			unJugador.cobrar(30000);
+			unJugador.cobrar(this.obtenerPremioSegundaCaida());
 			return;
 		}
-		unJugador.cobrar(0);
+		unJugador.cobrar(this.obtenerPremioTerceraCaida());
 	}
 
 	private void sumarCaida(Jugador unJugador) {
@@ -37,7 +43,7 @@ public class Quini6 implements Visitable {
 	public void pagarPremioAJugador(Jugador unJugador) {
 		if (primeraCaida(unJugador)) {
 			jugadores.put(unJugador, 1);
-			unJugador.cobrar(50000);
+			unJugador.cobrar(this.obtenerPremioPrimeraCaida());
 			return;
 		}
 		cobrarCaidaRepetida(unJugador);
@@ -48,4 +54,15 @@ public class Quini6 implements Visitable {
 		jugador.visitar(this);
 	}
 
+	public int obtenerPremioPrimeraCaida() {
+		return this.premioPrimeraCaida;
+	}
+
+	public int obtenerPremioSegundaCaida() {
+		return this.premioSegundaCaida;
+	}
+
+	public int obtenerPremioTerceraCaida() {
+		return this.premioTerceraCaida;
+	}
 }

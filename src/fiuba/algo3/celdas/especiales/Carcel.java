@@ -1,10 +1,7 @@
 package fiuba.algo3.celdas.especiales;
 
 import fiuba.algo3.Jugador;
-import fiuba.algo3.excepciones.JugadorNoPuedeSalirDeLaCarcelException;
 import fiuba.algo3.celdas.Visitable;
-
-import java.util.HashMap;
 
 public class Carcel implements Visitable {
 	

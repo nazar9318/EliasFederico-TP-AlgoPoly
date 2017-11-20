@@ -2,10 +2,6 @@ package fiuba.algo3;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-
 import fiuba.algo3.celdas.Visitable;
 import fiuba.algo3.celdas.Salida;
 

@@ -1,8 +1,6 @@
 package fiuba.algo3;
 
 import java.util.ArrayList;
-
-import fiuba.algo3.celdas.Visitable;
 import fiuba.algo3.celdas.comprables.Barrio;
 import fiuba.algo3.celdas.Salida;
 import fiuba.algo3.celdas.especiales.AvanceDinamico;

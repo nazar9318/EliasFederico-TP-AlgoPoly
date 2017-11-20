@@ -3,11 +3,9 @@ package primeraEntregaTests;
 import fiuba.algo3.celdas.comprables.BuenosAiresSur;
 import org.junit.Assert;
 import org.junit.Test;
-
 import fiuba.algo3.Dado;
 import fiuba.algo3.Jugador;
 import fiuba.algo3.Tablero;
-import fiuba.algo3.celdas.comprables.Barrio;
 import fiuba.algo3.celdas.Visitable;
 import fiuba.algo3.celdas.especiales.Carcel;
 import fiuba.algo3.celdas.especiales.Quini6;
