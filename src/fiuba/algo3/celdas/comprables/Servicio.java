@@ -6,19 +6,17 @@ import fiuba.algo3.celdas.Visitable;
 import fiuba.algo3.excepciones.BarrioConDuenioException;
 import fiuba.algo3.excepciones.JugadorNoTieneFondosParaPagarException;
 
-public abstract class Barrio implements Visitable, Propiedad {
+public abstract class Servicio implements Visitable, Propiedad {
 
 	private Jugador duenio;
-	protected Barrio celdaAsociada;
+	protected Servicio celdaAsociada;
 	protected final int precioTerreno;
-	protected final int alquiler;
 
-	protected Barrio(int precioTerreno, int alquiler) {
+	protected Servicio(int precioTerreno) {
 		this.precioTerreno = precioTerreno;
-		this.alquiler = alquiler;
 	}
 
-	public Barrio getCeldaAsociada() {
+	public Servicio getCeldaAsociada() {
 		return celdaAsociada;
 	}
 
@@ -56,24 +54,20 @@ public abstract class Barrio implements Visitable, Propiedad {
 
 	@Override
 	public void cobrar(Jugador jugador) {
-		jugador.pagar(getAlquiler());
+		
 	}
 
-	public int getAlquiler() {
-		return alquiler;
-	}
-
-	public void conocer(Barrio conocida) {
+	public void conocer(Servicio conocida) {
 		this.celdaAsociada = conocida;
 	}
 	
 	@Override
 	public void comprar(Jugador jugador) {
-		jugador.pagar(getAlquiler());
+	
 	}
 	
 	@Override
 	public void vender(Jugador jugador) {
-		jugador.pagar(getAlquiler());
+	
 	}
 }

@@ -24,7 +24,7 @@ public class retrocesoDinamicoTest {
 
 
 		tablero.agregarCelda(retrocesoDinamico);
-		tablero.agregarCelda(new BuenosAiresSur(2500, 120));
+		tablero.agregarCelda(new BuenosAiresSur());
 		tablero.agregarCelda(carcel);
 		tablero.agregarJugador(jugador);
 		dado1.setValor(1);
@@ -69,7 +69,7 @@ public class retrocesoDinamicoTest {
 		tablero.agregarCelda(retrocesoDinamico);
 		tablero.agregarCelda(esperado);
 		for (int i=0; i < 7; i++)
-			tablero.agregarCelda(new BuenosAiresSur(2500, 120));
+			tablero.agregarCelda(new BuenosAiresSur());
 
 		tablero.agregarJugador(jugador);
 		dado1.setValor(3);

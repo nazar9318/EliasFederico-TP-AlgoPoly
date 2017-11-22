@@ -16,7 +16,7 @@ public class quini6Test {
 	public void unJugadorCaeEnQuini6PorPrimeraVezYSuCapitalSeIncrementaEn50000Pesos() {
 		Quini6 quini = new Quini6();
 		Jugador unJugador = new Jugador();
-		Barrio barrio = new BuenosAiresSur(150000, 100);
+		Barrio barrio = new BuenosAiresSur();
 
 		unJugador.visitar(quini);
 		unJugador.visitar(barrio);
@@ -28,7 +28,7 @@ public class quini6Test {
 	public void unJugadorCaeEnQuini6PorSegundaVezYSuCapitalSeIncrementaEn30000Pesos() {
 		Quini6 quini = new Quini6();
 		Jugador unJugador = new Jugador();
-		Barrio barrio = new BuenosAiresSur(180000, 120);
+		Barrio barrio = new BuenosAiresSur();
 
 		unJugador.visitar(quini);
 		unJugador.visitar(quini);
@@ -42,12 +42,15 @@ public class quini6Test {
 	public void unJugadorCaeEnQuini6PorTerceraVezYSuCapitalNoSeIncrementaMas() {
 		Quini6 quini = new Quini6();
 		Jugador unJugador = new Jugador();
-		Barrio barrio = new BuenosAiresSur(200000, 250);
+		unJugador.pagar(100000);
+		Barrio barrio = new BuenosAiresSur();
 		
 		unJugador.visitar(quini);
+		unJugador.pagar(50000);
 		unJugador.visitar(quini);
+		unJugador.pagar(30000);
 		unJugador.visitar(quini);
-		
+	
 		unJugador.visitar(barrio);
 	}
 }

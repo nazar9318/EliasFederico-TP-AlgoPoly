@@ -2,6 +2,7 @@ package fiuba.algo3;
 
 import java.util.ArrayList;
 import fiuba.algo3.celdas.comprables.Barrio;
+import fiuba.algo3.celdas.comprables.Servicio;
 import fiuba.algo3.celdas.Salida;
 import fiuba.algo3.celdas.especiales.AvanceDinamico;
 import fiuba.algo3.celdas.especiales.Carcel;
@@ -103,5 +104,15 @@ public class Jugador implements Visitante {
 	
 	public boolean puedeEdificarEn(Barrio barrio) {
 		return (barrio.getCeldaAsociada().getDuenio() == this);
+	}
+
+	public void agregarPropiedad(Servicio servicio) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void visitar(Servicio servicio) {
+		// TODO Auto-generated method stub
+		
 	}
 }

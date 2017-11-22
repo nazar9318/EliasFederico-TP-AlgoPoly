@@ -67,7 +67,7 @@ public class avanceDinamicoTest {
 		tablero.agregarCelda(avanceDinamico);
 
 		for (int i=0; i < 10; i++)
-			tablero.agregarCelda(new BuenosAiresSur(2500, 25));
+			tablero.agregarCelda(new BuenosAiresSur());
 
 		tablero.agregarCelda(esperado);
 		tablero.agregarJugador(jugador);

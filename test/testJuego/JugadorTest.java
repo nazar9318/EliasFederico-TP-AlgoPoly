@@ -55,7 +55,7 @@ public class JugadorTest {
 
 		Jugador jugador = tablero.agregarJugador(new Jugador());
 		tablero.avanzarJugador(jugador, 2);
-		tablero.avanzarJugador(jugador, 1);
+		tablero.avanzarJugador(jugador, 2);
 
 		Assert.assertTrue(jugador.puedeEdificarEn(jugador.getPropiedades().get(0)));
 	}
