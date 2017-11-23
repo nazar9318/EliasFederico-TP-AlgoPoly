@@ -1,8 +1,10 @@
 package testCeldas;
 
+import fiuba.algo3.AlgoPoly;
 import fiuba.algo3.Jugador;
-import fiuba.algo3.celdas.comprables.EDESUR;
-import fiuba.algo3.celdas.comprables.Servicio;
+import fiuba.algo3.Tablero;
+import fiuba.algo3.celdas.comprables.Servicios.EDESUR;
+import fiuba.algo3.celdas.comprables.Servicios.Servicio;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -56,4 +58,68 @@ public class ServiciosTest {
         Assert.assertEquals(dineroDespues, dineroAnteriorACompra - 5250);
     }
 
+    @Test
+    public void jugadorCompraEDESUROtroJugadorCaeYPagaAlquiler(){
+        AlgoPoly algo = new AlgoPoly();
+
+        algo.inicializarJuego();
+        Tablero tablero = algo.getTablero();
+
+        Jugador jugador1 = tablero.agregarJugador(new Jugador());
+        Jugador jugador2 = tablero.agregarJugador(new Jugador());
+
+        int dineroAnterior = jugador2.obtenerDinero();
+        jugador2.setValorDeTiro(3);
+
+        tablero.avanzarJugador(jugador1, 3);
+        tablero.avanzarJugador(jugador2, jugador2.getValorDeTiro());
+
+        int dineroPosterior = jugador2.obtenerDinero();
+
+        Assert.assertEquals(dineroPosterior, dineroAnterior - 1500);
+    }
+
+    @Test
+    public void jugadorCompraEDESURYAYSAOtroJugadorCaeEnEDESURYPagaAlquiler(){
+        AlgoPoly algo = new AlgoPoly();
+
+        algo.inicializarJuego();
+        Tablero tablero = algo.getTablero();
+
+        Jugador jugador1 = tablero.agregarJugador(new Jugador());
+        Jugador jugador2 = tablero.agregarJugador(new Jugador());
+
+        int dineroAnterior = jugador2.obtenerDinero();
+        jugador2.setValorDeTiro(3);
+
+        tablero.avanzarJugador(jugador1, 3);
+        tablero.avanzarJugador(jugador1, 9);
+        tablero.avanzarJugador(jugador2, jugador2.getValorDeTiro());
+
+        int dineroPosterior = jugador2.obtenerDinero();
+
+        Assert.assertEquals(dineroPosterior, dineroAnterior - 3000);
+    }
+
+    @Test
+    public void jugadorCompraEDESURYAYSAtroJugadorCaeEnEDENORYPagaAlquiler(){
+        AlgoPoly algo = new AlgoPoly();
+
+        algo.inicializarJuego();
+        Tablero tablero = algo.getTablero();
+
+        Jugador jugador1 = tablero.agregarJugador(new Jugador());
+        Jugador jugador2 = tablero.agregarJugador(new Jugador());
+
+        int dineroAnterior = jugador2.obtenerDinero();
+        jugador2.setValorDeTiro(12);
+
+        tablero.avanzarJugador(jugador1, 3);
+        tablero.avanzarJugador(jugador1, 9);
+        tablero.avanzarJugador(jugador2, jugador2.getValorDeTiro());
+
+        int dineroPosterior = jugador2.obtenerDinero();
+
+        Assert.assertEquals(dineroPosterior, dineroAnterior - 6000);
+    }
 }

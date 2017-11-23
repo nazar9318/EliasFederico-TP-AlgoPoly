@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import fiuba.algo3.celdas.comprables.*;
+import fiuba.algo3.celdas.comprables.Servicios.*;
 import fiuba.algo3.celdas.especiales.*;
 
 public class AlgoPoly {

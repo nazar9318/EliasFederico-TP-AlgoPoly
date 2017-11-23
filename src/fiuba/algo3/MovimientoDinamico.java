@@ -15,7 +15,7 @@ public class MovimientoDinamico {
 	
 	public int calcularMovimiento (Jugador jugador) {
 		int resta = 2;
-		int totalTiro = jugador.pedirTiro();
+		int totalTiro = jugador.getValorDeTiro();
 		if(totalTiro >= tope1 && totalTiro <= tope2) {
 			return totalTiro - resta;
 		}

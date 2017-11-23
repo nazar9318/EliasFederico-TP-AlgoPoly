@@ -2,7 +2,7 @@ package fiuba.algo3;
 
 import java.util.ArrayList;
 import fiuba.algo3.celdas.comprables.Barrio;
-import fiuba.algo3.celdas.comprables.Servicio;
+import fiuba.algo3.celdas.comprables.Servicios.Servicio;
 import fiuba.algo3.celdas.Salida;
 import fiuba.algo3.celdas.especiales.AvanceDinamico;
 import fiuba.algo3.celdas.especiales.Carcel;
@@ -43,7 +43,7 @@ public class Jugador implements Visitante {
 		valorDeTiro = valorTiro;
 	}
 	
-	public int pedirTiro() {
+	public int getValorDeTiro() {
 		return valorDeTiro;
 	}
 	
@@ -102,7 +102,7 @@ public class Jugador implements Visitante {
 		
 	}
 	
-	public boolean conoceALaAsociadaDe(Barrio barrio) {
+	public boolean poseeALaAsociadaDe(Barrio barrio) {
 		return (barrio.getCeldaAsociada().getDuenio() == this);
 	}
 

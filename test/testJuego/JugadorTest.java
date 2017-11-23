@@ -57,7 +57,7 @@ public class JugadorTest {
 		tablero.avanzarJugador(jugador, 2);
 		tablero.avanzarJugador(jugador, 2);
 
-		Assert.assertTrue(jugador.conoceALaAsociadaDe(jugador.getPropiedades().get(0)));
+		Assert.assertTrue(jugador.poseeALaAsociadaDe(jugador.getPropiedades().get(0)));
 	}
 
 	@Test
@@ -70,7 +70,7 @@ public class JugadorTest {
 		Jugador jugador = tablero.agregarJugador(new Jugador());
 		tablero.avanzarJugador(jugador, 2);
 
-		Assert.assertFalse(jugador.conoceALaAsociadaDe(jugador.getPropiedades().get(0)));
+		Assert.assertFalse(jugador.poseeALaAsociadaDe(jugador.getPropiedades().get(0)));
 	}
 
 	@Test

@@ -53,16 +53,12 @@ public abstract class Barrio implements Visitable {
 		jugador.visitar(this);
 	}
 
-	public void cobrar(Jugador jugador) {
-		jugador.pagar(getAlquiler());
-	}
-
-	private int getAlquiler() {
+	protected int getAlquiler() {
 		return alquiler;
 	}
 
 	public void cobrarAlquiler(Jugador jugador) {
-		cobrar(jugador);
+		jugador.pagar(getAlquiler());
 		this.duenio.cobrar(getAlquiler());
 	}
 
