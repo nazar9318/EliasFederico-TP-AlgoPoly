@@ -57,7 +57,7 @@ public class JugadorTest {
 		tablero.avanzarJugador(jugador, 2);
 		tablero.avanzarJugador(jugador, 2);
 
-		Assert.assertTrue(jugador.puedeEdificarEn(jugador.getPropiedades().get(0)));
+		Assert.assertTrue(jugador.conoceALaAsociadaDe(jugador.getPropiedades().get(0)));
 	}
 
 	@Test
@@ -70,6 +70,58 @@ public class JugadorTest {
 		Jugador jugador = tablero.agregarJugador(new Jugador());
 		tablero.avanzarJugador(jugador, 2);
 
-		Assert.assertFalse(jugador.puedeEdificarEn(jugador.getPropiedades().get(0)));
+		Assert.assertFalse(jugador.conoceALaAsociadaDe(jugador.getPropiedades().get(0)));
+	}
+
+	@Test
+	public void jugadorCompraBuenosAiresSurLaVendeYSuDineroAumentaLoCorrecto(){
+		AlgoPoly algo = new AlgoPoly();
+
+		algo.inicializarJuego();
+		Tablero tablero = algo.getTablero();
+
+		Jugador jugador = tablero.agregarJugador(new Jugador());
+
+		int dineroAnteriorALaCompra = jugador.obtenerDinero();
+		tablero.avanzarJugador(jugador, 2);
+		jugador.getPropiedades().get(0).vender(jugador);
+		int dineroDespues = jugador.obtenerDinero();
+
+		Assert.assertEquals(dineroDespues, dineroAnteriorALaCompra - 3000);
+	}
+
+	@Test
+	public void jugadorCompraBuenosAiresSurLaVendeYNoPoseeMasElTerreno(){
+		AlgoPoly algo = new AlgoPoly();
+
+		algo.inicializarJuego();
+		Tablero tablero = algo.getTablero();
+
+		Jugador jugador = tablero.agregarJugador(new Jugador());
+		tablero.avanzarJugador(jugador, 2);
+
+		jugador.getPropiedades().get(0).vender(jugador);
+
+		Assert.assertEquals(0, jugador.getPropiedades().size());
+	}
+
+	@Test
+	public void jugadorCompraBuenosAiresSurOtroJugadorCaeYPagaAlquiler(){
+		AlgoPoly algo = new AlgoPoly();
+
+		algo.inicializarJuego();
+		Tablero tablero = algo.getTablero();
+
+		Jugador jugador1 = tablero.agregarJugador(new Jugador());
+		Jugador jugador2 = tablero.agregarJugador(new Jugador());
+
+		int dineroAnterior = jugador2.obtenerDinero();
+
+		tablero.avanzarJugador(jugador1, 2);
+		tablero.avanzarJugador(jugador2, 2);
+
+		int dineroPosterior = jugador2.obtenerDinero();
+
+		Assert.assertEquals(dineroPosterior, dineroAnterior - 2000);
 	}
 }

@@ -102,7 +102,7 @@ public class Jugador implements Visitante {
 		
 	}
 	
-	public boolean puedeEdificarEn(Barrio barrio) {
+	public boolean conoceALaAsociadaDe(Barrio barrio) {
 		return (barrio.getCeldaAsociada().getDuenio() == this);
 	}
 

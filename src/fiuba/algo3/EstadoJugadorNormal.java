@@ -10,8 +10,11 @@ import fiuba.algo3.celdas.especiales.RetrocesoDinamico;
 public class EstadoJugadorNormal implements EstadoJugador {
 
 	@Override
-	public void visitar(Barrio barrio, Jugador jugador) { 
-		barrio.comprarBarrio(jugador);
+	public void visitar(Barrio barrio, Jugador jugador) {
+		if(barrio.getDuenio() != null)
+			barrio.cobrarAlquiler(jugador);
+		else
+			barrio.comprar(jugador); //TODO: hacer la comrpa opcional
 	}
 
 	@Override

@@ -1,14 +1,13 @@
 package fiuba.algo3.celdas.comprables;
 
 import fiuba.algo3.Jugador;
-import fiuba.algo3.celdas.Apropiable;
 import fiuba.algo3.celdas.Visitable;
 import fiuba.algo3.excepciones.BarrioConDuenioException;
 import fiuba.algo3.excepciones.JugadorNoTieneFondosParaPagarException;
 
-public abstract class Barrio implements Visitable, Apropiable {
+public abstract class Barrio implements Visitable {
 
-	private Jugador duenio;
+	protected Jugador duenio;
 	protected Barrio celdaAsociada;
 	protected final int precioTerreno;
 	protected final int alquiler;
@@ -30,11 +29,11 @@ public abstract class Barrio implements Visitable, Apropiable {
 		this.duenio = duenio;
 	}
 
-	public int getPrecioTerreno() {
+	private int getPrecioTerreno() {
 		return precioTerreno;
 	}
 
-	public void comprarBarrio(Jugador jugador) {
+	public void comprar(Jugador jugador) {
 		if (this.getDuenio() == null) {
 			try {
 				jugador.pagar(this.getPrecioTerreno());
@@ -44,7 +43,7 @@ public abstract class Barrio implements Visitable, Apropiable {
 			jugador.agregarPropiedad(this);
 			this.setDuenio(jugador);
 		}
-		else {	
+		else {
 			throw new BarrioConDuenioException();//pagar alquiler
 		}
 	}
@@ -54,26 +53,32 @@ public abstract class Barrio implements Visitable, Apropiable {
 		jugador.visitar(this);
 	}
 
-	@Override
 	public void cobrar(Jugador jugador) {
 		jugador.pagar(getAlquiler());
 	}
 
-	public int getAlquiler() {
+	private int getAlquiler() {
 		return alquiler;
+	}
+
+	public void cobrarAlquiler(Jugador jugador) {
+		cobrar(jugador);
+		this.duenio.cobrar(getAlquiler());
 	}
 
 	public void conocer(Barrio conocida) {
 		this.celdaAsociada = conocida;
 	}
-	
-	@Override
-	public void comprar(Jugador jugador) {
-		jugador.pagar(getAlquiler());
-	}
-	
-	@Override
+
 	public void vender(Jugador jugador) {
-		jugador.pagar(getAlquiler());
+		//TODO: cuando se agreguen las construcciones, es necesario sacarlas de la pripeidad al venderla
+		jugador.cobrar(getPrecioDeVenta());
+		jugador.getPropiedades().remove(this);
+		this.duenio = null;
 	}
+
+	private int getPrecioDeVenta() {
+		return (precioTerreno - 15*precioTerreno/100);
+	}
+
 }

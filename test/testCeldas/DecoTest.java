@@ -7,14 +7,8 @@ import org.junit.Test;
 
 import fiuba.algo3.Jugador;
 import fiuba.algo3.celdas.comprables.Barrio;
-import fiuba.algo3.celdas.Casa;
-
-import fiuba.algo3.celdas.Hotel;
-import fiuba.algo3.celdas.Apropiable;
 
 public class DecoTest {
-
-
 
 	@Test
 	public void CobroDeAlquilerSinCasas() {
@@ -25,6 +19,5 @@ public class DecoTest {
 
 		assertEquals(jugador.obtenerDinero(),100000-2000);
 	}
-	
 
 }

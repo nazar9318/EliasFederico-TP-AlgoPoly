@@ -45,6 +45,11 @@ public class AlgoPoly {
 		Carcel carcel = new Carcel();
 		Policia policia = new Policia(carcel);
 
+		Servicio edesur = new EDESUR();
+		Servicio aysa = new AYSA();
+		Servicio subte = new SUBTE();
+		Servicio tren = new TREN();
+
 		buenosAiresNorte.conocer(buenosAiresSur);
 		buenosAiresSur.conocer(buenosAiresNorte);
 		cordobaNorte.conocer(cordobaSur);
@@ -52,22 +57,27 @@ public class AlgoPoly {
 		saltaNorte.conocer(saltaSur);
 		saltaSur.conocer(saltaNorte);
 
+		edesur.conocer(aysa);
+		aysa.conocer(edesur);
+		subte.conocer(tren);
+		tren.conocer(subte);
+
 		tablero.agregarCelda(new Quini6());
 		tablero.agregarCelda(buenosAiresSur);
-		tablero.agregarCelda(new EDESUR());
+		tablero.agregarCelda(edesur);
 		tablero.agregarCelda(buenosAiresNorte);
 		tablero.agregarCelda(carcel);
 		tablero.agregarCelda(cordobaSur);
 		tablero.agregarCelda(new AvanceDinamico());
-		tablero.agregarCelda(new SUBTE());
+		tablero.agregarCelda(subte);
 		tablero.agregarCelda(cordobaNorte);
 		tablero.agregarCelda(new ImpuestoDeLujo());
 		tablero.agregarCelda(new SantaFe());
-		tablero.agregarCelda(new AYSA());
+		tablero.agregarCelda(aysa);
 		tablero.agregarCelda(saltaNorte);
 		tablero.agregarCelda(saltaSur);
 		tablero.agregarCelda(policia);
-		tablero.agregarCelda(new TREN());
+		tablero.agregarCelda(tren);
 		tablero.agregarCelda(new Neuquen());
 		tablero.agregarCelda(new RetrocesoDinamico());
 		tablero.agregarCelda(new Tucuman());

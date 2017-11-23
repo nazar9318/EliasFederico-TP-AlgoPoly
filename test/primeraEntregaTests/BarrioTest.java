@@ -23,18 +23,7 @@ public class BarrioTest {
 		
 		unJugador.visitar(barrio);
 		
-		barrio.comprarBarrio(otroJugador);
-	}
-
-	@Test (expected = BarrioConDuenioException.class)
-	public void jugadorVisitaYCompraTerreno(){
-		Jugador jugador = new Jugador();
-		Barrio barrio = new BuenosAiresSur();
-
-		jugador.visitar(barrio);
-		
-		Jugador otroJugador = new Jugador();
-		otroJugador.visitar(barrio);
+		barrio.comprar(otroJugador);
 	}
 
 	@Test
@@ -42,7 +31,7 @@ public class BarrioTest {
 		Jugador jugador = new Jugador();
 		Barrio barrio = new BuenosAiresSur();
 
-		barrio.comprarBarrio(jugador);
+		barrio.comprar(jugador);
 
 		assertEquals(barrio.getDuenio(), jugador);
 	}
