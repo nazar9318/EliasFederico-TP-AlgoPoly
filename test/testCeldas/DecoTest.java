@@ -10,7 +10,7 @@ import fiuba.algo3.celdas.comprables.Barrio;
 import fiuba.algo3.celdas.Casa;
 
 import fiuba.algo3.celdas.Hotel;
-import fiuba.algo3.celdas.Propiedad;
+import fiuba.algo3.celdas.Apropiable;
 
 public class DecoTest {
 

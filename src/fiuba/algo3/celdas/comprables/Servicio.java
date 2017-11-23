@@ -1,12 +1,12 @@
 package fiuba.algo3.celdas.comprables;
 
 import fiuba.algo3.Jugador;
-import fiuba.algo3.celdas.Propiedad;
+import fiuba.algo3.celdas.Apropiable;
 import fiuba.algo3.celdas.Visitable;
 import fiuba.algo3.excepciones.BarrioConDuenioException;
 import fiuba.algo3.excepciones.JugadorNoTieneFondosParaPagarException;
 
-public abstract class Servicio implements Visitable, Propiedad {
+public abstract class Servicio implements Visitable, Apropiable {
 
 	private Jugador duenio;
 	protected Servicio celdaAsociada;

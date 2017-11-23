@@ -1,23 +1,36 @@
 package fiuba.algo3;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 import fiuba.algo3.celdas.comprables.*;
 import fiuba.algo3.celdas.especiales.*;
 
 public class AlgoPoly {
 
 	private Tablero tablero;
+	private ArrayList<Jugador> jugadores;
 
 	public AlgoPoly(){
 		this.tablero = new Tablero();
+		this.jugadores = new ArrayList<Jugador>();
 	}
 
 	public Tablero getTablero() {
 		return tablero;
 	}
+	
+	public ArrayList<Jugador> getJugadores() {
+		return jugadores;
+	}
+	
+	public int getCantidadDeJugadores() {
+		return jugadores.size();
+	}
 
 	public void inicializarJuego(){
 		construirTablero();
-		//agregarJugadores();
+		agregarJugadores();
 	}
 
 	private void construirTablero() {
@@ -48,7 +61,7 @@ public class AlgoPoly {
 		tablero.agregarCelda(new AvanceDinamico());
 		tablero.agregarCelda(new SUBTE());
 		tablero.agregarCelda(cordobaNorte);
-		//tablero.agregarCelda(new Impuesto());
+		tablero.agregarCelda(new ImpuestoDeLujo());
 		tablero.agregarCelda(new SantaFe());
 		tablero.agregarCelda(new AYSA());
 		tablero.agregarCelda(saltaNorte);
@@ -59,5 +72,18 @@ public class AlgoPoly {
 		tablero.agregarCelda(new RetrocesoDinamico());
 		tablero.agregarCelda(new Tucuman());
 
+	}
+	
+	public void agregarJugadores() {
+		while (jugadores.size()<3) {
+			jugadores.add(new Jugador());
+		}
+		for(Jugador jugador: jugadores) {
+			tablero.agregarJugador(jugador);
+		}
+	}
+	
+	public void reiniciarJuego() {
+		Collections.shuffle(jugadores);
 	}
 }
