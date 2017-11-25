@@ -1,6 +1,7 @@
 package fiuba.algo3;
 
 import fiuba.algo3.celdas.comprables.Barrio;
+import fiuba.algo3.celdas.comprables.Propiedad;
 import fiuba.algo3.celdas.Salida;
 import fiuba.algo3.celdas.especiales.AvanceDinamico;
 import fiuba.algo3.celdas.especiales.Carcel;
@@ -20,7 +21,7 @@ public class EstadoJugadorCarcel implements EstadoJugador {
 	}
 
 	@Override
-	public void visitar(Barrio barrio, Jugador jugador) {
+	public void visitar(Propiedad propiedad, Jugador jugador) {
 		if(this.turnos == 3){
 			this.turnos --;
 			throw new JugadorNoPuedeSalirDeLaCarcelException();
@@ -31,7 +32,7 @@ public class EstadoJugadorCarcel implements EstadoJugador {
 			this.turnos --;
 		}else{
 			this.carcel.sacarJugador(jugador, this.turnos);
-			jugador.visitar(barrio);
+			jugador.visitar(propiedad);
 		}
 	}
 

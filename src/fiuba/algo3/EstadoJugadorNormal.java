@@ -1,6 +1,6 @@
 package fiuba.algo3;
 
-import fiuba.algo3.celdas.comprables.Barrio;
+import fiuba.algo3.celdas.comprables.Propiedad;
 import fiuba.algo3.celdas.Salida;
 import fiuba.algo3.celdas.especiales.AvanceDinamico;
 import fiuba.algo3.celdas.especiales.Policia;
@@ -10,11 +10,11 @@ import fiuba.algo3.celdas.especiales.RetrocesoDinamico;
 public class EstadoJugadorNormal implements EstadoJugador {
 
 	@Override
-	public void visitar(Barrio barrio, Jugador jugador) {
-		if(barrio.getDuenio() != null)
-			barrio.cobrarAlquiler(jugador);
+	public void visitar(Propiedad propiedad, Jugador jugador) {
+		if(propiedad.getDuenio() != null)
+			propiedad.cobrarAlquiler(jugador);
 		else
-			barrio.comprar(jugador); //TODO: hacer la comrpa opcional
+			propiedad.comprar(jugador); //TODO: hacer la comrpa opcional
 	}
 
 	@Override

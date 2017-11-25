@@ -2,6 +2,7 @@ package fiuba.algo3;
 
 import java.util.ArrayList;
 import fiuba.algo3.celdas.comprables.Barrio;
+import fiuba.algo3.celdas.comprables.Propiedad;
 import fiuba.algo3.celdas.comprables.Servicios.Servicio;
 import fiuba.algo3.celdas.Salida;
 import fiuba.algo3.celdas.especiales.AvanceDinamico;
@@ -14,13 +15,13 @@ import fiuba.algo3.excepciones.JugadorNoTieneFondosParaPagarException;
 public class Jugador implements Visitante {
 
 	private int dinero;
-	private ArrayList<Barrio> propiedades;
+	private ArrayList<Propiedad> propiedades;
 	private int valorDeTiro;
 	private EstadoJugador estado;
 	
 	public Jugador(){
 		this.dinero = 100000;
-		this.propiedades = new ArrayList<Barrio>();
+		this.propiedades = new ArrayList<Propiedad>();
 		this.estado = new EstadoJugadorNormal();
 	}
 
@@ -51,17 +52,17 @@ public class Jugador implements Visitante {
 		return propiedades.size();
 	}
 
-	public ArrayList<Barrio> getPropiedades() {
+	public ArrayList<Propiedad> getPropiedades() {
 		return propiedades;
 	}
 	
-	public void agregarPropiedad(Barrio unaCelda) {
+	public void agregarPropiedad(Propiedad unaCelda) {
 		propiedades.add(unaCelda);
 	}
 
 	@Override
-	public void visitar(Barrio barrio) {
-		this.estado.visitar(barrio, this);
+	public void visitar(Propiedad propiedad) {
+		this.estado.visitar(propiedad, this);
 	}
 
 	@Override
@@ -102,8 +103,8 @@ public class Jugador implements Visitante {
 		
 	}
 	
-	public boolean poseeALaAsociadaDe(Barrio barrio) {
-		return (barrio.getCeldaAsociada().getDuenio() == this);
+	public boolean poseeALaAsociadaDe(Propiedad propiedad) {
+		return (propiedad.getCeldaAsociada().getDuenio() == this);
 	}
 
 	public void agregarPropiedad(Servicio servicio) {
