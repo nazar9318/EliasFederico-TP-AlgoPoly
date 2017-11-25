@@ -5,6 +5,10 @@ public class Hotel {
 	private int alquiler;
 	private int valor;
 
+	public Hotel(int alquilerh) {
+		this.alquiler = alquilerh;
+	}
+
 	public int getAlquiler() {
 		return alquiler;
 	}

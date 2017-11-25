@@ -5,7 +5,8 @@ public class Casa {
 	private int alquiler;
 	private int valor;
 
-	public Casa() {
+	public Casa(int alquiler1) {
+		this.alquiler = alquiler1;
 	}
 
 	public int getAlquiler() {

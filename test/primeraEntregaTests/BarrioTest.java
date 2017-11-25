@@ -64,7 +64,15 @@ public class BarrioTest {
 	
 	@Test
 	public void  JugadorConstruyeCasaEnBuenosAires() {
+		Jugador jugador = new Jugador();
+		Barrio buenosAiresNorte = new BuenosAiresNorte();
+		Barrio buenosAiresSur = new BuenosAiresSur();
+		buenosAiresNorte.conocer(buenosAiresSur);
+		buenosAiresSur.conocer(buenosAiresNorte);
+		jugador.visitar(buenosAiresSur);
+		jugador.construir(buenosAiresSur);
 		
+	
 	}
 	
 }

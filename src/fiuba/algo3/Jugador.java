@@ -116,4 +116,9 @@ public class Jugador implements Visitante {
 		// TODO Auto-generated method stub
 		
 	}
+
+	public void construir(Barrio barrio) {
+		barrio.construir(this);
+		
+	}
 }
