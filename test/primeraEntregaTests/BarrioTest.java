@@ -70,8 +70,78 @@ public class BarrioTest {
 		buenosAiresNorte.conocer(buenosAiresSur);
 		buenosAiresSur.conocer(buenosAiresNorte);
 		jugador.visitar(buenosAiresSur);
+		jugador.visitar(buenosAiresNorte);
 		jugador.construir(buenosAiresSur);
-		
+		assertEquals(1 , buenosAiresSur.cantidadcasas());
+	
+	}
+	
+	@Test
+	public void  JugadorConstruyeDosCasasEnBuenosAires() {
+		Jugador jugador = new Jugador();
+		Barrio buenosAiresNorte = new BuenosAiresNorte();
+		Barrio buenosAiresSur = new BuenosAiresSur();
+		buenosAiresNorte.conocer(buenosAiresSur);
+		buenosAiresSur.conocer(buenosAiresNorte);
+		jugador.visitar(buenosAiresSur);
+		jugador.visitar(buenosAiresNorte);
+		jugador.construir(buenosAiresSur);
+		jugador.construir(buenosAiresSur);
+		assertEquals(2 , buenosAiresSur.cantidadcasas());
+	
+	}
+	
+	@Test
+	public void  JugadorConstruyeTresCasasEnBuenosAiresYFalla() {
+		Jugador jugador = new Jugador();
+		Barrio buenosAiresNorte = new BuenosAiresNorte();
+		Barrio buenosAiresSur = new BuenosAiresSur();
+		buenosAiresNorte.conocer(buenosAiresSur);
+		buenosAiresSur.conocer(buenosAiresNorte);
+		jugador.visitar(buenosAiresSur);
+		jugador.visitar(buenosAiresNorte);
+		jugador.construir(buenosAiresSur);
+		jugador.construir(buenosAiresSur);
+		jugador.construir(buenosAiresSur);
+		assertEquals(2 , buenosAiresSur.cantidadcasas());
+	
+	}
+	
+	@Test
+	public void  JugadorConstruyeHotelEnBuenosAires() {
+		Jugador jugador = new Jugador();
+		Barrio buenosAiresNorte = new BuenosAiresNorte();
+		Barrio buenosAiresSur = new BuenosAiresSur();
+		buenosAiresNorte.conocer(buenosAiresSur);
+		buenosAiresSur.conocer(buenosAiresNorte);
+		jugador.visitar(buenosAiresSur);
+		jugador.visitar(buenosAiresNorte);
+		jugador.construir(buenosAiresSur);
+		jugador.construir(buenosAiresSur);
+
+		jugador.construir(buenosAiresNorte);
+		jugador.construir(buenosAiresNorte);
+		jugador.construir(buenosAiresSur);
+		assertEquals(1 , buenosAiresSur.cantidadhoteles());
+		assertEquals(0 , buenosAiresSur.cantidadcasas());
+	}
+	
+	@Test
+	public void  JugadorConstruyeOtroHotelEnBuenosAiresYFalla() {
+		Jugador jugador = new Jugador();
+		Barrio buenosAiresNorte = new BuenosAiresNorte();
+		Barrio buenosAiresSur = new BuenosAiresSur();
+		buenosAiresNorte.conocer(buenosAiresSur);
+		buenosAiresSur.conocer(buenosAiresNorte);
+		jugador.visitar(buenosAiresSur);
+		jugador.visitar(buenosAiresNorte);
+		jugador.construir(buenosAiresSur);
+		jugador.construir(buenosAiresSur);
+		jugador.construir(buenosAiresNorte);
+		jugador.construir(buenosAiresNorte);
+		jugador.construir(buenosAiresSur);
+		assertEquals(1 , buenosAiresSur.cantidadhoteles());
+		assertEquals(0 , buenosAiresSur.cantidadcasas());
 	
 	}
 	

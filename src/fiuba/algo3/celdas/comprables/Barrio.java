@@ -29,17 +29,23 @@ public abstract class Barrio extends Propiedad implements Visitable {
 	public int cantidadcasas() {
 		return casas.size();
 	}
+	public int cantidadhoteles() {
+		return hoteles.size();
+	}
+
 
 	public void construir(Jugador jugador) {
-		if ((jugador.poseeALaAsociadaDe(this)) && (((Barrio) this.getCeldaAsociada()).cantidadcasas() == maxcasas)) {
-			if (maxcasas >= casas.size() + 1) {
+
+		if ((jugador.poseeALaAsociadaDe(this)) ) {
+			if ((maxcasas >= casas.size() + 1) && (hoteles.size() == 0)){
 				Casa casa = new Casa(alquiler1);
 				casas.add(casa);
 				jugador.pagar(preciocasa);
 
 			} else {
-				if ((maxcasas < casas.size() + 1) && (maxhoteles >= hoteles.size() + 1)) {
+				if ((maxcasas < casas.size() + 1) && (maxhoteles >= hoteles.size() + 1) && (((Barrio) this.getCeldaAsociada()).cantidadcasas() == maxcasas)) {
 					Hotel hotel = new Hotel(alquilerh);
+					casas.clear();
 					hoteles.add(hotel);
 					jugador.pagar(preciohotel);
 				}
