@@ -120,4 +120,9 @@ public class Jugador implements Visitante {
 	public void construir(Barrio barrio) {
 		barrio.construir(this);
 	}
+
+	public void removerPropiedad(Propiedad propiedad) {
+		this.propiedades.remove(propiedad);
+		
+	}
 }

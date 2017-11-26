@@ -84,7 +84,7 @@ public class JugadorTest {
 
 		int dineroAnteriorALaCompra = jugador.obtenerDinero();
 		tablero.avanzarJugador(jugador, 2);
-		jugador.getPropiedades().get(0).vender(jugador);
+		jugador.getPropiedades().get(0).vender();
 		int dineroDespues = jugador.obtenerDinero();
 
 		Assert.assertEquals(dineroDespues, dineroAnteriorALaCompra - 3000);
@@ -100,7 +100,7 @@ public class JugadorTest {
 		Jugador jugador = tablero.agregarJugador(new Jugador());
 		tablero.avanzarJugador(jugador, 2);
 
-		jugador.getPropiedades().get(0).vender(jugador);
+		jugador.getPropiedades().get(0).vender();
 
 		Assert.assertEquals(0, jugador.getPropiedades().size());
 	}

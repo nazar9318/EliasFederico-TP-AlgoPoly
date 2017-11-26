@@ -51,6 +51,13 @@ public abstract class Barrio extends Propiedad implements Visitable {
 	public int cantidadHoteles() {
 		return hoteles.size();
 	}
+	public void vender() {
+		duenio.cobrar(super.getPrecioDeVenta());
+		casas.clear();
+		hoteles.clear();
+		duenio.removerPropiedad(this);
+		this.duenio = null;
+	}
 
 	public void construir(Jugador jugador) {
 		if ((jugador.poseeALaAsociadaDe(this)) ) {

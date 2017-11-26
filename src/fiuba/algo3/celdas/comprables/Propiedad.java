@@ -65,14 +65,13 @@ public abstract class Propiedad implements Visitable {
 		this.celdaAsociada = conocida;
 	}
 
-	public void vender(Jugador jugador) {
-		//TODO: cuando se agreguen las construcciones, es necesario sacarlas de la pripeidad al venderla
-		jugador.cobrar(getPrecioDeVenta());
-		jugador.getPropiedades().remove(this);
+	public void vender() {
+		duenio.cobrar(getPrecioDeVenta());
+		duenio.removerPropiedad(this);
 		this.duenio = null;
 	}
 
-	private int getPrecioDeVenta() {
+	protected int getPrecioDeVenta() {
 		return (precioTerreno - 15*precioTerreno/100);
 	}
 

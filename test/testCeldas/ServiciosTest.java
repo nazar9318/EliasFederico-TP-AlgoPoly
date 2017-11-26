@@ -3,8 +3,17 @@ package testCeldas;
 import fiuba.algo3.AlgoPoly;
 import fiuba.algo3.Jugador;
 import fiuba.algo3.Tablero;
+import fiuba.algo3.celdas.comprables.Barrio;
+import fiuba.algo3.celdas.comprables.BuenosAiresNorte;
+import fiuba.algo3.celdas.comprables.BuenosAiresSur;
+import fiuba.algo3.celdas.comprables.Servicios.AYSA;
 import fiuba.algo3.celdas.comprables.Servicios.EDESUR;
+import fiuba.algo3.celdas.comprables.Servicios.SUBTE;
 import fiuba.algo3.celdas.comprables.Servicios.Servicio;
+import fiuba.algo3.celdas.comprables.Servicios.TREN;
+
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -39,7 +48,7 @@ public class ServiciosTest {
 
         edesur.comprar(jugador);
 
-        jugador.getPropiedades().get(0).vender(jugador);
+        jugador.getPropiedades().get(0).vender();
 
         Assert.assertEquals(0, jugador.getPropiedades().size());
     }
@@ -52,7 +61,7 @@ public class ServiciosTest {
         int dineroAnteriorACompra = jugador.obtenerDinero();
 
         edesur.comprar(jugador);
-        jugador.getPropiedades().get(0).vender(jugador);
+        jugador.getPropiedades().get(0).vender();
         int dineroDespues = jugador.obtenerDinero();
 
         Assert.assertEquals(dineroDespues, dineroAnteriorACompra - 5250);
@@ -121,5 +130,99 @@ public class ServiciosTest {
         int dineroPosterior = jugador2.obtenerDinero();
 
         Assert.assertEquals(dineroPosterior, dineroAnterior - 6000);
+   
+        
     }
-}
+    
+    //////////////test segunda entrega
+    
+    @Test
+    public void jugadorCaeEnTRENESadquiridaPreviamentePorOtroQueNoPoseeSUBTES() {
+    //Verificar que su dinero se reduzca por 450 veces lo que dice los dados arrojados previamente.
+    	Jugador jugador = new Jugador();
+    	Jugador jugador2 = new Jugador();
+		TREN trenes = new TREN();
+		SUBTE subtes = new SUBTE();
+		trenes.conocer(subtes);
+		subtes.conocer(trenes);
+		trenes.aceptar(jugador);//compra trenes
+		assertEquals(jugador2.obtenerDinero(),100000);
+		jugador2.setValorDeTiro(12);
+		trenes.aceptar(jugador2);
+		assertEquals(jugador2.obtenerDinero(),100000-(12*450));
+    }
+    
+    @Test
+    public void  jugadorCaeEnTRENESYElDuenioEsOtroJugadorQueAdemasPoseeSubtes() {
+    //Verificar que su dinero se reduzca por 800 veces lo que dice los dados arrojados previamente.
+    	Jugador jugador = new Jugador();
+    	Jugador jugador2 = new Jugador();
+		TREN trenes = new TREN();
+		SUBTE subtes = new SUBTE();
+		trenes.conocer(subtes);
+		subtes.conocer(trenes);
+		trenes.aceptar(jugador);//compra trenes
+		subtes.aceptar(jugador);//compra subtes
+		assertEquals(jugador2.obtenerDinero(),100000);
+		jugador2.setValorDeTiro(12);
+		trenes.aceptar(jugador2);
+		assertEquals(jugador2.obtenerDinero(),100000-(12*800));
+    }
+    
+
+    
+    @Test
+    public void jugadorCaeEnEDESURAdquiridaPorOtroJugadorQueNoEsDuenioDeAYSA() {
+    	//Verificar que su dinero se reduzca por 500 veces lo que dice los dados arrojados previamente.
+    	Jugador jugador = new Jugador();
+    	Jugador jugador2 = new Jugador();
+		EDESUR edesur = new EDESUR();
+		AYSA aysa = new AYSA();
+		aysa.conocer(edesur);
+		edesur.conocer(aysa);
+		edesur.aceptar(jugador);//compra edesur
+		assertEquals(jugador2.obtenerDinero(),100000);
+		jugador2.setValorDeTiro(12);
+		edesur.aceptar(jugador2);
+		assertEquals(jugador2.obtenerDinero(),100000-(12*500));
+    	
+    }
+    
+    @Test
+    public void jugadorCaeEnEDESURAdquiridaPorOtroJugadorQueEsDuenioDeAYSA() {
+    	// Verificar que su dinero se reduzca por 1000 veces lo que dice los dados arrojados previamente.
+    	Jugador jugador = new Jugador();
+    	Jugador jugador2 = new Jugador();
+		EDESUR edesur = new EDESUR();
+		AYSA aysa = new AYSA();
+		aysa.conocer(edesur);
+		edesur.conocer(aysa);
+		edesur.aceptar(jugador);//compra edesur
+		aysa.aceptar(jugador);//compra aysa
+		assertEquals(jugador2.obtenerDinero(),100000);
+		jugador2.setValorDeTiro(12);
+		edesur.aceptar(jugador2);
+		assertEquals(jugador2.obtenerDinero(),100000-(12*1000));
+    	
+    }
+    
+    @Test
+    public void jugadorIntercambiaUnaPropiedadSuyaPorOtraPropiedadDeOtroJugador() {
+    //Verificar que un tercer jugador cae en el área y el cobro del dinero se acredita en la cuenta del jugador que ostenta la titularidad.
+    	Jugador jugador1 = new Jugador();
+    	Jugador jugador2 = new Jugador();
+    	Jugador jugador3 = new Jugador();
+		EDESUR edesur = new EDESUR();
+		AYSA aysa = new AYSA();
+		aysa.conocer(edesur);
+		edesur.conocer(aysa);
+        edesur.aceptar(jugador1);
+        edesur.vender();
+        assertEquals(jugador2.obtenerDinero(),100000);
+        edesur.aceptar(jugador2);
+        assertEquals(jugador2.obtenerDinero(),100000-35000);
+    	jugador3.setValorDeTiro(12);
+        edesur.aceptar(jugador3);
+        assertEquals(jugador2.obtenerDinero(),100000-35000+(12*500));
+    }
+ }
