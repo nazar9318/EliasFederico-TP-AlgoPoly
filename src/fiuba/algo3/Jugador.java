@@ -104,6 +104,7 @@ public class Jugador implements Visitante {
 	}
 	
 	public boolean poseeALaAsociadaDe(Propiedad propiedad) {
+		if (propiedad.getCeldaAsociada() == null) return true;
 		return (propiedad.getCeldaAsociada().getDuenio() == this);
 	}
 

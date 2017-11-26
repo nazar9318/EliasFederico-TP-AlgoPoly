@@ -14,7 +14,5 @@ public class BuenosAiresSur extends Barrio{
         super.alquiler1 = 1000;
         super.alquiler2 = 500;
         super.alquilerHotel = 3000;
-    	super.casas = new ArrayList<Casa>(); 
-    	super.hoteles = new ArrayList<Hotel>(); 
     }
 }

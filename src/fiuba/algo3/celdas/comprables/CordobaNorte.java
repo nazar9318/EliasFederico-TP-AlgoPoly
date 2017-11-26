@@ -14,7 +14,5 @@ public class CordobaNorte extends Barrio{
         super.alquiler1 = 500;
         super.alquiler2 = 1100;
         super.alquilerHotel = 2200;
-		super.casas = new ArrayList<Casa>(); 
-		super.hoteles = new ArrayList<Hotel>(); 
     }
 }

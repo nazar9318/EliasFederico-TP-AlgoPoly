@@ -13,8 +13,6 @@ public class CordobaSur extends Barrio{
         super.maxHoteles = 1;
         super.alquiler1 = 500;
         super.alquiler2 = 1000;
-        super.alquilerHotel = 2000;
-		super.casas = new ArrayList<Casa>(); 
-		super.hoteles = new ArrayList<Hotel>(); 
+        super.alquilerHotel = 2000; 
     }
 }

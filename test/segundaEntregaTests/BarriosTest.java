@@ -679,6 +679,101 @@ public class BarriosTest {
 		tablero.avanzarJugador(otroJugador, 14);
 		int dineroPosterior = otroJugador.obtenerDinero();
 		assertEquals(dineroInicial - 5500, dineroPosterior);
-
+	}
+	
+	@Test
+	public void jugadorCuentaConSantaFeYConstruyeUnaCasaSuDineroDeberiaReducirseEn4mil() {
+		AlgoPoly juego = new AlgoPoly();
+		juego.inicializarJuego();
+		ArrayList<Jugador> jugadores = juego.getJugadores();
+		Tablero tablero = juego.getTablero();
+		Jugador unJugador = jugadores.get(0);
+		tablero.avanzarJugador(unJugador, 11);
+		Barrio SantaFe = (Barrio) tablero.getPosicionDeJugador(unJugador);
+		int dineroInicial = unJugador.obtenerDinero();
+		unJugador.construir(SantaFe);
+		int dineroPosterior = unJugador.obtenerDinero();
+		assertEquals(dineroInicial - 4000, dineroPosterior);
+	}
+	
+	@Test
+	public void jugadorCuentaConNeuquenYConstruyeUnaCasaSuDineroDeberiaReducirseEn4800() {
+		AlgoPoly juego = new AlgoPoly();
+		juego.inicializarJuego();
+		ArrayList<Jugador> jugadores = juego.getJugadores();
+		Tablero tablero = juego.getTablero();
+		Jugador unJugador = jugadores.get(0);
+		tablero.avanzarJugador(unJugador, 17);
+		Barrio Neuquen = (Barrio) tablero.getPosicionDeJugador(unJugador);
+		int dineroInicial = unJugador.obtenerDinero();
+		unJugador.construir(Neuquen);
+		int dineroPosterior = unJugador.obtenerDinero();
+		assertEquals(dineroInicial - 4800, dineroPosterior);
+	}
+	
+	@Test
+	public void jugadorCuentaConTucumanYConstruyeUnaCasaSuDineroDeberiaReducirseEn7mil() {
+		AlgoPoly juego = new AlgoPoly();
+		juego.inicializarJuego();
+		ArrayList<Jugador> jugadores = juego.getJugadores();
+		Tablero tablero = juego.getTablero();
+		Jugador unJugador = jugadores.get(0);
+		tablero.avanzarJugador(unJugador, 19);
+		Barrio Tucuman = (Barrio) tablero.getPosicionDeJugador(unJugador);
+		int dineroInicial = unJugador.obtenerDinero();
+		unJugador.construir(Tucuman);
+		int dineroPosterior = unJugador.obtenerDinero();
+		assertEquals(dineroInicial - 7000, dineroPosterior);
+	}
+	
+	@Test
+	public void unJugadorCuentaConSantaFeYUnaCasaYUnContrincanteCaeEnSantaFeSuDineroDeberiaReducirseEn3500() {
+		AlgoPoly juego = new AlgoPoly();
+		juego.inicializarJuego();
+		ArrayList<Jugador> jugadores = juego.getJugadores();
+		Tablero tablero = juego.getTablero();
+		Jugador unJugador = jugadores.get(0);
+		tablero.avanzarJugador(unJugador, 11);
+		Barrio SantaFe = (Barrio) tablero.getPosicionDeJugador(unJugador);
+		unJugador.construir(SantaFe);
+		Jugador otroJugador = jugadores.get(2);
+		int dineroInicial = otroJugador.obtenerDinero();
+		tablero.avanzarJugador(otroJugador, 11);
+		int dineroPosterior = otroJugador.obtenerDinero();
+		assertEquals(dineroInicial - 3500, dineroPosterior);
+	}
+	
+	@Test
+	public void unJugadorCuentaConNeuquenYUnaCasaYUnContrincanteCaeEnSantaFeSuDineroDeberiaReducirseEn3800() {
+		AlgoPoly juego = new AlgoPoly();
+		juego.inicializarJuego();
+		ArrayList<Jugador> jugadores = juego.getJugadores();
+		Tablero tablero = juego.getTablero();
+		Jugador unJugador = jugadores.get(0);
+		tablero.avanzarJugador(unJugador, 17);
+		Barrio Neuquen = (Barrio) tablero.getPosicionDeJugador(unJugador);
+		unJugador.construir(Neuquen);
+		Jugador otroJugador = jugadores.get(2);
+		int dineroInicial = otroJugador.obtenerDinero();
+		tablero.avanzarJugador(otroJugador, 17);
+		int dineroPosterior = otroJugador.obtenerDinero();
+		assertEquals(dineroInicial - 3800, dineroPosterior);
+	}
+	
+	@Test
+	public void unJugadorCuentaConTucumanYUnaCasaYUnContrincanteCaeEnSantaFeSuDineroDeberiaReducirseEn4500() {
+		AlgoPoly juego = new AlgoPoly();
+		juego.inicializarJuego();
+		ArrayList<Jugador> jugadores = juego.getJugadores();
+		Tablero tablero = juego.getTablero();
+		Jugador unJugador = jugadores.get(0);
+		tablero.avanzarJugador(unJugador, 19);
+		Barrio Tucuman = (Barrio) tablero.getPosicionDeJugador(unJugador);
+		unJugador.construir(Tucuman);
+		Jugador otroJugador = jugadores.get(2);
+		int dineroInicial = otroJugador.obtenerDinero();
+		tablero.avanzarJugador(otroJugador, 19);
+		int dineroPosterior = otroJugador.obtenerDinero();
+		assertEquals(dineroInicial - 4500, dineroPosterior);
 	}
 }

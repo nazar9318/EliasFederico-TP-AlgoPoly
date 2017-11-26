@@ -1,4 +1,4 @@
-package testCeldas;
+package segundaEntregaTests;
 
 import fiuba.algo3.AlgoPoly;
 import fiuba.algo3.Jugador;

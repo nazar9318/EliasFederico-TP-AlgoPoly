@@ -22,6 +22,8 @@ public abstract class Barrio extends Propiedad implements Visitable {
 		super(precioTerreno, alquiler, nombre);
 		this.precioCasa = precioCasa;
 		this.precioHotel = precioHotel;
+		this.casas = new ArrayList<Casa>(); 
+		this.hoteles = new ArrayList<Hotel>(); 
 	}
 	
 	public void cobrarAlquiler(Jugador jugador) {

@@ -14,8 +14,6 @@ public class SaltaSur extends Barrio{
         super.alquiler1 = 1250;
         super.alquiler2 = 600;
         super.alquilerHotel = 3500;
-		super.casas = new ArrayList<Casa>(); 
-		super.hoteles = new ArrayList<Hotel>(); 
 		
     }
 }
