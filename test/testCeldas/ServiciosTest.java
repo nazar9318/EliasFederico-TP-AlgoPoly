@@ -208,7 +208,7 @@ public class ServiciosTest {
     
     @Test
     public void jugadorIntercambiaUnaPropiedadSuyaPorOtraPropiedadDeOtroJugador() {
-    //Verificar que un tercer jugador cae en el área y el cobro del dinero se acredita en la cuenta del jugador que ostenta la titularidad.
+    //Verificar que un tercer jugador cae en el area y el cobro del dinero se acredita en la cuenta del jugador que ostenta la titularidad.
     	Jugador jugador1 = new Jugador();
     	Jugador jugador2 = new Jugador();
     	Jugador jugador3 = new Jugador();
