@@ -185,6 +185,22 @@ public class BarriosTest {
 	}
 	
 	@Test
+	public void jugadorCuentaConSaltaSurYSaltaNorteYConstruyeUnaCasaSuDineroDeberiaReducirseEn4500() {
+		AlgoPoly juego = new AlgoPoly();
+		juego.inicializarJuego();
+		ArrayList<Jugador> jugadores = juego.getJugadores();
+		Tablero tablero = juego.getTablero();
+		Jugador unJugador = jugadores.get(0);
+		tablero.avanzarJugador(unJugador, 13);
+		Barrio saltaSur = (Barrio) tablero.getPosicionDeJugador(unJugador);
+		tablero.avanzarJugador(unJugador, 1);
+		int dineroInicial = unJugador.obtenerDinero();
+		unJugador.construir(saltaSur);
+		int dineroPosterior = unJugador.obtenerDinero();
+		assertEquals(dineroInicial - 4500, dineroPosterior);
+	}
+	
+	@Test
 	public void jugadorCuentaConBsAsSurYBsAsNorteConUnaCasaEnBsAsSurAlCaerUnContrincanteSuDineroDeberiaReducirseEn3mil(){
 		Jugador traspie = new Jugador();
 		Barrio buenosAiresSur = new BuenosAiresSur();
@@ -224,6 +240,46 @@ public class BarriosTest {
 	}
 	
 	@Test
+	public void jugadorCuentaConCordobaNorteYSurConUnaCasaEnAmbasYUnContrincanteCaeEnCordobaSurSuDineroDeberiaReducirseEn1500() {
+		AlgoPoly juego = new AlgoPoly();
+		juego.inicializarJuego();
+		ArrayList<Jugador> jugadores = juego.getJugadores();
+		Tablero tablero = juego.getTablero();
+		Jugador unJugador = jugadores.get(0);
+		tablero.avanzarJugador(unJugador, 6);
+		Barrio cordobaSur = (Barrio) tablero.getPosicionDeJugador(unJugador);
+		tablero.avanzarJugador(unJugador, 3);
+		Barrio cordobaNorte = (Barrio) tablero.getPosicionDeJugador(unJugador);
+		unJugador.construir(cordobaSur);
+		unJugador.construir(cordobaNorte);
+		Jugador otroJugador = jugadores.get(1);
+		int dineroInicial = otroJugador.obtenerDinero();
+		tablero.avanzarJugador(otroJugador, 6);
+		int dineroPosterior = otroJugador.obtenerDinero();
+		assertEquals(dineroInicial - 1500, dineroPosterior);
+	}
+	
+	@Test
+	public void jugadorCuentaConSaltaNorteYSurConUnaCasaEnAmbasYUnContrincanteCaeEnSaltaNorteSuDineroDeberiaReducirseEn3250() {
+		AlgoPoly juego = new AlgoPoly();
+		juego.inicializarJuego();
+		ArrayList<Jugador> jugadores = juego.getJugadores();
+		Tablero tablero = juego.getTablero();
+		Jugador unJugador = jugadores.get(0);
+		tablero.avanzarJugador(unJugador, 13);
+		Barrio saltaNorte = (Barrio) tablero.getPosicionDeJugador(unJugador);
+		tablero.avanzarJugador(unJugador, 1);
+		Barrio saltaSur = (Barrio) tablero.getPosicionDeJugador(unJugador);
+		unJugador.construir(saltaSur);
+		unJugador.construir(saltaNorte);
+		Jugador otroJugador = jugadores.get(1);
+		int dineroInicial = otroJugador.obtenerDinero();
+		tablero.avanzarJugador(otroJugador, 13);
+		int dineroPosterior = otroJugador.obtenerDinero();
+		assertEquals(dineroInicial - 3250, dineroPosterior);
+	}
+	
+	@Test
 	public void jugadorCuentaConBsAsNorteYSurConstruyeDosCasasEnBsAsNorteYContrincanteAlCaerPaga3500(){
 		Jugador traspie = new Jugador();
 		Barrio buenosAiresSur = new BuenosAiresSur();
@@ -245,6 +301,140 @@ public class BarriosTest {
 	}
 	
 	@Test
+	public void jugadorCuentaConBsAsNorteYSurCon2CasasEnSurY1EnNorteUnContrincanteCaeEnEstaAreaSuDineroDeberiaDisminuirseEn3500() {
+		AlgoPoly juego = new AlgoPoly();
+		juego.inicializarJuego();
+		ArrayList<Jugador> jugadores = juego.getJugadores();
+		Tablero tablero = juego.getTablero();
+		Jugador unJugador = jugadores.get(0);
+		tablero.avanzarJugador(unJugador, 2);
+		Barrio BsAsSur = (Barrio) tablero.getPosicionDeJugador(unJugador);
+		tablero.avanzarJugador(unJugador, 2);
+		Barrio BsAsNorte = (Barrio) tablero.getPosicionDeJugador(unJugador);
+		unJugador.construir(BsAsSur);
+		unJugador.construir(BsAsSur);
+		unJugador.construir(BsAsNorte);
+		Jugador otroJugador = jugadores.get(1);
+		int dineroInicial = otroJugador.obtenerDinero();
+		tablero.avanzarJugador(otroJugador, 2);
+		int dineroPosterior = otroJugador.obtenerDinero();
+		assertEquals(dineroInicial - 3500, dineroPosterior);
+
+	}
+	
+	@Test
+	public void jugadorCuentaConCordobaNorteYSurCon2CasasEnSurY1EnNorteUnContrincanteCaeEnEnSurSuDineroDeberiaDisminuirseEn2500() {
+		AlgoPoly juego = new AlgoPoly();
+		juego.inicializarJuego();
+		ArrayList<Jugador> jugadores = juego.getJugadores();
+		Tablero tablero = juego.getTablero();
+		Jugador unJugador = jugadores.get(0);
+		tablero.avanzarJugador(unJugador, 6);
+		Barrio cordobaSur = (Barrio) tablero.getPosicionDeJugador(unJugador);
+		tablero.avanzarJugador(unJugador, 3);
+		Barrio cordobaNorte = (Barrio) tablero.getPosicionDeJugador(unJugador);
+		unJugador.construir(cordobaSur);
+		unJugador.construir(cordobaSur);
+		unJugador.construir(cordobaNorte);
+		Jugador otroJugador = jugadores.get(1);
+		int dineroInicial = otroJugador.obtenerDinero();
+		tablero.avanzarJugador(otroJugador, 6);
+		int dineroPosterior = otroJugador.obtenerDinero();
+		assertEquals(dineroInicial - 2500, dineroPosterior);
+
+	}
+	
+	@Test
+	public void jugadorCuentaConCordobaNorteYSurCon2CasasEnSurY1EnNorteUnContrincanteCaeEnEnNorteSuDineroDeberiaDisminuirseEn1800() {
+		AlgoPoly juego = new AlgoPoly();
+		juego.inicializarJuego();
+		ArrayList<Jugador> jugadores = juego.getJugadores();
+		Tablero tablero = juego.getTablero();
+		Jugador unJugador = jugadores.get(0);
+		tablero.avanzarJugador(unJugador, 6);
+		Barrio cordobaSur = (Barrio) tablero.getPosicionDeJugador(unJugador);
+		tablero.avanzarJugador(unJugador, 3);
+		Barrio cordobaNorte = (Barrio) tablero.getPosicionDeJugador(unJugador);
+		unJugador.construir(cordobaSur);
+		unJugador.construir(cordobaSur);
+		unJugador.construir(cordobaNorte);
+		Jugador otroJugador = jugadores.get(1);
+		int dineroInicial = otroJugador.obtenerDinero();
+		tablero.avanzarJugador(otroJugador, 9);
+		int dineroPosterior = otroJugador.obtenerDinero();
+		assertEquals(dineroInicial - 1800, dineroPosterior);
+
+	}
+	
+	@Test
+	public void jugadorCuentaConCordobaNorteYSurCon2CasasEnSurYNorteUnContrincanteCaeEnEnNorteSuDineroDeberiaDisminuirseEn2900() {
+		AlgoPoly juego = new AlgoPoly();
+		juego.inicializarJuego();
+		ArrayList<Jugador> jugadores = juego.getJugadores();
+		Tablero tablero = juego.getTablero();
+		Jugador unJugador = jugadores.get(0);
+		tablero.avanzarJugador(unJugador, 6);
+		Barrio cordobaSur = (Barrio) tablero.getPosicionDeJugador(unJugador);
+		tablero.avanzarJugador(unJugador, 3);
+		Barrio cordobaNorte = (Barrio) tablero.getPosicionDeJugador(unJugador);
+		unJugador.construir(cordobaSur);
+		unJugador.construir(cordobaSur);
+		unJugador.construir(cordobaNorte);
+		unJugador.construir(cordobaNorte);
+		Jugador otroJugador = jugadores.get(1);
+		int dineroInicial = otroJugador.obtenerDinero();
+		tablero.avanzarJugador(otroJugador, 9);
+		int dineroPosterior = otroJugador.obtenerDinero();
+		assertEquals(dineroInicial - 2900, dineroPosterior);
+
+	}
+	
+	@Test
+	public void jugadorCuentaConSaltaNorteYSurCon2CasasEnSurY1EnNorteUnContrincanteCaeEnEnNorteSuDineroDeberiaDisminuirseEn3250() {
+		AlgoPoly juego = new AlgoPoly();
+		juego.inicializarJuego();
+		ArrayList<Jugador> jugadores = juego.getJugadores();
+		Tablero tablero = juego.getTablero();
+		Jugador unJugador = jugadores.get(0);
+		tablero.avanzarJugador(unJugador, 13);
+		Barrio saltaNorte = (Barrio) tablero.getPosicionDeJugador(unJugador);
+		tablero.avanzarJugador(unJugador, 1);
+		Barrio saltaSur = (Barrio) tablero.getPosicionDeJugador(unJugador);
+		unJugador.construir(saltaSur);
+		unJugador.construir(saltaSur);
+		unJugador.construir(saltaNorte);
+		Jugador otroJugador = jugadores.get(1);
+		int dineroInicial = otroJugador.obtenerDinero();
+		tablero.avanzarJugador(otroJugador, 13);
+		int dineroPosterior = otroJugador.obtenerDinero();
+		assertEquals(dineroInicial - 3250, dineroPosterior);
+
+	}
+	
+	@Test
+	public void jugadorCuentaSaltaNorteYSurCon2CasasEnSurYNorteUnContrincanteCaeEnEnNorteSuDineroDeberiaDisminuirseEn3850() {
+		AlgoPoly juego = new AlgoPoly();
+		juego.inicializarJuego();
+		ArrayList<Jugador> jugadores = juego.getJugadores();
+		Tablero tablero = juego.getTablero();
+		Jugador unJugador = jugadores.get(0);
+		tablero.avanzarJugador(unJugador, 13);
+		Barrio saltaNorte = (Barrio) tablero.getPosicionDeJugador(unJugador);
+		tablero.avanzarJugador(unJugador, 1);
+		Barrio saltaSur = (Barrio) tablero.getPosicionDeJugador(unJugador);
+		unJugador.construir(saltaSur);
+		unJugador.construir(saltaSur);
+		unJugador.construir(saltaNorte);
+		unJugador.construir(saltaNorte);
+		Jugador otroJugador = jugadores.get(1);
+		int dineroInicial = otroJugador.obtenerDinero();
+		tablero.avanzarJugador(otroJugador, 13);
+		int dineroPosterior = otroJugador.obtenerDinero();
+		assertEquals(dineroInicial - 3850, dineroPosterior);
+
+	}
+	
+	@Test
 	public void jugadorCuentaConBsAsNorteYSurConstruyeDosCasasEnNorteYUnaEnSurYNoPuedeConstruirHotelEnNorte(){
 		Jugador traspie = new Jugador();
 		Barrio buenosAiresSur = new BuenosAiresSur();
@@ -263,6 +453,48 @@ public class BarriosTest {
 		traspie.construir(buenosAiresNorte);
 		
 		assertEquals(dineroAntesDeIntentarConstruirHotel, traspie.obtenerDinero());
+	}
+	
+	@Test
+	public void jugadorCuentaConCordobaNorteYSurCon2CasasEnSurY1EnNorteYConstruyeUnHotelSuDineroNoDeberiaDisminuir() {
+		AlgoPoly juego = new AlgoPoly();
+		juego.inicializarJuego();
+		ArrayList<Jugador> jugadores = juego.getJugadores();
+		Tablero tablero = juego.getTablero();
+		Jugador unJugador = jugadores.get(0);
+		tablero.avanzarJugador(unJugador, 6);
+		Barrio cordobaSur = (Barrio) tablero.getPosicionDeJugador(unJugador);
+		tablero.avanzarJugador(unJugador, 3);
+		Barrio cordobaNorte = (Barrio) tablero.getPosicionDeJugador(unJugador);
+		unJugador.construir(cordobaSur);
+		unJugador.construir(cordobaSur);
+		unJugador.construir(cordobaNorte);
+		int dineroInicial = unJugador.obtenerDinero();
+		unJugador.construir(cordobaSur);
+		int dineroPosterior = unJugador.obtenerDinero();
+		assertEquals(dineroInicial, dineroPosterior);
+
+	}
+	
+	@Test
+	public void jugadorCuentaConSaltaNorteYSurCon2CasasEnSurY1EnNorteYConstruyeUnHotelSuDineroNoDeberiaDisminuir() {
+		AlgoPoly juego = new AlgoPoly();
+		juego.inicializarJuego();
+		ArrayList<Jugador> jugadores = juego.getJugadores();
+		Tablero tablero = juego.getTablero();
+		Jugador unJugador = jugadores.get(0);
+		tablero.avanzarJugador(unJugador, 13);
+		Barrio saltaNorte = (Barrio) tablero.getPosicionDeJugador(unJugador);
+		tablero.avanzarJugador(unJugador, 1);
+		Barrio saltaSur = (Barrio) tablero.getPosicionDeJugador(unJugador);
+		unJugador.construir(saltaSur);
+		unJugador.construir(saltaSur);
+		unJugador.construir(saltaNorte);
+		int dineroInicial = unJugador.obtenerDinero();
+		unJugador.construir(saltaSur);
+		int dineroPosterior = unJugador.obtenerDinero();
+		assertEquals(dineroInicial, dineroPosterior);
+
 	}
 	
 	@Test
@@ -289,6 +521,72 @@ public class BarriosTest {
 	}
 	
 	@Test
+	public void jugadorCuentaConCordobaNorteYSurCon2CasasEnSurYNorteYConstruyeUnHotelEnElSurSuDineroDeberiaDisminuirEn3mil() {
+		AlgoPoly juego = new AlgoPoly();
+		juego.inicializarJuego();
+		ArrayList<Jugador> jugadores = juego.getJugadores();
+		Tablero tablero = juego.getTablero();
+		Jugador unJugador = jugadores.get(0);
+		tablero.avanzarJugador(unJugador, 6);
+		Barrio cordobaSur = (Barrio) tablero.getPosicionDeJugador(unJugador);
+		tablero.avanzarJugador(unJugador, 3);
+		Barrio cordobaNorte = (Barrio) tablero.getPosicionDeJugador(unJugador);
+		unJugador.construir(cordobaSur);
+		unJugador.construir(cordobaSur);
+		unJugador.construir(cordobaNorte);
+		unJugador.construir(cordobaNorte);
+		int dineroInicial = unJugador.obtenerDinero();
+		unJugador.construir(cordobaSur);
+		int dineroPosterior = unJugador.obtenerDinero();
+		assertEquals(dineroInicial - 3000, dineroPosterior);
+
+	}
+	
+	@Test
+	public void jugadorCuentaConCordobaNorteYSurCon2CasasEnSurYNorteYConstruyeUnHotelEnNorteSuDineroDeberiaDisminuirEn3500() {
+		AlgoPoly juego = new AlgoPoly();
+		juego.inicializarJuego();
+		ArrayList<Jugador> jugadores = juego.getJugadores();
+		Tablero tablero = juego.getTablero();
+		Jugador unJugador = jugadores.get(0);
+		tablero.avanzarJugador(unJugador, 6);
+		Barrio cordobaSur = (Barrio) tablero.getPosicionDeJugador(unJugador);
+		tablero.avanzarJugador(unJugador, 3);
+		Barrio cordobaNorte = (Barrio) tablero.getPosicionDeJugador(unJugador);
+		unJugador.construir(cordobaSur);
+		unJugador.construir(cordobaSur);
+		unJugador.construir(cordobaNorte);
+		unJugador.construir(cordobaNorte);
+		int dineroInicial = unJugador.obtenerDinero();
+		unJugador.construir(cordobaNorte);
+		int dineroPosterior = unJugador.obtenerDinero();
+		assertEquals(dineroInicial - 3500, dineroPosterior);
+
+	}
+	
+	@Test
+	public void jugadorCuentaConSaltaNorteYSurCon2CasasEnSurYNorteYConstruyeUnHotelSuDineroDeberiaDisminuirEn7500() {
+		AlgoPoly juego = new AlgoPoly();
+		juego.inicializarJuego();
+		ArrayList<Jugador> jugadores = juego.getJugadores();
+		Tablero tablero = juego.getTablero();
+		Jugador unJugador = jugadores.get(0);
+		tablero.avanzarJugador(unJugador, 13);
+		Barrio saltaNorte = (Barrio) tablero.getPosicionDeJugador(unJugador);
+		tablero.avanzarJugador(unJugador, 1);
+		Barrio saltaSur = (Barrio) tablero.getPosicionDeJugador(unJugador);
+		unJugador.construir(saltaSur);
+		unJugador.construir(saltaSur);
+		unJugador.construir(saltaNorte);
+		unJugador.construir(saltaNorte);
+		int dineroInicial = unJugador.obtenerDinero();
+		unJugador.construir(saltaSur);
+		int dineroPosterior = unJugador.obtenerDinero();
+		assertEquals(dineroInicial - 7500, dineroPosterior);
+
+	}
+	
+	@Test
 	public void jugadorCuentaConBsAsNorteYSurConstruyeDosCasasEnAmbasYHotelEnSurLuegoUnContrincanteCaeEnNorteYPagaAlquier(){
 		Jugador traspie = new Jugador();
 		Barrio buenosAiresSur = new BuenosAiresSur();
@@ -310,5 +608,77 @@ public class BarriosTest {
 		buenosAiresSur.aceptar(regio);
 		
 		assertEquals(regio.obtenerDinero(), dineroAntesDeCaerEnBarrioConHotel - 5000);
+	}
+	
+	@Test
+	public void jugadorCuentaConCordobaNorteYSurConUnHotelEnElSurYUnContrincanteCaeEnCordobaSurSuDineroDeberiaDisminuirEn3mil() {
+		AlgoPoly juego = new AlgoPoly();
+		juego.inicializarJuego();
+		ArrayList<Jugador> jugadores = juego.getJugadores();
+		Tablero tablero = juego.getTablero();
+		Jugador unJugador = jugadores.get(0);
+		tablero.avanzarJugador(unJugador, 6);
+		Barrio cordobaSur = (Barrio) tablero.getPosicionDeJugador(unJugador);
+		tablero.avanzarJugador(unJugador, 3);
+		Barrio cordobaNorte = (Barrio) tablero.getPosicionDeJugador(unJugador);
+		unJugador.construir(cordobaSur);
+		unJugador.construir(cordobaSur);
+		unJugador.construir(cordobaNorte);
+		unJugador.construir(cordobaNorte);
+		unJugador.construir(cordobaSur);
+		Jugador otroJugador = jugadores.get(1);
+		int dineroInicial = otroJugador.obtenerDinero();
+		tablero.avanzarJugador(otroJugador, 6);
+		int dineroPosterior = otroJugador.obtenerDinero();
+		assertEquals(dineroInicial - 3000, dineroPosterior);
+
+	}
+	
+	@Test
+	public void jugadorCuentaConCordobaNorteYSurConUnHotelEnNorteYUnContrincanteCaeEnCordobaNorteSuDineroDeberiaDisminuirEn3500() {
+		AlgoPoly juego = new AlgoPoly();
+		juego.inicializarJuego();
+		ArrayList<Jugador> jugadores = juego.getJugadores();
+		Tablero tablero = juego.getTablero();
+		Jugador unJugador = jugadores.get(0);
+		tablero.avanzarJugador(unJugador, 6);
+		Barrio cordobaSur = (Barrio) tablero.getPosicionDeJugador(unJugador);
+		tablero.avanzarJugador(unJugador, 3);
+		Barrio cordobaNorte = (Barrio) tablero.getPosicionDeJugador(unJugador);
+		unJugador.construir(cordobaSur);
+		unJugador.construir(cordobaSur);
+		unJugador.construir(cordobaNorte);
+		unJugador.construir(cordobaNorte);
+		unJugador.construir(cordobaNorte);
+		Jugador otroJugador = jugadores.get(1);
+		int dineroInicial = otroJugador.obtenerDinero();
+		tablero.avanzarJugador(otroJugador, 9);
+		int dineroPosterior = otroJugador.obtenerDinero();
+		assertEquals(dineroInicial - 3500, dineroPosterior);
+
+	}
+	
+	@Test
+	public void jugadorCuentaConSaltaNorteYSurConHotelYUnContrincanteCaeEnSaltaSurSuDineroDeberiaDisminuirEn5500() {
+		AlgoPoly juego = new AlgoPoly();
+		juego.inicializarJuego();
+		ArrayList<Jugador> jugadores = juego.getJugadores();
+		Tablero tablero = juego.getTablero();
+		Jugador unJugador = jugadores.get(0);
+		tablero.avanzarJugador(unJugador, 13);
+		Barrio saltaNorte = (Barrio) tablero.getPosicionDeJugador(unJugador);
+		tablero.avanzarJugador(unJugador, 1);
+		Barrio saltaSur = (Barrio) tablero.getPosicionDeJugador(unJugador);
+		unJugador.construir(saltaSur);
+		unJugador.construir(saltaSur);
+		unJugador.construir(saltaNorte);
+		unJugador.construir(saltaNorte);
+		unJugador.construir(saltaSur);
+		Jugador otroJugador = jugadores.get(1);
+		int dineroInicial = otroJugador.obtenerDinero();
+		tablero.avanzarJugador(otroJugador, 14);
+		int dineroPosterior = otroJugador.obtenerDinero();
+		assertEquals(dineroInicial - 5500, dineroPosterior);
+
 	}
 }

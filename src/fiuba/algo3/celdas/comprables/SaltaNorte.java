@@ -8,7 +8,7 @@ import fiuba.algo3.celdas.Hotel;
 public class SaltaNorte extends Barrio{
 
     public SaltaNorte() {
-        super(23000, 2000, "SaltaNorte", 4500, 5500);
+        super(23000, 2000, "SaltaNorte", 4500, 7500);
         super.maxCasas = 2;
         super.maxHoteles = 1;
         super.alquiler1 = 1250;
