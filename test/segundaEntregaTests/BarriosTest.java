@@ -9,7 +9,12 @@ import org.junit.Test;
 import fiuba.algo3.AlgoPoly;
 import fiuba.algo3.Jugador;
 import fiuba.algo3.Tablero;
+import fiuba.algo3.celdas.Visitable;
 import fiuba.algo3.celdas.comprables.Barrio;
+import fiuba.algo3.celdas.comprables.BuenosAiresNorte;
+import fiuba.algo3.celdas.comprables.BuenosAiresSur;
+import fiuba.algo3.celdas.comprables.CordobaNorte;
+import fiuba.algo3.celdas.comprables.CordobaSur;
 
 public class BarriosTest {
 
@@ -146,24 +151,60 @@ public class BarriosTest {
 		assertEquals(dineroInicial - 5000, dineroPosterior);
 	}
 	
-	/*@Test
+	@Test
 	public void jugadorCuentaConCordobaSurYCordobaNorteYConstruyeUnaCasaSuDineroDeberiaReducirseEn2mil() {
+		Jugador traspie = new Jugador();
+		Barrio cordobaSur = new CordobaSur();
+		Barrio cordobaNorte = new CordobaNorte();
+		
+		cordobaSur.conocer(cordobaNorte);
+		cordobaNorte.conocer(cordobaSur);
+		
+		cordobaSur.aceptar(traspie);
+		cordobaNorte.aceptar(traspie);
+		int dineroAntesDeConstruir = traspie.obtenerDinero();
+		traspie.construir(cordobaSur);
+		
+		assertEquals(traspie.obtenerDinero(), dineroAntesDeConstruir -2000);
+	}
+	
+	@Test
+	public void jugadorRecorreTableroCompraLasDosCordobasConstruyeEnUnaYSuDineroSeReduceEnDosMil(){
 		AlgoPoly juego = new AlgoPoly();
 		juego.inicializarJuego();
 		ArrayList<Jugador> jugadores = juego.getJugadores();
 		Tablero tablero = juego.getTablero();
 		Jugador unJugador = jugadores.get(0);
 		tablero.avanzarJugador(unJugador, 6);
-		Barrio CordobaSur = (Barrio) tablero.getPosicionDeJugador(unJugador);
-		tablero.avanzarJugador(unJugador, 9);
+		Barrio cordobaSur = (Barrio) tablero.getPosicionDeJugador(unJugador);
+		tablero.avanzarJugador(unJugador, 3);
 		int dineroInicial = unJugador.obtenerDinero();
-		unJugador.construir(CordobaSur);
+		unJugador.construir(cordobaSur);
 		int dineroPosterior = unJugador.obtenerDinero();
 		assertEquals(dineroInicial - 2000, dineroPosterior);
-	}*/ //No se esta descontando el alquiler correctamente
+	}
 	
-	/*@Test
-	public void jugadorCuentaConBsAsSurYBsAsNorteConUnaCasaEnAmbasAlCaerUnContrincanteSuDineroDeberiaReducirseEn3mil() {
+	@Test
+	public void jugadorCuentaConBsAsSurYBsAsNorteConUnaCasaEnBsAsSurAlCaerUnContrincanteSuDineroDeberiaReducirseEn3mil(){
+		Jugador traspie = new Jugador();
+		Barrio buenosAiresSur = new BuenosAiresSur();
+		Barrio buenosAiresNorte = new BuenosAiresNorte();
+		
+		buenosAiresSur.conocer(buenosAiresNorte);
+		buenosAiresNorte.conocer(buenosAiresSur);
+		
+		buenosAiresSur.aceptar(traspie);
+		buenosAiresNorte.aceptar(traspie);
+		traspie.construir(buenosAiresSur);
+		
+		Jugador regio = new Jugador();
+		int dineroAntesDeAlquilar = regio.obtenerDinero();
+		buenosAiresSur.aceptar(regio);
+		assertEquals(regio.obtenerDinero(), dineroAntesDeAlquilar -3000);
+	}
+	
+	@Test
+	public void jugadorRecorreTableroComprandoBsAsNorteYSurContrincanteRecorreTableroCaeEnBsAsSurYPagaTresMilPesos() {
 		AlgoPoly juego = new AlgoPoly();
 		juego.inicializarJuego();
 		ArrayList<Jugador> jugadores = juego.getJugadores();
@@ -180,5 +221,94 @@ public class BarriosTest {
 		tablero.avanzarJugador(otroJugador, 2);
 		int dineroPosterior = otroJugador.obtenerDinero();
 		assertEquals(dineroInicial - 3000, dineroPosterior);
-	}*/   //Falta la modificacion del precio del alquiler con una casa
+	}
+	
+	@Test
+	public void jugadorCuentaConBsAsNorteYSurConstruyeDosCasasEnBsAsNorteYContrincanteAlCaerPaga3500(){
+		Jugador traspie = new Jugador();
+		Barrio buenosAiresSur = new BuenosAiresSur();
+		Barrio buenosAiresNorte = new BuenosAiresNorte();
+		
+		buenosAiresSur.conocer(buenosAiresNorte);
+		buenosAiresNorte.conocer(buenosAiresSur);
+		
+		buenosAiresSur.aceptar(traspie);
+		buenosAiresNorte.aceptar(traspie);
+		
+		traspie.construir(buenosAiresSur);
+		traspie.construir(buenosAiresSur);
+		
+		Jugador regio = new Jugador();
+		int dineroAntesDeAlquilar = regio.obtenerDinero();
+		buenosAiresSur.aceptar(regio);
+		assertEquals(regio.obtenerDinero(), dineroAntesDeAlquilar - 3500);
+	}
+	
+	@Test
+	public void jugadorCuentaConBsAsNorteYSurConstruyeDosCasasEnNorteYUnaEnSurYNoPuedeConstruirHotelEnNorte(){
+		Jugador traspie = new Jugador();
+		Barrio buenosAiresSur = new BuenosAiresSur();
+		Barrio buenosAiresNorte = new BuenosAiresNorte();
+		
+		buenosAiresSur.conocer(buenosAiresNorte);
+		buenosAiresNorte.conocer(buenosAiresSur);
+		
+		buenosAiresSur.aceptar(traspie);
+		buenosAiresNorte.aceptar(traspie);
+		
+		traspie.construir(buenosAiresSur);
+		traspie.construir(buenosAiresNorte);
+		traspie.construir(buenosAiresNorte);
+		int dineroAntesDeIntentarConstruirHotel = traspie.obtenerDinero();
+		traspie.construir(buenosAiresNorte);
+		
+		assertEquals(dineroAntesDeIntentarConstruirHotel, traspie.obtenerDinero());
+	}
+	
+	@Test
+	public void jugadorCuentaConBsAsNorteYSurConstruyeDosCasasEnAmbasYAlConstruirHotelEnSurSuDineroSeDecrementaEn8mil(){
+		Jugador traspie = new Jugador();
+		Barrio buenosAiresSur = new BuenosAiresSur();
+		Barrio buenosAiresNorte = new BuenosAiresNorte();
+		
+		buenosAiresSur.conocer(buenosAiresNorte);
+		buenosAiresNorte.conocer(buenosAiresSur);
+		
+		buenosAiresSur.aceptar(traspie);
+		buenosAiresNorte.aceptar(traspie);
+		
+		traspie.construir(buenosAiresSur);
+		traspie.construir(buenosAiresSur);
+		traspie.construir(buenosAiresNorte);
+		traspie.construir(buenosAiresNorte);
+		
+		int dineroAntesDeIntentarConstruirHotel = traspie.obtenerDinero();
+		traspie.construir(buenosAiresSur);
+		
+		assertEquals(traspie.obtenerDinero(), dineroAntesDeIntentarConstruirHotel - 8000);
+	}
+	
+	@Test
+	public void jugadorCuentaConBsAsNorteYSurConstruyeDosCasasEnAmbasYHotelEnSurLuegoUnContrincanteCaeEnNorteYPagaAlquier(){
+		Jugador traspie = new Jugador();
+		Barrio buenosAiresSur = new BuenosAiresSur();
+		Barrio buenosAiresNorte = new BuenosAiresNorte();
+		
+		buenosAiresSur.conocer(buenosAiresNorte);
+		buenosAiresNorte.conocer(buenosAiresSur);
+		
+		buenosAiresSur.aceptar(traspie);
+		buenosAiresNorte.aceptar(traspie);
+		
+		traspie.construir(buenosAiresSur);
+		traspie.construir(buenosAiresSur);
+		traspie.construir(buenosAiresNorte);
+		traspie.construir(buenosAiresNorte);
+		traspie.construir(buenosAiresSur);
+		Jugador regio = new Jugador();
+		int dineroAntesDeCaerEnBarrioConHotel = regio.obtenerDinero();
+		buenosAiresSur.aceptar(regio);
+		
+		assertEquals(regio.obtenerDinero(), dineroAntesDeCaerEnBarrioConHotel - 5000);
+	}
 }

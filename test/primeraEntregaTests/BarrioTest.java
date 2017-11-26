@@ -72,7 +72,7 @@ public class BarrioTest {
 		jugador.visitar(buenosAiresSur);
 		jugador.visitar(buenosAiresNorte);
 		jugador.construir(buenosAiresSur);
-		assertEquals(1 , buenosAiresSur.cantidadcasas());
+		assertEquals(1 , buenosAiresSur.cantidadCasas());
 	
 	}
 	
@@ -87,7 +87,7 @@ public class BarrioTest {
 		jugador.visitar(buenosAiresNorte);
 		jugador.construir(buenosAiresSur);
 		jugador.construir(buenosAiresSur);
-		assertEquals(2 , buenosAiresSur.cantidadcasas());
+		assertEquals(2 , buenosAiresSur.cantidadCasas());
 	
 	}
 	
@@ -103,7 +103,7 @@ public class BarrioTest {
 		jugador.construir(buenosAiresSur);
 		jugador.construir(buenosAiresSur);
 		jugador.construir(buenosAiresSur);
-		assertEquals(2 , buenosAiresSur.cantidadcasas());
+		assertEquals(2 , buenosAiresSur.cantidadCasas());
 	
 	}
 	
@@ -122,8 +122,8 @@ public class BarrioTest {
 		jugador.construir(buenosAiresNorte);
 		jugador.construir(buenosAiresNorte);
 		jugador.construir(buenosAiresSur);
-		assertEquals(1 , buenosAiresSur.cantidadhoteles());
-		assertEquals(0 , buenosAiresSur.cantidadcasas());
+		assertEquals(1 , buenosAiresSur.cantidadHoteles());
+		assertEquals(0 , buenosAiresSur.cantidadCasas());
 	}
 	
 	@Test
@@ -140,8 +140,8 @@ public class BarrioTest {
 		jugador.construir(buenosAiresNorte);
 		jugador.construir(buenosAiresNorte);
 		jugador.construir(buenosAiresSur);
-		assertEquals(1 , buenosAiresSur.cantidadhoteles());
-		assertEquals(0 , buenosAiresSur.cantidadcasas());
+		assertEquals(1 , buenosAiresSur.cantidadHoteles());
+		assertEquals(0 , buenosAiresSur.cantidadCasas());
 	
 	}
 	

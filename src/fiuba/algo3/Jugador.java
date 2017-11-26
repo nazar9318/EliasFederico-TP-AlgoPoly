@@ -119,6 +119,5 @@ public class Jugador implements Visitante {
 
 	public void construir(Barrio barrio) {
 		barrio.construir(this);
-		
 	}
 }

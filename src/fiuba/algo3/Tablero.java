@@ -51,11 +51,8 @@ public class Tablero {
 	}
 	
 	public void avanzarJugador(Jugador jugador, int avance) {
-
 		Visitable celdaActual = this.jugadores.get(jugador);
 		int index = this.celdas.indexOf(celdaActual);
-		//celdaActual.sacarJugador(jugador); //TODO: reemplazar sacar jugador por metodo mas integral que valide habilitacion de moverse
-
 		Visitable celdaNueva = reposicionarJugador(jugador, index, avance);
 		celdaNueva.aceptar(jugador);
 	}

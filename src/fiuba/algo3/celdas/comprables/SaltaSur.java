@@ -8,9 +8,12 @@ import fiuba.algo3.celdas.Hotel;
 public class SaltaSur extends Barrio{
 
     public SaltaSur() {
-        super(23000, 2000, "SaltaSur", 4500);
-        super.maxcasas = 2;
-        super.maxhoteles = 1;
+        super(23000, 2000, "SaltaSur", 4500, 5500);
+        super.maxCasas = 2;
+        super.maxHoteles = 1;
+        super.alquiler1 = 1250;
+        super.alquiler2 = 600;
+        super.alquilerHotel = 3500;
 		super.casas = new ArrayList<Casa>(); 
 		super.hoteles = new ArrayList<Hotel>(); 
 		
