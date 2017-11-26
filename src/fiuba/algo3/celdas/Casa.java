@@ -6,6 +6,7 @@ public class Casa {
 	private int valor;
 
 	public Casa(int alquiler1) {
+		this.valor = valor;
 		this.alquiler = alquiler1;
 	}
 

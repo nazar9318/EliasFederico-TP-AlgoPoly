@@ -11,10 +11,12 @@ public class AlgoPoly {
 
 	private Tablero tablero;
 	private ArrayList<Jugador> jugadores;
+	private Turno turno;
 
 	public AlgoPoly(){
 		this.tablero = new Tablero();
 		this.jugadores = new ArrayList<Jugador>();
+		this.turno = new Turno();
 	}
 
 	public Tablero getTablero() {
@@ -96,5 +98,9 @@ public class AlgoPoly {
 	
 	public void reiniciarJuego() {
 		Collections.shuffle(jugadores);
+	}
+	
+	public void jugarTurno(Jugador unJugador) {
+		turno.jugar(unJugador, tablero);
 	}
 }

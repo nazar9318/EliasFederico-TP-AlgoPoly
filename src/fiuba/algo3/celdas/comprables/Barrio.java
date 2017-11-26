@@ -17,8 +17,9 @@ public abstract class Barrio extends Propiedad implements Visitable {
     int preciohotel;
     int alquilerh;
     
-	protected Barrio(int precioTerreno, int alquiler, String nombre) {
+	protected Barrio(int precioTerreno, int alquiler, String nombre, int precioCasa) {
 		super(precioTerreno, alquiler, nombre);
+		this.preciocasa = precioCasa;
 	}
 	
 	public void cobrarAlquiler(Jugador jugador) {
