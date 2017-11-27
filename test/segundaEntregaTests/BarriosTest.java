@@ -1,25 +1,37 @@
 package segundaEntregaTests;
 
 import static org.junit.Assert.*;
-
 import java.util.ArrayList;
-
 import org.junit.Test;
-
 import fiuba.algo3.AlgoPoly;
 import fiuba.algo3.Jugador;
 import fiuba.algo3.Tablero;
-import fiuba.algo3.celdas.Visitable;
 import fiuba.algo3.celdas.comprables.Barrio;
 import fiuba.algo3.celdas.comprables.BuenosAiresNorte;
 import fiuba.algo3.celdas.comprables.BuenosAiresSur;
 import fiuba.algo3.celdas.comprables.CordobaNorte;
 import fiuba.algo3.celdas.comprables.CordobaSur;
+import fiuba.algo3.celdas.comprables.Neuquen;
+import fiuba.algo3.celdas.comprables.SaltaNorte;
+import fiuba.algo3.celdas.comprables.SaltaSur;
+import fiuba.algo3.celdas.comprables.SantaFe;
+import fiuba.algo3.celdas.comprables.Tucuman;
 
 public class BarriosTest {
 
 	@Test
 	public void jugadorCompraBuenosAiresSurSuDineroDeberiaReducirseEn20mil() {
+		Jugador traspie = new Jugador();
+		Barrio bsAsSur = new BuenosAiresSur();
+		
+		int dineroInicial = traspie.obtenerDinero();
+		bsAsSur.aceptar(traspie);
+		int dineroPosterior = traspie.obtenerDinero();
+		assertEquals(dineroInicial - 20000, dineroPosterior);
+	}
+	
+	@Test
+	public void jugadorRecorreTableroCompraBuenosAiresSurYSuDineroSeReduceEn20mil(){
 		AlgoPoly juego = new AlgoPoly();
 		juego.inicializarJuego();
 		ArrayList<Jugador> jugadores = juego.getJugadores();
@@ -33,6 +45,17 @@ public class BarriosTest {
 	
 	@Test
 	public void jugadorCompraBuenosAiresNorteSuDineroDeberiaReducirseEn25mil() {
+		Jugador traspie = new Jugador();
+		Barrio bsAsNorte = new BuenosAiresNorte();
+		
+		int dineroInicial = traspie.obtenerDinero();
+		bsAsNorte.aceptar(traspie);
+		int dineroPosterior = traspie.obtenerDinero();
+		assertEquals(dineroInicial - 25000, dineroPosterior);
+	}
+	
+	@Test
+	public void jugadorRecorreTableroCompraBuenosAiresNorteYSuDineroSeReduceEn25Mil(){
 		AlgoPoly juego = new AlgoPoly();
 		juego.inicializarJuego();
 		ArrayList<Jugador> jugadores = juego.getJugadores();
@@ -46,6 +69,17 @@ public class BarriosTest {
 	
 	@Test
 	public void jugadorCompraCordobaSurSuDineroDeberiaReducirseEn18mil() {
+		Jugador traspie = new Jugador();
+		Barrio cordobaSur = new CordobaSur();
+		
+		int dineroInicial = traspie.obtenerDinero();
+		cordobaSur.aceptar(traspie);
+		int dineroPosterior = traspie.obtenerDinero();
+		assertEquals(dineroInicial - 18000, dineroPosterior);
+	}
+	
+	@Test
+	public void jugadorRecorreTableroCompraCordobaSurYSuDineroSeReduceEn18Mil(){
 		AlgoPoly juego = new AlgoPoly();
 		juego.inicializarJuego();
 		ArrayList<Jugador> jugadores = juego.getJugadores();
@@ -59,6 +93,17 @@ public class BarriosTest {
 	
 	@Test
 	public void jugadorCompraCordobaNorteSuDineroDeberiaReducirseEn20mil() {
+		Jugador traspie = new Jugador();
+		Barrio cordobaNorte = new CordobaNorte();
+		
+		int dineroInicial = traspie.obtenerDinero();
+		cordobaNorte.aceptar(traspie);
+		int dineroPosterior = traspie.obtenerDinero();
+		assertEquals(dineroInicial - 20000, dineroPosterior);
+	}
+	
+	@Test
+	public void jugadorRecorreTableroCompraCordobaNorteYSuDineroSeReduceEn20Mil(){
 		AlgoPoly juego = new AlgoPoly();
 		juego.inicializarJuego();
 		ArrayList<Jugador> jugadores = juego.getJugadores();
@@ -72,6 +117,17 @@ public class BarriosTest {
 	
 	@Test
 	public void jugadorCompraSantaFeSuDineroDeberiaReducirseEn15mil() {
+		Jugador traspie = new Jugador();
+		Barrio santaFe = new SantaFe();
+		
+		int dineroInicial = traspie.obtenerDinero();
+		santaFe.aceptar(traspie);
+		int dineroPosterior = traspie.obtenerDinero();
+		assertEquals(dineroInicial - 15000, dineroPosterior);
+	}
+	
+	@Test
+	public void jugadorRecorreTableroCompraSantaFeYSuDineroSeReduceEn15Mil(){
 		AlgoPoly juego = new AlgoPoly();
 		juego.inicializarJuego();
 		ArrayList<Jugador> jugadores = juego.getJugadores();
@@ -85,6 +141,17 @@ public class BarriosTest {
 
 	@Test
 	public void jugadorCompraSaltaNorteSuDineroDeberiaReducirseEn23mil() {
+		Jugador traspie = new Jugador();
+		Barrio saltaNorte = new SaltaNorte();
+		
+		int dineroInicial = traspie.obtenerDinero();
+		saltaNorte.aceptar(traspie);
+		int dineroPosterior = traspie.obtenerDinero();
+		assertEquals(dineroInicial - 23000, dineroPosterior);
+	}
+	
+	@Test
+	public void jugadorRecorreTableroCompraSaltaNorteYSuDineroSeReduceEn23Mil(){
 		AlgoPoly juego = new AlgoPoly();
 		juego.inicializarJuego();
 		ArrayList<Jugador> jugadores = juego.getJugadores();
@@ -98,6 +165,17 @@ public class BarriosTest {
 	
 	@Test
 	public void jugadorCompraSaltaSurSuDineroDeberiaReducirseEn23mil() {
+		Jugador traspie = new Jugador();
+		Barrio saltaSur = new SaltaSur();
+		
+		int dineroInicial = traspie.obtenerDinero();
+		saltaSur.aceptar(traspie);
+		int dineroPosterior = traspie.obtenerDinero();
+		assertEquals(dineroInicial - 23000, dineroPosterior);
+	}
+	
+	@Test
+	public void jugadorRecorreTableroCompraSaltaSurYSuDineroSeReduceEn23Mil(){
 		AlgoPoly juego = new AlgoPoly();
 		juego.inicializarJuego();
 		ArrayList<Jugador> jugadores = juego.getJugadores();
@@ -111,6 +189,17 @@ public class BarriosTest {
 	
 	@Test
 	public void jugadorCompraNeuquenSuDineroDeberiaReducirseEn17mil() {
+		Jugador traspie = new Jugador();
+		Barrio neuquen = new Neuquen();
+		
+		int dineroInicial = traspie.obtenerDinero();
+		neuquen.aceptar(traspie);
+		int dineroPosterior = traspie.obtenerDinero();
+		assertEquals(dineroInicial - 17000, dineroPosterior);
+	}
+	
+	@Test
+	public void jugadorRecorreTableroCompraNeuqenYSuDineroSeReduceEn17Mil(){
 		AlgoPoly juego = new AlgoPoly();
 		juego.inicializarJuego();
 		ArrayList<Jugador> jugadores = juego.getJugadores();
@@ -124,6 +213,17 @@ public class BarriosTest {
 	
 	@Test
 	public void jugadorCompraTucumanSuDineroDeberiaReducirseEn25mil() {
+		Jugador traspie = new Jugador();
+		Barrio tucuman = new Tucuman();
+		
+		int dineroInicial = traspie.obtenerDinero();
+		tucuman.aceptar(traspie);
+		int dineroPosterior = traspie.obtenerDinero();
+		assertEquals(dineroInicial - 25000, dineroPosterior);
+	}
+	
+	@Test
+	public void jugadorRecorreTableroCompraTucumanYSuDineroSeReduceEn25Mil(){
 		AlgoPoly juego = new AlgoPoly();
 		juego.inicializarJuego();
 		ArrayList<Jugador> jugadores = juego.getJugadores();
@@ -137,6 +237,23 @@ public class BarriosTest {
 	
 	@Test
 	public void jugadorCuentaConBsAsSurYBsAsNorteYConstruyeUnaCasaSuDineroDeberiaReducirseEn5mil() {
+		Jugador chade = new Jugador();
+		
+		Barrio bsAsSur = new BuenosAiresSur();
+		Barrio bsAsNorte = new BuenosAiresNorte();
+		
+		bsAsSur.aceptar(chade);
+		bsAsNorte.aceptar(chade);
+		
+		int dineroAntesDeConstruir = chade.obtenerDinero();
+		chade.construir(bsAsSur);
+		
+		int dineroDespuesDeConstruir = chade.obtenerDinero();
+		assertEquals(dineroAntesDeConstruir - 5000, dineroDespuesDeConstruir);
+	}
+	
+	@Test
+	public void jugadorRecorreTableroCompraLasDosBuenosAiresYConstruyeUnaCasaSuDineroSeReduceEn5Mil(){
 		AlgoPoly juego = new AlgoPoly();
 		juego.inicializarJuego();
 		ArrayList<Jugador> jugadores = juego.getJugadores();

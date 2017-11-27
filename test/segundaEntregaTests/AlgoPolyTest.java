@@ -3,11 +3,7 @@ package segundaEntregaTests;
 import fiuba.algo3.AlgoPoly;
 import fiuba.algo3.Jugador;
 import fiuba.algo3.Tablero;
-
 import static org.junit.Assert.assertEquals;
-
-import java.util.ArrayList;
-
 import org.junit.Assert;
 import org.junit.Test;
 

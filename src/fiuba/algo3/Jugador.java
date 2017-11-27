@@ -3,7 +3,6 @@ package fiuba.algo3;
 import java.util.ArrayList;
 import fiuba.algo3.celdas.comprables.Barrio;
 import fiuba.algo3.celdas.comprables.Propiedad;
-import fiuba.algo3.celdas.comprables.Servicios.Servicio;
 import fiuba.algo3.celdas.Salida;
 import fiuba.algo3.celdas.especiales.AvanceDinamico;
 import fiuba.algo3.celdas.especiales.Carcel;

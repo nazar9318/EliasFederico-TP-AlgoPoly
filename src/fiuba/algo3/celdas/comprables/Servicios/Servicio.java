@@ -4,7 +4,6 @@ import fiuba.algo3.Command.Respuesta;
 import fiuba.algo3.Command.Vender;
 import fiuba.algo3.Jugador;
 import fiuba.algo3.celdas.Visitable;
-import fiuba.algo3.celdas.comprables.Barrio;
 import fiuba.algo3.celdas.comprables.Propiedad;
 
 public abstract class Servicio extends Propiedad implements Visitable {
