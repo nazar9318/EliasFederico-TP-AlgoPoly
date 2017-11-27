@@ -207,7 +207,7 @@ public class ServiciosTest {
     }
     
     @Test
-    public void jugadorIntercambiaUnaPropiedadSuyaPorOtraPropiedadDeOtroJugador() {
+    public void jugadorIntercambiaUnaPropiedadSuyaPorOtraPropiedadDeOtroJugadorYOtroJugadorCaeEnEsaPropiedad() {
     //Verificar que un tercer jugador cae en el area y el cobro del dinero se acredita en la cuenta del jugador que ostenta la titularidad.
     	Jugador jugador1 = new Jugador();
     	Jugador jugador2 = new Jugador();
@@ -224,5 +224,34 @@ public class ServiciosTest {
     	jugador3.setValorDeTiro(12);
         edesur.aceptar(jugador3);
         assertEquals(jugador2.obtenerDinero(),100000-35000+(12*500));
+    }
+    
+    @Test
+    public void jugadorIntercambiaUnaPropiedadSuyaPorOtraPropiedadDeOtroJugadorYOtroJugadorCaeEnEsaPropiedadYSeLeCobraPorSoloElAlquilerDeTerreno() {
+    	// Verificar que un tercer jugador cae en el area y el cobro del dinero se acredita en la cuenta del jugador que ostenta la titularidad por un monto igual al area sin construccion.
+    	Jugador jugador1 = new Jugador();
+    	Jugador jugador2 = new Jugador();
+    	Jugador jugador3 = new Jugador();
+    	BuenosAiresSur buenosairessur = new BuenosAiresSur();
+    	BuenosAiresNorte buenosairesnorte = new BuenosAiresNorte();
+    	buenosairessur.conocer(buenosairesnorte);
+    	buenosairesnorte.conocer(buenosairessur);
+
+    	buenosairessur.aceptar(jugador1);//100000-20000=80000
+     	buenosairesnorte.aceptar(jugador1);//80000-25000=55000
+    	jugador1.construir(buenosairessur);//55000-5000=50000 construye 1 casa
+    	jugador1.construir(buenosairessur);//50000-5000=45000 construye 2 casas  	
+    	jugador1.construir(buenosairesnorte);//45000-5500=39500 construye 1 casa
+    	jugador1.construir(buenosairesnorte);//39500-5500=34000 construye 2 casas
+       	jugador1.construir(buenosairessur);//34000-8000=26000  construye 1 hotel
+       	jugador1.construir(buenosairesnorte);//26000-9000= 17000 construye 1 hotel  	
+    	buenosairessur.vender();//17000+(20000 - 15*20000/100)=34000
+    	assertEquals(jugador2.obtenerDinero(),100000);
+       	buenosairessur.aceptar(jugador2);
+    	assertEquals(jugador2.obtenerDinero(),100000-20000);
+    	buenosairessur.aceptar(jugador3);
+    	assertEquals(jugador2.obtenerDinero(),100000-20000+2000);
+    	buenosairesnorte.aceptar(jugador3);
+    	assertEquals(jugador1.obtenerDinero(),34000+2500);
     }
  }

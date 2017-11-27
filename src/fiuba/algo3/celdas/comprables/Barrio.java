@@ -57,6 +57,7 @@ public abstract class Barrio extends Propiedad implements Visitable {
 		duenio.cobrar(super.getPrecioDeVenta());
 		casas.clear();
 		hoteles.clear();
+		((Barrio) this.getCeldaAsociada()).hoteles.clear();
 		duenio.removerPropiedad(this);
 		this.duenio = null;
 	}
@@ -74,8 +75,9 @@ public abstract class Barrio extends Propiedad implements Visitable {
 				jugador.pagar(precioCasa);
 
 			} else {
-				if ((maxCasas < casas.size() + 1) && (maxHoteles >= hoteles.size() + 1) && 
-						(((Barrio) this.getCeldaAsociada()).cantidadCasas() == maxCasas)) {
+				if ((maxCasas < casas.size() + 1) && (maxHoteles >= hoteles.size() + 1) && (
+						(((Barrio) this.getCeldaAsociada()).cantidadHoteles() == maxHoteles) || 
+						(((Barrio) this.getCeldaAsociada()).cantidadCasas() == maxCasas)) ){
 					Hotel hotel = new Hotel(alquilerHotel);
 					casas.clear();
 					hoteles.add(hotel);
