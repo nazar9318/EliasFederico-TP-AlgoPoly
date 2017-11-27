@@ -1,10 +1,5 @@
 package fiuba.algo3.celdas.comprables;
 
-import java.util.ArrayList;
-
-import fiuba.algo3.celdas.Casa;
-import fiuba.algo3.celdas.Hotel;
-
 public class BuenosAiresNorte extends Barrio{
 
     public BuenosAiresNorte() {

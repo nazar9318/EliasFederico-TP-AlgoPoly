@@ -3,6 +3,7 @@ package fiuba.algo3;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import fiuba.algo3.Command.Invoker;
 import fiuba.algo3.celdas.comprables.*;
 import fiuba.algo3.celdas.comprables.Servicios.*;
 import fiuba.algo3.celdas.especiales.*;
@@ -12,11 +13,14 @@ public class AlgoPoly {
 	private Tablero tablero;
 	private ArrayList<Jugador> jugadores;
 	private Turno turno;
+	private Invoker invoker;
 
 	public AlgoPoly(){
 		this.tablero = new Tablero();
 		this.jugadores = new ArrayList<Jugador>();
 		this.turno = new Turno();
+		this.invoker = new Invoker();
+
 	}
 
 	public Tablero getTablero() {
@@ -113,5 +117,9 @@ public class AlgoPoly {
 			jugarTurno(jugadores.get(pos));
 			pos ++;
 		}
+	}
+
+	public Invoker getInvoker() {
+		return invoker;
 	}
 }

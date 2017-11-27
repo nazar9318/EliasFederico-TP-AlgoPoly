@@ -40,6 +40,5 @@ public class EstadoJugadorNormal implements EstadoJugador {
 	@Override
 	public void visitar(Salida salida, Jugador jugador) {
 		// TODO Auto-generated method stub
-		
 	}
 }

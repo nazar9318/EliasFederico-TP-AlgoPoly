@@ -1,5 +1,6 @@
 package fiuba.algo3.celdas.comprables;
 
+import fiuba.algo3.Command.Respuesta;
 import fiuba.algo3.Jugador;
 import fiuba.algo3.celdas.Visitable;
 import fiuba.algo3.excepciones.JugadorNoTieneFondosParaPagarException;
@@ -27,7 +28,7 @@ public abstract class Propiedad implements Visitable {
 		return duenio;
 	}
 
-	public void setDuenio(Jugador duenio) {
+	private void setDuenio(Jugador duenio) {
 		this.duenio = duenio;
 	}
 
@@ -59,8 +60,6 @@ public abstract class Propiedad implements Visitable {
 		return alquiler;
 	}
 
-	
-
 	public void conocer(Propiedad conocida) {
 		this.celdaAsociada = conocida;
 	}
@@ -75,11 +74,7 @@ public abstract class Propiedad implements Visitable {
 		return (precioTerreno - 15*precioTerreno/100);
 	}
 
-	public void cobrarAlquiler(Jugador jugador) {
-		// TODO Auto-generated method stub
-		
-	}
+	public abstract void cobrarAlquiler(Jugador jugador);
 
-
-
+	public abstract Respuesta getOpciones(Jugador jugador);
 }

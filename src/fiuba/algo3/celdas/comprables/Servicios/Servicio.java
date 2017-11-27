@@ -1,5 +1,7 @@
 package fiuba.algo3.celdas.comprables.Servicios;
 
+import fiuba.algo3.Command.Respuesta;
+import fiuba.algo3.Command.Vender;
 import fiuba.algo3.Jugador;
 import fiuba.algo3.celdas.Visitable;
 import fiuba.algo3.celdas.comprables.Barrio;
@@ -13,6 +15,7 @@ public abstract class Servicio extends Propiedad implements Visitable {
 		super(precioTerreno, alquiler, nombre);
 	}
 
+	@Override
 	public void cobrarAlquiler(Jugador jugador) {
 		if (this.duenio.poseeALaAsociadaDe(this)){
 			jugador.pagar((getAlquiler() + modificadorDeAlquiler)*jugador.getValorDeTiro());
@@ -27,4 +30,11 @@ public abstract class Servicio extends Propiedad implements Visitable {
 		this.celdaAsociada = conocida;
 	}
 
+	@Override
+	public Respuesta getOpciones(Jugador jugador){
+		Respuesta opciones = new Respuesta();
+
+		opciones.agregarOpcion(new Vender(this));
+		return opciones;
+	}
 }

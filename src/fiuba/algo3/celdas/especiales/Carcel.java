@@ -9,18 +9,6 @@ public class Carcel implements Visitable {
 		
 	}
 	
-	/*public void encarcelarJugador(Jugador jugador) {
-		jugadores.put(jugador, 3);
-	}
-
-	public void reducirTurnosDeEsperaDe(Jugador jugador) {
-		if(jugadores.containsKey(jugador)){
-			int turnosDeEsperaActuales = jugadores.get(jugador);
-			turnosDeEsperaActuales --;
-			jugadores.put(jugador, turnosDeEsperaActuales);
-		}
-	}*/
-
 	public void sacarJugador(Jugador jugador, int turnosFaltantes) {
 		if (turnosFaltantes == 0) {
 			jugador.salirDeLaCarcel();

@@ -2,6 +2,9 @@ package fiuba.algo3.celdas.comprables;
 
 import java.util.ArrayList;
 
+import fiuba.algo3.Command.Construir;
+import fiuba.algo3.Command.Respuesta;
+import fiuba.algo3.Command.Vender;
 import fiuba.algo3.Jugador;
 import fiuba.algo3.celdas.Casa;
 import fiuba.algo3.celdas.Hotel;
@@ -25,10 +28,11 @@ public abstract class Barrio extends Propiedad implements Visitable {
 		this.casas = new ArrayList<Casa>(); 
 		this.hoteles = new ArrayList<Hotel>(); 
 	}
-	
+
+	@Override
 	public void cobrarAlquiler(Jugador jugador) {
 		jugador.pagar(getAlquiler() + this.getAlquilerDeEdificaciones() + this.getAlquilerHotel());
-		this.duenio.cobrar(getAlquiler());
+		this.duenio.cobrar(getAlquiler() + this.getAlquilerDeEdificaciones() + this.getAlquilerHotel());
 	}
 
 	private int getAlquilerHotel() {
@@ -50,9 +54,11 @@ public abstract class Barrio extends Propiedad implements Visitable {
 	public int cantidadCasas() {
 		return casas.size();
 	}
+
 	public int cantidadHoteles() {
 		return hoteles.size();
 	}
+
 	public void vender() {
 		duenio.cobrar(super.getPrecioDeVenta());
 		casas.clear();
@@ -86,5 +92,16 @@ public abstract class Barrio extends Propiedad implements Visitable {
 			}
 
 		}
+	}
+
+	@Override
+	public Respuesta getOpciones(Jugador jugador){
+		Respuesta opciones = new Respuesta();
+
+		opciones.agregarOpcion(new Vender(this));
+		if(jugador.poseeALaAsociadaDe(this))
+			opciones.agregarOpcion(new Construir(this));
+
+		return opciones;
 	}
 }

@@ -78,7 +78,6 @@ public class Jugador implements Visitante {
 	@Override
 	public void visitar(Carcel carcel) {
 		this.estado = new EstadoJugadorCarcel(carcel);
-		//carcel.encarcelarJugador(this);
 	}
 
 	@Override
@@ -108,22 +107,11 @@ public class Jugador implements Visitante {
 		return (propiedad.getCeldaAsociada().getDuenio() == this);
 	}
 
-	public void agregarPropiedad(Servicio servicio) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void visitar(Servicio servicio) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	public void construir(Barrio barrio) {
 		barrio.construir(this);
 	}
 
 	public void removerPropiedad(Propiedad propiedad) {
 		this.propiedades.remove(propiedad);
-		
 	}
 }
