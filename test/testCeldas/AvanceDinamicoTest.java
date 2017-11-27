@@ -26,8 +26,8 @@ public class AvanceDinamicoTest {
 		dado1.setValor(1);
 		dado2.setValor(1);
 		jugador.setValorDeTiro(dado1.getValor() + dado2.getValor());
-		int resultado = avanceDinamico.calcularAvance(jugador);
-		Assert.assertEquals(0, resultado);
+		avanceDinamico.calcularAvance(jugador);
+		Assert.assertEquals(0, avanceDinamico.getMovimiento());
 	}
 
 	@Test
@@ -39,8 +39,8 @@ public class AvanceDinamicoTest {
 		dado1.setValor(2);
 		dado2.setValor(5);
 		jugador.setValorDeTiro(dado1.getValor() + dado2.getValor());
-		int resultado = avanceDinamico.calcularAvance(jugador);
-		Assert.assertEquals(5, resultado);
+		avanceDinamico.calcularAvance(jugador);
+		Assert.assertEquals(5, avanceDinamico.getMovimiento());
 	}
 
 	@Test
@@ -52,8 +52,8 @@ public class AvanceDinamicoTest {
 		dado1.setValor(6);
 		dado2.setValor(6);
 		jugador.setValorDeTiro(dado1.getValor() + dado2.getValor());
-		int resultado = avanceDinamico.calcularAvance(jugador);
-		Assert.assertEquals(12, resultado);
+		avanceDinamico.calcularAvance(jugador);
+		Assert.assertEquals(12, avanceDinamico.getMovimiento());
 	}
 	
 	@Test
@@ -67,7 +67,7 @@ public class AvanceDinamicoTest {
 		dado1.setValor(5);
 		dado2.setValor(5);
 		jugador.setValorDeTiro(dado1.getValor() + dado2.getValor());
-		int resultado = avanceDinamico.calcularAvance(jugador);
-		Assert.assertEquals(3, resultado);
+		avanceDinamico.calcularAvance(jugador);
+		Assert.assertEquals(3, avanceDinamico.getMovimiento());
 	}
 }

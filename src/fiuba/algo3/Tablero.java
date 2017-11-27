@@ -32,6 +32,10 @@ public class Tablero {
 		this.jugadores.put(j1, getSalida());
 		return j1;
 	}
+	
+	public int getPosicionEnTablero(Jugador jugador) {
+		return celdas.indexOf(getPosicionDeJugador(jugador));
+	}
 
 	public Visitable getPosicionDeJugador(Jugador j1) {
 		return this.jugadores.get(j1);

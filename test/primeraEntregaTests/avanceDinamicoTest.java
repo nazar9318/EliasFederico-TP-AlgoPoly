@@ -28,7 +28,8 @@ public class avanceDinamicoTest {
 		jugador.setValorDeTiro(dado1.getValor() + dado2.getValor());
 		tablero.avanzarJugador(jugador, 1);
 		Visitable esperado = tablero.getPosicionDeJugador(jugador);
-		tablero.avanzarJugador(jugador, avanceDinamico.calcularAvance(jugador));
+		avanceDinamico.calcularAvance(jugador);
+		tablero.avanzarJugador(jugador, avanceDinamico.getMovimiento());
 		Visitable resultado = tablero.getPosicionDeJugador(jugador);
 
 		Assert.assertEquals(esperado, resultado);
@@ -49,7 +50,8 @@ public class avanceDinamicoTest {
 		jugador.setValorDeTiro(dado1.getValor() + dado2.getValor());
 		Visitable esperado = tablero.getPosicionDeJugador(jugador);
 		tablero.avanzarJugador(jugador, 1);
-		tablero.avanzarJugador(jugador, avanceDinamico.calcularAvance(jugador));
+		avanceDinamico.calcularAvance(jugador);
+		tablero.avanzarJugador(jugador, avanceDinamico.getMovimiento());
 		Visitable resultado = tablero.getPosicionDeJugador(jugador);
 
 		Assert.assertEquals(esperado, resultado);
@@ -75,7 +77,8 @@ public class avanceDinamicoTest {
 		dado2.setValor(8);
 		jugador.setValorDeTiro(dado1.getValor() + dado2.getValor());
 		tablero.avanzarJugador(jugador, 1);
-		tablero.avanzarJugador(jugador, avanceDinamico.calcularAvance(jugador));
+		avanceDinamico.calcularAvance(jugador);
+		tablero.avanzarJugador(jugador, avanceDinamico.getMovimiento());
 		Visitable resultado = tablero.getPosicionDeJugador(jugador);
 
 		Assert.assertEquals(esperado, resultado);

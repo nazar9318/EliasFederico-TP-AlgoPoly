@@ -101,6 +101,17 @@ public class AlgoPoly {
 	}
 	
 	public void jugarTurno(Jugador unJugador) {
-		turno.jugar(unJugador, tablero);
+		if (turno.jugar(unJugador, tablero) < 0) {
+			jugadores.remove(unJugador);
+		}
+	}
+	
+	public void comenzarJuego() {
+		int pos = 0;
+		while (jugadores.size() > 1) {
+			if (pos == jugadores.size()) pos = 0;
+			jugarTurno(jugadores.get(pos));
+			pos ++;
+		}
 	}
 }
