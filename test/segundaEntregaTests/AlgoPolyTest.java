@@ -1,8 +1,10 @@
-package testJuego;
+package segundaEntregaTests;
 
 import fiuba.algo3.AlgoPoly;
 import fiuba.algo3.Jugador;
 import fiuba.algo3.Tablero;
+
+import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 
@@ -38,6 +40,14 @@ public class AlgoPolyTest {
     	juego.inicializarJuego();
     	Assert.assertEquals(3, juego.getCantidadDeJugadores());
     }
-
+    
+    @Test
+	public void comenzarJuegoDeberiaPararCuandoSoloQuedeUnUnicoJugadorGanador() {
+		AlgoPoly juego = new AlgoPoly();
+		int CantidadInicial = juego.getCantidadDeJugadores();
+		juego.inicializarJuego();
+		juego.comenzarJuego();
+		assertEquals(CantidadInicial +1,juego.getCantidadDeJugadores());
+	}
    
 }
