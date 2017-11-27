@@ -113,7 +113,7 @@ public class AlgoPoly {
 	public void comenzarJuego() {
 		int pos = 0;
 		while (jugadores.size() > 1) {
-			if (pos == jugadores.size()) pos = 0;
+			if (pos >= jugadores.size()) pos = pos - pos;
 			jugarTurno(jugadores.get(pos));
 			pos ++;
 		}

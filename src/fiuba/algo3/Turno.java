@@ -1,5 +1,7 @@
 package fiuba.algo3;
 
+import fiuba.algo3.celdas.especiales.AvanceDinamico;
+import fiuba.algo3.celdas.especiales.RetrocesoDinamico;
 import fiuba.algo3.excepciones.JugadorNoPuedeSalirDeLaCarcelException;
 import fiuba.algo3.excepciones.JugadorNoTieneFondosParaPagarException;
 
@@ -32,6 +34,14 @@ public class Turno {
 				unJugador.setValorDeTiro(valorDados);
 				tablero.avanzarJugador(unJugador, valorDados);
 				int posicionActual = tablero.getPosicionEnTablero(unJugador);
+				if (posicionActual == 7) {
+					AvanceDinamico celda1 = (AvanceDinamico) tablero.getPosicionDeJugador(unJugador);
+					tablero.avanzarJugador(unJugador, celda1.getMovimiento());
+				}
+				if (posicionActual == 18) {
+					RetrocesoDinamico celda2 = (RetrocesoDinamico) tablero.getPosicionDeJugador(unJugador);
+					tablero.avanzarJugador(unJugador, celda2.getMovimiento());
+				}
 			}	catch (JugadorNoPuedeSalirDeLaCarcelException e) {
 				jugar = false;
 			}	catch (JugadorNoTieneFondosParaPagarException e) {
