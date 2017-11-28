@@ -18,6 +18,7 @@ public class Jugador implements Visitante {
 	private ArrayList<Propiedad> propiedades;
 	private int valorDeTiro;
 	private EstadoJugador estado;
+	private Tablero tablero;
 	
 	public Jugador(){
 		this.dinero = 100000;
@@ -58,6 +59,14 @@ public class Jugador implements Visitante {
 	
 	public void agregarPropiedad(Propiedad unaCelda) {
 		propiedades.add(unaCelda);
+	}
+	
+	public void conocerTablero(Tablero unTablero) {
+		tablero = unTablero;
+	}
+	
+	public void moverJugador(int movimiento) {
+		if (movimiento != 0) tablero.avanzarJugador(this, movimiento);
 	}
 
 	@Override

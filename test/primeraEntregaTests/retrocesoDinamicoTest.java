@@ -19,6 +19,7 @@ public class retrocesoDinamicoTest {
 		RetrocesoDinamico retrocesoDinamico = new RetrocesoDinamico();
 		Visitable carcel = new Carcel();
 		Jugador jugador = new Jugador();
+		jugador.conocerTablero(tablero);
 		Dado dado1 = new Dado();
 		Dado dado2 = new Dado();
 
@@ -31,17 +32,15 @@ public class retrocesoDinamicoTest {
 		dado2.setValor(1);
 		jugador.setValorDeTiro(dado1.getValor() + dado2.getValor());
 		tablero.avanzarJugador(jugador, 1);
-		retrocesoDinamico.calcularRetroceso(jugador);
-		tablero.avanzarJugador(jugador, retrocesoDinamico.getMovimiento());
-		Visitable resultado = tablero.getPosicionDeJugador(jugador);
 
-		Assert.assertEquals(carcel, resultado);
+		Assert.assertEquals(carcel, tablero.getPosicionDeJugador(jugador));
 	}
 	@Test
 	public void jugadorCon100MilDeCapitalCaeEnRetrocesoDinamicoSumando9SuPosicionDeberiaRetroceder1() {
 		Tablero tablero = new Tablero();
 		RetrocesoDinamico retrocesoDinamico = new RetrocesoDinamico();
 		Jugador jugador = new Jugador();
+		jugador.conocerTablero(tablero);
 		Dado dado1 = new Dado();
 		Dado dado2 = new Dado();
 
@@ -52,11 +51,8 @@ public class retrocesoDinamicoTest {
 		jugador.setValorDeTiro(dado1.getValor() + dado2.getValor());
 		Visitable esperado = tablero.getPosicionDeJugador(jugador);
 		tablero.avanzarJugador(jugador, 1);
-		retrocesoDinamico.calcularRetroceso(jugador);
-		tablero.avanzarJugador(jugador, retrocesoDinamico.getMovimiento());
-		Visitable resultado = tablero.getPosicionDeJugador(jugador);
 
-		Assert.assertEquals(esperado, resultado);
+		Assert.assertEquals(esperado, tablero.getPosicionDeJugador(jugador));
 	}
 	
 	@Test
@@ -65,6 +61,7 @@ public class retrocesoDinamicoTest {
 		RetrocesoDinamico retrocesoDinamico = new RetrocesoDinamico();
 		Visitable esperado = new Quini6();
 		Jugador jugador = new Jugador();
+		jugador.conocerTablero(tablero);
 		Dado dado1 = new Dado();
 		Dado dado2 = new Dado();
 
@@ -78,11 +75,8 @@ public class retrocesoDinamicoTest {
 		dado2.setValor(8);
 		jugador.setValorDeTiro(dado1.getValor() + dado2.getValor());
 		tablero.avanzarJugador(jugador, 1);
-		retrocesoDinamico.calcularRetroceso(jugador);
-		tablero.avanzarJugador(jugador, retrocesoDinamico.getMovimiento());
-		Visitable resultado = tablero.getPosicionDeJugador(jugador);
 
-		Assert.assertEquals(esperado, resultado);
+		Assert.assertEquals(esperado, tablero.getPosicionDeJugador(jugador));
 	}
 
 }

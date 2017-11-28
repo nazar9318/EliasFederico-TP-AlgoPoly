@@ -97,6 +97,7 @@ public class AlgoPoly {
 		}
 		for(Jugador jugador: jugadores) {
 			tablero.agregarJugador(jugador);
+			jugador.conocerTablero(tablero);
 		}
 	}
 	

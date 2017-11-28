@@ -1,11 +1,13 @@
 package segundaEntregaTests;
 
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Assert;
+import org.junit.Test;
+
 import fiuba.algo3.AlgoPoly;
 import fiuba.algo3.Jugador;
 import fiuba.algo3.Tablero;
-import static org.junit.Assert.assertEquals;
-import org.junit.Assert;
-import org.junit.Test;
 
 public class AlgoPolyTest {
 

@@ -33,18 +33,11 @@ public class Turno {
 			try {
 				unJugador.setValorDeTiro(valorDados);
 				tablero.avanzarJugador(unJugador, valorDados);
-				int posicionActual = tablero.getPosicionEnTablero(unJugador);
-				if (posicionActual == 7) {
-					AvanceDinamico celda1 = (AvanceDinamico) tablero.getPosicionDeJugador(unJugador);
-					tablero.avanzarJugador(unJugador, celda1.getMovimiento());
-				}
-				if (posicionActual == 18) {
-					RetrocesoDinamico celda2 = (RetrocesoDinamico) tablero.getPosicionDeJugador(unJugador);
-					tablero.avanzarJugador(unJugador, celda2.getMovimiento());
-				}
-			}	catch (JugadorNoPuedeSalirDeLaCarcelException e) {
+			}	
+			catch (JugadorNoPuedeSalirDeLaCarcelException e) {
 				jugar = false;
-			}	catch (JugadorNoTieneFondosParaPagarException e) {
+			}	
+			catch (JugadorNoTieneFondosParaPagarException e) {
 				return -1;
 			}
 			turnosJugados ++;
