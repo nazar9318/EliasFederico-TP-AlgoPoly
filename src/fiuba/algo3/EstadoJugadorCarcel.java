@@ -2,6 +2,7 @@ package fiuba.algo3;
 
 import fiuba.algo3.celdas.comprables.Propiedad;
 import fiuba.algo3.celdas.Salida;
+import fiuba.algo3.celdas.Visitable;
 import fiuba.algo3.celdas.especiales.AvanceDinamico;
 import fiuba.algo3.celdas.especiales.Carcel;
 import fiuba.algo3.celdas.especiales.Policia;
@@ -21,87 +22,35 @@ public class EstadoJugadorCarcel implements EstadoJugador {
 
 	@Override
 	public void visitar(Propiedad propiedad, Jugador jugador) {
-		if(this.turnos == 3){
-			this.turnos --;
-			throw new JugadorNoPuedeSalirDeLaCarcelException();
-		}else if (this.turnos > 0){
-			try{
-				this.carcel.sacarJugador(jugador, this.turnos);
-			} catch(JugadorNoTieneFondosParaPagarException e){}
-			this.turnos --;
-		}else{
-			this.carcel.sacarJugador(jugador, this.turnos);
-			jugador.visitar(propiedad);
-		}
+		this.visitarVisitable(propiedad, jugador);
 	}
 
 	@Override
 	public void visitar(Quini6 quini6, Jugador jugador) {
-		if(this.turnos == 3){
-			this.turnos --;
-			throw new JugadorNoPuedeSalirDeLaCarcelException();
-		}else if (this.turnos > 0){
-			try{
-				this.carcel.sacarJugador(jugador, this.turnos);
-			} catch(JugadorNoTieneFondosParaPagarException e){}
-			this.turnos --;
-		}else{
-			this.carcel.sacarJugador(jugador, this.turnos);
-			jugador.visitar(quini6);
-		}
-	}
-	
+		this.visitarVisitable(quini6, jugador);
+	}	
 
 	@Override
 	public void visitar(Policia policia, Jugador jugador) {
-		if(this.turnos == 3){
-			this.turnos --;
-			throw new JugadorNoPuedeSalirDeLaCarcelException();
-		}else if (this.turnos > 0){
-			try{
-				this.carcel.sacarJugador(jugador, this.turnos);
-			} catch(JugadorNoTieneFondosParaPagarException e){}
-			this.turnos --;
-		}else{
-			this.carcel.sacarJugador(jugador, this.turnos);
-			jugador.visitar(policia);
-		}
+		this.visitarVisitable(policia, jugador);
 	}
 
 	@Override
 	public void visitar(AvanceDinamico avance, Jugador jugador) {
-		if(this.turnos == 3){
-			this.turnos --;
-			throw new JugadorNoPuedeSalirDeLaCarcelException();
-		}else if (this.turnos > 0){
-			try{
-				this.carcel.sacarJugador(jugador, this.turnos);
-			} catch(JugadorNoTieneFondosParaPagarException e){}
-			this.turnos --;
-		}else{
-			this.carcel.sacarJugador(jugador, this.turnos);
-			jugador.visitar(avance);
-		}
+		this.visitarVisitable(avance, jugador);
 	}
 
 	@Override
 	public void visitar(RetrocesoDinamico retroceso, Jugador jugador) {
-		if(this.turnos == 3){
-			this.turnos --;
-			throw new JugadorNoPuedeSalirDeLaCarcelException();
-		}else if (this.turnos > 0){
-			try{
-				this.carcel.sacarJugador(jugador, this.turnos);
-			} catch(JugadorNoTieneFondosParaPagarException e){}
-			this.turnos --;
-		}else{
-			this.carcel.sacarJugador(jugador, this.turnos);
-			jugador.visitar(retroceso);
-		}
+		this.visitarVisitable(retroceso, jugador);
 	}
 
 	@Override
 	public void visitar(Salida salida, Jugador jugador) {
+		this.visitarVisitable(salida, jugador);
+	}
+	
+	private void visitarVisitable(Visitable visitable, Jugador jugador){
 		if(this.turnos == 3){
 			this.turnos --;
 			throw new JugadorNoPuedeSalirDeLaCarcelException();
@@ -112,7 +61,7 @@ public class EstadoJugadorCarcel implements EstadoJugador {
 			this.turnos --;
 		}else{
 			this.carcel.sacarJugador(jugador, this.turnos);
-			jugador.visitar(salida);
+			jugador.visitar(visitable);
 		}
 	}
 }

@@ -67,30 +67,60 @@ public abstract class Barrio extends Propiedad implements Visitable {
 		duenio.removerPropiedad(this);
 		this.duenio = null;
 	}
+	
+	private boolean puedeConstruirCasa(){
+		return (maxCasas >= casas.size() + 1) && (hoteles.size() == 0);
+	}
+	
+	private void construirCasa(Jugador jugador){
+		Casa casa = null;
+		if(casas.size() == 0){
+			casa = new Casa(alquiler1);
+		}else {
+			casa = new Casa(alquiler2);
+		}
+		casas.add(casa);
+		jugador.pagar(precioCasa);
+	}
+	
+	private boolean barrioAsociadoTieneTodasLasCasasConstruidas(){
+		return (((Barrio) this.getCeldaAsociada()).cantidadCasas() == this.getMaxCasas());
+	}
+	
+	private boolean barrioAsociadoTieneTodosLosHotelesConstruidos(){
+		return (((Barrio) this.getCeldaAsociada()).cantidadHoteles() == maxHoteles);
+	}
+	
+	private boolean tengoEspacioParaHotel(){
+		return (maxCasas < casas.size() + 1) && (maxHoteles >= hoteles.size() + 1);
+	}
+	
+	private int getMaxCasas() {
+		return maxCasas;
+	}
+
+	private void construirHotel(Jugador jugador){
+		Hotel hotel = new Hotel(alquilerHotel);
+		casas.clear();
+		hoteles.add(hotel);
+		jugador.pagar(precioHotel);
+	}
+
+	private boolean puedeConstruirHotel() {
+		return this.tengoEspacioParaHotel() && this.barrioAsociadoCumpleCondicionesParaConstruiHotel();
+	}
+	
+	private boolean barrioAsociadoCumpleCondicionesParaConstruiHotel(){
+		return this.barrioAsociadoTieneTodosLosHotelesConstruidos()||this.barrioAsociadoTieneTodasLasCasasConstruidas();
+	}
 
 	public void construir(Jugador jugador) {
 		if ((jugador.poseeALaAsociadaDe(this)) ) {
-			if ((maxCasas >= casas.size() + 1) && (hoteles.size() == 0)){
-				Casa casa = null;
-				if(casas.size() == 0){
-					casa = new Casa(alquiler1);
-				}else {
-					casa = new Casa(alquiler2);
-				}
-				casas.add(casa);
-				jugador.pagar(precioCasa);
-
-			} else {
-				if ((maxCasas < casas.size() + 1) && (maxHoteles >= hoteles.size() + 1) && (
-						(((Barrio) this.getCeldaAsociada()).cantidadHoteles() == maxHoteles) || 
-						(((Barrio) this.getCeldaAsociada()).cantidadCasas() == maxCasas)) ){
-					Hotel hotel = new Hotel(alquilerHotel);
-					casas.clear();
-					hoteles.add(hotel);
-					jugador.pagar(precioHotel);
-				}
+			if(this.puedeConstruirHotel()){
+				this.construirHotel(jugador);
+			}else if (this.puedeConstruirCasa()){
+				this.construirCasa(jugador);
 			}
-
 		}
 	}
 

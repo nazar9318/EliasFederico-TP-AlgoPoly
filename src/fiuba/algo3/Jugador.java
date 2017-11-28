@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import fiuba.algo3.celdas.comprables.Barrio;
 import fiuba.algo3.celdas.comprables.Propiedad;
 import fiuba.algo3.celdas.Salida;
+import fiuba.algo3.celdas.Visitable;
 import fiuba.algo3.celdas.especiales.AvanceDinamico;
 import fiuba.algo3.celdas.especiales.Carcel;
 import fiuba.algo3.celdas.especiales.Policia;
@@ -112,5 +113,10 @@ public class Jugador implements Visitante {
 
 	public void removerPropiedad(Propiedad propiedad) {
 		this.propiedades.remove(propiedad);
+	}
+
+	public void visitar(Visitable visitable) {
+		// TODO Auto-generated method stub
+		
 	}
 }

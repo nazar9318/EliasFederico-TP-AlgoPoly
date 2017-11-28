@@ -3,7 +3,6 @@ package segundaEntregaTests;
 import fiuba.algo3.AlgoPoly;
 import fiuba.algo3.Jugador;
 import fiuba.algo3.Tablero;
-import fiuba.algo3.celdas.comprables.Barrio;
 import fiuba.algo3.celdas.comprables.BuenosAiresNorte;
 import fiuba.algo3.celdas.comprables.BuenosAiresSur;
 import fiuba.algo3.celdas.comprables.Servicios.AYSA;
