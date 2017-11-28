@@ -32,7 +32,7 @@ public abstract class Propiedad implements Visitable {
 		this.duenio = duenio;
 	}
 
-	private int getPrecioTerreno() {
+	public int getPrecioTerreno() {
 		return precioTerreno;
 	}
 

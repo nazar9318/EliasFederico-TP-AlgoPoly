@@ -12,6 +12,7 @@ import fiuba.algo3.celdas.comprables.BuenosAiresSur;
 import fiuba.algo3.celdas.comprables.CordobaNorte;
 import fiuba.algo3.celdas.comprables.CordobaSur;
 import fiuba.algo3.celdas.comprables.Neuquen;
+import fiuba.algo3.celdas.comprables.Propiedad;
 import fiuba.algo3.celdas.comprables.SaltaNorte;
 import fiuba.algo3.celdas.comprables.SaltaSur;
 import fiuba.algo3.celdas.comprables.SantaFe;
@@ -27,7 +28,7 @@ public class BarriosTest {
 		int dineroInicial = traspie.obtenerDinero();
 		bsAsSur.aceptar(traspie);
 		int dineroPosterior = traspie.obtenerDinero();
-		assertEquals(dineroInicial - 20000, dineroPosterior);
+		assertEquals(dineroInicial - bsAsSur.getPrecioTerreno(), dineroPosterior);
 	}
 	
 	@Test
@@ -40,7 +41,8 @@ public class BarriosTest {
 		int dineroInicial = unJugador.obtenerDinero();
 		tablero.avanzarJugador(unJugador, 2);
 		int dineroPosterior = unJugador.obtenerDinero();
-		assertEquals(dineroInicial - 20000, dineroPosterior);
+		int costoTerreno = ((Propiedad) tablero.getPosicionDeJugador(unJugador)).getPrecioTerreno();
+		assertEquals(dineroInicial - costoTerreno, dineroPosterior);
 	}
 	
 	@Test
@@ -51,7 +53,7 @@ public class BarriosTest {
 		int dineroInicial = traspie.obtenerDinero();
 		bsAsNorte.aceptar(traspie);
 		int dineroPosterior = traspie.obtenerDinero();
-		assertEquals(dineroInicial - 25000, dineroPosterior);
+		assertEquals(dineroInicial - bsAsNorte.getPrecioTerreno(), dineroPosterior);
 	}
 	
 	@Test
@@ -64,7 +66,8 @@ public class BarriosTest {
 		int dineroInicial = unJugador.obtenerDinero();
 		tablero.avanzarJugador(unJugador, 4);
 		int dineroPosterior = unJugador.obtenerDinero();
-		assertEquals(dineroInicial - 25000, dineroPosterior);
+		int costoTerreno = ((Propiedad) tablero.getPosicionDeJugador(unJugador)).getPrecioTerreno();
+		assertEquals(dineroInicial - costoTerreno, dineroPosterior);
 	}
 	
 	@Test
@@ -75,7 +78,7 @@ public class BarriosTest {
 		int dineroInicial = traspie.obtenerDinero();
 		cordobaSur.aceptar(traspie);
 		int dineroPosterior = traspie.obtenerDinero();
-		assertEquals(dineroInicial - 18000, dineroPosterior);
+		assertEquals(dineroInicial - cordobaSur.getPrecioTerreno(), dineroPosterior);
 	}
 	
 	@Test
@@ -88,7 +91,8 @@ public class BarriosTest {
 		int dineroInicial = unJugador.obtenerDinero();
 		tablero.avanzarJugador(unJugador, 6);
 		int dineroPosterior = unJugador.obtenerDinero();
-		assertEquals(dineroInicial - 18000, dineroPosterior);
+		int costoTerreno = ((Propiedad) tablero.getPosicionDeJugador(unJugador)).getPrecioTerreno();
+		assertEquals(dineroInicial - costoTerreno, dineroPosterior);
 	}
 	
 	@Test
@@ -99,7 +103,7 @@ public class BarriosTest {
 		int dineroInicial = traspie.obtenerDinero();
 		cordobaNorte.aceptar(traspie);
 		int dineroPosterior = traspie.obtenerDinero();
-		assertEquals(dineroInicial - 20000, dineroPosterior);
+		assertEquals(dineroInicial - cordobaNorte.getPrecioTerreno(), dineroPosterior);
 	}
 	
 	@Test
@@ -112,7 +116,8 @@ public class BarriosTest {
 		int dineroInicial = unJugador.obtenerDinero();
 		tablero.avanzarJugador(unJugador, 9);
 		int dineroPosterior = unJugador.obtenerDinero();
-		assertEquals(dineroInicial - 20000, dineroPosterior);
+		int costoTerreno = ((Propiedad) tablero.getPosicionDeJugador(unJugador)).getPrecioTerreno();
+		assertEquals(dineroInicial - costoTerreno, dineroPosterior);
 	}
 	
 	@Test
@@ -123,7 +128,7 @@ public class BarriosTest {
 		int dineroInicial = traspie.obtenerDinero();
 		santaFe.aceptar(traspie);
 		int dineroPosterior = traspie.obtenerDinero();
-		assertEquals(dineroInicial - 15000, dineroPosterior);
+		assertEquals(dineroInicial - santaFe.getPrecioTerreno(), dineroPosterior);
 	}
 	
 	@Test
@@ -136,7 +141,8 @@ public class BarriosTest {
 		int dineroInicial = unJugador.obtenerDinero();
 		tablero.avanzarJugador(unJugador, 11);
 		int dineroPosterior = unJugador.obtenerDinero();
-		assertEquals(dineroInicial - 15000, dineroPosterior);
+		int costoTerreno = ((Propiedad) tablero.getPosicionDeJugador(unJugador)).getPrecioTerreno();
+		assertEquals(dineroInicial - costoTerreno, dineroPosterior);
 	}
 
 	@Test
@@ -147,7 +153,7 @@ public class BarriosTest {
 		int dineroInicial = traspie.obtenerDinero();
 		saltaNorte.aceptar(traspie);
 		int dineroPosterior = traspie.obtenerDinero();
-		assertEquals(dineroInicial - 23000, dineroPosterior);
+		assertEquals(dineroInicial - saltaNorte.getPrecioTerreno(), dineroPosterior);
 	}
 	
 	@Test
@@ -160,7 +166,8 @@ public class BarriosTest {
 		int dineroInicial = unJugador.obtenerDinero();
 		tablero.avanzarJugador(unJugador, 13);
 		int dineroPosterior = unJugador.obtenerDinero();
-		assertEquals(dineroInicial - 23000, dineroPosterior);
+		int costoTerreno = ((Propiedad) tablero.getPosicionDeJugador(unJugador)).getPrecioTerreno();
+		assertEquals(dineroInicial - costoTerreno, dineroPosterior);
 	}
 	
 	@Test
@@ -171,7 +178,7 @@ public class BarriosTest {
 		int dineroInicial = traspie.obtenerDinero();
 		saltaSur.aceptar(traspie);
 		int dineroPosterior = traspie.obtenerDinero();
-		assertEquals(dineroInicial - 23000, dineroPosterior);
+		assertEquals(dineroInicial - saltaSur.getPrecioTerreno(), dineroPosterior);
 	}
 	
 	@Test
@@ -184,7 +191,8 @@ public class BarriosTest {
 		int dineroInicial = unJugador.obtenerDinero();
 		tablero.avanzarJugador(unJugador, 14);
 		int dineroPosterior = unJugador.obtenerDinero();
-		assertEquals(dineroInicial - 23000, dineroPosterior);
+		int costoTerreno = ((Propiedad) tablero.getPosicionDeJugador(unJugador)).getPrecioTerreno();
+		assertEquals(dineroInicial - costoTerreno, dineroPosterior);
 	}
 	
 	@Test
@@ -195,7 +203,7 @@ public class BarriosTest {
 		int dineroInicial = traspie.obtenerDinero();
 		neuquen.aceptar(traspie);
 		int dineroPosterior = traspie.obtenerDinero();
-		assertEquals(dineroInicial - 17000, dineroPosterior);
+		assertEquals(dineroInicial - neuquen.getPrecioTerreno(), dineroPosterior);
 	}
 	
 	@Test
@@ -208,7 +216,8 @@ public class BarriosTest {
 		int dineroInicial = unJugador.obtenerDinero();
 		tablero.avanzarJugador(unJugador, 17);
 		int dineroPosterior = unJugador.obtenerDinero();
-		assertEquals(dineroInicial - 17000, dineroPosterior);
+		int costoTerreno = ((Propiedad) tablero.getPosicionDeJugador(unJugador)).getPrecioTerreno();
+		assertEquals(dineroInicial - costoTerreno, dineroPosterior);
 	}
 	
 	@Test
@@ -219,7 +228,7 @@ public class BarriosTest {
 		int dineroInicial = traspie.obtenerDinero();
 		tucuman.aceptar(traspie);
 		int dineroPosterior = traspie.obtenerDinero();
-		assertEquals(dineroInicial - 25000, dineroPosterior);
+		assertEquals(dineroInicial - tucuman.getPrecioTerreno(), dineroPosterior);
 	}
 	
 	@Test
@@ -232,7 +241,8 @@ public class BarriosTest {
 		int dineroInicial = unJugador.obtenerDinero();
 		tablero.avanzarJugador(unJugador, 19);
 		int dineroPosterior = unJugador.obtenerDinero();
-		assertEquals(dineroInicial - 25000, dineroPosterior);
+		int costoTerreno = ((Propiedad) tablero.getPosicionDeJugador(unJugador)).getPrecioTerreno();
+		assertEquals(dineroInicial - costoTerreno, dineroPosterior);
 	}
 	
 	@Test
@@ -249,7 +259,7 @@ public class BarriosTest {
 		chade.construir(bsAsSur);
 		
 		int dineroDespuesDeConstruir = chade.obtenerDinero();
-		assertEquals(dineroAntesDeConstruir - 5000, dineroDespuesDeConstruir);
+		assertEquals(dineroAntesDeConstruir - bsAsSur.getPrecioCasa(), dineroDespuesDeConstruir);
 	}
 	
 	@Test
@@ -265,7 +275,8 @@ public class BarriosTest {
 		int dineroInicial = unJugador.obtenerDinero();
 		unJugador.construir(BsAsSur);
 		int dineroPosterior = unJugador.obtenerDinero();
-		assertEquals(dineroInicial - 5000, dineroPosterior);
+		int costoConstruccion = BsAsSur.getPrecioCasa();
+		assertEquals(dineroInicial - costoConstruccion, dineroPosterior);
 	}
 	
 	@Test
@@ -282,7 +293,7 @@ public class BarriosTest {
 		int dineroAntesDeConstruir = traspie.obtenerDinero();
 		traspie.construir(cordobaSur);
 		
-		assertEquals(traspie.obtenerDinero(), dineroAntesDeConstruir -2000);
+		assertEquals(traspie.obtenerDinero(), dineroAntesDeConstruir - cordobaSur.getPrecioCasa());
 	}
 	
 	@Test
@@ -298,7 +309,7 @@ public class BarriosTest {
 		int dineroInicial = unJugador.obtenerDinero();
 		unJugador.construir(cordobaSur);
 		int dineroPosterior = unJugador.obtenerDinero();
-		assertEquals(dineroInicial - 2000, dineroPosterior);
+		assertEquals(dineroInicial - cordobaSur.getPrecioCasa(), dineroPosterior);
 	}
 	
 	@Test
@@ -314,7 +325,7 @@ public class BarriosTest {
 		int dineroInicial = unJugador.obtenerDinero();
 		unJugador.construir(saltaSur);
 		int dineroPosterior = unJugador.obtenerDinero();
-		assertEquals(dineroInicial - 4500, dineroPosterior);
+		assertEquals(dineroInicial - saltaSur.getPrecioCasa(), dineroPosterior);
 	}
 	
 	@Test
@@ -333,7 +344,7 @@ public class BarriosTest {
 		Jugador regio = new Jugador();
 		int dineroAntesDeAlquilar = regio.obtenerDinero();
 		buenosAiresSur.aceptar(regio);
-		assertEquals(regio.obtenerDinero(), dineroAntesDeAlquilar -3000);
+		assertEquals(regio.obtenerDinero(), dineroAntesDeAlquilar - buenosAiresSur.getAlquilerActual());
 	}
 	
 	@Test
@@ -353,7 +364,7 @@ public class BarriosTest {
 		int dineroInicial = otroJugador.obtenerDinero();
 		tablero.avanzarJugador(otroJugador, 2);
 		int dineroPosterior = otroJugador.obtenerDinero();
-		assertEquals(dineroInicial - 3000, dineroPosterior);
+		assertEquals(dineroInicial - BsAsSur.getAlquilerActual(), dineroPosterior);
 	}
 	
 	@Test
@@ -373,7 +384,7 @@ public class BarriosTest {
 		int dineroInicial = otroJugador.obtenerDinero();
 		tablero.avanzarJugador(otroJugador, 6);
 		int dineroPosterior = otroJugador.obtenerDinero();
-		assertEquals(dineroInicial - 1500, dineroPosterior);
+		assertEquals(dineroInicial - cordobaSur.getAlquilerActual(), dineroPosterior);
 	}
 	
 	@Test
@@ -393,7 +404,7 @@ public class BarriosTest {
 		int dineroInicial = otroJugador.obtenerDinero();
 		tablero.avanzarJugador(otroJugador, 13);
 		int dineroPosterior = otroJugador.obtenerDinero();
-		assertEquals(dineroInicial - 3250, dineroPosterior);
+		assertEquals(dineroInicial - saltaNorte.getAlquilerActual(), dineroPosterior);
 	}
 	
 	@Test
@@ -414,7 +425,7 @@ public class BarriosTest {
 		Jugador regio = new Jugador();
 		int dineroAntesDeAlquilar = regio.obtenerDinero();
 		buenosAiresSur.aceptar(regio);
-		assertEquals(regio.obtenerDinero(), dineroAntesDeAlquilar - 3500);
+		assertEquals(regio.obtenerDinero(), dineroAntesDeAlquilar - buenosAiresSur.getAlquilerActual());
 	}
 	
 	@Test
@@ -435,7 +446,7 @@ public class BarriosTest {
 		int dineroInicial = otroJugador.obtenerDinero();
 		tablero.avanzarJugador(otroJugador, 2);
 		int dineroPosterior = otroJugador.obtenerDinero();
-		assertEquals(dineroInicial - 3500, dineroPosterior);
+		assertEquals(dineroInicial - BsAsSur.getAlquilerActual(), dineroPosterior);
 
 	}
 	
@@ -457,7 +468,7 @@ public class BarriosTest {
 		int dineroInicial = otroJugador.obtenerDinero();
 		tablero.avanzarJugador(otroJugador, 6);
 		int dineroPosterior = otroJugador.obtenerDinero();
-		assertEquals(dineroInicial - 2500, dineroPosterior);
+		assertEquals(dineroInicial - cordobaSur.getAlquilerActual(), dineroPosterior);
 
 	}
 	
@@ -479,7 +490,7 @@ public class BarriosTest {
 		int dineroInicial = otroJugador.obtenerDinero();
 		tablero.avanzarJugador(otroJugador, 9);
 		int dineroPosterior = otroJugador.obtenerDinero();
-		assertEquals(dineroInicial - 1800, dineroPosterior);
+		assertEquals(dineroInicial - cordobaNorte.getAlquilerActual(), dineroPosterior);
 
 	}
 	
@@ -502,7 +513,7 @@ public class BarriosTest {
 		int dineroInicial = otroJugador.obtenerDinero();
 		tablero.avanzarJugador(otroJugador, 9);
 		int dineroPosterior = otroJugador.obtenerDinero();
-		assertEquals(dineroInicial - 2900, dineroPosterior);
+		assertEquals(dineroInicial - cordobaNorte.getAlquilerActual(), dineroPosterior);
 
 	}
 	
@@ -524,7 +535,7 @@ public class BarriosTest {
 		int dineroInicial = otroJugador.obtenerDinero();
 		tablero.avanzarJugador(otroJugador, 13);
 		int dineroPosterior = otroJugador.obtenerDinero();
-		assertEquals(dineroInicial - 3250, dineroPosterior);
+		assertEquals(dineroInicial - saltaNorte.getAlquilerActual(), dineroPosterior);
 
 	}
 	
@@ -547,7 +558,7 @@ public class BarriosTest {
 		int dineroInicial = otroJugador.obtenerDinero();
 		tablero.avanzarJugador(otroJugador, 13);
 		int dineroPosterior = otroJugador.obtenerDinero();
-		assertEquals(dineroInicial - 3850, dineroPosterior);
+		assertEquals(dineroInicial - saltaNorte.getAlquilerActual(), dineroPosterior);
 
 	}
 	
@@ -634,7 +645,7 @@ public class BarriosTest {
 		int dineroAntesDeIntentarConstruirHotel = traspie.obtenerDinero();
 		traspie.construir(buenosAiresSur);
 		
-		assertEquals(traspie.obtenerDinero(), dineroAntesDeIntentarConstruirHotel - 8000);
+		assertEquals(traspie.obtenerDinero(), dineroAntesDeIntentarConstruirHotel - buenosAiresSur.getPrecioHotel());
 	}
 	
 	@Test
@@ -655,7 +666,7 @@ public class BarriosTest {
 		int dineroInicial = unJugador.obtenerDinero();
 		unJugador.construir(cordobaSur);
 		int dineroPosterior = unJugador.obtenerDinero();
-		assertEquals(dineroInicial - 3000, dineroPosterior);
+		assertEquals(dineroInicial - cordobaSur.getPrecioHotel(), dineroPosterior);
 
 	}
 	
@@ -677,7 +688,7 @@ public class BarriosTest {
 		int dineroInicial = unJugador.obtenerDinero();
 		unJugador.construir(cordobaNorte);
 		int dineroPosterior = unJugador.obtenerDinero();
-		assertEquals(dineroInicial - 3500, dineroPosterior);
+		assertEquals(dineroInicial - cordobaNorte.getPrecioHotel(), dineroPosterior);
 
 	}
 	
@@ -699,12 +710,12 @@ public class BarriosTest {
 		int dineroInicial = unJugador.obtenerDinero();
 		unJugador.construir(saltaSur);
 		int dineroPosterior = unJugador.obtenerDinero();
-		assertEquals(dineroInicial - 7500, dineroPosterior);
+		assertEquals(dineroInicial - saltaSur.getPrecioHotel(), dineroPosterior);
 
 	}
 	
 	@Test
-	public void jugadorCuentaConBsAsNorteYSurConstruyeDosCasasEnAmbasYHotelEnSurLuegoUnContrincanteCaeEnNorteYPagaAlquier(){
+	public void jugadorCuentaConBsAsNorteYSurConstruyeDosCasasEnAmbasYHotelEnSurLuegoUnContrincanteCaeEnSurYPagaAlquier(){
 		Jugador traspie = new Jugador();
 		Barrio buenosAiresSur = new BuenosAiresSur();
 		Barrio buenosAiresNorte = new BuenosAiresNorte();
@@ -724,7 +735,7 @@ public class BarriosTest {
 		int dineroAntesDeCaerEnBarrioConHotel = regio.obtenerDinero();
 		buenosAiresSur.aceptar(regio);
 		
-		assertEquals(regio.obtenerDinero(), dineroAntesDeCaerEnBarrioConHotel - 5000);
+		assertEquals(regio.obtenerDinero(), dineroAntesDeCaerEnBarrioConHotel - buenosAiresSur.getAlquilerActual());
 	}
 	
 	@Test
@@ -747,7 +758,7 @@ public class BarriosTest {
 		int dineroInicial = otroJugador.obtenerDinero();
 		tablero.avanzarJugador(otroJugador, 6);
 		int dineroPosterior = otroJugador.obtenerDinero();
-		assertEquals(dineroInicial - 3000, dineroPosterior);
+		assertEquals(dineroInicial - cordobaSur.getAlquilerActual(), dineroPosterior);
 
 	}
 	
@@ -771,7 +782,7 @@ public class BarriosTest {
 		int dineroInicial = otroJugador.obtenerDinero();
 		tablero.avanzarJugador(otroJugador, 9);
 		int dineroPosterior = otroJugador.obtenerDinero();
-		assertEquals(dineroInicial - 3500, dineroPosterior);
+		assertEquals(dineroInicial - cordobaNorte.getAlquilerActual(), dineroPosterior);
 
 	}
 	
@@ -795,7 +806,7 @@ public class BarriosTest {
 		int dineroInicial = otroJugador.obtenerDinero();
 		tablero.avanzarJugador(otroJugador, 14);
 		int dineroPosterior = otroJugador.obtenerDinero();
-		assertEquals(dineroInicial - 5500, dineroPosterior);
+		assertEquals(dineroInicial - saltaSur.getAlquilerActual(), dineroPosterior);
 	}
 	
 	@Test
@@ -810,7 +821,7 @@ public class BarriosTest {
 		int dineroInicial = unJugador.obtenerDinero();
 		unJugador.construir(SantaFe);
 		int dineroPosterior = unJugador.obtenerDinero();
-		assertEquals(dineroInicial - 4000, dineroPosterior);
+		assertEquals(dineroInicial - SantaFe.getPrecioCasa(), dineroPosterior);
 	}
 	
 	@Test
@@ -825,7 +836,7 @@ public class BarriosTest {
 		int dineroInicial = unJugador.obtenerDinero();
 		unJugador.construir(Neuquen);
 		int dineroPosterior = unJugador.obtenerDinero();
-		assertEquals(dineroInicial - 4800, dineroPosterior);
+		assertEquals(dineroInicial - Neuquen.getPrecioCasa(), dineroPosterior);
 	}
 	
 	@Test
@@ -840,7 +851,7 @@ public class BarriosTest {
 		int dineroInicial = unJugador.obtenerDinero();
 		unJugador.construir(Tucuman);
 		int dineroPosterior = unJugador.obtenerDinero();
-		assertEquals(dineroInicial - 7000, dineroPosterior);
+		assertEquals(dineroInicial - Tucuman.getPrecioCasa(), dineroPosterior);
 	}
 	
 	@Test
@@ -857,7 +868,7 @@ public class BarriosTest {
 		int dineroInicial = otroJugador.obtenerDinero();
 		tablero.avanzarJugador(otroJugador, 11);
 		int dineroPosterior = otroJugador.obtenerDinero();
-		assertEquals(dineroInicial - 3500, dineroPosterior);
+		assertEquals(dineroInicial - SantaFe.getAlquilerActual(), dineroPosterior);
 	}
 	
 	@Test
@@ -874,7 +885,7 @@ public class BarriosTest {
 		int dineroInicial = otroJugador.obtenerDinero();
 		tablero.avanzarJugador(otroJugador, 17);
 		int dineroPosterior = otroJugador.obtenerDinero();
-		assertEquals(dineroInicial - 3800, dineroPosterior);
+		assertEquals(dineroInicial - Neuquen.getAlquilerActual(), dineroPosterior);
 	}
 	
 	@Test
@@ -891,6 +902,6 @@ public class BarriosTest {
 		int dineroInicial = otroJugador.obtenerDinero();
 		tablero.avanzarJugador(otroJugador, 19);
 		int dineroPosterior = otroJugador.obtenerDinero();
-		assertEquals(dineroInicial - 4500, dineroPosterior);
+		assertEquals(dineroInicial - Tucuman.getAlquilerActual(), dineroPosterior);
 	}
 }

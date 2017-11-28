@@ -11,7 +11,7 @@ import org.junit.Test;
 public class CommandTest {
 
     @Test
-    public void jugsdorPideOpcionesABuenosAiresSurPuedeSoloVender(){
+    public void jugadorPideOpcionesABuenosAiresSurPuedeSoloVender(){
         AlgoPoly juego = new AlgoPoly();
         juego.inicializarJuego();
 
@@ -28,7 +28,7 @@ public class CommandTest {
     }
 
     @Test
-    public void jugsdorPideOpcionesAEDESURYPuedeSoloVender(){
+    public void jugadorPideOpcionesAEDESURYPuedeSoloVender(){
         AlgoPoly juego = new AlgoPoly();
         juego.inicializarJuego();
 

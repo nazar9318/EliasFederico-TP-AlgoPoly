@@ -50,6 +50,11 @@ public abstract class Barrio extends Propiedad implements Visitable {
 		}
 		return alquiler;
 	}
+	
+	public int getAlquilerActual() {
+		int unAlquiler = alquiler + getAlquilerDeEdificaciones() + getAlquilerHotel();
+		return unAlquiler;
+	}
 
 	public int cantidadCasas() {
 		return casas.size();
@@ -66,6 +71,14 @@ public abstract class Barrio extends Propiedad implements Visitable {
 		((Barrio) this.getCeldaAsociada()).hoteles.clear();
 		duenio.removerPropiedad(this);
 		this.duenio = null;
+	}
+	
+	public int getPrecioCasa() {
+		return precioCasa;
+	}
+	
+	public int getPrecioHotel() {
+		return precioHotel;
 	}
 	
 	private boolean puedeConstruirCasa(){

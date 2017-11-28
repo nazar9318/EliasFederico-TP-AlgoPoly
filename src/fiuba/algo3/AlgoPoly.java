@@ -95,14 +95,20 @@ public class AlgoPoly {
 		while (jugadores.size()<3) {
 			jugadores.add(new Jugador());
 		}
+		agregarJugadoresEnTablero();
+	}
+	
+	public void agregarJugadoresEnTablero() {
 		for(Jugador jugador: jugadores) {
 			tablero.agregarJugador(jugador);
 			jugador.conocerTablero(tablero);
 		}
 	}
-	
 	public void reiniciarJuego() {
 		Collections.shuffle(jugadores);
+		this.tablero = new Tablero();
+		construirTablero();
+		agregarJugadoresEnTablero();
 	}
 	
 	public void jugarTurno(Jugador unJugador) {
