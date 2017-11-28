@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import fiuba.algo3.AlgoPoly;
 import fiuba.algo3.Tablero;
+import fiuba.algo3.excepciones.JugadorNoCuentaConDineroSuficienteParaComprarException;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -124,4 +126,17 @@ public class JugadorTest {
 
 		Assert.assertEquals(dineroPosterior, dineroAnterior - 2000);
 	}
+	
+	@Test (expected = JugadorNoCuentaConDineroSuficienteParaComprarException.class)
+	public void JugadorNoCuentaConDineroSuficienteParaComprarUnaPropiedadDeberiaLanzarUnExcepcion() {
+		AlgoPoly algo = new AlgoPoly();
+
+		algo.inicializarJuego();
+		Tablero tablero = algo.getTablero();
+		Jugador jugador = tablero.agregarJugador(new Jugador());
+
+		jugador.pagar(80000);
+		tablero.avanzarJugador(jugador, 4);
+	}
+	
 }

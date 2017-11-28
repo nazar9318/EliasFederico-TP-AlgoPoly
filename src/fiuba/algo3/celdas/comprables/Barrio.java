@@ -9,6 +9,7 @@ import fiuba.algo3.Jugador;
 import fiuba.algo3.celdas.Casa;
 import fiuba.algo3.celdas.Hotel;
 import fiuba.algo3.celdas.Visitable;
+import fiuba.algo3.excepciones.BarrioSimpleNoPuedeConstruirHotelException;
 
 public abstract class Barrio extends Propiedad implements Visitable {
     int maxCasas;
@@ -131,8 +132,12 @@ public abstract class Barrio extends Propiedad implements Visitable {
 		if ((jugador.poseeALaAsociadaDe(this)) ) {
 			if(this.puedeConstruirHotel()){
 				this.construirHotel(jugador);
-			}else if (this.puedeConstruirCasa()){
+			}
+			else if (this.puedeConstruirCasa()){
 				this.construirCasa(jugador);
+			}
+			else if (this.getCeldaAsociada() == null) {
+				throw new BarrioSimpleNoPuedeConstruirHotelException();
 			}
 		}
 	}

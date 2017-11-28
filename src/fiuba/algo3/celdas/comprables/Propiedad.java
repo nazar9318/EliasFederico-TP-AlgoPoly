@@ -3,6 +3,7 @@ package fiuba.algo3.celdas.comprables;
 import fiuba.algo3.Command.Respuesta;
 import fiuba.algo3.Jugador;
 import fiuba.algo3.celdas.Visitable;
+import fiuba.algo3.excepciones.JugadorNoCuentaConDineroSuficienteParaComprarException;
 import fiuba.algo3.excepciones.JugadorNoTieneFondosParaPagarException;
 import fiuba.algo3.excepciones.PropiedadConDuenioException;
 
@@ -41,7 +42,7 @@ public abstract class Propiedad implements Visitable {
 			try {
 				jugador.pagar(this.getPrecioTerreno());
 			}catch(JugadorNoTieneFondosParaPagarException e){
-				throw new JugadorNoTieneFondosParaPagarException();
+				throw new JugadorNoCuentaConDineroSuficienteParaComprarException();
 			}
 			jugador.agregarPropiedad(this);
 			this.setDuenio(jugador);

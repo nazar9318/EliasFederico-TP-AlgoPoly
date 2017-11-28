@@ -27,6 +27,10 @@ public class AlgoPoly {
 		return tablero;
 	}
 	
+	public Turno getTurno() {
+		return turno;
+	}
+	
 	public ArrayList<Jugador> getJugadores() {
 		return jugadores;
 	}

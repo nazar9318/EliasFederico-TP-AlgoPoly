@@ -8,7 +8,7 @@ import org.junit.Test;
 import fiuba.algo3.Jugador;
 import fiuba.algo3.celdas.comprables.Barrio;
 import fiuba.algo3.celdas.comprables.BuenosAiresNorte;
-import fiuba.algo3.excepciones.JugadorNoTieneFondosParaPagarException;
+import fiuba.algo3.excepciones.JugadorNoCuentaConDineroSuficienteParaComprarException;
 
 public class BarrioTest {
 
@@ -22,15 +22,13 @@ public class BarrioTest {
 		assertEquals(barrio.getDuenio(), jugador);
 	}
 	
-	@Test (expected = JugadorNoTieneFondosParaPagarException.class)
+	@Test (expected = JugadorNoCuentaConDineroSuficienteParaComprarException.class)
 	public void jugadorCompraTerrenoYNoTieneFondos() {
 		Jugador jugador = new Jugador();
 		jugador.pagar(100000);
 		Barrio barrio = new BuenosAiresSur();
 
 		jugador.visitar(barrio);
-		//Respuesta = jugador.visitar(barrio);
-		//respuesta.seleccionarOpcion(Opcion.Comprar);
 
 		assertNull(barrio.getDuenio());
 	}

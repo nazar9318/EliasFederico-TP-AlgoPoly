@@ -3,7 +3,7 @@ package primeraEntregaTests;
 import static org.junit.Assert.*;
 
 import fiuba.algo3.celdas.comprables.BuenosAiresSur;
-import fiuba.algo3.excepciones.JugadorNoTieneFondosParaPagarException;
+import fiuba.algo3.excepciones.JugadorNoCuentaConDineroSuficienteParaComprarException;
 import org.junit.Test;
 
 import fiuba.algo3.Jugador;
@@ -38,7 +38,7 @@ public class quini6Test {
 		assertEquals(barrio.getDuenio(),unJugador);
 	}
 	
-	@Test (expected = JugadorNoTieneFondosParaPagarException.class)
+	@Test (expected = JugadorNoCuentaConDineroSuficienteParaComprarException.class)
 	public void unJugadorCaeEnQuini6PorTerceraVezYSuCapitalNoSeIncrementaMas() {
 		Quini6 quini = new Quini6();
 		Jugador unJugador = new Jugador();

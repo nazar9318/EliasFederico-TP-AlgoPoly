@@ -1,7 +1,6 @@
 package fiuba.algo3;
 
-import fiuba.algo3.celdas.especiales.AvanceDinamico;
-import fiuba.algo3.celdas.especiales.RetrocesoDinamico;
+import fiuba.algo3.excepciones.JugadorNoCuentaConDineroSuficienteParaComprarException;
 import fiuba.algo3.excepciones.JugadorNoPuedeSalirDeLaCarcelException;
 import fiuba.algo3.excepciones.JugadorNoTieneFondosParaPagarException;
 
@@ -11,7 +10,6 @@ public class Turno {
 	private Dado dado2;
 	private int valorDados;
 	private int turnosJugados;
-	private boolean jugar;
 	
 	public Turno () {
 		this.dado1  = new Dado();
@@ -21,29 +19,48 @@ public class Turno {
 	public void tirarDados() {
 		int valor1 = dado1.tirar();
 		int valor2 = dado2.tirar();
-		if (valor1 != valor2) jugar = false;
 		this.valorDados = valor1 + valor2;
 	}
 
 	public int jugar(Jugador unJugador, Tablero tablero) {
-		jugar = true;
 		turnosJugados = 0;
-		while (jugar && turnosJugados < 2) {
+		setValorDados(0,0);
+		while (puedeJugar() && turnosJugados < 2) {	
 			tirarDados();
 			try {
-				unJugador.setValorDeTiro(valorDados);
-				tablero.avanzarJugador(unJugador, valorDados);
+				hacerJugarAlJugador(unJugador, tablero);
 			}	
 			catch (JugadorNoPuedeSalirDeLaCarcelException e) {
-				jugar = false;
+				return 0;
 			}	
 			catch (JugadorNoTieneFondosParaPagarException e) {
 				return -1;
 			}
-			turnosJugados ++;
+			catch (JugadorNoCuentaConDineroSuficienteParaComprarException e) {
+				return 0;
+			}
+			turnosJugados++;
 		}
 		return 0;
 	}
 	
+	public void hacerJugarAlJugador(Jugador unJugador, Tablero tablero) {
+		unJugador.setValorDeTiro(valorDados);
+		tablero.avanzarJugador(unJugador, valorDados);
+	}
 	
+	public void setValorDados(int valor1, int valor2) {
+		dado1.setValor(valor1);
+		dado2.setValor(valor2);
+		this.valorDados = valor1 + valor2;
+	}
+	
+	public boolean puedeJugar () {
+		return dado1.getValor() == dado2.getValor();
+	}
+	
+	public int getTurnosJugados() {
+		return turnosJugados;
+	}
 }
+

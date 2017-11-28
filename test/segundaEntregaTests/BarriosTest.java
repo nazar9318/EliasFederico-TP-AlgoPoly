@@ -604,7 +604,7 @@ public class BarriosTest {
 
 	}
 	
-	@Test
+	@Test 
 	public void jugadorCuentaConSaltaNorteYSurCon2CasasEnSurY1EnNorteYConstruyeUnHotelSuDineroNoDeberiaDisminuir() {
 		AlgoPoly juego = new AlgoPoly();
 		juego.inicializarJuego();
