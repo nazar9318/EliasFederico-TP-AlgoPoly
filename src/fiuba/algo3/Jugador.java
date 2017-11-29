@@ -26,6 +26,14 @@ public class Jugador implements Visitante {
 		this.estado = new EstadoJugadorNormal();
 	}
 
+	public void setEstado(EstadoJugador estado) {
+		this.estado = estado;
+	}
+
+	public EstadoJugador getEstado() {
+		return estado;
+	}
+
 	public int obtenerDinero() {
 		return this.dinero;
 	}
@@ -127,5 +135,19 @@ public class Jugador implements Visitante {
 	public void visitar(Visitable visitable) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public void verPropiedades() {
+		for(int i = 0; i < getCantidadDePropiedades(); i++){
+			System.out.println(this.propiedades.get(i).getNombre());
+		}
+	}
+
+	public Propiedad buscarPropiedad(String propiedad) {
+		for(int i = 0; i < getCantidadDePropiedades(); i++) {
+			if(this.propiedades.get(i).getNombre().equals(propiedad))
+				return this.propiedades.get(i);
+		}
+		return null;
 	}
 }

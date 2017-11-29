@@ -2,6 +2,8 @@ package segundaEntregaTests;
 
 import static org.junit.Assert.*;
 import java.util.ArrayList;
+
+import fiuba.algo3.excepciones.JugadorPerdioException;
 import org.junit.Test;
 import fiuba.algo3.AlgoPoly;
 import fiuba.algo3.Jugador;
@@ -904,4 +906,5 @@ public class BarriosTest {
 		int dineroPosterior = otroJugador.obtenerDinero();
 		assertEquals(dineroInicial - Tucuman.getAlquilerActual(), dineroPosterior);
 	}
+
 }

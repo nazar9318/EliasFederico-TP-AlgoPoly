@@ -67,6 +67,29 @@ public class CommandTest {
     }
 
     @Test
+    public void jugadorPideOpcionesABuenosAiresSurYLaVende(){
+        AlgoPoly juego = new AlgoPoly();
+        juego.inicializarJuego();
+
+        Jugador jug1 = juego.getJugadores().get(0);
+        Tablero tablero = juego.getTablero();
+        Invoker invoker = juego.getInvoker();
+
+        tablero.avanzarJugador(jug1, 2);
+        int propiedadesAntes = jug1.getCantidadDePropiedades();
+
+        Respuesta opciones = jug1.getPropiedades().get(0).getOpciones(jug1);
+
+        opciones.mostrarAcciones(); //en el juego muestra los botones
+        Command aEjecutar = opciones.getAccion("Vender");
+
+        invoker.setCommand(aEjecutar);
+        invoker.executeCommand(jug1);
+
+        Assert.assertEquals(jug1.getCantidadDePropiedades(), propiedadesAntes - 1);
+    }
+
+    @Test
     public void jugsdorPoseeAmbosBuenosAiresPideOpcionesABuenosAiresConstruyeYSeCobraElAlquilerCorrecto(){
         AlgoPoly juego = new AlgoPoly();
         juego.inicializarJuego();
@@ -109,4 +132,5 @@ public class CommandTest {
 
         Assert.assertEquals(dineroAnterior - 3000, jug2.obtenerDinero());
     }
+
 }

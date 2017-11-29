@@ -4,8 +4,12 @@ import static org.junit.Assert.*;
 
 import fiuba.algo3.AlgoPoly;
 import fiuba.algo3.Tablero;
+import fiuba.algo3.celdas.comprables.Barrio;
+import fiuba.algo3.celdas.comprables.BuenosAiresNorte;
+import fiuba.algo3.celdas.comprables.BuenosAiresSur;
 import fiuba.algo3.excepciones.JugadorNoCuentaConDineroSuficienteParaComprarException;
 
+import fiuba.algo3.excepciones.JugadorPerdioException;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -138,5 +142,48 @@ public class JugadorTest {
 		jugador.pagar(80000);
 		tablero.avanzarJugador(jugador, 4);
 	}
-	
+
+	@Test(expected = JugadorPerdioException.class)
+	public void jugadorSinPropiedadesNoPuedePagarAlquilerYPierde(){
+		Tablero tablero = new Tablero();
+
+		Jugador jugador1 = tablero.agregarJugador(new Jugador());
+		Jugador jugador2 = tablero.agregarJugador(new Jugador());
+		tablero.agregarCelda(new BuenosAiresSur());
+
+		tablero.avanzarJugador(jugador1,1);
+		Barrio BsAs = (Barrio) jugador1.getPropiedades().get(0);
+		tablero.avanzarJugador(jugador2,1);
+
+		do{
+			tablero.avanzarJugador(jugador2,2);
+		}while (jugador2.obtenerDinero() >= BsAs.getAlquilerActual());
+
+		tablero.avanzarJugador(jugador2,2);
+	}
+
+	@Test
+	public void jugadorNoPuedePagarAlquilerYVendeUnaPropiedadParaPoder(){
+		Tablero tablero = new Tablero();
+
+		tablero.agregarCelda(new BuenosAiresSur());
+		tablero.agregarCelda(new BuenosAiresNorte());
+
+		Jugador jugador1 = tablero.agregarJugador(new Jugador());
+		Jugador jugador2 = tablero.agregarJugador(new Jugador());
+
+		tablero.avanzarJugador(jugador1, 1);
+		tablero.avanzarJugador(jugador2, 2);
+
+		Barrio BsAs = (Barrio) jugador1.getPropiedades().get(0);
+
+		tablero.avanzarJugador(jugador2, 2);
+		do{
+			tablero.avanzarJugador(jugador2,3);
+		}while (jugador2.obtenerDinero() >= BsAs.getAlquilerActual());
+
+		jugador2.verPropiedades();
+		jugador2.buscarPropiedad("BuenosAiresNorte").vender();
+		tablero.avanzarJugador(jugador2,3);
+	}
 }

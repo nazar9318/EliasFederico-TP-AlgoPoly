@@ -10,6 +10,8 @@ import fiuba.algo3.celdas.Casa;
 import fiuba.algo3.celdas.Hotel;
 import fiuba.algo3.celdas.Visitable;
 import fiuba.algo3.excepciones.BarrioSimpleNoPuedeConstruirHotelException;
+import fiuba.algo3.excepciones.JugadorNoTieneFondosParaPagarException;
+import fiuba.algo3.excepciones.JugadorPerdioException;
 
 public abstract class Barrio extends Propiedad implements Visitable {
     int maxCasas;
@@ -32,29 +34,34 @@ public abstract class Barrio extends Propiedad implements Visitable {
 
 	@Override
 	public void cobrarAlquiler(Jugador jugador) {
-		jugador.pagar(getAlquiler() + this.getAlquilerDeEdificaciones() + this.getAlquilerHotel());
+		try {
+			jugador.pagar(getAlquiler() + this.getAlquilerDeEdificaciones() + this.getAlquilerHotel());
+		}catch(JugadorNoTieneFondosParaPagarException e){
+			if(jugador.getCantidadDePropiedades() == 0)
+				throw new JugadorPerdioException();
+			else
+				//TODO: obligarVenta -> mostrarPropiedades -> opcionVender
+				cobrarAlquiler(jugador);
+		}
 		this.duenio.cobrar(getAlquiler() + this.getAlquilerDeEdificaciones() + this.getAlquilerHotel());
 	}
 
 	private int getAlquilerHotel() {
 		int alquilerHotel = 0;
-		for(int i = 0; i < hoteles.size(); i++){
+		for(int i = 0; i < hoteles.size(); i++)
 			alquilerHotel += hoteles.get(i).getAlquiler();
-		}
 		return alquilerHotel;
 	}
 
 	private int getAlquilerDeEdificaciones() {
 		int alquiler = 0;
-		for(int i = 0; i < casas.size(); i++){
+		for(int i = 0; i < casas.size(); i++)
 			alquiler += casas.get(i).getAlquiler();
-		}
 		return alquiler;
 	}
 	
 	public int getAlquilerActual() {
-		int unAlquiler = alquiler + getAlquilerDeEdificaciones() + getAlquilerHotel();
-		return unAlquiler;
+		return alquiler + getAlquilerDeEdificaciones() + getAlquilerHotel();
 	}
 
 	public int cantidadCasas() {
@@ -65,11 +72,13 @@ public abstract class Barrio extends Propiedad implements Visitable {
 		return hoteles.size();
 	}
 
+	@Override
 	public void vender() {
 		duenio.cobrar(super.getPrecioDeVenta());
 		casas.clear();
 		hoteles.clear();
-		((Barrio) this.getCeldaAsociada()).hoteles.clear();
+		if(this.getCeldaAsociada() != null)
+			((Barrio) this.getCeldaAsociada()).hoteles.clear();
 		duenio.removerPropiedad(this);
 		this.duenio = null;
 	}

@@ -38,7 +38,7 @@ public class AlgoPolyTest {
     	juego.inicializarJuego();
     	Assert.assertEquals(3, juego.getCantidadDeJugadores());
     }
-    
+/*
     @Test
 	public void comenzarJuegoDeberiaPararCuandoSoloQuedeUnUnicoJugadorGanador() {
 		AlgoPoly juego = new AlgoPoly();
@@ -47,5 +47,5 @@ public class AlgoPolyTest {
 		juego.comenzarJuego();
 		assertEquals(CantidadInicial +1,juego.getCantidadDeJugadores());
 	}
-   
+*/
 }

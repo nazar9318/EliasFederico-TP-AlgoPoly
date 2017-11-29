@@ -5,6 +5,8 @@ import fiuba.algo3.Command.Vender;
 import fiuba.algo3.Jugador;
 import fiuba.algo3.celdas.Visitable;
 import fiuba.algo3.celdas.comprables.Propiedad;
+import fiuba.algo3.excepciones.JugadorNoTieneFondosParaPagarException;
+import fiuba.algo3.excepciones.JugadorPerdioException;
 
 public abstract class Servicio extends Propiedad implements Visitable {
 
@@ -16,12 +18,20 @@ public abstract class Servicio extends Propiedad implements Visitable {
 
 	@Override
 	public void cobrarAlquiler(Jugador jugador) {
-		if (this.duenio.poseeALaAsociadaDe(this)){
-			jugador.pagar((getAlquiler() + modificadorDeAlquiler)*jugador.getValorDeTiro());
-			this.duenio.cobrar((getAlquiler() + modificadorDeAlquiler)*jugador.getValorDeTiro());
-		} else{
-			jugador.pagar(getAlquiler() * jugador.getValorDeTiro());
-			this.duenio.cobrar(getAlquiler() * jugador.getValorDeTiro());
+		try{
+			if (this.duenio.poseeALaAsociadaDe(this)){
+				jugador.pagar((getAlquiler() + modificadorDeAlquiler)*jugador.getValorDeTiro());
+				this.duenio.cobrar((getAlquiler() + modificadorDeAlquiler)*jugador.getValorDeTiro());
+			} else{
+				jugador.pagar(getAlquiler() * jugador.getValorDeTiro());
+				this.duenio.cobrar(getAlquiler() * jugador.getValorDeTiro());
+			}
+		}catch (JugadorNoTieneFondosParaPagarException e){
+			if(jugador.getCantidadDePropiedades() == 0)
+				throw new JugadorPerdioException();
+			else
+				//TODO: obligarVenta -> mostrarPropiedades -> opcionVender
+				cobrarAlquiler(jugador);
 		}
 	}
 

@@ -25,6 +25,10 @@ public abstract class Propiedad implements Visitable {
 		return celdaAsociada;
 	}
 
+	public String getNombre() {
+		return nombre;
+	}
+
 	public Jugador getDuenio() {
 		return duenio;
 	}
