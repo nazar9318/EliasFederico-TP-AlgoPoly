@@ -1,10 +1,11 @@
 import fiuba.algo3.AlgoPoly;
-import fiuba.algo3.Command.Command;
-import fiuba.algo3.Command.Invoker;
-import fiuba.algo3.Command.Respuesta;
-import fiuba.algo3.Jugador;
-import fiuba.algo3.Tablero;
-import fiuba.algo3.celdas.comprables.Propiedad;
+import fiuba.algo3.modelo.Command.Command;
+import fiuba.algo3.modelo.Command.Invoker;
+import fiuba.algo3.modelo.Command.Respuesta;
+import fiuba.algo3.modelo.Jugador;
+import fiuba.algo3.modelo.Tablero;
+import fiuba.algo3.modelo.celdas.comprables.Barrio;
+import fiuba.algo3.modelo.celdas.comprables.Propiedad;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -130,7 +131,7 @@ public class CommandTest {
         int dineroAnterior = jug2.obtenerDinero();
         aConstruir.cobrarAlquiler(jug2);
 
-        Assert.assertEquals(dineroAnterior - 3000, jug2.obtenerDinero());
+        Assert.assertEquals(dineroAnterior - ((Barrio) aConstruir).getAlquilerActual(), jug2.obtenerDinero());
     }
 
 }

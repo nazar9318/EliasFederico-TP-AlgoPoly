@@ -1,14 +1,14 @@
 package primeraEntregaTests;
 
-import fiuba.algo3.celdas.comprables.BuenosAiresSur;
+import fiuba.algo3.modelo.celdas.comprables.BuenosAiresSur;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import org.junit.Assert;
 import org.junit.Test;
-import fiuba.algo3.Jugador;
-import fiuba.algo3.celdas.comprables.Barrio;
-import fiuba.algo3.celdas.comprables.BuenosAiresNorte;
-import fiuba.algo3.excepciones.JugadorNoCuentaConDineroSuficienteParaComprarException;
+import fiuba.algo3.modelo.Jugador;
+import fiuba.algo3.modelo.celdas.comprables.Barrio;
+import fiuba.algo3.modelo.celdas.comprables.BuenosAiresNorte;
+import fiuba.algo3.modelo.excepciones.JugadorNoCuentaConDineroSuficienteParaComprarException;
 
 public class BarrioTest {
 

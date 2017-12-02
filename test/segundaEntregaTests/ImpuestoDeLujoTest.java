@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 import fiuba.algo3.AlgoPoly;
-import fiuba.algo3.Jugador;
-import fiuba.algo3.Tablero;
-import fiuba.algo3.celdas.especiales.ImpuestoDeLujo;
+import fiuba.algo3.modelo.Jugador;
+import fiuba.algo3.modelo.Tablero;
+import fiuba.algo3.modelo.celdas.especiales.ImpuestoDeLujo;
 
 public class ImpuestoDeLujoTest {
 

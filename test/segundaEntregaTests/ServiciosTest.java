@@ -1,15 +1,15 @@
 package segundaEntregaTests;
 
 import fiuba.algo3.AlgoPoly;
-import fiuba.algo3.Jugador;
-import fiuba.algo3.Tablero;
-import fiuba.algo3.celdas.comprables.BuenosAiresNorte;
-import fiuba.algo3.celdas.comprables.BuenosAiresSur;
-import fiuba.algo3.celdas.comprables.Servicios.AYSA;
-import fiuba.algo3.celdas.comprables.Servicios.EDESUR;
-import fiuba.algo3.celdas.comprables.Servicios.SUBTE;
-import fiuba.algo3.celdas.comprables.Servicios.Servicio;
-import fiuba.algo3.celdas.comprables.Servicios.TREN;
+import fiuba.algo3.modelo.Jugador;
+import fiuba.algo3.modelo.Tablero;
+import fiuba.algo3.modelo.celdas.comprables.BuenosAiresNorte;
+import fiuba.algo3.modelo.celdas.comprables.BuenosAiresSur;
+import fiuba.algo3.modelo.celdas.comprables.Servicios.AYSA;
+import fiuba.algo3.modelo.celdas.comprables.Servicios.EDESUR;
+import fiuba.algo3.modelo.celdas.comprables.Servicios.SUBTE;
+import fiuba.algo3.modelo.celdas.comprables.Servicios.Servicio;
+import fiuba.algo3.modelo.celdas.comprables.Servicios.TREN;
 
 import static org.junit.Assert.assertEquals;
 

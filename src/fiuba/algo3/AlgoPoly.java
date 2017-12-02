@@ -3,10 +3,13 @@ package fiuba.algo3;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import fiuba.algo3.Command.Invoker;
-import fiuba.algo3.celdas.comprables.*;
-import fiuba.algo3.celdas.comprables.Servicios.*;
-import fiuba.algo3.celdas.especiales.*;
+import fiuba.algo3.modelo.ArrayPropiedad;
+import fiuba.algo3.modelo.Command.Invoker;
+import fiuba.algo3.modelo.Jugador;
+import fiuba.algo3.modelo.Tablero;
+import fiuba.algo3.modelo.celdas.comprables.*;
+import fiuba.algo3.modelo.celdas.comprables.Servicios.*;
+import fiuba.algo3.modelo.celdas.especiales.*;
 
 public class AlgoPoly {
 
@@ -14,23 +17,21 @@ public class AlgoPoly {
 	private ArrayList<Jugador> jugadores;
 	private Turno turno;
 	private Invoker invoker;
+	private ArrayPropiedad propiedades;
 
 	public AlgoPoly(){
 		this.tablero = new Tablero();
 		this.jugadores = new ArrayList<Jugador>();
 		this.turno = new Turno();
 		this.invoker = new Invoker();
+		this.propiedades = new ArrayPropiedad();
 
 	}
 
 	public Tablero getTablero() {
 		return tablero;
 	}
-	
-	public Turno getTurno() {
-		return turno;
-	}
-	
+
 	public ArrayList<Jugador> getJugadores() {
 		return jugadores;
 	}
@@ -132,5 +133,9 @@ public class AlgoPoly {
 
 	public Invoker getInvoker() {
 		return invoker;
+	}
+
+	public ArrayPropiedad getPropiedades() {
+		return propiedades;
 	}
 }

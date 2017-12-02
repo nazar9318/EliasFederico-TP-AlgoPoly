@@ -2,13 +2,13 @@ package primeraEntregaTests;
 
 import static org.junit.Assert.*;
 
-import fiuba.algo3.celdas.comprables.BuenosAiresSur;
-import fiuba.algo3.excepciones.JugadorNoCuentaConDineroSuficienteParaComprarException;
+import fiuba.algo3.modelo.celdas.comprables.BuenosAiresSur;
+import fiuba.algo3.modelo.excepciones.JugadorNoCuentaConDineroSuficienteParaComprarException;
 import org.junit.Test;
 
-import fiuba.algo3.Jugador;
-import fiuba.algo3.celdas.comprables.Barrio;
-import fiuba.algo3.celdas.especiales.Quini6;
+import fiuba.algo3.modelo.Jugador;
+import fiuba.algo3.modelo.celdas.comprables.Barrio;
+import fiuba.algo3.modelo.celdas.especiales.Quini6;
 
 public class quini6Test {
 

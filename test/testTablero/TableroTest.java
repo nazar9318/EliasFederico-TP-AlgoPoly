@@ -1,10 +1,10 @@
 package testTablero;
 
 import static org.junit.Assert.*;
-import fiuba.algo3.celdas.especiales.Carcel;
-import fiuba.algo3.celdas.especiales.Quini6;
-import fiuba.algo3.Jugador;
-import fiuba.algo3.Tablero;
+import fiuba.algo3.modelo.celdas.especiales.Carcel;
+import fiuba.algo3.modelo.celdas.especiales.Quini6;
+import fiuba.algo3.modelo.Jugador;
+import fiuba.algo3.modelo.Tablero;
 import org.junit.Assert;
 import org.junit.Test;
 

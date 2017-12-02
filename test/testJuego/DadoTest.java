@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import fiuba.algo3.Dado;
+import fiuba.algo3.modelo.Dado;
 
 
 public class DadoTest {

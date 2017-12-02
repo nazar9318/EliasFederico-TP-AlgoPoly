@@ -3,22 +3,21 @@ package segundaEntregaTests;
 import static org.junit.Assert.*;
 import java.util.ArrayList;
 
-import fiuba.algo3.excepciones.JugadorPerdioException;
 import org.junit.Test;
 import fiuba.algo3.AlgoPoly;
-import fiuba.algo3.Jugador;
-import fiuba.algo3.Tablero;
-import fiuba.algo3.celdas.comprables.Barrio;
-import fiuba.algo3.celdas.comprables.BuenosAiresNorte;
-import fiuba.algo3.celdas.comprables.BuenosAiresSur;
-import fiuba.algo3.celdas.comprables.CordobaNorte;
-import fiuba.algo3.celdas.comprables.CordobaSur;
-import fiuba.algo3.celdas.comprables.Neuquen;
-import fiuba.algo3.celdas.comprables.Propiedad;
-import fiuba.algo3.celdas.comprables.SaltaNorte;
-import fiuba.algo3.celdas.comprables.SaltaSur;
-import fiuba.algo3.celdas.comprables.SantaFe;
-import fiuba.algo3.celdas.comprables.Tucuman;
+import fiuba.algo3.modelo.Jugador;
+import fiuba.algo3.modelo.Tablero;
+import fiuba.algo3.modelo.celdas.comprables.Barrio;
+import fiuba.algo3.modelo.celdas.comprables.BuenosAiresNorte;
+import fiuba.algo3.modelo.celdas.comprables.BuenosAiresSur;
+import fiuba.algo3.modelo.celdas.comprables.CordobaNorte;
+import fiuba.algo3.modelo.celdas.comprables.CordobaSur;
+import fiuba.algo3.modelo.celdas.comprables.Neuquen;
+import fiuba.algo3.modelo.celdas.comprables.Propiedad;
+import fiuba.algo3.modelo.celdas.comprables.SaltaNorte;
+import fiuba.algo3.modelo.celdas.comprables.SaltaSur;
+import fiuba.algo3.modelo.celdas.comprables.SantaFe;
+import fiuba.algo3.modelo.celdas.comprables.Tucuman;
 
 public class BarriosTest {
 

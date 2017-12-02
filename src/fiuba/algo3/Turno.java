@@ -1,8 +1,11 @@
 package fiuba.algo3;
 
-import fiuba.algo3.excepciones.JugadorNoCuentaConDineroSuficienteParaComprarException;
-import fiuba.algo3.excepciones.JugadorNoPuedeSalirDeLaCarcelException;
-import fiuba.algo3.excepciones.JugadorNoTieneFondosParaPagarException;
+import fiuba.algo3.modelo.Dado;
+import fiuba.algo3.modelo.Jugador;
+import fiuba.algo3.modelo.Tablero;
+import fiuba.algo3.modelo.excepciones.JugadorNoCuentaConDineroSuficienteParaComprarException;
+import fiuba.algo3.modelo.excepciones.JugadorNoPuedeSalirDeLaCarcelException;
+import fiuba.algo3.modelo.excepciones.JugadorNoTieneFondosParaPagarException;
 
 public class Turno {
 

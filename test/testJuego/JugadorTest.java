@@ -3,17 +3,17 @@ package testJuego;
 import static org.junit.Assert.*;
 
 import fiuba.algo3.AlgoPoly;
-import fiuba.algo3.Tablero;
-import fiuba.algo3.celdas.comprables.Barrio;
-import fiuba.algo3.celdas.comprables.BuenosAiresNorte;
-import fiuba.algo3.celdas.comprables.BuenosAiresSur;
-import fiuba.algo3.excepciones.JugadorNoCuentaConDineroSuficienteParaComprarException;
+import fiuba.algo3.modelo.Tablero;
+import fiuba.algo3.modelo.celdas.comprables.Barrio;
+import fiuba.algo3.modelo.celdas.comprables.BuenosAiresNorte;
+import fiuba.algo3.modelo.celdas.comprables.BuenosAiresSur;
+import fiuba.algo3.modelo.excepciones.JugadorNoCuentaConDineroSuficienteParaComprarException;
 
-import fiuba.algo3.excepciones.JugadorPerdioException;
+import fiuba.algo3.modelo.excepciones.JugadorPerdioException;
 import org.junit.Assert;
 import org.junit.Test;
 
-import fiuba.algo3.Jugador;
+import fiuba.algo3.modelo.Jugador;
 
 public class JugadorTest {
 
@@ -181,6 +181,8 @@ public class JugadorTest {
 		do{
 			tablero.avanzarJugador(jugador2,3);
 		}while (jugador2.obtenerDinero() >= BsAs.getAlquilerActual());
+
+		Assert.assertTrue(jugador2.obtenerDinero() < BsAs.getAlquilerActual());
 
 		jugador2.verPropiedades();
 		jugador2.buscarPropiedad("BuenosAiresNorte").vender();

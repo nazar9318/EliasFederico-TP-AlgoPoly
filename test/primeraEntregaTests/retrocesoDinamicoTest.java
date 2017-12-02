@@ -1,15 +1,15 @@
 package primeraEntregaTests;
 
-import fiuba.algo3.celdas.comprables.BuenosAiresSur;
+import fiuba.algo3.modelo.celdas.comprables.BuenosAiresSur;
 import org.junit.Assert;
 import org.junit.Test;
-import fiuba.algo3.Dado;
-import fiuba.algo3.Jugador;
-import fiuba.algo3.Tablero;
-import fiuba.algo3.celdas.Visitable;
-import fiuba.algo3.celdas.especiales.Carcel;
-import fiuba.algo3.celdas.especiales.Quini6;
-import fiuba.algo3.celdas.especiales.RetrocesoDinamico;
+import fiuba.algo3.modelo.Dado;
+import fiuba.algo3.modelo.Jugador;
+import fiuba.algo3.modelo.Tablero;
+import fiuba.algo3.modelo.celdas.Visitable;
+import fiuba.algo3.modelo.celdas.especiales.Carcel;
+import fiuba.algo3.modelo.celdas.especiales.Quini6;
+import fiuba.algo3.modelo.celdas.especiales.RetrocesoDinamico;
 
 public class retrocesoDinamicoTest {
 

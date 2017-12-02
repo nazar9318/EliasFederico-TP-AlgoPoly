@@ -4,12 +4,12 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import fiuba.algo3.celdas.Salida;
-import fiuba.algo3.celdas.especiales.Carcel;
-import fiuba.algo3.celdas.especiales.Policia;
-import fiuba.algo3.Jugador;
-import fiuba.algo3.excepciones.JugadorNoPuedeSalirDeLaCarcelException;
-import fiuba.algo3.excepciones.JugadorNoTieneFondosParaPagarException;
+import fiuba.algo3.modelo.celdas.Salida;
+import fiuba.algo3.modelo.celdas.especiales.Carcel;
+import fiuba.algo3.modelo.celdas.especiales.Policia;
+import fiuba.algo3.modelo.Jugador;
+import fiuba.algo3.modelo.excepciones.JugadorNoPuedeSalirDeLaCarcelException;
+import fiuba.algo3.modelo.excepciones.JugadorNoTieneFondosParaPagarException;
 
 public class PoliciaTest {
 
