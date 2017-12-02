@@ -60,4 +60,8 @@ public class Tablero {
 		Visitable celdaNueva = reposicionarJugador(jugador, index, avance);
 		celdaNueva.aceptar(jugador);
 	}
+
+	public ArrayList<Visitable> getCeldas() {
+		return celdas;
+	}
 }

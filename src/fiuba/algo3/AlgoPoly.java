@@ -1,6 +1,7 @@
 package fiuba.algo3;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
 import fiuba.algo3.modelo.ArrayPropiedad;
@@ -74,6 +75,9 @@ public class AlgoPoly {
 		subte.conocer(tren);
 		tren.conocer(subte);
 
+		propiedades.addAll(Arrays.asList(buenosAiresNorte, buenosAiresSur, cordobaSur, cordobaNorte, saltaNorte, saltaSur,
+				edesur, aysa, subte, tren));
+
 		tablero.agregarCelda(new Quini6());
 		tablero.agregarCelda(buenosAiresSur);
 		tablero.agregarCelda(edesur);
@@ -137,5 +141,9 @@ public class AlgoPoly {
 
 	public ArrayPropiedad getPropiedades() {
 		return propiedades;
+	}
+
+	public Jugador jugadorActual() {
+		return this.jugadores.get(0);	//TODO: rotacion de jugadores
 	}
 }
