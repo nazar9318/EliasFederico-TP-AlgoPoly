@@ -31,10 +31,22 @@ public class BotonVerPropiedadesHandler implements EventHandler<ActionEvent>{
         BotonPropiedad botonBuenosAiresSur = new BotonPropiedad(propiedades_.buscar("BuenosAiresSur"));
         BotonPropiedad botonBuenosAiresNorte = new BotonPropiedad(propiedades_.buscar("BuenosAiresNorte"));
         BotonPropiedad botonCordobaSur = new BotonPropiedad(propiedades_.buscar("CordobaSur"));
-
+        BotonPropiedad botonCordobaNorte = new BotonPropiedad(propiedades_.buscar("CordobaNorte"));
+        BotonPropiedad botonSaltaSur = new BotonPropiedad(propiedades_.buscar("SaltaSur"));
+        BotonPropiedad botonSaltaNorte = new BotonPropiedad(propiedades_.buscar("SaltaNorte"));
+        BotonPropiedad botonSantaFe = new BotonPropiedad(propiedades_.buscar("SantaFe"));
+        BotonPropiedad botonTucuman = new BotonPropiedad(propiedades_.buscar("Tucuman"));
+        BotonPropiedad botonNeuquen = new BotonPropiedad(propiedades_.buscar("Neuquen"));
+        
         botones_.put(botonBuenosAiresSur.getPropiedad_().getNombre(), botonBuenosAiresSur);
         botones_.put(botonBuenosAiresNorte.getPropiedad_().getNombre(), botonBuenosAiresNorte);
         botones_.put(botonCordobaSur.getPropiedad_().getNombre(), botonCordobaSur);
+        botones_.put(botonCordobaNorte.getPropiedad_().getNombre(), botonCordobaNorte);
+        botones_.put(botonSaltaSur.getPropiedad_().getNombre(), botonSaltaSur);
+        botones_.put(botonSaltaNorte.getPropiedad_().getNombre(), botonSaltaNorte);
+        botones_.put(botonSantaFe.getPropiedad_().getNombre(), botonSantaFe);
+        botones_.put(botonTucuman.getPropiedad_().getNombre(), botonTucuman);
+        botones_.put(botonNeuquen.getPropiedad_().getNombre(), botonNeuquen);
 
         //TODO: crear un boton por propiedad y meterlo en botones_ en w metodos privados para que sea menos feo
 //No se que harcodeada es mas fea, si la que esta ahora o sacar la calse BotonPropiedad y poner lo de abajo
@@ -51,12 +63,7 @@ public class BotonVerPropiedadesHandler implements EventHandler<ActionEvent>{
 
     @Override
     public void handle(ActionEvent event) {
-
-        BotonPropiedadHandler buenosAiresSurHandler = new BotonPropiedadHandler(propiedades_.buscar("BuenosAiresSur"), jugador_);
-        botones_.get("BuenosAiresSur").setOnAction(buenosAiresSurHandler);
-
-        BotonPropiedadHandler buenosAiresNorteHandler = new BotonPropiedadHandler(propiedades_.buscar("BuenosAiresNorte"), jugador_);
-        botones_.get("BuenosAiresNorte").setOnAction(buenosAiresNorteHandler);
+    	this.crearHandlerParaCadaPropiedad();
         //TODO: handler para todas las propiedades en metodo privado para que sea menos feo
 
         HBox buttonBox = new HBox();
@@ -72,7 +79,36 @@ public class BotonVerPropiedadesHandler implements EventHandler<ActionEvent>{
         newStage.show();
     }
 
-    private void agregarBotonesDePropiedadesA(HBox buttonBox){
+    private void crearHandlerParaCadaPropiedad() {
+    	BotonPropiedadHandler buenosAiresSurHandler = new BotonPropiedadHandler(propiedades_.buscar("BuenosAiresSur"), jugador_);
+        botones_.get("BuenosAiresSur").setOnAction(buenosAiresSurHandler);
+
+        BotonPropiedadHandler buenosAiresNorteHandler = new BotonPropiedadHandler(propiedades_.buscar("BuenosAiresNorte"), jugador_);
+        botones_.get("BuenosAiresNorte").setOnAction(buenosAiresNorteHandler);
+        
+        BotonPropiedadHandler cordobaSurHandler = new BotonPropiedadHandler(propiedades_.buscar("CordobaSur"), jugador_);
+        botones_.get("CordobaSur").setOnAction(cordobaSurHandler);
+        
+        BotonPropiedadHandler cordobaNorteHandler = new BotonPropiedadHandler(propiedades_.buscar("CordobaNorte"), jugador_);
+        botones_.get("CordobaNorte").setOnAction(cordobaNorteHandler);
+        
+        BotonPropiedadHandler saltaSurHandler = new BotonPropiedadHandler(propiedades_.buscar("SaltaSur"), jugador_);
+        botones_.get("SaltaSur").setOnAction(saltaSurHandler);
+        
+        BotonPropiedadHandler saltaNorteHandler = new BotonPropiedadHandler(propiedades_.buscar("SaltaNorte"), jugador_);
+        botones_.get("SaltaNorte").setOnAction(saltaNorteHandler);
+        
+        BotonPropiedadHandler santaFeHandler = new BotonPropiedadHandler(propiedades_.buscar("SantaFe"), jugador_);
+        botones_.get("SantaFe").setOnAction(santaFeHandler);
+        
+        BotonPropiedadHandler tucumanHandler = new BotonPropiedadHandler(propiedades_.buscar("Tucuman"), jugador_);
+        botones_.get("Tucuman").setOnAction(tucumanHandler);
+        
+        BotonPropiedadHandler neuquenHandler = new BotonPropiedadHandler(propiedades_.buscar("Neuquen"), jugador_);
+        botones_.get("Neuquen").setOnAction(neuquenHandler);
+	}
+
+	private void agregarBotonesDePropiedadesA(HBox buttonBox){
         for(int i = 0; i < jugador_.getCantidadDePropiedades(); i++)
             buttonBox.getChildren().add(botones_.get(jugador_.getPropiedades().get(i).getNombre()));
 

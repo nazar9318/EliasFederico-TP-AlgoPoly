@@ -146,4 +146,8 @@ public class AlgoPoly {
 	public Jugador jugadorActual() {
 		return this.jugadores.get(0);	//TODO: rotacion de jugadores
 	}
+
+	public Turno getTurno() {
+		return this.turno;
+	}
 }

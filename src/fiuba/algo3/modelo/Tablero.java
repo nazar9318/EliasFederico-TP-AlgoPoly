@@ -45,7 +45,6 @@ public class Tablero {
 		if(index + avance >= getCantidadDeCeldas())
 			jugadores.put(j1, celdas.get(index + avance - getCantidadDeCeldas()));
 		else if (index + avance < 0) { 	
-			//el indice se iba de rango con los valores negativos del retroceso
 			jugadores.put(j1, celdas.get(getCantidadDeCeldas()+ (index + avance)));
 		}
 		else

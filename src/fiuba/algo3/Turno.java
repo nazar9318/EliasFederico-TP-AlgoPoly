@@ -65,5 +65,12 @@ public class Turno {
 	public int getTurnosJugados() {
 		return turnosJugados;
 	}
-}
 
+	public int getValorDado1() {
+		return this.dado1.getValor();
+	}
+
+	public int getValorDado2() {
+		return this.dado2.getValor();
+	}
+}
