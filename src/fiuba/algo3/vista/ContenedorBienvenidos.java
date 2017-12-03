@@ -52,14 +52,14 @@ public class ContenedorBienvenidos extends VBox {
 	        
 	        
 	        Button botonEntrar = new Button();
-	        botonEntrar.setText("¡Comenzar!");
+	        botonEntrar.setText("Entrar");
 	        botonEntrar.setTextFill(Color.ORANGERED);
 	        botonEntrar.setFont(Font.font("cooper black", FontWeight.BLACK, 16));
 	        botonEntrar.setStyle("-fx-background-color: white;");
 
 	        Label etiqueta = new Label();
 
-	        etiqueta.setText("¡Bienvenidos a AlgoPoly!");
+	        etiqueta.setText("Bienvenidos a AlgoPoly");
 	        etiqueta.setTextFill(Color.WHITE);
 	        etiqueta.setEffect(glow);
 	        etiqueta.setFont(Font.font("cooper black", FontWeight.BLACK, 75));
