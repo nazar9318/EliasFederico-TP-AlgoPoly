@@ -20,10 +20,11 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
+
 import java.util.ArrayList;
 
 public class contenedorPrincipal extends BorderPane{
-
+	   GridPane vistaTablero;
     public contenedorPrincipal(AlgoPoly algo){
     	setConsola();
         setBotonera(algo.getPropiedades(), algo.jugadorActual(), algo.getTurno(), algo.getTablero());
@@ -85,8 +86,10 @@ public class contenedorPrincipal extends BorderPane{
         gp.add(bs, 0,1);
         gp.add(imp, 0,0);
         gp.add(cdba, 1,0);
+     	vistaTablero = new VistaTablero();
+        this.setCenter(vistaTablero);
 
-        this.setCenter(gp);
+     //   this.setCenter(gp);
     }
     
     private void setConsola() {
