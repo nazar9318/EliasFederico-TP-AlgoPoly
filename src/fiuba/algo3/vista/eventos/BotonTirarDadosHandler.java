@@ -22,12 +22,6 @@ public class BotonTirarDadosHandler implements EventHandler<ActionEvent> {
 	private Jugador jugador;
 	private Tablero tablero;
 	
-	public BotonTirarDadosHandler(AlgoPoly algo) {
-		this.algoPoly = algo;
-		this.dado1 = new Dado();
-		this.dado2 = new Dado();
-	}
-
 	public BotonTirarDadosHandler(Turno turno, Jugador jugador, Tablero tablero) {
 		this.turno = turno;
 		this.jugador = jugador;

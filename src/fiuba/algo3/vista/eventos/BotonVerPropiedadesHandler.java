@@ -7,7 +7,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
@@ -37,7 +36,11 @@ public class BotonVerPropiedadesHandler implements EventHandler<ActionEvent>{
         BotonPropiedad botonSantaFe = new BotonPropiedad(propiedades_.buscar("SantaFe"));
         BotonPropiedad botonTucuman = new BotonPropiedad(propiedades_.buscar("Tucuman"));
         BotonPropiedad botonNeuquen = new BotonPropiedad(propiedades_.buscar("Neuquen"));
-        
+        BotonPropiedad botonEDESUR = new BotonPropiedad(propiedades_.buscar("EDESUR"));
+        BotonPropiedad botonAYSA = new BotonPropiedad(propiedades_.buscar("AYSA"));
+        BotonPropiedad botonSUBTE = new BotonPropiedad(propiedades_.buscar("SUBTE"));
+        BotonPropiedad botonTREN = new BotonPropiedad(propiedades_.buscar("TREN"));
+
         botones_.put(botonBuenosAiresSur.getPropiedad_().getNombre(), botonBuenosAiresSur);
         botones_.put(botonBuenosAiresNorte.getPropiedad_().getNombre(), botonBuenosAiresNorte);
         botones_.put(botonCordobaSur.getPropiedad_().getNombre(), botonCordobaSur);
@@ -47,24 +50,16 @@ public class BotonVerPropiedadesHandler implements EventHandler<ActionEvent>{
         botones_.put(botonSantaFe.getPropiedad_().getNombre(), botonSantaFe);
         botones_.put(botonTucuman.getPropiedad_().getNombre(), botonTucuman);
         botones_.put(botonNeuquen.getPropiedad_().getNombre(), botonNeuquen);
-
-        //TODO: crear un boton por propiedad y meterlo en botones_ en w metodos privados para que sea menos feo
-//No se que harcodeada es mas fea, si la que esta ahora o sacar la calse BotonPropiedad y poner lo de abajo
-
-//          Button botonBuenosAiresSur = new Button("BuenosAiresSur");
-//          Button botonBuenosAiresNorte = new Button("BuenosAiresNorte");
-//          Button botonCordobaSur = new Button("CordobaSur");
-//
-//          botones_.put("BuenosAiresSur", botonBuenosAiresSur);
-//          botones_.put("BuenosAiresNorte", botonBuenosAiresNorte);
-//          botones_.put("CordobaSur", botonCordobaSur);
+        botones_.put(botonEDESUR.getPropiedad_().getNombre(), botonEDESUR);
+        botones_.put(botonAYSA.getPropiedad_().getNombre(), botonAYSA);
+        botones_.put(botonSUBTE.getPropiedad_().getNombre(), botonSUBTE);
+        botones_.put(botonTREN.getPropiedad_().getNombre(), botonTREN);
 
     }
 
     @Override
     public void handle(ActionEvent event) {
-    	this.crearHandlerParaCadaPropiedad();
-        //TODO: handler para todas las propiedades en metodo privado para que sea menos feo
+    	crearHandlerParaCadaPropiedad();
 
         HBox buttonBox = new HBox();
         buttonBox.setAlignment(Pos.CENTER);
@@ -73,7 +68,7 @@ public class BotonVerPropiedadesHandler implements EventHandler<ActionEvent>{
         agregarBotonesDePropiedadesA(buttonBox);
 
         Stage newStage = new Stage();
-        Scene stageScene = new Scene(buttonBox, 300, 300);
+        Scene stageScene = new Scene(buttonBox, 500, 100);
         newStage.setScene(stageScene);
         newStage.setTitle("Propiedades");
         newStage.show();
@@ -106,7 +101,19 @@ public class BotonVerPropiedadesHandler implements EventHandler<ActionEvent>{
         
         BotonPropiedadHandler neuquenHandler = new BotonPropiedadHandler(propiedades_.buscar("Neuquen"), jugador_);
         botones_.get("Neuquen").setOnAction(neuquenHandler);
-	}
+
+        BotonPropiedadHandler edesurHandler = new BotonPropiedadHandler(propiedades_.buscar("EDESUR"), jugador_);
+        botones_.get("EDESUR").setOnAction(edesurHandler);
+
+        BotonPropiedadHandler aysaHandler = new BotonPropiedadHandler(propiedades_.buscar("AYSA"), jugador_);
+        botones_.get("AYSA").setOnAction(aysaHandler);
+
+        BotonPropiedadHandler subteHandler = new BotonPropiedadHandler(propiedades_.buscar("SUBTE"), jugador_);
+        botones_.get("SUBTE").setOnAction(subteHandler);
+
+        BotonPropiedadHandler trenHandler = new BotonPropiedadHandler(propiedades_.buscar("TREN"), jugador_);
+        botones_.get("TREN").setOnAction(trenHandler);
+    }
 
 	private void agregarBotonesDePropiedadesA(HBox buttonBox){
         for(int i = 0; i < jugador_.getCantidadDePropiedades(); i++)

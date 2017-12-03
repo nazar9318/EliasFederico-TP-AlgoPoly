@@ -54,6 +54,9 @@ public class AlgoPoly {
 		Barrio cordobaNorte = new CordobaNorte();
 		Barrio saltaNorte = new SaltaNorte();
 		Barrio saltaSur = new SaltaSur();
+		Barrio neuquen = new Neuquen();
+		Barrio tucuman = new Tucuman();
+		Barrio santaFe = new SantaFe();
 
 		Carcel carcel = new Carcel();
 		Policia policia = new Policia(carcel);
@@ -76,7 +79,7 @@ public class AlgoPoly {
 		tren.conocer(subte);
 
 		propiedades.addAll(Arrays.asList(buenosAiresNorte, buenosAiresSur, cordobaSur, cordobaNorte, saltaNorte, saltaSur,
-				edesur, aysa, subte, tren));
+				neuquen, santaFe, tucuman,edesur, aysa, subte, tren));
 
 		tablero.agregarCelda(new Quini6());
 		tablero.agregarCelda(buenosAiresSur);
@@ -88,15 +91,15 @@ public class AlgoPoly {
 		tablero.agregarCelda(subte);
 		tablero.agregarCelda(cordobaNorte);
 		tablero.agregarCelda(new ImpuestoDeLujo());
-		tablero.agregarCelda(new SantaFe());
+		tablero.agregarCelda(santaFe);
 		tablero.agregarCelda(aysa);
 		tablero.agregarCelda(saltaNorte);
 		tablero.agregarCelda(saltaSur);
 		tablero.agregarCelda(policia);
 		tablero.agregarCelda(tren);
-		tablero.agregarCelda(new Neuquen());
+		tablero.agregarCelda(neuquen);
 		tablero.agregarCelda(new RetrocesoDinamico());
-		tablero.agregarCelda(new Tucuman());
+		tablero.agregarCelda(tucuman);
 
 	}
 	
