@@ -54,23 +54,27 @@ protected VistaCelda() {
 	}
 	
 
-public void agregarJugador(VistaJugador jugador) {
-	ImageView imagen =new ImageView( jugador.getVista());
-	imagen.maxHeight(20);
-	imagen.maxWidth(20); 
-	jugadores.getChildren().add(imagen);
-
-}
-public void modificarLabel(String texto) {
-    label.setText(texto);
-}
-
-public void setCSSStyle(String string) {
-	this.setStyle(string);
-}
-
-public void removerUltimocontenido() {
-	contenidoCelda.getChildren().remove(contenidoCelda.getChildren().size()-1);
-}
-
+	public void agregarJugador(VistaJugador jugador) {
+		ImageView imagen =new ImageView( jugador.getVista());
+		imagen.maxHeight(20);
+		imagen.maxWidth(20); 
+		jugadores.getChildren().add(imagen);
+	
+	}
+	public void modificarLabel(String texto) {
+	    label.setText(texto);
+	}
+	
+	public void setCSSStyle(String string) {
+		this.setStyle(string);
+	}
+	
+	public void removerUltimocontenido() {
+		contenidoCelda.getChildren().remove(contenidoCelda.getChildren().size()-1);
+	}
+	
+	public String getNombre() {
+		return label.getText();
+	}
+	
 }

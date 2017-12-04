@@ -63,6 +63,10 @@ public class VistaTablero extends GridPane {
 	VistaCelda c45 = new VistaQuini6();
 	GridPane.setConstraints(c45, 4, 5);
 	
+	c55.agregarJugador(new VistaJugador("file:src/fiuba/algo3/vista/imagenes/j1.png"));
+	c55.agregarJugador(new VistaJugador("file:src/fiuba/algo3/vista/imagenes/j2.png"));
+	c55.agregarJugador(new VistaJugador("file:src/fiuba/algo3/vista/imagenes/j3.jpg"));
+	
     this.getChildren().addAll(c00,c01,c02,c03,c04,c05,c10,c20,c30,c40,c50,c51,c52,c53,c54,c55,c15,c25,c35,c45);
 	}
 }

@@ -4,6 +4,7 @@ import javafx.scene.image.Image;
 
 public class VistaJugador {
 	Image jugador;
+	
 	public VistaJugador(String avatar){
 	 jugador = new Image(avatar);
 	 
