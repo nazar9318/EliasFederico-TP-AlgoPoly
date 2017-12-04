@@ -13,6 +13,13 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.effect.Lighting;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
@@ -32,6 +39,10 @@ public class contenedorPrincipal extends BorderPane{
     	setConsola();
         setBotonera(algo.getPropiedades(), algo.jugadorActual(), algo.getTurno(), algo.getTablero());
         setCentro(algo.getTablero().getCeldas());
+        
+        Image imagen = new Image("file:src/fiuba/algo3/vista/imagenes/fondoInicio.jpg");
+        BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+        this.setBackground(new Background(imagenDeFondo));
     }
 
     private void setBotonera(ArrayPropiedad propiedades, Jugador jugador, Turno turno, Tablero tablero) {
@@ -40,6 +51,7 @@ public class contenedorPrincipal extends BorderPane{
         botonTirarDados.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+            	
                 actualizarConsola(turno);
             }
         });
@@ -63,13 +75,14 @@ public class contenedorPrincipal extends BorderPane{
 		
         Label etiqueta = new Label();
         etiqueta.setText("Valores de los dados\n" + "Dado uno: " + dado1 + " \n" + "Dado dos: " + dado2);
-        etiqueta.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 14));
+        etiqueta.setFont(Font.font("cooper black", FontWeight.SEMI_BOLD, 14));
         etiqueta.setTextFill(Color.WHITE);
+        etiqueta.setEffect(new Lighting());
 
         VBox contenedorConsola = new VBox(etiqueta);
         contenedorConsola.setSpacing(10);
         contenedorConsola.setPadding(new Insets(15));
-        contenedorConsola.setStyle("-fx-background-color: black;");
+        contenedorConsola.setStyle("-fx-background-color: red;");
 
         this.setBottom(contenedorConsola);		
 	}
@@ -102,13 +115,14 @@ public class contenedorPrincipal extends BorderPane{
     private void setConsola() {
         Label etiqueta = new Label();
         etiqueta.setText("Valores de los dados\n" + "Dado uno: " + 0 + " \n" + "Dado dos: " + 0);
-        etiqueta.setFont(Font.font("courier new", FontWeight.SEMI_BOLD, 14));
+        etiqueta.setFont(Font.font("cooper black", FontWeight.SEMI_BOLD, 14));
         etiqueta.setTextFill(Color.WHITE);
+        etiqueta.setEffect(new Lighting());
 
         VBox contenedorConsola = new VBox(etiqueta);
         contenedorConsola.setSpacing(10);
         contenedorConsola.setPadding(new Insets(15));
-        contenedorConsola.setStyle("-fx-background-color: black;");
+        contenedorConsola.setStyle("-fx-background-color: red;");
 
         this.setBottom(contenedorConsola);
     }

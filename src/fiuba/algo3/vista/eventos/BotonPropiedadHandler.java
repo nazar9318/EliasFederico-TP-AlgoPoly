@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 
 import java.util.HashMap;
 
-public class BotonPropiedadHandler implements EventHandler<ActionEvent> {
+public class BotonPropiedadHandler extends BotonConSonido implements EventHandler<ActionEvent> {
 
     private Propiedad propiedad_;
     private Jugador jugador_;
@@ -29,6 +29,7 @@ public class BotonPropiedadHandler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {
+    	super.sonido.play();
         Respuesta opciones = propiedad_.getOpciones(jugador_);
 
         BotonOpcionHandler botonVenderHandler = new BotonOpcionHandler(opciones.getAccion("Vender"), jugador_);

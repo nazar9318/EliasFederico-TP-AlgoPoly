@@ -19,7 +19,7 @@ import javafx.scene.text.FontWeight;
 
 import java.util.Optional;
 
-public class BotonTirarDadosHandler implements EventHandler<ActionEvent> {
+public class BotonTirarDadosHandler extends BotonConSonido implements EventHandler<ActionEvent> {
 	
 	private AlgoPoly algoPoly;
 	private Dado dado1;
@@ -36,6 +36,7 @@ public class BotonTirarDadosHandler implements EventHandler<ActionEvent> {
 
 	@Override
 	public void handle(ActionEvent arg0) {
+		super.sonido.play();
 		try {
 			turno.jugar(this.jugador, this.tablero);
 		}catch (ConsultarCompraException e){

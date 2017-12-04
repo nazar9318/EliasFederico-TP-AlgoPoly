@@ -1,11 +1,21 @@
 package fiuba.algo3;
 
+import java.io.File;
+
 import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.Tablero;
 import fiuba.algo3.vista.ContenedorBienvenidos;
 import fiuba.algo3.vista.contenedorPrincipal;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 public class Aplicacion extends Application {
@@ -21,13 +31,25 @@ public class Aplicacion extends Application {
         AlgoPoly algo = new AlgoPoly();
 
         algo.inicializarJuego();
+        Tablero tablero = algo.getTablero();
+        Jugador jugador = algo.jugadorActual();
+
+        tablero.avanzarJugador(jugador, 2); //compra buenos aires sur
+        tablero.avanzarJugador(jugador, 1); //compra edesur
+        tablero.avanzarJugador(jugador, 1); //compra buenos aires norte
 
         contenedorPrincipal contenedorPrincipal = new contenedorPrincipal(algo);
         Scene escenaJuego = new Scene(contenedorPrincipal, 1050, 650);
 
         ContenedorBienvenidos contenedorBienvenidos = new ContenedorBienvenidos(stage, escenaJuego);
         Scene escenaBienvenidos = new Scene(contenedorBienvenidos, 1050, 650);
-
+        
+        String sound = "src/fiuba/algo3/vista/sonidos/sonidoInicio.mp3";
+        Media sonido = new Media(new File(sound).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sonido);
+        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        mediaPlayer.play();
+        
         stage.setScene(escenaBienvenidos);
 
         stage.show();

@@ -44,13 +44,6 @@ public class ContenedorBienvenidos extends VBox {
 	        Glow glow = new Glow();
 	        glow.setLevel(0.9);
 	        
-	        String sound = "src/fiuba/algo3/vista/sonidos/sonidoInicio.mp3";
-	        Media sonido = new Media(new File(sound).toURI().toString());
-	        MediaPlayer mediaPlayer = new MediaPlayer(sonido);
-	        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-	        mediaPlayer.play();
-	        
-	        
 	        Button botonEntrar = new Button();
 	        botonEntrar.setText("Entrar");
 	        botonEntrar.setTextFill(Color.ORANGERED);
@@ -65,7 +58,7 @@ public class ContenedorBienvenidos extends VBox {
 	        etiqueta.setFont(Font.font("cooper black", FontWeight.BLACK, 75));
 	        etiqueta.setStyle("-fx-background-color: transparent;");
 
-	        BotonEntrarEventHandler botonEntrarHandler = new BotonEntrarEventHandler(stage, proximaEscena, mediaPlayer);
+	        BotonEntrarEventHandler botonEntrarHandler = new BotonEntrarEventHandler(stage, proximaEscena);
 	        botonEntrar.setOnAction(botonEntrarHandler);
 
 	        this.getChildren().addAll(etiqueta, botonEntrar);

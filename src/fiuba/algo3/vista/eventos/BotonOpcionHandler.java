@@ -8,7 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
-public class BotonOpcionHandler implements EventHandler<ActionEvent> {
+public class BotonOpcionHandler extends BotonConSonido implements EventHandler<ActionEvent> {
 
     private Command aEjecutar;
     private Jugador jugador_;
@@ -20,6 +20,7 @@ public class BotonOpcionHandler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {
+    	super.sonido.play();
         this.aEjecutar.execute(this.jugador_);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
