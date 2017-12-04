@@ -1,6 +1,4 @@
-package fiuba.algo3.vista;
-
-import javafx.scene.image.Image;
+package fiuba.algo3.vista.vistasCeldas;
 
 public class VistaCarcel extends VistaCelda {
 	public VistaCarcel() {

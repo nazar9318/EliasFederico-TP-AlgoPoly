@@ -5,6 +5,7 @@ import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.Tablero;
 import fiuba.algo3.modelo.celdas.comprables.BuenosAiresNorte;
 import fiuba.algo3.modelo.celdas.comprables.BuenosAiresSur;
+import fiuba.algo3.modelo.celdas.comprables.Propiedad;
 import fiuba.algo3.modelo.celdas.comprables.Servicios.AYSA;
 import fiuba.algo3.modelo.celdas.comprables.Servicios.EDESUR;
 import fiuba.algo3.modelo.celdas.comprables.Servicios.SUBTE;
@@ -75,12 +76,15 @@ public class ServiciosTest {
 
         Jugador jugador1 = tablero.agregarJugador(new Jugador());
         Jugador jugador2 = tablero.agregarJugador(new Jugador());
-
-        int dineroAnterior = jugador2.obtenerDinero();
         jugador2.setValorDeTiro(3);
 
-        tablero.avanzarJugador(jugador1, 3);
-        tablero.avanzarJugador(jugador2, jugador2.getValorDeTiro());
+        int dineroAnterior = jugador2.obtenerDinero();
+
+        Propiedad propiedad = (Propiedad) tablero.avanzarJugador(jugador1, 3);
+        propiedad.comprar(jugador1);
+
+        propiedad = (Propiedad) tablero.avanzarJugador(jugador2, 3);
+        propiedad.aceptar(jugador2);
 
         int dineroPosterior = jugador2.obtenerDinero();
 
@@ -100,9 +104,14 @@ public class ServiciosTest {
         int dineroAnterior = jugador2.obtenerDinero();
         jugador2.setValorDeTiro(3);
 
-        tablero.avanzarJugador(jugador1, 3);
-        tablero.avanzarJugador(jugador1, 9);
-        tablero.avanzarJugador(jugador2, jugador2.getValorDeTiro());
+        Propiedad propiedad = (Propiedad) tablero.avanzarJugador(jugador1, 3);
+        propiedad.comprar(jugador1);
+
+        propiedad = (Propiedad) tablero.avanzarJugador(jugador1, 9);
+        propiedad.comprar(jugador1);
+
+        propiedad = (Propiedad) tablero.avanzarJugador(jugador2, 3);
+        propiedad.aceptar(jugador2);
 
         int dineroPosterior = jugador2.obtenerDinero();
 
@@ -110,7 +119,7 @@ public class ServiciosTest {
     }
 
     @Test
-    public void jugadorCompraEDESURYAYSAtroJugadorCaeEnEDENORYPagaAlquiler(){
+    public void jugadorCompraEDESURYAYSAtroJugadorCaeEnAYSAYPagaAlquiler(){
         AlgoPoly algo = new AlgoPoly();
 
         algo.inicializarJuego();
@@ -122,9 +131,14 @@ public class ServiciosTest {
         int dineroAnterior = jugador2.obtenerDinero();
         jugador2.setValorDeTiro(12);
 
-        tablero.avanzarJugador(jugador1, 3);
-        tablero.avanzarJugador(jugador1, 9);
-        tablero.avanzarJugador(jugador2, jugador2.getValorDeTiro());
+        Propiedad propiedad = (Propiedad) tablero.avanzarJugador(jugador1, 3);
+        propiedad.comprar(jugador1);
+
+        propiedad = (Propiedad) tablero.avanzarJugador(jugador1, 9);
+        propiedad.comprar(jugador1);
+
+        propiedad = (Propiedad) tablero.avanzarJugador(jugador2, jugador2.getValorDeTiro());
+        propiedad.aceptar(jugador2);
 
         int dineroPosterior = jugador2.obtenerDinero();
 
@@ -142,10 +156,13 @@ public class ServiciosTest {
     	Jugador jugador2 = new Jugador();
 		TREN trenes = new TREN();
 		SUBTE subtes = new SUBTE();
+
 		trenes.conocer(subtes);
 		subtes.conocer(trenes);
-		trenes.aceptar(jugador);//compra trenes
+
+		trenes.comprar(jugador);//compra trenes
 		assertEquals(jugador2.obtenerDinero(),100000);
+
 		jugador2.setValorDeTiro(12);
 		trenes.aceptar(jugador2);
 		assertEquals(jugador2.obtenerDinero(),100000-(12*450));
@@ -158,13 +175,17 @@ public class ServiciosTest {
     	Jugador jugador2 = new Jugador();
 		TREN trenes = new TREN();
 		SUBTE subtes = new SUBTE();
+
 		trenes.conocer(subtes);
 		subtes.conocer(trenes);
-		trenes.aceptar(jugador);//compra trenes
-		subtes.aceptar(jugador);//compra subtes
+
+		trenes.comprar(jugador);//compra trenes
+		subtes.comprar(jugador);//compra subtes
 		assertEquals(jugador2.obtenerDinero(),100000);
+
 		jugador2.setValorDeTiro(12);
 		trenes.aceptar(jugador2);
+
 		assertEquals(jugador2.obtenerDinero(),100000-(12*800));
     }
     
@@ -177,13 +198,17 @@ public class ServiciosTest {
     	Jugador jugador2 = new Jugador();
 		EDESUR edesur = new EDESUR();
 		AYSA aysa = new AYSA();
+
 		aysa.conocer(edesur);
 		edesur.conocer(aysa);
-		edesur.aceptar(jugador);//compra edesur
+
+		edesur.comprar(jugador);//compra edesur
 		assertEquals(jugador2.obtenerDinero(),100000);
-		jugador2.setValorDeTiro(12);
-		edesur.aceptar(jugador2);
-		assertEquals(jugador2.obtenerDinero(),100000-(12*500));
+
+        jugador2.setValorDeTiro(12);
+        edesur.aceptar(jugador2);
+
+        assertEquals(jugador2.obtenerDinero(),100000-(12*500));
     	
     }
     
@@ -194,14 +219,18 @@ public class ServiciosTest {
     	Jugador jugador2 = new Jugador();
 		EDESUR edesur = new EDESUR();
 		AYSA aysa = new AYSA();
+
 		aysa.conocer(edesur);
 		edesur.conocer(aysa);
-		edesur.aceptar(jugador);//compra edesur
-		aysa.aceptar(jugador);//compra aysa
+
+		edesur.comprar(jugador);//compra edesur
+		aysa.comprar(jugador);//compra aysa
 		assertEquals(jugador2.obtenerDinero(),100000);
-		jugador2.setValorDeTiro(12);
-		edesur.aceptar(jugador2);
-		assertEquals(jugador2.obtenerDinero(),100000-(12*1000));
+
+        jugador2.setValorDeTiro(12);
+        edesur.aceptar(jugador2);
+
+        assertEquals(jugador2.obtenerDinero(),100000-(12*1000));
     	
     }
     
@@ -213,15 +242,20 @@ public class ServiciosTest {
     	Jugador jugador3 = new Jugador();
 		EDESUR edesur = new EDESUR();
 		AYSA aysa = new AYSA();
+
 		aysa.conocer(edesur);
 		edesur.conocer(aysa);
-        edesur.aceptar(jugador1);
+
+		edesur.comprar(jugador1);
         edesur.vender();
         assertEquals(jugador2.obtenerDinero(),100000);
-        edesur.aceptar(jugador2);
+
+        edesur.comprar(jugador2);
         assertEquals(jugador2.obtenerDinero(),100000-35000);
-    	jugador3.setValorDeTiro(12);
+
+        jugador3.setValorDeTiro(12);
         edesur.aceptar(jugador3);
+
         assertEquals(jugador2.obtenerDinero(),100000-35000+(12*500));
     }
     
@@ -233,23 +267,29 @@ public class ServiciosTest {
     	Jugador jugador3 = new Jugador();
     	BuenosAiresSur buenosairessur = new BuenosAiresSur();
     	BuenosAiresNorte buenosairesnorte = new BuenosAiresNorte();
+
     	buenosairessur.conocer(buenosairesnorte);
     	buenosairesnorte.conocer(buenosairessur);
 
-    	buenosairessur.aceptar(jugador1);//100000-20000=80000
-     	buenosairesnorte.aceptar(jugador1);//80000-25000=55000
-    	jugador1.construir(buenosairessur);//55000-5000=50000 construye 1 casa
+    	buenosairessur.comprar(jugador1);//100000-20000=80000
+     	buenosairesnorte.comprar(jugador1);//80000-25000=55000
+
+        jugador1.construir(buenosairessur);//55000-5000=50000 construye 1 casa
     	jugador1.construir(buenosairessur);//50000-5000=45000 construye 2 casas  	
     	jugador1.construir(buenosairesnorte);//45000-5500=39500 construye 1 casa
     	jugador1.construir(buenosairesnorte);//39500-5500=34000 construye 2 casas
        	jugador1.construir(buenosairessur);//34000-8000=26000  construye 1 hotel
        	jugador1.construir(buenosairesnorte);//26000-9000= 17000 construye 1 hotel  	
-    	buenosairessur.vender();//17000+(20000 - 15*20000/100)=34000
+
+        buenosairessur.vender();//17000+(20000 - 15*20000/100)=34000
     	assertEquals(jugador2.obtenerDinero(),100000);
-       	buenosairessur.aceptar(jugador2);
+
+    	buenosairessur.comprar(jugador2);
     	assertEquals(jugador2.obtenerDinero(),100000-20000);
+
     	buenosairessur.aceptar(jugador3);
     	assertEquals(jugador2.obtenerDinero(),100000-20000+2000);
+
     	buenosairesnorte.aceptar(jugador3);
     	assertEquals(jugador1.obtenerDinero(),34000+2500);
     }

@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
+import fiuba.algo3.modelo.celdas.Visitable;
 import org.junit.Test;
 
 import fiuba.algo3.AlgoPoly;
@@ -38,7 +39,8 @@ public class ImpuestoDeLujoTest {
 		Tablero tablero = juego.getTablero();
 		Jugador unJugador = jugadores.get(0);
 		int dineroInicial = unJugador.obtenerDinero();
-		tablero.avanzarJugador(unJugador, 10);
+		Visitable imp = tablero.avanzarJugador(unJugador, 10);
+		imp.aceptar(unJugador);
 		int dineroPosterior = unJugador.obtenerDinero();
 		assertEquals(dineroInicial - 10000, dineroPosterior);
 	}

@@ -2,6 +2,8 @@ package segundaEntregaTests;
 
 import static org.junit.Assert.assertEquals;
 
+import fiuba.algo3.modelo.celdas.Visitable;
+import fiuba.algo3.modelo.celdas.comprables.Propiedad;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -19,7 +21,9 @@ public class AlgoPolyTest {
         Tablero tablero = algo.getTablero();
 
         Jugador jugador = tablero.agregarJugador(new Jugador());
-        tablero.avanzarJugador(jugador, 2);
+
+        Propiedad nueva = (Propiedad) tablero.avanzarJugador(jugador, 2);
+        nueva.comprar(jugador);
 
         Assert.assertEquals(jugador.getCantidadDePropiedades(), 1);
     }
@@ -38,14 +42,4 @@ public class AlgoPolyTest {
     	juego.inicializarJuego();
     	Assert.assertEquals(3, juego.getCantidadDeJugadores());
     }
-/*
-    @Test
-	public void comenzarJuegoDeberiaPararCuandoSoloQuedeUnUnicoJugadorGanador() {
-		AlgoPoly juego = new AlgoPoly();
-		int CantidadInicial = juego.getCantidadDeJugadores();
-		juego.inicializarJuego();
-		juego.comenzarJuego();
-		assertEquals(CantidadInicial +1,juego.getCantidadDeJugadores());
-	}
-*/
 }

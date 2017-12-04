@@ -9,6 +9,9 @@ import fiuba.algo3.modelo.celdas.comprables.Propiedad;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class CommandTest {
 
     @Test
@@ -19,7 +22,8 @@ public class CommandTest {
         Jugador jug1 = juego.getJugadores().get(0);
         Tablero tablero = juego.getTablero();
 
-        tablero.avanzarJugador(jug1, 2);
+        Barrio barrio = (Barrio) tablero.avanzarJugador(jug1, 2);
+        barrio.comprar(jug1);
 
         Propiedad celda = jug1.getPropiedades().get(0);
         Respuesta opciones = celda.getOpciones(jug1);
@@ -36,7 +40,8 @@ public class CommandTest {
         Jugador jug1 = juego.getJugadores().get(0);
         Tablero tablero = juego.getTablero();
 
-        tablero.avanzarJugador(jug1, 3);
+        Propiedad propiedad = (Propiedad) tablero.avanzarJugador(jug1, 3);
+        propiedad.comprar(jug1);
 
         Respuesta opciones = jug1.getPropiedades().get(0).getOpciones(jug1);
 
@@ -53,7 +58,8 @@ public class CommandTest {
         Tablero tablero = juego.getTablero();
         Invoker invoker = juego.getInvoker();
 
-        tablero.avanzarJugador(jug1, 3);
+        Propiedad propiedad = (Propiedad) tablero.avanzarJugador(jug1, 3);
+        propiedad.comprar(jug1);
         int propiedadesAntes = jug1.getCantidadDePropiedades();
 
         Respuesta opciones = jug1.getPropiedades().get(0).getOpciones(jug1);
@@ -76,7 +82,9 @@ public class CommandTest {
         Tablero tablero = juego.getTablero();
         Invoker invoker = juego.getInvoker();
 
-        tablero.avanzarJugador(jug1, 2);
+        Propiedad propiedad = (Propiedad) tablero.avanzarJugador(jug1, 2);
+        propiedad.comprar(jug1);
+
         int propiedadesAntes = jug1.getCantidadDePropiedades();
 
         Respuesta opciones = jug1.getPropiedades().get(0).getOpciones(jug1);
@@ -91,15 +99,17 @@ public class CommandTest {
     }
 
     @Test
-    public void jugsdorPoseeAmbosBuenosAiresPideOpcionesABuenosAiresConstruyeYSeCobraElAlquilerCorrecto(){
+    public void jugsdorPoseeAmbosBuenosAiresPideOpcionesABuenosAiresYPuedeConstruir(){
         AlgoPoly juego = new AlgoPoly();
         juego.inicializarJuego();
 
         Jugador jug1 = juego.getJugadores().get(0);
         Tablero tablero = juego.getTablero();
 
-        tablero.avanzarJugador(jug1, 2);
-        tablero.avanzarJugador(jug1, 2);
+        Propiedad propiedad = (Propiedad) tablero.avanzarJugador(jug1, 2);
+        propiedad.comprar(jug1);
+        propiedad = (Propiedad) tablero.avanzarJugador(jug1, 2);
+        propiedad.comprar(jug1);
 
         Respuesta opciones = jug1.getPropiedades().get(0).getOpciones(jug1);
 
@@ -107,7 +117,7 @@ public class CommandTest {
     }
 
     @Test
-    public void jugadorPoseeAmbosBuenosAiresPideOpcionesYConstruyeEnSur(){
+    public void jugsdorPoseeAmbosBuenosAiresPideOpcionesABuenosAiresConstruyeYSeCobraElAlquilerCorrecto(){
         AlgoPoly juego = new AlgoPoly();
         juego.inicializarJuego();
 
@@ -115,8 +125,10 @@ public class CommandTest {
         Tablero tablero = juego.getTablero();
         Invoker invoker = juego.getInvoker();
 
-        tablero.avanzarJugador(jug1, 2);
-        tablero.avanzarJugador(jug1, 2);
+        Propiedad propiedad = (Propiedad) tablero.avanzarJugador(jug1, 2);
+        propiedad.comprar(jug1);
+        propiedad = (Propiedad) tablero.avanzarJugador(jug1, 2);
+        propiedad.comprar(jug1);
 
         Propiedad aConstruir = jug1.getPropiedades().get(0);
         Respuesta opciones = aConstruir.getOpciones(jug1);

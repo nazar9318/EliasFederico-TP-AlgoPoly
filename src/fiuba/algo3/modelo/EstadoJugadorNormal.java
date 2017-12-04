@@ -6,6 +6,7 @@ import fiuba.algo3.modelo.celdas.especiales.AvanceDinamico;
 import fiuba.algo3.modelo.celdas.especiales.Policia;
 import fiuba.algo3.modelo.celdas.especiales.Quini6;
 import fiuba.algo3.modelo.celdas.especiales.RetrocesoDinamico;
+import fiuba.algo3.modelo.excepciones.ConsultarCompraException;
 
 public class EstadoJugadorNormal implements EstadoJugador {
 
@@ -14,7 +15,7 @@ public class EstadoJugadorNormal implements EstadoJugador {
 		if(propiedad.getDuenio() != null)
 			propiedad.cobrarAlquiler(jugador);
 		else
-			propiedad.comprar(jugador); //TODO: hacer la comrpa opcional
+			throw new ConsultarCompraException();
 	}
 
 	@Override
@@ -41,4 +42,5 @@ public class EstadoJugadorNormal implements EstadoJugador {
 	public void visitar(Salida salida, Jugador jugador) {
 		// TODO Auto-generated method stub
 	}
+
 }

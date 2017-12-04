@@ -1,6 +1,5 @@
-package fiuba.algo3.vista;
+package fiuba.algo3.vista.vistasCeldas;
 
-import javafx.scene.image.Image;
 
 public class VistaTREN extends VistaCelda {
 	public VistaTREN() {

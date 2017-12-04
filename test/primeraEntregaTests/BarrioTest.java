@@ -28,7 +28,7 @@ public class BarrioTest {
 		jugador.pagar(100000);
 		Barrio barrio = new BuenosAiresSur();
 
-		jugador.visitar(barrio);
+		barrio.comprar(jugador);
 
 		assertNull(barrio.getDuenio());
 	}
@@ -51,13 +51,15 @@ public class BarrioTest {
 		Jugador jugador = new Jugador();
 		Barrio buenosAiresNorte = new BuenosAiresNorte();
 		Barrio buenosAiresSur = new BuenosAiresSur();
+
 		buenosAiresNorte.conocer(buenosAiresSur);
 		buenosAiresSur.conocer(buenosAiresNorte);
-		jugador.visitar(buenosAiresSur);
-		jugador.visitar(buenosAiresNorte);
+
+		buenosAiresSur.comprar(jugador);
+		buenosAiresNorte.comprar(jugador);
 		jugador.construir(buenosAiresSur);
+
 		assertEquals(1 , buenosAiresSur.cantidadCasas());
-	
 	}
 	
 	@Test
@@ -65,14 +67,17 @@ public class BarrioTest {
 		Jugador jugador = new Jugador();
 		Barrio buenosAiresNorte = new BuenosAiresNorte();
 		Barrio buenosAiresSur = new BuenosAiresSur();
+
 		buenosAiresNorte.conocer(buenosAiresSur);
 		buenosAiresSur.conocer(buenosAiresNorte);
-		jugador.visitar(buenosAiresSur);
-		jugador.visitar(buenosAiresNorte);
+
+		buenosAiresNorte.comprar(jugador);
+		buenosAiresSur.comprar(jugador);
+
 		jugador.construir(buenosAiresSur);
 		jugador.construir(buenosAiresSur);
+
 		assertEquals(2 , buenosAiresSur.cantidadCasas());
-	
 	}
 	
 	@Test
@@ -80,15 +85,18 @@ public class BarrioTest {
 		Jugador jugador = new Jugador();
 		Barrio buenosAiresNorte = new BuenosAiresNorte();
 		Barrio buenosAiresSur = new BuenosAiresSur();
+
 		buenosAiresNorte.conocer(buenosAiresSur);
 		buenosAiresSur.conocer(buenosAiresNorte);
-		jugador.visitar(buenosAiresSur);
-		jugador.visitar(buenosAiresNorte);
+
+		buenosAiresSur.comprar(jugador);
+		buenosAiresNorte.comprar(jugador);
+
 		jugador.construir(buenosAiresSur);
 		jugador.construir(buenosAiresSur);
 		jugador.construir(buenosAiresSur);
+
 		assertEquals(2 , buenosAiresSur.cantidadCasas());
-	
 	}
 	
 	@Test
@@ -96,16 +104,19 @@ public class BarrioTest {
 		Jugador jugador = new Jugador();
 		Barrio buenosAiresNorte = new BuenosAiresNorte();
 		Barrio buenosAiresSur = new BuenosAiresSur();
+
 		buenosAiresNorte.conocer(buenosAiresSur);
 		buenosAiresSur.conocer(buenosAiresNorte);
-		jugador.visitar(buenosAiresSur);
-		jugador.visitar(buenosAiresNorte);
+
+		buenosAiresSur.comprar(jugador);
+		buenosAiresNorte.comprar(jugador);
+
 		jugador.construir(buenosAiresSur);
+		jugador.construir(buenosAiresSur);
+		jugador.construir(buenosAiresNorte);
+		jugador.construir(buenosAiresNorte);
 		jugador.construir(buenosAiresSur);
 
-		jugador.construir(buenosAiresNorte);
-		jugador.construir(buenosAiresNorte);
-		jugador.construir(buenosAiresSur);
 		assertEquals(1 , buenosAiresSur.cantidadHoteles());
 		assertEquals(0 , buenosAiresSur.cantidadCasas());
 	}
@@ -115,18 +126,21 @@ public class BarrioTest {
 		Jugador jugador = new Jugador();
 		Barrio buenosAiresNorte = new BuenosAiresNorte();
 		Barrio buenosAiresSur = new BuenosAiresSur();
+
 		buenosAiresNorte.conocer(buenosAiresSur);
 		buenosAiresSur.conocer(buenosAiresNorte);
-		jugador.visitar(buenosAiresSur);
-		jugador.visitar(buenosAiresNorte);
+
+		buenosAiresSur.comprar(jugador);
+		buenosAiresNorte.comprar(jugador);
+
 		jugador.construir(buenosAiresSur);
 		jugador.construir(buenosAiresSur);
 		jugador.construir(buenosAiresNorte);
 		jugador.construir(buenosAiresNorte);
 		jugador.construir(buenosAiresSur);
+		jugador.construir(buenosAiresSur);
+
 		assertEquals(1 , buenosAiresSur.cantidadHoteles());
 		assertEquals(0 , buenosAiresSur.cantidadCasas());
-	
 	}
-	
 }

@@ -42,8 +42,7 @@ public class AlgoPoly {
 	}
 
 	public void inicializarJuego(){
-		construirTablero();
-		agregarJugadores();
+		reiniciarJuego();
 	}
 
 	private void construirTablero() {
@@ -103,39 +102,29 @@ public class AlgoPoly {
 
 	}
 	
-	public void agregarJugadores() {
+	private void agregarJugadores() {
+		crearJugadores();
+		agregarJugadoresEnTablero();
+	}
+
+	private void crearJugadores() {
 		while (jugadores.size()<3) {
 			jugadores.add(new Jugador());
 		}
-		agregarJugadoresEnTablero();
 	}
-	
+
 	public void agregarJugadoresEnTablero() {
 		for(Jugador jugador: jugadores) {
 			tablero.agregarJugador(jugador);
 			jugador.conocerTablero(tablero);
 		}
 	}
+
 	public void reiniciarJuego() {
 		Collections.shuffle(jugadores);
 		this.tablero = new Tablero();
 		construirTablero();
-		agregarJugadoresEnTablero();
-	}
-	
-	public void jugarTurno(Jugador unJugador) {
-		if (turno.jugar(unJugador, tablero) < 0) {
-			jugadores.remove(unJugador);
-		}
-	}
-	
-	public void comenzarJuego() {
-		int pos = 0;
-		while (jugadores.size() > 1) {
-			if (pos >= jugadores.size()) pos = pos - pos;
-			jugarTurno(jugadores.get(pos));
-			pos ++;
-		}
+		agregarJugadores();
 	}
 
 	public Invoker getInvoker() {

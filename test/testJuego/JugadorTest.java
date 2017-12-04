@@ -4,9 +4,11 @@ import static org.junit.Assert.*;
 
 import fiuba.algo3.AlgoPoly;
 import fiuba.algo3.modelo.Tablero;
+import fiuba.algo3.modelo.celdas.Visitable;
 import fiuba.algo3.modelo.celdas.comprables.Barrio;
 import fiuba.algo3.modelo.celdas.comprables.BuenosAiresNorte;
 import fiuba.algo3.modelo.celdas.comprables.BuenosAiresSur;
+import fiuba.algo3.modelo.celdas.comprables.Propiedad;
 import fiuba.algo3.modelo.excepciones.JugadorNoCuentaConDineroSuficienteParaComprarException;
 
 import fiuba.algo3.modelo.excepciones.JugadorPerdioException;
@@ -60,8 +62,12 @@ public class JugadorTest {
 		Tablero tablero = algo.getTablero();
 
 		Jugador jugador = tablero.agregarJugador(new Jugador());
-		tablero.avanzarJugador(jugador, 2);
-		tablero.avanzarJugador(jugador, 2);
+
+		Barrio nueva = (Barrio) tablero.avanzarJugador(jugador, 2);
+		nueva.comprar(jugador);
+
+		nueva = (Barrio) tablero.avanzarJugador(jugador, 2);
+		nueva.comprar(jugador);
 
 		Assert.assertTrue(jugador.poseeALaAsociadaDe(jugador.getPropiedades().get(0)));
 	}
@@ -74,7 +80,9 @@ public class JugadorTest {
 		Tablero tablero = algo.getTablero();
 
 		Jugador jugador = tablero.agregarJugador(new Jugador());
-		tablero.avanzarJugador(jugador, 2);
+
+		Barrio nueva = (Barrio) tablero.avanzarJugador(jugador, 2);
+		nueva.comprar(jugador);
 
 		Assert.assertFalse(jugador.poseeALaAsociadaDe(jugador.getPropiedades().get(0)));
 	}
@@ -89,7 +97,9 @@ public class JugadorTest {
 		Jugador jugador = tablero.agregarJugador(new Jugador());
 
 		int dineroAnteriorALaCompra = jugador.obtenerDinero();
-		tablero.avanzarJugador(jugador, 2);
+		Propiedad propiedad = (Propiedad) tablero.avanzarJugador(jugador, 2);
+		propiedad.comprar(jugador);
+
 		jugador.getPropiedades().get(0).vender();
 		int dineroDespues = jugador.obtenerDinero();
 
@@ -104,7 +114,8 @@ public class JugadorTest {
 		Tablero tablero = algo.getTablero();
 
 		Jugador jugador = tablero.agregarJugador(new Jugador());
-		tablero.avanzarJugador(jugador, 2);
+		Propiedad propiedad = (Propiedad) tablero.avanzarJugador(jugador, 2);
+		propiedad.comprar(jugador);
 
 		jugador.getPropiedades().get(0).vender();
 
@@ -123,9 +134,11 @@ public class JugadorTest {
 
 		int dineroAnterior = jugador2.obtenerDinero();
 
-		tablero.avanzarJugador(jugador1, 2);
-		tablero.avanzarJugador(jugador2, 2);
+		Propiedad propiedad = (Propiedad) tablero.avanzarJugador(jugador1, 2);
+		propiedad.comprar(jugador1);
 
+		Visitable nueva = tablero.avanzarJugador(jugador2, 2);
+		nueva.aceptar(jugador2);
 		int dineroPosterior = jugador2.obtenerDinero();
 
 		Assert.assertEquals(dineroPosterior, dineroAnterior - 2000);
@@ -139,8 +152,10 @@ public class JugadorTest {
 		Tablero tablero = algo.getTablero();
 		Jugador jugador = tablero.agregarJugador(new Jugador());
 
-		jugador.pagar(80000);
-		tablero.avanzarJugador(jugador, 4);
+		jugador.pagar(80001);
+		Propiedad propiedad = (Propiedad) tablero.avanzarJugador(jugador, 2);
+		propiedad.comprar(jugador);
+
 	}
 
 	@Test(expected = JugadorPerdioException.class)
@@ -151,15 +166,18 @@ public class JugadorTest {
 		Jugador jugador2 = tablero.agregarJugador(new Jugador());
 		tablero.agregarCelda(new BuenosAiresSur());
 
-		tablero.avanzarJugador(jugador1,1);
-		Barrio BsAs = (Barrio) jugador1.getPropiedades().get(0);
-		tablero.avanzarJugador(jugador2,1);
+		Barrio BsAs = (Barrio) tablero.avanzarJugador(jugador1, 1);
+		BsAs.comprar(jugador1);
 
+		Visitable nueva = tablero.avanzarJugador(jugador2,1);
+		nueva.aceptar(jugador2);
 		do{
-			tablero.avanzarJugador(jugador2,2);
+			nueva = tablero.avanzarJugador(jugador2,2);
+			nueva.aceptar(jugador2);
 		}while (jugador2.obtenerDinero() >= BsAs.getAlquilerActual());
 
-		tablero.avanzarJugador(jugador2,2);
+		nueva = tablero.avanzarJugador(jugador2,2);
+		nueva.aceptar(jugador2);
 	}
 
 	@Test
@@ -172,20 +190,25 @@ public class JugadorTest {
 		Jugador jugador1 = tablero.agregarJugador(new Jugador());
 		Jugador jugador2 = tablero.agregarJugador(new Jugador());
 
-		tablero.avanzarJugador(jugador1, 1);
-		tablero.avanzarJugador(jugador2, 2);
+		Barrio BsAsS = (Barrio) tablero.avanzarJugador(jugador1, 1);
+		BsAsS.comprar(jugador1);
 
-		Barrio BsAs = (Barrio) jugador1.getPropiedades().get(0);
+		Barrio BSAsN = (Barrio) tablero.avanzarJugador(jugador2, 2);
+		BSAsN.comprar(jugador2);
 
-		tablero.avanzarJugador(jugador2, 2);
+		Visitable nueva = tablero.avanzarJugador(jugador2, 2);
+		nueva.aceptar(jugador2);
+
 		do{
-			tablero.avanzarJugador(jugador2,3);
-		}while (jugador2.obtenerDinero() >= BsAs.getAlquilerActual());
+			nueva = tablero.avanzarJugador(jugador2,3);
+			nueva.aceptar(jugador2);
+		}while (jugador2.obtenerDinero() >= BsAsS.getAlquilerActual());
 
-		Assert.assertTrue(jugador2.obtenerDinero() < BsAs.getAlquilerActual());
+		Assert.assertTrue(jugador2.obtenerDinero() < BsAsS.getAlquilerActual());
 
 		jugador2.verPropiedades();
 		jugador2.buscarPropiedad("BuenosAiresNorte").vender();
-		tablero.avanzarJugador(jugador2,3);
+		nueva = tablero.avanzarJugador(jugador2,3);
+		nueva.aceptar(jugador2);
 	}
 }

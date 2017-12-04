@@ -3,6 +3,7 @@ package fiuba.algo3;
 import fiuba.algo3.modelo.Dado;
 import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.Tablero;
+import fiuba.algo3.modelo.celdas.Visitable;
 import fiuba.algo3.modelo.excepciones.JugadorNoCuentaConDineroSuficienteParaComprarException;
 import fiuba.algo3.modelo.excepciones.JugadorNoPuedeSalirDeLaCarcelException;
 import fiuba.algo3.modelo.excepciones.JugadorNoTieneFondosParaPagarException;
@@ -47,9 +48,11 @@ public class Turno {
 		return 0;
 	}
 	
-	public void hacerJugarAlJugador(Jugador unJugador, Tablero tablero) {
-		unJugador.setValorDeTiro(valorDados);
-		tablero.avanzarJugador(unJugador, valorDados);
+	public void hacerJugarAlJugador(Jugador jugador, Tablero tablero) {
+		jugador.setValorDeTiro(valorDados);
+		Visitable celdaNueva = tablero.avanzarJugador(jugador, valorDados);
+		//actualizar vista?
+		celdaNueva.aceptar(jugador);
 	}
 	
 	public void setValorDados(int valor1, int valor2) {

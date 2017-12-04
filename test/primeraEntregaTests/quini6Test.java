@@ -19,8 +19,8 @@ public class quini6Test {
 		Barrio barrio = new BuenosAiresSur();
 
 		unJugador.visitar(quini);
-		unJugador.visitar(barrio);
-		
+		barrio.comprar(unJugador);
+
 		assertEquals(barrio.getDuenio(),unJugador);
 	}
 	
@@ -33,7 +33,7 @@ public class quini6Test {
 		unJugador.visitar(quini);
 		unJugador.visitar(quini);
 		
-		unJugador.visitar(barrio);
+		barrio.comprar(unJugador);
 		
 		assertEquals(barrio.getDuenio(),unJugador);
 	}
@@ -51,6 +51,6 @@ public class quini6Test {
 		unJugador.pagar(30000);
 		unJugador.visitar(quini);
 	
-		unJugador.visitar(barrio);
+		barrio.comprar(unJugador);
 	}
 }

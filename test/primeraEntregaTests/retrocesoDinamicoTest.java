@@ -23,7 +23,6 @@ public class retrocesoDinamicoTest {
 		Dado dado1 = new Dado();
 		Dado dado2 = new Dado();
 
-
 		tablero.agregarCelda(retrocesoDinamico);
 		tablero.agregarCelda(new BuenosAiresSur());
 		tablero.agregarCelda(carcel);
@@ -31,7 +30,9 @@ public class retrocesoDinamicoTest {
 		dado1.setValor(1);
 		dado2.setValor(1);
 		jugador.setValorDeTiro(dado1.getValor() + dado2.getValor());
-		tablero.avanzarJugador(jugador, 1);
+
+		Visitable nueva = tablero.avanzarJugador(jugador, 1);
+		nueva.aceptar(jugador);
 
 		Assert.assertEquals(carcel, tablero.getPosicionDeJugador(jugador));
 	}
@@ -50,7 +51,9 @@ public class retrocesoDinamicoTest {
 		dado2.setValor(8);
 		jugador.setValorDeTiro(dado1.getValor() + dado2.getValor());
 		Visitable esperado = tablero.getPosicionDeJugador(jugador);
-		tablero.avanzarJugador(jugador, 1);
+
+		Visitable nueva = tablero.avanzarJugador(jugador, 1);
+		nueva.aceptar(jugador);
 
 		Assert.assertEquals(esperado, tablero.getPosicionDeJugador(jugador));
 	}
@@ -74,7 +77,9 @@ public class retrocesoDinamicoTest {
 		dado1.setValor(3);
 		dado2.setValor(8);
 		jugador.setValorDeTiro(dado1.getValor() + dado2.getValor());
-		tablero.avanzarJugador(jugador, 1);
+
+		Visitable nueva = tablero.avanzarJugador(jugador, 1);
+		nueva.aceptar(jugador);
 
 		Assert.assertEquals(esperado, tablero.getPosicionDeJugador(jugador));
 	}

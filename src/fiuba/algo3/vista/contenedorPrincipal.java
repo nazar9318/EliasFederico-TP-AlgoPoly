@@ -6,6 +6,7 @@ import fiuba.algo3.modelo.ArrayPropiedad;
 import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.Tablero;
 import fiuba.algo3.modelo.celdas.Visitable;
+import fiuba.algo3.vista.eventos.BotonTirarDadosHandler;
 import fiuba.algo3.vista.eventos.BotonVerPropiedadesHandler;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -26,7 +27,7 @@ import java.util.ArrayList;
 
 public class contenedorPrincipal extends BorderPane{
 	   GridPane vistaTablero;
-	   
+
     public contenedorPrincipal(AlgoPoly algo){
     	setConsola();
         setBotonera(algo.getPropiedades(), algo.jugadorActual(), algo.getTurno(), algo.getTablero());
@@ -36,19 +37,14 @@ public class contenedorPrincipal extends BorderPane{
     private void setBotonera(ArrayPropiedad propiedades, Jugador jugador, Turno turno, Tablero tablero) {
 
         Button botonTirarDados = new Button("Tirar Dados");
-        
-        EventHandler<ActionEvent> botonTirarDadosHandler = new EventHandler<ActionEvent>(){
-
-			@Override
-			public void handle(ActionEvent arg0) {
-				actualizarConsola(turno);
-			}
-        	
-        };
-        
-        agregarAccion(botonTirarDados, turno, botonTirarDadosHandler, jugador, tablero);
-        
-        this.actualizarConsola(turno);
+        botonTirarDados.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                actualizarConsola(turno);
+            }
+        });
+        BotonTirarDadosHandler botonTirarDadosHandler = new BotonTirarDadosHandler(turno, jugador, tablero);
+        botonTirarDados.addEventHandler(ActionEvent.ACTION, botonTirarDadosHandler);
 
         Button botonVerPropiedades = new Button("Ver Propiedades");
         BotonVerPropiedadesHandler verPropiedadesHandler = new BotonVerPropiedadesHandler(propiedades, jugador);
@@ -60,13 +56,6 @@ public class contenedorPrincipal extends BorderPane{
 
         this.setLeft(contenedorVertical);
     }
-
-    private void agregarAccion(Button botonTirarDados, Turno turno, EventHandler<ActionEvent> botonTirarDadosHandler, Jugador jugador, Tablero tablero) {
-    	botonTirarDados.addEventHandler(ActionEvent.ACTION, (e) ->{
-    		turno.jugar(jugador, tablero);
-    	});
-    	botonTirarDados.addEventHandler(ActionEvent.ACTION, botonTirarDadosHandler);
-	}
 
 	private void actualizarConsola(Turno turno) {
     	int dado1 = turno.getValorDado1();

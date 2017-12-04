@@ -50,7 +50,8 @@ public class avanceDinamicoTest {
 		dado1.setValor(1);
 		dado2.setValor(8);
 		jugador.setValorDeTiro(dado1.getValor() + dado2.getValor());
-		tablero.avanzarJugador(jugador, 1);
+		Visitable nueva = tablero.avanzarJugador(jugador, 1);
+		nueva.aceptar(jugador);
 
 		Assert.assertEquals(esperado, tablero.getPosicionDeJugador(jugador));
 	}
@@ -73,7 +74,8 @@ public class avanceDinamicoTest {
 		dado1.setValor(3);
 		dado2.setValor(8);
 		jugador.setValorDeTiro(dado1.getValor() + dado2.getValor());
-		tablero.avanzarJugador(jugador, 1);
+		Visitable nueva = tablero.avanzarJugador(jugador, 1);
+		nueva.aceptar(jugador);
 		Visitable resultado = tablero.getPosicionDeJugador(jugador);
 
 		Assert.assertEquals(esperado, resultado);

@@ -1,6 +1,8 @@
 package testTablero;
 
 import static org.junit.Assert.*;
+
+import fiuba.algo3.modelo.celdas.Visitable;
 import fiuba.algo3.modelo.celdas.especiales.Carcel;
 import fiuba.algo3.modelo.celdas.especiales.Quini6;
 import fiuba.algo3.modelo.Jugador;
@@ -55,26 +57,11 @@ public class TableroTest {
     	
     	Jugador jugador1 = new Jugador();
 		tablero.agregarJugador(jugador1);
-		tablero.avanzarJugador(jugador1,1);
+
+		Visitable celda = tablero.avanzarJugador(jugador1,1);
+		celda.aceptar(jugador1);
 
 		assertEquals(150000, jugador1.obtenerDinero());
-	}
-	
-	@Test
-	public void tableroAvanzaJugadorAQuini6DosVecesYCobraBonosCorrespondientes() {
-		Tablero tablero = new Tablero();
-    	Quini6 quini = new Quini6();
-    	
-    	tablero.agregarCelda(quini);
-    	
-    	Jugador jugador1 = new Jugador();
-		tablero.agregarJugador(jugador1);
-		
-		tablero.avanzarJugador(jugador1,1);
-		tablero.avanzarJugador(jugador1, 1);
-		tablero.avanzarJugador(jugador1,1);
-
-		assertEquals(180000, jugador1.obtenerDinero());
 	}
 
 }

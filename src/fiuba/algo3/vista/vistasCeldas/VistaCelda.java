@@ -1,6 +1,7 @@
-package fiuba.algo3.vista;
+package fiuba.algo3.vista.vistasCeldas;
 
 
+import fiuba.algo3.vista.VistaJugador;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

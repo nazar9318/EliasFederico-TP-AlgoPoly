@@ -53,11 +53,10 @@ public class Tablero {
 		return jugadores.get(j1);
 	}
 	
-	public void avanzarJugador(Jugador jugador, int avance) {
+	public Visitable avanzarJugador(Jugador jugador, int avance) {
 		Visitable celdaActual = this.jugadores.get(jugador);
 		int index = this.celdas.indexOf(celdaActual);
-		Visitable celdaNueva = reposicionarJugador(jugador, index, avance);
-		celdaNueva.aceptar(jugador);
+		return reposicionarJugador(jugador, index, avance);
 	}
 
 	public ArrayList<Visitable> getCeldas() {
