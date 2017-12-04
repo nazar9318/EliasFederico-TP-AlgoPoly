@@ -1,11 +1,10 @@
 package fiuba.algo3.vista;
 
 import fiuba.algo3.AlgoPoly;
-import fiuba.algo3.Turno;
-import fiuba.algo3.modelo.ArrayPropiedad;
-import fiuba.algo3.modelo.Jugador;
-import fiuba.algo3.modelo.Tablero;
 import fiuba.algo3.modelo.celdas.Visitable;
+import fiuba.algo3.vista.eventos.BotonComenzarJuegoHandler;
+import fiuba.algo3.vista.eventos.BotonReiniciarHandler;
+import fiuba.algo3.vista.eventos.BotonSalirHandler;
 import fiuba.algo3.vista.eventos.BotonTirarDadosHandler;
 import fiuba.algo3.vista.eventos.BotonVerPropiedadesHandler;
 import javafx.event.ActionEvent;
@@ -22,14 +21,14 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-
+import java.io.File;
 import java.util.ArrayList;
 
 public class contenedorPrincipal extends BorderPane{
@@ -37,7 +36,7 @@ public class contenedorPrincipal extends BorderPane{
 
     public contenedorPrincipal(AlgoPoly algo){
     	setConsola();
-        setBotonera(algo.getPropiedades(), algo.jugadorActual(), algo.getTurno(), algo.getTablero());
+        setBotonera(algo);
         setCentro(algo.getTablero().getCeldas());
         
         Image imagen = new Image("file:src/fiuba/algo3/vista/imagenes/fondoInicio.jpg");
@@ -45,36 +44,46 @@ public class contenedorPrincipal extends BorderPane{
         this.setBackground(new Background(imagenDeFondo));
     }
 
-    private void setBotonera(ArrayPropiedad propiedades, Jugador jugador, Turno turno, Tablero tablero) {
-
+    private void setBotonera(AlgoPoly algo) {
+    	
+    	Button botonComenzarJuego = new Button("Comenzar Juego");
+    	BotonComenzarJuegoHandler botonDeComienzo = new BotonComenzarJuegoHandler(algo);
+    	botonComenzarJuego.addEventHandler(ActionEvent.ACTION, botonDeComienzo);
+    	
         Button botonTirarDados = new Button("Tirar Dados");
         botonTirarDados.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-            	
-                actualizarConsola(turno);
+            	hacerSonar("src/fiuba/algo3/vista/sonidos/click.mp3");
+                actualizarConsola("Valores de los dados:\n" + "Dado uno= " + algo.getTurno().getValorDado1() + "\n" + "Dado dos= " + algo.getTurno().getValorDado2());
             }
         });
-        BotonTirarDadosHandler botonTirarDadosHandler = new BotonTirarDadosHandler(turno, jugador, tablero);
+        BotonTirarDadosHandler botonTirarDadosHandler = new BotonTirarDadosHandler(algo.getTurno(), algo.jugadorActual(), algo.getTablero());
         botonTirarDados.addEventHandler(ActionEvent.ACTION, botonTirarDadosHandler);
 
         Button botonVerPropiedades = new Button("Ver Propiedades");
-        BotonVerPropiedadesHandler verPropiedadesHandler = new BotonVerPropiedadesHandler(propiedades, jugador);
+        BotonVerPropiedadesHandler verPropiedadesHandler = new BotonVerPropiedadesHandler(algo.getPropiedades(), algo.jugadorActual());
         botonVerPropiedades.setOnAction(verPropiedadesHandler);
 
-        VBox contenedorVertical = new VBox(botonTirarDados, botonVerPropiedades);
+        Button botonReiniciarJuego = new Button("Reiniciar Juego");
+        BotonReiniciarHandler botonReiniciarHandler = new BotonReiniciarHandler(algo);
+        botonReiniciarJuego.addEventFilter(ActionEvent.ACTION, botonReiniciarHandler);
+        
+        Button botonSalir = new Button("Salir");
+        BotonSalirHandler botonSalirHandler = new BotonSalirHandler();
+        botonSalir.addEventHandler(ActionEvent.ACTION, botonSalirHandler);
+        
+        VBox contenedorVertical = new VBox(botonComenzarJuego, botonTirarDados, botonVerPropiedades, botonReiniciarJuego, botonSalir);
         contenedorVertical.setSpacing(10);
         contenedorVertical.setPadding(new Insets(15));
 
         this.setLeft(contenedorVertical);
     }
 
-	private void actualizarConsola(Turno turno) {
-    	int dado1 = turno.getValorDado1();
-		int dado2 = turno.getValorDado2();
+	private void actualizarConsola(String texto) {
 		
         Label etiqueta = new Label();
-        etiqueta.setText("Valores de los dados\n" + "Dado uno: " + dado1 + " \n" + "Dado dos: " + dado2);
+        etiqueta.setText(texto);
         etiqueta.setFont(Font.font("cooper black", FontWeight.SEMI_BOLD, 14));
         etiqueta.setTextFill(Color.WHITE);
         etiqueta.setEffect(new Lighting());
@@ -83,38 +92,22 @@ public class contenedorPrincipal extends BorderPane{
         contenedorConsola.setSpacing(10);
         contenedorConsola.setPadding(new Insets(15));
         contenedorConsola.setStyle("-fx-background-color: red;");
+        
+        hacerSonar("src/fiuba/algo3/vista/sonidos/consola.mp3");
 
         this.setBottom(contenedorConsola);		
 	}
 
 	private void setCentro(ArrayList<Visitable> celdas){
 
-        StackPane salida = new StackPane();
-        salida.getChildren().addAll(new Rectangle(100,100, Color.MIDNIGHTBLUE), new Label("<= Salida"));
-
-        StackPane bs = new StackPane();
-        bs.getChildren().addAll(new Rectangle(100,100, Color.RED), new Label("Bs As Sur"));
-
-        StackPane imp = new StackPane();
-        imp.getChildren().addAll(new Rectangle(100,100, Color.YELLOW), new Label("Impuesto De Lujo"));
-
-        StackPane cdba = new StackPane();
-        cdba.getChildren().addAll(new Rectangle(100,100, Color.GREEN), new Label("Cordoba"));
-
-        GridPane gp = new GridPane();
-        gp.add(salida, 1,1);
-        gp.add(bs, 0,1);
-        gp.add(imp, 0,0);
-        gp.add(cdba, 1,0);
      	vistaTablero = new VistaTablero();
         this.setCenter(vistaTablero);
 
-     //   this.setCenter(gp);
     }
     
     private void setConsola() {
         Label etiqueta = new Label();
-        etiqueta.setText("Valores de los dados\n" + "Dado uno: " + 0 + " \n" + "Dado dos: " + 0);
+        etiqueta.setText("Comencemos el juego!");
         etiqueta.setFont(Font.font("cooper black", FontWeight.SEMI_BOLD, 14));
         etiqueta.setTextFill(Color.WHITE);
         etiqueta.setEffect(new Lighting());
@@ -125,5 +118,11 @@ public class contenedorPrincipal extends BorderPane{
         contenedorConsola.setStyle("-fx-background-color: red;");
 
         this.setBottom(contenedorConsola);
+    }
+    
+    private void hacerSonar(String ruta) {
+        Media sonidoClick = new Media(new File(ruta).toURI().toString());
+        MediaPlayer consolaSonido = new MediaPlayer(sonidoClick);
+		consolaSonido.play();
     }
 }

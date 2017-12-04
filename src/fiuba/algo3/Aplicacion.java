@@ -31,13 +31,7 @@ public class Aplicacion extends Application {
         AlgoPoly algo = new AlgoPoly();
 
         algo.inicializarJuego();
-        Tablero tablero = algo.getTablero();
-        Jugador jugador = algo.jugadorActual();
-
-        tablero.avanzarJugador(jugador, 2); //compra buenos aires sur
-        tablero.avanzarJugador(jugador, 1); //compra edesur
-        tablero.avanzarJugador(jugador, 1); //compra buenos aires norte
-
+        
         contenedorPrincipal contenedorPrincipal = new contenedorPrincipal(algo);
         Scene escenaJuego = new Scene(contenedorPrincipal, 1050, 650);
 

@@ -11,6 +11,7 @@ import fiuba.algo3.modelo.Tablero;
 import fiuba.algo3.modelo.celdas.comprables.*;
 import fiuba.algo3.modelo.celdas.comprables.Servicios.*;
 import fiuba.algo3.modelo.celdas.especiales.*;
+import fiuba.algo3.modelo.excepciones.JugadorPerdioException;
 
 public class AlgoPoly {
 
@@ -19,11 +20,12 @@ public class AlgoPoly {
 	private Turno turno;
 	private Invoker invoker;
 	private ArrayPropiedad propiedades;
+	private Jugador jugadorActual;
 
 	public AlgoPoly(){
 		this.tablero = new Tablero();
 		this.jugadores = new ArrayList<Jugador>();
-		this.turno = new Turno();
+		this.turno = new Turno(this);
 		this.invoker = new Invoker();
 		this.propiedades = new ArrayPropiedad();
 
@@ -42,7 +44,9 @@ public class AlgoPoly {
 	}
 
 	public void inicializarJuego(){
+		crearJugadores();
 		reiniciarJuego();
+		jugadorActual = jugadores.get(0);
 	}
 
 	private void construirTablero() {
@@ -101,11 +105,6 @@ public class AlgoPoly {
 		tablero.agregarCelda(tucuman);
 
 	}
-	
-	private void agregarJugadores() {
-		crearJugadores();
-		agregarJugadoresEnTablero();
-	}
 
 	private void crearJugadores() {
 		while (jugadores.size()<3) {
@@ -124,7 +123,7 @@ public class AlgoPoly {
 		Collections.shuffle(jugadores);
 		this.tablero = new Tablero();
 		construirTablero();
-		agregarJugadores();
+		agregarJugadoresEnTablero();
 	}
 
 	public Invoker getInvoker() {
@@ -136,10 +135,31 @@ public class AlgoPoly {
 	}
 
 	public Jugador jugadorActual() {
-		return this.jugadores.get(0);	//TODO: rotacion de jugadores
+		return this.jugadorActual;	
 	}
 
 	public Turno getTurno() {
 		return this.turno;
 	}
+
+	public void cambiarJugadorActual() {
+		int index = jugadores.indexOf(jugadorActual);
+		if (index < jugadores.size() - 1) {
+			jugadorActual = jugadores.get(index + 1);
+		}
+		else jugadorActual = jugadores.get(0);
+		
+	}
+
+	public void SacarPerdedor() {
+		Jugador perdedor = jugadorActual;
+		cambiarJugadorActual();
+		jugadores.remove(perdedor);
+		throw new JugadorPerdioException();
+	}
+
+	public boolean noHayUnGanador() {
+		return jugadores.size() > 1;
+	}
+	
 }

@@ -14,10 +14,13 @@ public class Turno {
 	private Dado dado2;
 	private int valorDados;
 	private int turnosJugados;
+	private AlgoPoly juego;
 	
-	public Turno () {
+	public Turno (AlgoPoly algo) {
 		this.dado1  = new Dado();
 		this.dado2 = new Dado();
+		this.juego = algo;
+		
 	}
 	
 	public void tirarDados() {
@@ -26,26 +29,24 @@ public class Turno {
 		this.valorDados = valor1 + valor2;
 	}
 
-	public int jugar(Jugador unJugador, Tablero tablero) {
-		turnosJugados = 0;
-		setValorDados(0,0);
-		while (puedeJugar() && turnosJugados < 2) {	
-			tirarDados();
-			try {
-				hacerJugarAlJugador(unJugador, tablero);
-			}	
-			catch (JugadorNoPuedeSalirDeLaCarcelException e) {
-				return 0;
-			}	
-			catch (JugadorNoTieneFondosParaPagarException e) {
-				return -1;
-			}
-			catch (JugadorNoCuentaConDineroSuficienteParaComprarException e) {
-				return 0;
-			}
-			turnosJugados++;
+	public void jugar() {
+		tirarDados();
+		try {
+			hacerJugarAlJugador(juego.jugadorActual(), juego.getTablero());
+		}	
+		catch (JugadorNoPuedeSalirDeLaCarcelException e) {
+			juego.cambiarJugadorActual();
+		}	
+		catch (JugadorNoTieneFondosParaPagarException e) {
+			juego.SacarPerdedor();
 		}
-		return 0;
+		catch (JugadorNoCuentaConDineroSuficienteParaComprarException e) {
+			//primero consultar venta
+			juego.cambiarJugadorActual();
+		}
+		if (!puedeVolverAjugar()) {
+			juego.cambiarJugadorActual();
+		}
 	}
 	
 	public void hacerJugarAlJugador(Jugador jugador, Tablero tablero) {
@@ -55,13 +56,8 @@ public class Turno {
 		celdaNueva.aceptar(jugador);
 	}
 	
-	public void setValorDados(int valor1, int valor2) {
-		dado1.setValor(valor1);
-		dado2.setValor(valor2);
-		this.valorDados = valor1 + valor2;
-	}
 	
-	public boolean puedeJugar () {
+	public boolean puedeVolverAjugar () {
 		return dado1.getValor() == dado2.getValor();
 	}
 	
