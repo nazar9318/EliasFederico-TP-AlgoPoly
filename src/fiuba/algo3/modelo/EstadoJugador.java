@@ -1,7 +1,9 @@
 package fiuba.algo3.modelo;
 
+import fiuba.algo3.modelo.celdas.comprables.Barrio;
 import fiuba.algo3.modelo.celdas.comprables.Propiedad;
 import fiuba.algo3.modelo.celdas.Salida;
+import fiuba.algo3.modelo.celdas.Visitable;
 import fiuba.algo3.modelo.celdas.especiales.AvanceDinamico;
 import fiuba.algo3.modelo.celdas.especiales.Policia;
 import fiuba.algo3.modelo.celdas.especiales.Quini6;
@@ -20,5 +22,11 @@ public interface EstadoJugador {
 	void visitar(RetrocesoDinamico retroceso, Jugador jugador);
 
 	void visitar(Salida salida, Jugador jugador);
+
+	Visitable reUbicarse(Jugador jugador, Tablero tablero, int index, int avance);
+
+	void construir(Jugador jugador, Barrio barrio);
+
+	void vender(Jugador jugador, Propiedad propiedad);
 	
 }

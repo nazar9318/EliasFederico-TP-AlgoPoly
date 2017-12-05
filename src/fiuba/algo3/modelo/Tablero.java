@@ -41,7 +41,7 @@ public class Tablero {
 		return this.jugadores.get(j1);
 	}
 
-	private Visitable reposicionarJugador(Jugador j1, int index, int avance){
+	public Visitable reposicionarJugador(Jugador j1, int index, int avance){
 		if(index + avance >= getCantidadDeCeldas())
 			jugadores.put(j1, celdas.get(index + avance - getCantidadDeCeldas()));
 		else if (index + avance < 0) { 	
@@ -56,7 +56,8 @@ public class Tablero {
 	public Visitable avanzarJugador(Jugador jugador, int avance) {
 		Visitable celdaActual = this.jugadores.get(jugador);
 		int index = this.celdas.indexOf(celdaActual);
-		return reposicionarJugador(jugador, index, avance);
+		return jugador.reUbicarse(this, avance, index);
+		//return reposicionarJugador(jugador, index, avance);
 	}
 
 	public ArrayList<Visitable> getCeldas() {

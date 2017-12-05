@@ -14,6 +14,7 @@ public class Vender extends Command{
 
     @Override
     public void execute(Jugador jugador) {
-        this.propiedad_.vender();
+        jugador.vender(this.propiedad_);
+    	//this.propiedad_.vender();
     }
 }

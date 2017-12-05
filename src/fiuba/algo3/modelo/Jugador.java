@@ -129,7 +129,8 @@ public class Jugador implements Visitante {
 	}
 
 	public void construir(Barrio barrio) {
-		barrio.construir(this);
+		this.estado.construir(this, barrio);
+		//barrio.construir(this);
 	}
 
 	public void removerPropiedad(Propiedad propiedad) {
@@ -137,8 +138,7 @@ public class Jugador implements Visitante {
 	}
 
 	public void visitar(Visitable visitable) {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
 	}
 
 	public void verPropiedades() {
@@ -153,6 +153,14 @@ public class Jugador implements Visitante {
 				return this.propiedades.get(i);
 		}
 		return null;
+	}
+
+	public Visitable reUbicarse(Tablero tablero, int avance, int index) {
+		return this.estado.reUbicarse(this, tablero, index, avance);	
+	}
+
+	public void vender(Propiedad propiedad) {
+		this.estado.vender(this, propiedad);
 	}
 
 }
