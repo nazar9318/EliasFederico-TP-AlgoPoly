@@ -1,7 +1,6 @@
 package fiuba.algo3.vista.vistasCeldas;
 
 
-import fiuba.algo3.vista.VistaJugador;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -54,11 +53,17 @@ protected VistaCelda() {
 	}
 	
 
-	public void agregarJugador(VistaJugador jugador) {
-		ImageView imagen =new ImageView( jugador.getVista());
-		imagen.maxHeight(20);
-		imagen.maxWidth(20); 
-		jugadores.getChildren().add(imagen);
+	public void agregarJugador(String jugador) {
+		Label nombre = new Label(jugador);
+		nombre.setStyle("-fx-background-color:\r\n" + 
+				"        linear-gradient(#f0ff35, #a9ff00),\r\n" + 
+				"        radial-gradient(center 50% -40%, radius 200%, #b8ee36 45%, #80c800 50%);\r\n" + 
+				"    -fx-background-radius: 6, 5;\r\n" + 
+				"    -fx-background-insets: 0, 1;\r\n" + 
+				"    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );\r\n" + 
+				"    -fx-text-fill: #395306;");
+		
+		jugadores.getChildren().add(nombre);
 	
 	}
 	public void modificarLabel(String texto) {
@@ -70,7 +75,7 @@ protected VistaCelda() {
 	}
 	
 	public void removerUltimocontenido() {
-		contenidoCelda.getChildren().remove(contenidoCelda.getChildren().size()-1);
+		jugadores.getChildren().clear();
 	}
 	
 	public String getNombre() {

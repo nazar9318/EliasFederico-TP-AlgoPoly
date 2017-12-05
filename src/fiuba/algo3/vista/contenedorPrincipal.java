@@ -32,13 +32,13 @@ import java.io.File;
 import java.util.ArrayList;
 
 public class contenedorPrincipal extends BorderPane{
-	   GridPane vistaTablero;
+	   VistaTablero vistaTablero;
 
     public contenedorPrincipal(AlgoPoly algo){
     	setConsola();
         setBotonera(algo);
-        setCentro(algo.getTablero().getCeldas());
-        
+        setCentro(algo);
+        vistaTablero.actaulizarVista();
         Image imagen = new Image("file:src/fiuba/algo3/vista/imagenes/fondoInicio.jpg");
         BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
@@ -51,6 +51,7 @@ public class contenedorPrincipal extends BorderPane{
     	botonComenzarJuego.addEventHandler(ActionEvent.ACTION, botonDeComienzo);
     	
         Button botonTirarDados = new Button("Tirar Dados");
+     
         botonTirarDados.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -98,9 +99,9 @@ public class contenedorPrincipal extends BorderPane{
         this.setBottom(contenedorConsola);		
 	}
 
-	private void setCentro(ArrayList<Visitable> celdas){
+	private void setCentro(AlgoPoly algo){
 
-     	vistaTablero = new VistaTablero();
+     	vistaTablero = new VistaTablero(algo);
         this.setCenter(vistaTablero);
 
     }
