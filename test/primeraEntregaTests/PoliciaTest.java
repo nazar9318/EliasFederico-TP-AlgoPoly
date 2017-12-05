@@ -5,6 +5,7 @@ import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.celdas.Salida;
 import fiuba.algo3.modelo.celdas.especiales.Carcel;
 import fiuba.algo3.modelo.celdas.especiales.Policia;
+import fiuba.algo3.modelo.excepciones.JugadorFueTrasladadoALaCarcel;
 import fiuba.algo3.modelo.excepciones.JugadorNoPuedeSalirDeLaCarcelException;
 
 public class PoliciaTest {
@@ -16,7 +17,9 @@ public class PoliciaTest {
 		Policia policia = new Policia(carcel);
 		Salida salida = new Salida();
 		
-		policia.aceptar(unJugador);
+		try{
+			policia.aceptar(unJugador);
+		}catch (JugadorFueTrasladadoALaCarcel e){}
 		unJugador.visitar(salida);
 	}
 
