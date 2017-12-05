@@ -75,7 +75,10 @@ public class Jugador implements Visitante {
 	}
 	
 	public void moverJugador(int movimiento) {
-		if (movimiento != 0) tablero.avanzarJugador(this, movimiento);
+		if (movimiento != 0) {
+			Visitable nuevaVisita = tablero.avanzarJugador(this, movimiento);
+			nuevaVisita.aceptar(this);
+		}
 	}
 
 	@Override

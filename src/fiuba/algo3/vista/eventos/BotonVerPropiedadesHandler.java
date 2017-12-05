@@ -19,8 +19,10 @@ public class BotonVerPropiedadesHandler extends BotonConSonido implements EventH
     private ArrayPropiedad propiedades_;
     private Jugador jugador_;
     private HashMap<String, BotonPropiedad> botones_;
+    private AlgoPoly juego_;
 
     public BotonVerPropiedadesHandler(AlgoPoly algo){
+        this.juego_ = algo;
         this.propiedades_ = algo.getPropiedades();
         this.jugador_ = algo.jugadorActual();
         this.botones_ = new HashMap<>();
@@ -61,6 +63,8 @@ public class BotonVerPropiedadesHandler extends BotonConSonido implements EventH
     @Override
     public void handle(ActionEvent event) {
     	super.sonido.play();
+
+        this.jugador_ = juego_.jugadorActual();
     	crearHandlerParaCadaPropiedad();
 
         HBox buttonBox = new HBox();

@@ -1,5 +1,6 @@
 package fiuba.algo3.vista;
 
+import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -49,6 +50,7 @@ public class ContenedorBienvenidos extends VBox {
 	        botonEntrar.setTextFill(Color.ORANGERED);
 	        botonEntrar.setFont(Font.font("cooper black", FontWeight.BLACK, 16));
 	        botonEntrar.setStyle("-fx-background-color: white;");
+	        botonEntrar.setDefaultButton(true);
 
 	        Label etiqueta = new Label();
 
