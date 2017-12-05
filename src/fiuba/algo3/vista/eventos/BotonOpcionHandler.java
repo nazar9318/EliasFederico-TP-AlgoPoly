@@ -1,6 +1,7 @@
 package fiuba.algo3.vista.eventos;
 
 import fiuba.algo3.modelo.Command.Command;
+import fiuba.algo3.modelo.excepciones.JugadorNoPuedeSalirDeLaCarcelException;
 import fiuba.algo3.modelo.Jugador;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -21,13 +22,21 @@ public class BotonOpcionHandler extends BotonConSonido implements EventHandler<A
     @Override
     public void handle(ActionEvent event) {
     	super.sonido.play();
-        this.aEjecutar.execute(this.jugador_);
-
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Mensaje de informacion");
-        alert.setHeaderText("Accion realizada con exito!");
-        alert.show();
-
+    	try{
+    		this.aEjecutar.execute(this.jugador_);
+            
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Mensaje de informacion");
+            alert.setHeaderText("Accion realizada con exito!");
+            alert.show();
+            
+    	}catch(JugadorNoPuedeSalirDeLaCarcelException e){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Mensaje de informacion");
+            alert.setHeaderText("No puede realizar esta accion desde la carcel!");
+            alert.show();
+    	}
+    	
         Node source = (Node) event.getSource();
         Stage stage  = (Stage) source.getScene().getWindow();
         stage.close();
