@@ -42,21 +42,40 @@ public class Tablero {
 	}
 
 	private Visitable reposicionarJugador(Jugador j1, int index, int avance){
-		if(index + avance >= getCantidadDeCeldas())
+		if(index + avance >= getCantidadDeCeldas()){
 			jugadores.put(j1, celdas.get(index + avance - getCantidadDeCeldas()));
-		else if (index + avance < 0) { 	
+		}			
+		else if (index + avance < 0) { 
 			jugadores.put(j1, celdas.get(getCantidadDeCeldas()+ (index + avance)));
 		}
-		else
+		else{
 			jugadores.put(j1, celdas.get(index+avance));
-
+		}
 		return jugadores.get(j1);
 	}
 	
+	public Visitable obtenerNuevaCelda(Jugador jugador,int avance) {
+		int posicionNuevaCelda;
+		Visitable celdaActual = this.jugadores.get(jugador);
+		int index = this.celdas.indexOf(celdaActual);
+		
+		if(index + avance >= getCantidadDeCeldas()){
+			posicionNuevaCelda = index + avance - getCantidadDeCeldas();
+		}			
+		else if(index + avance < 0){
+			posicionNuevaCelda = getCantidadDeCeldas()+ (index + avance);
+		}			
+		else{
+			posicionNuevaCelda = index + avance;
+		}
+		return celdas.get(posicionNuevaCelda);
+	}
+
 	public Visitable avanzarJugador(Jugador jugador, int avance) {
 		Visitable celdaActual = this.jugadores.get(jugador);
 		int index = this.celdas.indexOf(celdaActual);
-		return reposicionarJugador(jugador, index, avance);
+		Visitable nuevaCelda = reposicionarJugador(jugador, index, avance);
+		return nuevaCelda;
 	}
 
 	public ArrayList<Visitable> getCeldas() {

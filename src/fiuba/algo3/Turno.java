@@ -91,8 +91,9 @@ public class Turno {
 
 	public void hacerJugarAlJugador(Jugador jugador, Tablero tablero) {
 		jugador.setValorDeTiro(valorDados);
-		Visitable celdaNueva = tablero.avanzarJugador(jugador, valorDados);
+		Visitable celdaNueva = tablero.obtenerNuevaCelda(jugador, valorDados);
 		celdaNueva.aceptar(jugador);
+		tablero.avanzarJugador(jugador, valorDados);
 	}
 
 	public int getTurnosJugados() {
