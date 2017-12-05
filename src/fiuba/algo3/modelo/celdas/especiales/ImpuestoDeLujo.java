@@ -2,6 +2,7 @@ package fiuba.algo3.modelo.celdas.especiales;
 
 import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.celdas.Visitable;
+import javafx.scene.control.Alert;
 
 public class ImpuestoDeLujo implements Visitable {
 	private double valorImpuesto;
@@ -17,6 +18,7 @@ public class ImpuestoDeLujo implements Visitable {
 	}
 	@Override
 	public void aceptar(Jugador jugador) {
+		
 		int total = jugador.obtenerDinero();
 		acumulado = (int) (acumulado + total * valorImpuesto);
 		jugador.pagar(acumulado);

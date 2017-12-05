@@ -2,6 +2,7 @@ package fiuba.algo3.modelo.celdas.especiales;
 
 import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.celdas.Visitable;
+import javafx.scene.control.Alert;
 
 import java.util.HashMap;
 
@@ -65,4 +66,5 @@ public class Quini6 implements Visitable {
 	public int obtenerPremioTerceraCaida() {
 		return this.premioTerceraCaida;
 	}
+	
 }

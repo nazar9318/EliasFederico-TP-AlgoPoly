@@ -1,8 +1,6 @@
 package fiuba.algo3.vista;
 
 import fiuba.algo3.AlgoPoly;
-import fiuba.algo3.modelo.celdas.Visitable;
-import fiuba.algo3.vista.eventos.BotonComenzarJuegoHandler;
 import fiuba.algo3.vista.eventos.BotonReiniciarHandler;
 import fiuba.algo3.vista.eventos.BotonSalirHandler;
 import fiuba.algo3.vista.eventos.BotonTirarDadosHandler;
@@ -21,7 +19,6 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -30,7 +27,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 import java.io.File;
-import java.util.ArrayList;
 
 public class contenedorPrincipal extends BorderPane{
 	   VistaTablero vistaTablero;
@@ -47,10 +43,6 @@ public class contenedorPrincipal extends BorderPane{
     }
 
     private void setBotonera(AlgoPoly algo) {
-
-    	Button botonComenzarJuego = new Button("Comenzar Juego");
-    	BotonComenzarJuegoHandler botonDeComienzo = new BotonComenzarJuegoHandler(algo);
-    	botonComenzarJuego.addEventHandler(ActionEvent.ACTION, botonDeComienzo);
 
         Button botonTirarDados = new Button("Tirar Dados");
      
@@ -76,12 +68,11 @@ public class contenedorPrincipal extends BorderPane{
         Button botonSalir = new Button("Salir");
         BotonSalirHandler botonSalirHandler = new BotonSalirHandler();
         botonSalir.addEventHandler(ActionEvent.ACTION, botonSalirHandler);
-        botonComenzarJuego.setMinWidth(120);
         botonTirarDados.setMinWidth(120);
         botonVerPropiedades.setMinWidth(120);
         botonReiniciarJuego.setMinWidth(120);
         botonSalir.setMinWidth(120);
-        VBox contenedorVertical = new VBox(botonComenzarJuego, botonTirarDados, botonVerPropiedades, botonReiniciarJuego, botonSalir);
+        VBox contenedorVertical = new VBox(botonTirarDados, botonVerPropiedades, botonReiniciarJuego, botonSalir);
         contenedorVertical.setSpacing(10);
         contenedorVertical.setPadding(new Insets(15));
         contenedorVertical.setAlignment(Pos.CENTER);
