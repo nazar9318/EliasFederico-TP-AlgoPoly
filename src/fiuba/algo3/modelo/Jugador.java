@@ -163,4 +163,9 @@ public class Jugador implements Visitante {
 		this.estado.vender(this, propiedad);
 	}
 
+	public void ubicarseEn(Visitable visitable) {
+		if(this.tablero != null){
+			this.tablero.ubicarJugadorEnCelda(this, visitable);
+		}		
+	}
 }

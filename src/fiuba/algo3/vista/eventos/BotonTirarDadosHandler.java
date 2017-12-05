@@ -7,6 +7,7 @@ import fiuba.algo3.modelo.Tablero;
 import fiuba.algo3.modelo.celdas.comprables.Propiedad;
 import fiuba.algo3.modelo.excepciones.ConsultarCompraException;
 import fiuba.algo3.modelo.excepciones.FinDelJuegoException;
+import fiuba.algo3.modelo.excepciones.JugadorFueTrasladadoALaCarcel;
 import fiuba.algo3.modelo.excepciones.JugadorNoCuentaConDineroSuficienteParaComprarException;
 import fiuba.algo3.modelo.excepciones.JugadorNoPuedeSalirDeLaCarcelException;
 import fiuba.algo3.modelo.excepciones.JugadorPerdioException;
@@ -68,7 +69,12 @@ public class BotonTirarDadosHandler extends BotonConSonido implements EventHandl
 		} catch (JugadorNoPuedeSalirDeLaCarcelException e) {
 			mostrarMensajeConSonido("src/fiuba/algo3/vista/sonidos/alerta.mp3","Uste esta en La Carcel. Pierde El turno!");
 			algoPoly.cambiarJugadorActual();
-		}	
+		} catch (JugadorFueTrasladadoALaCarcel e){
+			Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Mensaje de informacion");
+            alert.setHeaderText("Usted ha sido arrestado y trasladado a la carcel");
+            alert.show();
+		}
 	}
 	
 	private void intentarCompra(Propiedad aComprar) {

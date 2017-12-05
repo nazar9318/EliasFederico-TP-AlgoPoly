@@ -3,6 +3,7 @@ package fiuba.algo3.modelo;
 import java.util.ArrayList;
 import java.util.HashMap;
 import fiuba.algo3.modelo.celdas.Visitable;
+import fiuba.algo3.modelo.celdas.especiales.Policia;
 import fiuba.algo3.modelo.celdas.Salida;
 
 public class Tablero {
@@ -49,6 +50,10 @@ public class Tablero {
 		}
 		else
 			jugadores.put(j1, celdas.get(index+avance));
+		
+		/*if(this.celdas.indexOf(jugadores.get(j1)) == 15){
+			jugadores.put(j1, celdas.get(5));
+		}*/
 
 		return jugadores.get(j1);
 	}
@@ -62,5 +67,9 @@ public class Tablero {
 
 	public ArrayList<Visitable> getCeldas() {
 		return celdas;
+	}
+
+	public void ubicarJugadorEnCelda(Jugador jugador, Visitable visitable) {
+		jugadores.put(jugador, visitable);
 	}
 }
