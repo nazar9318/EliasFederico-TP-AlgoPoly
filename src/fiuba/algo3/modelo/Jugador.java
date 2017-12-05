@@ -155,4 +155,8 @@ public class Jugador implements Visitante {
 		return null;
 	}
 
+	public Visitable reUbicarse(Tablero tablero, int avance, int index) {
+		return this.estado.reUbicarse(this, tablero, index, avance);	
+	}
+
 }

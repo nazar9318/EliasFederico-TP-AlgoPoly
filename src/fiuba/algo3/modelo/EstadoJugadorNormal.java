@@ -2,6 +2,7 @@ package fiuba.algo3.modelo;
 
 import fiuba.algo3.modelo.celdas.comprables.Propiedad;
 import fiuba.algo3.modelo.celdas.Salida;
+import fiuba.algo3.modelo.celdas.Visitable;
 import fiuba.algo3.modelo.celdas.especiales.AvanceDinamico;
 import fiuba.algo3.modelo.celdas.especiales.Policia;
 import fiuba.algo3.modelo.celdas.especiales.Quini6;
@@ -41,6 +42,11 @@ public class EstadoJugadorNormal implements EstadoJugador {
 	@Override
 	public void visitar(Salida salida, Jugador jugador) {
 		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public Visitable reUbicarse(Jugador jugador, Tablero tablero, int index, int avance) {
+		return tablero.reposicionarJugador(jugador, index, avance);
 	}
 
 }
