@@ -39,6 +39,7 @@ public class contenedorPrincipal extends BorderPane{
         setBotonera(algo);
         setCentro(algo);
         vistaTablero.actaulizarVista();
+
         Image imagen = new Image("file:src/fiuba/algo3/vista/imagenes/fondoInicio.jpg");
         BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
@@ -82,7 +83,7 @@ public class contenedorPrincipal extends BorderPane{
     }
 
 	private void actualizarConsola(String texto) {
-		
+        vistaTablero.actaulizarVista();
         Label etiqueta = new Label();
         etiqueta.setText(texto);
         etiqueta.setFont(Font.font("cooper black", FontWeight.SEMI_BOLD, 14));
