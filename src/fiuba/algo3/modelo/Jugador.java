@@ -129,7 +129,8 @@ public class Jugador implements Visitante {
 	}
 
 	public void construir(Barrio barrio) {
-		barrio.construir(this);
+		this.estado.construir(this, barrio);
+		//barrio.construir(this);
 	}
 
 	public void removerPropiedad(Propiedad propiedad) {
@@ -137,8 +138,7 @@ public class Jugador implements Visitante {
 	}
 
 	public void visitar(Visitable visitable) {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
 	}
 
 	public void verPropiedades() {

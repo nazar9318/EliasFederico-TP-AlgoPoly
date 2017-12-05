@@ -1,5 +1,6 @@
 package fiuba.algo3.modelo;
 
+import fiuba.algo3.modelo.celdas.comprables.Barrio;
 import fiuba.algo3.modelo.celdas.comprables.Propiedad;
 import fiuba.algo3.modelo.celdas.Salida;
 import fiuba.algo3.modelo.celdas.Visitable;
@@ -79,6 +80,11 @@ public class EstadoJugadorCarcel implements EstadoJugador {
 			this.carcel.sacarJugador(jugador, this.turnos);
 			return jugador.reUbicarse(tablero, index, avance);
 		}
-		return null;
+		return jugador.reUbicarse(tablero, index, avance);
+	}
+
+	@Override
+	public void construir(Jugador jugador, Barrio barrio) {
+		throw new JugadorNoPuedeSalirDeLaCarcelException();
 	}
 }

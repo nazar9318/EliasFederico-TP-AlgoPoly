@@ -1,5 +1,6 @@
 package fiuba.algo3.modelo;
 
+import fiuba.algo3.modelo.celdas.comprables.Barrio;
 import fiuba.algo3.modelo.celdas.comprables.Propiedad;
 import fiuba.algo3.modelo.celdas.Salida;
 import fiuba.algo3.modelo.celdas.Visitable;
@@ -47,6 +48,11 @@ public class EstadoJugadorNormal implements EstadoJugador {
 	@Override
 	public Visitable reUbicarse(Jugador jugador, Tablero tablero, int index, int avance) {
 		return tablero.reposicionarJugador(jugador, index, avance);
+	}
+
+	@Override
+	public void construir(Jugador jugador, Barrio barrio) {
+		barrio.construir(jugador);
 	}
 
 }
