@@ -4,7 +4,11 @@ import fiuba.algo3.AlgoPoly;
 import fiuba.algo3.Turno;
 import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.Tablero;
+import fiuba.algo3.modelo.celdas.comprables.Propiedad;
+import fiuba.algo3.modelo.excepciones.ConsultarCompraException;
 import fiuba.algo3.modelo.excepciones.FinDelJuegoException;
+import fiuba.algo3.modelo.excepciones.JugadorNoCuentaConDineroSuficienteParaComprarException;
+import fiuba.algo3.modelo.excepciones.JugadorNoPuedeSalirDeLaCarcelException;
 import fiuba.algo3.modelo.excepciones.JugadorPerdioException;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -20,14 +24,10 @@ public class BotonTirarDadosHandler extends BotonConSonido implements EventHandl
 
 	private AlgoPoly algoPoly;
 	private Turno turno;
-	private Jugador jugador;
-	private Tablero tablero;
 	
 	public BotonTirarDadosHandler(AlgoPoly algo) {
 		this.algoPoly = algo;
 		this.turno = algo.getTurno();
-		this.jugador = algo.jugadorActual();
-		this.tablero = algo.getTablero();
 	}
 
 	@Override
@@ -35,24 +35,51 @@ public class BotonTirarDadosHandler extends BotonConSonido implements EventHandl
 		super.sonido.play();
 		try{
 			turno.jugar();
-			/*obtener la posicion actual
-			 * obtener la vista de esa posicion
-			 * mover al jugador a esa vista			
-			*/
 		} catch (JugadorPerdioException e) {
-			mostrarMensajeConSonido("src/fiuba/algo3/vista/sonidos/perdio.mp3","El jugador ha perdido el juego!");
+			algoPoly.SacarPerdedor();
+			mostrarMensajeConSonido("src/fiuba/algo3/vista/sonidos/perdio.mp3","Ha perdido el juego!");
+		} catch (JugadorNoCuentaConDineroSuficienteParaComprarException e) {
+			mostrarMensajeConSonido("src/fiuba/algo3/vista/sonidos/alerta.mp3","Su dinero no es suficiente Para Realizar esta Compra");
+			algoPoly.cambiarJugadorActual();
 		} catch (FinDelJuegoException e) {
-			mostrarMensajeConSonido("src/fiuba/algo3/vista/sonidos/ganador.mp3","Felicidades. Ha ganado el Juego!!");
-		}
+			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+			alert.setHeaderText("Fin Del Juego");
+			alert.setContentText("Felicidades!!! Ha Ganado El Juego. Desea Volver a Jugar?");
+
+			Optional<ButtonType> result = alert.showAndWait();
+			if (result.get() == ButtonType.OK)
+				algoPoly.reiniciarJuego();
+			mostrarMensajeConSonido("src/fiuba/algo3/vista/sonidos/ganador.mp3","Se ha reiniciado el juego!");
+			if (result.get() == ButtonType.CANCEL) {
+				System.exit(0);
+			}
+		} catch (ConsultarCompraException e){
+			hacerSonarAlerta("src/fiuba/algo3/vista/sonidos/alerta.mp3");
+			Propiedad aComprar = (Propiedad) algoPoly.getTablero().getPosicionDeJugador(algoPoly.jugadorActual());
+
+			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+			alert.setHeaderText(aComprar.getNombre() + " esta a la venta!");
+			alert.setContentText("Desea adquirir esta propiedad?");
+
+			Optional<ButtonType> result = alert.showAndWait();
+			if (result.get() == ButtonType.OK)
+				aComprar.comprar(algoPoly.jugadorActual());
+		} catch (JugadorNoPuedeSalirDeLaCarcelException e) {
+			mostrarMensajeConSonido("src/fiuba/algo3/vista/sonidos/alerta.mp3","Uste esta en La Carcel. Pierde El turno!");
+			algoPoly.cambiarJugadorActual();
+		}	
 	}
 	
 	private void mostrarMensajeConSonido(String ruta, String mensaje) {
-	    Media sonidoClick = new Media(new File(ruta).toURI().toString());
-	    MediaPlayer perdioSonido = new MediaPlayer(sonidoClick);
-	    perdioSonido.play();
-			
+		hacerSonarAlerta(ruta);
 		Alert msj = new Alert(Alert.AlertType.INFORMATION);
 		msj.setContentText(mensaje); //faltaria el nombre del jugador que pierde
 		msj.show();
+	}
+	
+	private void hacerSonarAlerta(String ruta) {
+		Media sonidoClick = new Media(new File(ruta).toURI().toString());
+	    MediaPlayer perdioSonido = new MediaPlayer(sonidoClick);
+	    perdioSonido.play();
 	}
 }

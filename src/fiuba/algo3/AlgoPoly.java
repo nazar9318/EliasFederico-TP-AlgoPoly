@@ -120,7 +120,8 @@ public class AlgoPoly {
 	}
 
 	public void reiniciarJuego() {
-		Collections.shuffle(jugadores);
+		if (jugadores.size() <3) crearJugadores();
+		else Collections.shuffle(jugadores);
 		this.tablero = new Tablero();
 		construirTablero();
 		agregarJugadoresEnTablero();
@@ -154,7 +155,6 @@ public class AlgoPoly {
 		Jugador perdedor = jugadorActual;
 		cambiarJugadorActual();
 		jugadores.remove(perdedor);
-		throw new JugadorPerdioException();
 	}
 
 	public boolean noHayUnGanador() {
