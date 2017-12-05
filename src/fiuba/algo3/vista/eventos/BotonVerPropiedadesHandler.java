@@ -1,5 +1,6 @@
 package fiuba.algo3.vista.eventos;
 
+import fiuba.algo3.AlgoPoly;
 import fiuba.algo3.modelo.ArrayPropiedad;
 import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.vista.BotonPropiedad;
@@ -19,9 +20,9 @@ public class BotonVerPropiedadesHandler extends BotonConSonido implements EventH
     private Jugador jugador_;
     private HashMap<String, BotonPropiedad> botones_;
 
-    public BotonVerPropiedadesHandler(ArrayPropiedad propiedades, Jugador jugador){
-        this.propiedades_ = propiedades;
-        this.jugador_ = jugador;
+    public BotonVerPropiedadesHandler(AlgoPoly algo){
+        this.propiedades_ = algo.getPropiedades();
+        this.jugador_ = algo.jugadorActual();
         this.botones_ = new HashMap<>();
         crearBotones();
     }

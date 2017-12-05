@@ -148,7 +148,6 @@ public class AlgoPoly {
 			jugadorActual = jugadores.get(index + 1);
 		}
 		else jugadorActual = jugadores.get(0);
-		
 	}
 
 	public void SacarPerdedor() {

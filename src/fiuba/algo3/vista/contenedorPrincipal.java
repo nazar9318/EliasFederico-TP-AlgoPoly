@@ -46,11 +46,11 @@ public class contenedorPrincipal extends BorderPane{
     }
 
     private void setBotonera(AlgoPoly algo) {
-    	
+
     	Button botonComenzarJuego = new Button("Comenzar Juego");
     	BotonComenzarJuegoHandler botonDeComienzo = new BotonComenzarJuegoHandler(algo);
     	botonComenzarJuego.addEventHandler(ActionEvent.ACTION, botonDeComienzo);
-    	
+
         Button botonTirarDados = new Button("Tirar Dados");
      
         botonTirarDados.setOnAction(new EventHandler<ActionEvent>() {
@@ -60,11 +60,12 @@ public class contenedorPrincipal extends BorderPane{
                 actualizarConsola("Valores de los dados:\n" + "Dado uno= " + algo.getTurno().getValorDado1() + "\n" + "Dado dos= " + algo.getTurno().getValorDado2());
             }
         });
-        BotonTirarDadosHandler botonTirarDadosHandler = new BotonTirarDadosHandler(algo.getTurno(), algo.jugadorActual(), algo.getTablero());
+
+        BotonTirarDadosHandler botonTirarDadosHandler = new BotonTirarDadosHandler(algo);
         botonTirarDados.addEventHandler(ActionEvent.ACTION, botonTirarDadosHandler);
 
         Button botonVerPropiedades = new Button("Ver Propiedades");
-        BotonVerPropiedadesHandler verPropiedadesHandler = new BotonVerPropiedadesHandler(algo.getPropiedades(), algo.jugadorActual());
+        BotonVerPropiedadesHandler verPropiedadesHandler = new BotonVerPropiedadesHandler(algo);
         botonVerPropiedades.setOnAction(verPropiedadesHandler);
 
         Button botonReiniciarJuego = new Button("Reiniciar Juego");

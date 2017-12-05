@@ -36,8 +36,8 @@ public class VistaTablero extends GridPane {
 
 		// Salida
 		VistaCelda c55 = new VistaSalida();
-		this.celdas.add(c55);
 		GridPane.setConstraints(c55, 5, 5);
+		celdas.add(c55);
 
 		// Quini6
 		VistaCelda c45 = new VistaQuini6();
@@ -67,6 +67,7 @@ public class VistaTablero extends GridPane {
 		// CordobaSur
 		VistaCelda c04 = new VistaCordobaSur();
 		GridPane.setConstraints(c04, 0, 4);
+		celdas.add(c04);
 
 		// Avance
 		VistaCelda c03 = new VistaAvance();
