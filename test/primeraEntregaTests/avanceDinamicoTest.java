@@ -1,9 +1,12 @@
 package primeraEntregaTests;
 
+import fiuba.algo3.modelo.celdas.Salida;
 import fiuba.algo3.modelo.celdas.comprables.BuenosAiresNorte;
 import fiuba.algo3.modelo.celdas.comprables.BuenosAiresSur;
+import fiuba.algo3.modelo.celdas.comprables.Propiedad;
 import fiuba.algo3.modelo.celdas.comprables.Servicios.EDESUR;
 
+import fiuba.algo3.modelo.excepciones.ConsultarCompraException;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -34,7 +37,7 @@ public class avanceDinamicoTest {
 		Assert.assertEquals(avanceDinamico, tablero.getPosicionDeJugador(jugador));
 	}
 	
-	@Test
+	@Test()
 	public void jugadorCaeEnAvanceDinamicoSumando9SuPosicionDeberiaAvanzar1() {
 		Tablero tablero = new Tablero();
 		AvanceDinamico avanceDinamico = new AvanceDinamico();
@@ -44,7 +47,7 @@ public class avanceDinamicoTest {
 		Dado dado2 = new Dado();
 
 		tablero.agregarCelda(avanceDinamico);
-		Visitable esperado = new EDESUR();
+		Visitable esperado = new Salida();
 		tablero.agregarCelda(esperado);
 		tablero.agregarJugador(jugador);
 		dado1.setValor(1);
@@ -66,8 +69,8 @@ public class avanceDinamicoTest {
 		Dado dado2 = new Dado();
 
 		tablero.agregarCelda(avanceDinamico);
-		for (int i=0; i < 10; i++) tablero.agregarCelda(new BuenosAiresSur());
-		Visitable esperado = new BuenosAiresNorte();
+		for (int i=0; i < 10; i++) tablero.agregarCelda(new Salida());
+		Visitable esperado = new Salida();
 		tablero.agregarCelda(esperado);
 		
 		tablero.agregarJugador(jugador);
