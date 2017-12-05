@@ -3,8 +3,6 @@ package fiuba.algo3.vista;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.sun.xml.internal.ws.org.objectweb.asm.Label;
-
 import fiuba.algo3.AlgoPoly;
 import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.celdas.Visitable;
