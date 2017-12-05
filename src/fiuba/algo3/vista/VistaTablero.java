@@ -9,6 +9,12 @@ import fiuba.algo3.modelo.celdas.Visitable;
 import fiuba.algo3.modelo.celdas.comprables.Propiedad;
 import fiuba.algo3.vista.vistasCeldas.*;
 import javafx.geometry.Insets;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.GridPane;
 
 public class VistaTablero extends GridPane {
@@ -26,15 +32,14 @@ public class VistaTablero extends GridPane {
 			playerid.put(jugador, "J" + String.valueOf(i));
 			i++;
 		}
+	    Image imagen = new Image("file:src/fiuba/algo3/vista/imagenes/backtablero.png");
+		BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        this.setBackground(new Background(imagenDeFondo));
 
 		this.setPadding(new Insets(10, 10, 10, 10));
 		this.setVgap(0);
 		this.setHgap(0);
-		this.setStyle("-fx-background-color: \r\n" + "        linear-gradient(#f2f2f2, #d6d6d6),\r\n"
-				+ "        linear-gradient(#fcfcfc 0%, #d9d9d9 20%, #d6d6d6 100%),\r\n"
-				+ "        linear-gradient(#dddddd 0%, #f6f6f6 50%);\r\n" + "    -fx-background-radius: 8,7,6;\r\n"
-				+ "    -fx-background-insets: 0,1,2;\r\n" + "    -fx-text-fill: black;\r\n"
-				+ "    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );");
+
 
 		// Salida
 		VistaCelda c55 = new VistaSalida();
@@ -138,7 +143,7 @@ public class VistaTablero extends GridPane {
 		
 		//dinero disponible
 		dinero = new VistaDisponible();
-		GridPane.setConstraints(dinero, 1, 1);
+		GridPane.setConstraints(dinero, 1, 4);
 		
 		this.getChildren().addAll(c00, c01, c02, c03, c04, c05, c10, c20, c30, c40, c50, c51, c52, c53, c54, c55, c15,
 				c25, c35, c45,dinero);
