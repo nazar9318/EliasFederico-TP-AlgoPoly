@@ -6,6 +6,7 @@ import fiuba.algo3.modelo.Tablero;
 import fiuba.algo3.modelo.celdas.Visitable;
 import fiuba.algo3.modelo.celdas.comprables.Propiedad;
 import fiuba.algo3.modelo.excepciones.ConsultarCompraException;
+import fiuba.algo3.modelo.excepciones.FinDelJuegoException;
 import fiuba.algo3.modelo.excepciones.JugadorPerdioException;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -49,13 +50,19 @@ public class BotonTirarDadosHandler extends BotonConSonido implements EventHandl
 			if (result.get() == ButtonType.OK)
 				aComprar.comprar(jugador);
 		} catch (JugadorPerdioException e) {
-			 String sound = "src/fiuba/algo3/vista/sonidos/perdio.mp3";
-		     Media sonidoClick = new Media(new File(sound).toURI().toString());
-		     MediaPlayer perdioSonido = new MediaPlayer(sonidoClick);
-		     perdioSonido.play();
-				
-			Alert msj = new Alert(Alert.AlertType.INFORMATION);
-			msj.setContentText("El jugador ha perdido el juego!"); //faltaria el nombre del jugador que pierde
+			mostrarMensajeConSonido("src/fiuba/algo3/vista/sonidos/perdio.mp3","El jugador ha perdido el juego!");
+		} catch (FinDelJuegoException e) {
+			mostrarMensajeConSonido("src/fiuba/algo3/vista/sonidos/ganador.mp3","Felicidades. Ha ganado el Juego!!");
 		}
+	}
+	
+	private void mostrarMensajeConSonido(String ruta, String mensaje) {
+	    Media sonidoClick = new Media(new File(ruta).toURI().toString());
+	    MediaPlayer perdioSonido = new MediaPlayer(sonidoClick);
+	    perdioSonido.play();
+			
+		Alert msj = new Alert(Alert.AlertType.INFORMATION);
+		msj.setContentText(mensaje); //faltaria el nombre del jugador que pierde
+		msj.show();
 	}
 }

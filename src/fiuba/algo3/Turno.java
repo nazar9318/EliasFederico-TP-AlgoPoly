@@ -4,6 +4,7 @@ import fiuba.algo3.modelo.Dado;
 import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.Tablero;
 import fiuba.algo3.modelo.celdas.Visitable;
+import fiuba.algo3.modelo.excepciones.FinDelJuegoException;
 import fiuba.algo3.modelo.excepciones.JugadorNoCuentaConDineroSuficienteParaComprarException;
 import fiuba.algo3.modelo.excepciones.JugadorNoPuedeSalirDeLaCarcelException;
 import fiuba.algo3.modelo.excepciones.JugadorNoTieneFondosParaPagarException;
@@ -30,29 +31,33 @@ public class Turno {
 	}
 
 	public void jugar() {
-		tirarDados();
-		try {
-			hacerJugarAlJugador(juego.jugadorActual(), juego.getTablero());
-		}	
-		catch (JugadorNoPuedeSalirDeLaCarcelException e) {
-			juego.cambiarJugadorActual();
-		}	
-		catch (JugadorNoTieneFondosParaPagarException e) {
-			juego.SacarPerdedor();
+		if (juego.noHayUnGanador()) {
+			tirarDados();
+			try {
+				hacerJugarAlJugador(juego.jugadorActual(), juego.getTablero());
+			}	
+			catch (JugadorNoPuedeSalirDeLaCarcelException e) {
+				juego.cambiarJugadorActual();
+			}	
+			catch (JugadorNoTieneFondosParaPagarException e) {
+				juego.SacarPerdedor();
+			}
+			catch (JugadorNoCuentaConDineroSuficienteParaComprarException e) {
+				//primero consultar venta(?
+				juego.cambiarJugadorActual();
+			}
+			if (!puedeVolverAjugar()) {
+				juego.cambiarJugadorActual();
+			}
 		}
-		catch (JugadorNoCuentaConDineroSuficienteParaComprarException e) {
-			//primero consultar venta
-			juego.cambiarJugadorActual();
-		}
-		if (!puedeVolverAjugar()) {
-			juego.cambiarJugadorActual();
+		else {
+			throw new FinDelJuegoException();
 		}
 	}
 	
 	public void hacerJugarAlJugador(Jugador jugador, Tablero tablero) {
 		jugador.setValorDeTiro(valorDados);
 		Visitable celdaNueva = tablero.avanzarJugador(jugador, valorDados);
-		//actualizar vista?
 		celdaNueva.aceptar(jugador);
 	}
 	
