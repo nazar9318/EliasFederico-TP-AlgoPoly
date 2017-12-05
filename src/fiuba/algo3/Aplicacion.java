@@ -27,7 +27,7 @@ public class Aplicacion extends Application {
     @Override
     public void start(Stage stage) throws Exception {
     	stage.setTitle("AlgoPoly");
-    	
+    	stage.getIcons().add(new Image("file:src/fiuba/algo3/vista/imagenes/Monopoly.png"));
         AlgoPoly algo = new AlgoPoly();
 
         algo.inicializarJuego();

@@ -3,9 +3,12 @@ package fiuba.algo3.vista;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.sun.xml.internal.ws.org.objectweb.asm.Label;
+
 import fiuba.algo3.AlgoPoly;
 import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.celdas.Visitable;
+import fiuba.algo3.modelo.celdas.comprables.Propiedad;
 import fiuba.algo3.vista.vistasCeldas.*;
 import javafx.geometry.Insets;
 import javafx.scene.layout.GridPane;
@@ -14,6 +17,7 @@ public class VistaTablero extends GridPane {
 	private HashMap<Jugador, String> playerid;
 	public ArrayList<VistaCelda> celdas;
 	private AlgoPoly algo;
+	private VistaCelda dinero;
 
 	public VistaTablero(AlgoPoly algopoly) {
 		this.celdas = new ArrayList<VistaCelda>();
@@ -133,9 +137,13 @@ public class VistaTablero extends GridPane {
 		VistaCelda c54 = new VistaTucuman();
 		GridPane.setConstraints(c54, 5, 4);
 		celdas.add(c54);
-
+		
+		//dinero disponible
+		dinero = new VistaDisponible();
+		GridPane.setConstraints(dinero, 1, 1);
+		
 		this.getChildren().addAll(c00, c01, c02, c03, c04, c05, c10, c20, c30, c40, c50, c51, c52, c53, c54, c55, c15,
-				c25, c35, c45);
+				c25, c35, c45,dinero);
 	}
 
 	public void actaulizarVista() {
@@ -143,12 +151,17 @@ public class VistaTablero extends GridPane {
 		// limpia los jugadores de las celdas
 		for (VistaCelda celda : celdas) {
 			celda.removerUltimocontenido();
+			dinero.modificarDinero(" ");
 		}
 
 		for (Jugador jugador : this.algo.getJugadores()) {
+			dinero.modificarDinero(dinero.getDinero()+ playerid.get(jugador)+ ": " + jugador.obtenerDinero() + "\n ");
 			int pos = this.algo.getTablero().getPosicionEnTablero(jugador);
 			celdas.get(pos).agregarJugador(playerid.get(jugador));
-
+			for (Propiedad propiedad : jugador.getPropiedades()) {
+				celdas.get(this.algo.getTablero().getCeldas().indexOf(propiedad)).modificarDuenio("Propietario: " + playerid.get(jugador));
+			}
 		}
+		
 	}
 }

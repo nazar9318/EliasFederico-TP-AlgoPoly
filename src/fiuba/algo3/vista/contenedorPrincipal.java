@@ -104,6 +104,7 @@ public class contenedorPrincipal extends BorderPane{
 	private void setCentro(AlgoPoly algo){
 
      	vistaTablero = new VistaTablero(algo);
+     	vistaTablero.setMaxSize(900, 600);
         this.setCenter(vistaTablero);
 
     }
