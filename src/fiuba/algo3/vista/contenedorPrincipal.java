@@ -10,6 +10,7 @@ import fiuba.algo3.vista.eventos.BotonVerPropiedadesHandler;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.effect.Lighting;
@@ -75,10 +76,16 @@ public class contenedorPrincipal extends BorderPane{
         Button botonSalir = new Button("Salir");
         BotonSalirHandler botonSalirHandler = new BotonSalirHandler();
         botonSalir.addEventHandler(ActionEvent.ACTION, botonSalirHandler);
-        
+        botonComenzarJuego.setMinWidth(120);
+        botonTirarDados.setMinWidth(120);
+        botonVerPropiedades.setMinWidth(120);
+        botonReiniciarJuego.setMinWidth(120);
+        botonSalir.setMinWidth(120);
         VBox contenedorVertical = new VBox(botonComenzarJuego, botonTirarDados, botonVerPropiedades, botonReiniciarJuego, botonSalir);
         contenedorVertical.setSpacing(10);
         contenedorVertical.setPadding(new Insets(15));
+        contenedorVertical.setAlignment(Pos.CENTER);
+        contenedorVertical.maxWidth(120);
 
         this.setLeft(contenedorVertical);
     }
@@ -94,7 +101,10 @@ public class contenedorPrincipal extends BorderPane{
         VBox contenedorConsola = new VBox(etiqueta);
         contenedorConsola.setSpacing(10);
         contenedorConsola.setPadding(new Insets(15));
-        contenedorConsola.setStyle("-fx-background-color: red;");
+        contenedorConsola.setStyle(" -fx-background-color: linear-gradient(#ff5400, #be1d00);\r\n" + 
+        		"    -fx-background-radius: 20;\r\n" + 
+        		"    -fx-background-insets: 0;\r\n" + 
+        		"    -fx-text-fill: white;");
         
         hacerSonar("src/fiuba/algo3/vista/sonidos/consola.mp3");
 
@@ -104,9 +114,9 @@ public class contenedorPrincipal extends BorderPane{
 	private void setCentro(AlgoPoly algo){
 
      	vistaTablero = new VistaTablero(algo);
-     	vistaTablero.setMaxSize(900, 600);
+     	vistaTablero.setMaxSize(800, 300);
         this.setCenter(vistaTablero);
-
+        
     }
     
     private void setConsola() {

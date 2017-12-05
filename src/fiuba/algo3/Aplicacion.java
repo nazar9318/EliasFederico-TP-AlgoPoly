@@ -33,7 +33,7 @@ public class Aplicacion extends Application {
         algo.inicializarJuego();
         
         contenedorPrincipal contenedorPrincipal = new contenedorPrincipal(algo);
-        Scene escenaJuego = new Scene(contenedorPrincipal, 1050, 650);
+        Scene escenaJuego = new Scene(contenedorPrincipal, 1020, 650);
 
         ContenedorBienvenidos contenedorBienvenidos = new ContenedorBienvenidos(stage, escenaJuego);
         Scene escenaBienvenidos = new Scene(contenedorBienvenidos, 1050, 650);

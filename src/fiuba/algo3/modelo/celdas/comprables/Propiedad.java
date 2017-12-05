@@ -61,7 +61,7 @@ public abstract class Propiedad implements Visitable {
 		jugador.visitar(this);
 	}
 
-	protected int getAlquiler() {
+	public int getAlquiler() {
 		return alquiler;
 	}
 

@@ -27,7 +27,7 @@ public class VistaTablero extends GridPane {
 			i++;
 		}
 
-		this.setPadding(new Insets(40, 40, 40, 40));
+		this.setPadding(new Insets(10, 10, 10, 10));
 		this.setVgap(0);
 		this.setHgap(0);
 		this.setStyle("-fx-background-color: \r\n" + "        linear-gradient(#f2f2f2, #d6d6d6),\r\n"
@@ -150,6 +150,10 @@ public class VistaTablero extends GridPane {
 		for (VistaCelda celda : celdas) {
 			celda.removerUltimocontenido();
 			dinero.modificarDinero(" ");
+			celda.modificarDinero(" ");
+		}
+		for (Propiedad propiedad : algo.getPropiedades()) {
+			celdas.get(this.algo.getTablero().getCeldas().indexOf(propiedad)).modificarDinero("Alquiler $" + propiedad.getAlquiler());
 		}
 
 		for (Jugador jugador : this.algo.getJugadores()) {
