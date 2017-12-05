@@ -43,39 +43,7 @@ public class Turno {
 
 		if (juego.noHayUnGanador()) {
 			tirarDados();
-			try {
-				hacerJugarAlJugador(juego.jugadorActual(), juego.getTablero());
-			}	
-			catch (JugadorNoPuedeSalirDeLaCarcelException e) {
-				juego.cambiarJugadorActual();
-			}	
-			catch (JugadorNoTieneFondosParaPagarException e) {
-				juego.SacarPerdedor();
-			}
-			catch (JugadorNoCuentaConDineroSuficienteParaComprarException e) {
-				//primero consultar venta(?
-				juego.cambiarJugadorActual();
-			}
-			catch (ConsultarCompraException e){
-				Propiedad aComprar = (Propiedad) juego.getTablero().getPosicionDeJugador(juego.jugadorActual());
-
-				Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-				alert.setHeaderText(aComprar.getNombre() + " esta a la venta!");
-				alert.setContentText("Desea adquirir esta propiedad?");
-
-				Optional<ButtonType> result = alert.showAndWait();
-				if (result.get() == ButtonType.OK)
-					aComprar.comprar(juego.jugadorActual());
-
-			} catch (JugadorPerdioException e) {
-				String sound = "src/fiuba/algo3/vista/sonidos/perdio.mp3";
-				Media sonidoClick = new Media(new File(sound).toURI().toString());
-				MediaPlayer perdioSonido = new MediaPlayer(sonidoClick);
-				perdioSonido.play();
-
-				Alert msj = new Alert(Alert.AlertType.INFORMATION);
-				msj.setContentText("El jugador ha perdido el juego!"); //faltaria el nombre del jugador que pierde
-			}
+			hacerJugarAlJugador(juego.jugadorActual(), juego.getTablero());
 			if (!puedeVolverAjugar()) {
 				juego.cambiarJugadorActual();
 			}

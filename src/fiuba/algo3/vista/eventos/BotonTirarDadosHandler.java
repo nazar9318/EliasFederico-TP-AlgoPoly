@@ -54,22 +54,33 @@ public class BotonTirarDadosHandler extends BotonConSonido implements EventHandl
 				System.exit(0);
 			}
 		} catch (ConsultarCompraException e){
-			hacerSonarAlerta("src/fiuba/algo3/vista/sonidos/alerta.mp3");
+			
 			Propiedad aComprar = (Propiedad) algoPoly.getTablero().getPosicionDeJugador(algoPoly.jugadorActual());
 
 			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 			alert.setHeaderText(aComprar.getNombre() + " esta a la venta!");
 			alert.setContentText("Desea adquirir esta propiedad?");
-
+			
+			hacerSonarAlerta("src/fiuba/algo3/vista/sonidos/alerta.mp3");
 			Optional<ButtonType> result = alert.showAndWait();
 			if (result.get() == ButtonType.OK)
-				aComprar.comprar(algoPoly.jugadorActual());
+				intentarCompra(aComprar);
 		} catch (JugadorNoPuedeSalirDeLaCarcelException e) {
 			mostrarMensajeConSonido("src/fiuba/algo3/vista/sonidos/alerta.mp3","Uste esta en La Carcel. Pierde El turno!");
 			algoPoly.cambiarJugadorActual();
 		}	
 	}
 	
+	private void intentarCompra(Propiedad aComprar) {
+		try {
+			aComprar.comprar(algoPoly.jugadorActual());
+		} 
+		catch (JugadorNoCuentaConDineroSuficienteParaComprarException e) {
+			mostrarMensajeConSonido("src/fiuba/algo3/vista/sonidos/alerta.mp3","Su dinero no es suficiente Para Realizar esta Compra");
+		}
+		algoPoly.cambiarJugadorActual();
+	}
+
 	private void mostrarMensajeConSonido(String ruta, String mensaje) {
 		hacerSonarAlerta(ruta);
 		Alert msj = new Alert(Alert.AlertType.INFORMATION);
@@ -79,7 +90,8 @@ public class BotonTirarDadosHandler extends BotonConSonido implements EventHandl
 	
 	private void hacerSonarAlerta(String ruta) {
 		Media sonidoClick = new Media(new File(ruta).toURI().toString());
-	    MediaPlayer perdioSonido = new MediaPlayer(sonidoClick);
-	    perdioSonido.play();
+	    MediaPlayer Sonido = new MediaPlayer(sonidoClick);
+	    Sonido.play();
 	}
+	
 }
