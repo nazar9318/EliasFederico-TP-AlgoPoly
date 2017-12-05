@@ -159,4 +159,8 @@ public class Jugador implements Visitante {
 		return this.estado.reUbicarse(this, tablero, index, avance);	
 	}
 
+	public void vender(Propiedad propiedad) {
+		this.estado.vender(this, propiedad);
+	}
+
 }

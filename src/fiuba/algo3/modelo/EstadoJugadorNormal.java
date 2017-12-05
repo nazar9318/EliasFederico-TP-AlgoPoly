@@ -55,4 +55,9 @@ public class EstadoJugadorNormal implements EstadoJugador {
 		barrio.construir(jugador);
 	}
 
+	@Override
+	public void vender(Jugador jugador, Propiedad propiedad) {
+		propiedad.vender();
+	}
+
 }

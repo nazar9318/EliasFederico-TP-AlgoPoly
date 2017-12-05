@@ -14,7 +14,8 @@ public class Construir extends Command{
 
     @Override
     public void execute(Jugador jugador) {
-        this.propiedad_.construir(jugador);
+    	jugador.construir(this.propiedad_);
+        //this.propiedad_.construir(jugador);
     }
 
 }

@@ -87,4 +87,9 @@ public class EstadoJugadorCarcel implements EstadoJugador {
 	public void construir(Jugador jugador, Barrio barrio) {
 		throw new JugadorNoPuedeSalirDeLaCarcelException();
 	}
+
+	@Override
+	public void vender(Jugador jugador, Propiedad propiedad) {
+		throw new JugadorNoPuedeSalirDeLaCarcelException();
+	}
 }

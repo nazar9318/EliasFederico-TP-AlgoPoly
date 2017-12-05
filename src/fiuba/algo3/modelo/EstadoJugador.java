@@ -26,5 +26,7 @@ public interface EstadoJugador {
 	Visitable reUbicarse(Jugador jugador, Tablero tablero, int index, int avance);
 
 	void construir(Jugador jugador, Barrio barrio);
+
+	void vender(Jugador jugador, Propiedad propiedad);
 	
 }
