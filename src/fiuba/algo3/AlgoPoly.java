@@ -2,8 +2,6 @@ package fiuba.algo3;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-
 import fiuba.algo3.modelo.ArrayPropiedad;
 import fiuba.algo3.modelo.Command.Invoker;
 import fiuba.algo3.modelo.Jugador;
@@ -11,7 +9,6 @@ import fiuba.algo3.modelo.Tablero;
 import fiuba.algo3.modelo.celdas.comprables.*;
 import fiuba.algo3.modelo.celdas.comprables.Servicios.*;
 import fiuba.algo3.modelo.celdas.especiales.*;
-import fiuba.algo3.modelo.excepciones.JugadorPerdioException;
 
 public class AlgoPoly {
 

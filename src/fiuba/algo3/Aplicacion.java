@@ -1,19 +1,11 @@
 package fiuba.algo3;
 
 import java.io.File;
-
-import fiuba.algo3.modelo.Jugador;
-import fiuba.algo3.modelo.Tablero;
 import fiuba.algo3.vista.ContenedorBienvenidos;
-import fiuba.algo3.vista.contenedorPrincipal;
+import fiuba.algo3.vista.ContenedorPrincipal;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
@@ -32,7 +24,7 @@ public class Aplicacion extends Application {
 
         algo.inicializarJuego();
         
-        contenedorPrincipal contenedorPrincipal = new contenedorPrincipal(algo);
+        ContenedorPrincipal contenedorPrincipal = new ContenedorPrincipal(algo);
         Scene escenaJuego = new Scene(contenedorPrincipal, 1020, 650);
 
         ContenedorBienvenidos contenedorBienvenidos = new ContenedorBienvenidos(stage, escenaJuego);

@@ -10,7 +10,7 @@ import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.celdas.comprables.Barrio;
 import fiuba.algo3.modelo.celdas.especiales.Quini6;
 
-public class quini6Test {
+public class Quini6Test {
 
 	@Test
 	public void unJugadorCaeEnQuini6PorPrimeraVezYSuCapitalSeIncrementaEn50000Pesos() {

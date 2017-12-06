@@ -1,7 +1,5 @@
 package fiuba.algo3.modelo;
 
-import java.util.ArrayList;
-
 import fiuba.algo3.modelo.celdas.comprables.Barrio;
 import fiuba.algo3.modelo.celdas.comprables.Propiedad;
 import fiuba.algo3.modelo.celdas.Salida;

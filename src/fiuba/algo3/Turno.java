@@ -5,18 +5,6 @@ import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.Tablero;
 import fiuba.algo3.modelo.celdas.Visitable;
 import fiuba.algo3.modelo.excepciones.FinDelJuegoException;
-import fiuba.algo3.modelo.excepciones.JugadorNoCuentaConDineroSuficienteParaComprarException;
-import fiuba.algo3.modelo.excepciones.JugadorNoPuedeSalirDeLaCarcelException;
-import fiuba.algo3.modelo.excepciones.JugadorNoTieneFondosParaPagarException;
-import fiuba.algo3.modelo.celdas.comprables.Propiedad;
-import fiuba.algo3.modelo.excepciones.*;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-
-import java.io.File;
-import java.util.Optional;
 
 public class Turno {
 

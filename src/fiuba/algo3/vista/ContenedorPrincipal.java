@@ -1,7 +1,6 @@
 package fiuba.algo3.vista;
 
 import fiuba.algo3.AlgoPoly;
-import fiuba.algo3.vista.eventos.BotonReiniciarHandler;
 import fiuba.algo3.vista.eventos.BotonSalirHandler;
 import fiuba.algo3.vista.eventos.BotonTirarDadosHandler;
 import fiuba.algo3.vista.eventos.BotonVerPropiedadesHandler;
@@ -28,10 +27,10 @@ import javafx.scene.text.FontWeight;
 
 import java.io.File;
 
-public class contenedorPrincipal extends BorderPane{
+public class ContenedorPrincipal extends BorderPane{
 	   VistaTablero vistaTablero;
 
-    public contenedorPrincipal(AlgoPoly algo){
+    public ContenedorPrincipal(AlgoPoly algo){
     	setConsola();
         setBotonera(algo);
         setCentro(algo);

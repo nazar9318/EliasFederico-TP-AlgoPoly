@@ -1,12 +1,8 @@
 package segundaEntregaTests;
 
-import static org.junit.Assert.assertEquals;
-
-import fiuba.algo3.modelo.celdas.Visitable;
 import fiuba.algo3.modelo.celdas.comprables.Propiedad;
 import org.junit.Assert;
 import org.junit.Test;
-
 import fiuba.algo3.AlgoPoly;
 import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.Tablero;

@@ -1,8 +1,6 @@
 package fiuba.algo3.modelo.celdas.comprables;
 
 import java.util.ArrayList;
-import java.util.Optional;
-
 import fiuba.algo3.modelo.Command.Construir;
 import fiuba.algo3.modelo.Command.Respuesta;
 import fiuba.algo3.modelo.Command.Vender;
@@ -14,8 +12,6 @@ import fiuba.algo3.modelo.excepciones.BarrioSimpleNoPuedeConstruirHotelException
 import fiuba.algo3.modelo.excepciones.JugadorNoTieneFondosParaConstruirEnTerreno;
 import fiuba.algo3.modelo.excepciones.JugadorNoTieneFondosParaPagarException;
 import fiuba.algo3.modelo.excepciones.JugadorPerdioException;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 
 public abstract class Barrio extends Propiedad implements Visitable {
     int maxCasas;

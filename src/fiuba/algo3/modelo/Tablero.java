@@ -3,7 +3,6 @@ package fiuba.algo3.modelo;
 import java.util.ArrayList;
 import java.util.HashMap;
 import fiuba.algo3.modelo.celdas.Visitable;
-import fiuba.algo3.modelo.celdas.especiales.Policia;
 import fiuba.algo3.modelo.celdas.Salida;
 
 public class Tablero {

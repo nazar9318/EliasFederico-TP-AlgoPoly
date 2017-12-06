@@ -9,9 +9,6 @@ import fiuba.algo3.modelo.celdas.comprables.Propiedad;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Collections;
-
 public class CommandTest {
 
     @Test

@@ -11,7 +11,7 @@ import fiuba.algo3.modelo.celdas.especiales.Carcel;
 import fiuba.algo3.modelo.celdas.especiales.Quini6;
 import fiuba.algo3.modelo.celdas.especiales.RetrocesoDinamico;
 
-public class retrocesoDinamicoTest {
+public class RetrocesoDinamicoTest {
 
 	@Test
 	public void jugadorSinPropiedadesCaeEnRetrocesoDinamicoSumando2SuPosicionDeberiaRetroceder2() {

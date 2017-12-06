@@ -2,7 +2,6 @@ package fiuba.algo3.modelo.celdas.especiales;
 
 import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.celdas.Visitable;
-import javafx.scene.control.Alert;
 
 public class ImpuestoDeLujo implements Visitable {
 	private double valorImpuesto;

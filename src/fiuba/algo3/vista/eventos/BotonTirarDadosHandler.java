@@ -2,8 +2,6 @@ package fiuba.algo3.vista.eventos;
 
 import fiuba.algo3.AlgoPoly;
 import fiuba.algo3.Turno;
-import fiuba.algo3.modelo.Jugador;
-import fiuba.algo3.modelo.Tablero;
 import fiuba.algo3.modelo.celdas.comprables.Propiedad;
 import fiuba.algo3.modelo.excepciones.ConsultarCompraException;
 import fiuba.algo3.modelo.excepciones.FinDelJuegoException;

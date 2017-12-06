@@ -1,22 +1,15 @@
 package primeraEntregaTests;
 
 import fiuba.algo3.modelo.celdas.Salida;
-import fiuba.algo3.modelo.celdas.comprables.BuenosAiresNorte;
-import fiuba.algo3.modelo.celdas.comprables.BuenosAiresSur;
-import fiuba.algo3.modelo.celdas.comprables.Propiedad;
-import fiuba.algo3.modelo.celdas.comprables.Servicios.EDESUR;
-
-import fiuba.algo3.modelo.excepciones.ConsultarCompraException;
 import org.junit.Assert;
 import org.junit.Test;
-
 import fiuba.algo3.modelo.Dado;
 import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.Tablero;
 import fiuba.algo3.modelo.celdas.Visitable;
 import fiuba.algo3.modelo.celdas.especiales.AvanceDinamico;
 
-public class avanceDinamicoTest {
+public class AvanceDinamicoTest {
 
 	@Test
 	public void jugadorCaeEnAvanceDinamicoSumandoDosSuPosicionNoDeberiaCambiar() {

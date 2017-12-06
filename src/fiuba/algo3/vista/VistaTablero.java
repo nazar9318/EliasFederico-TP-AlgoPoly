@@ -152,7 +152,7 @@ public class VistaTablero extends GridPane {
 				c25, c35, c45,dinero,actual);
 	}
 
-	public void actaulizarVista() {
+	public void actualizarVista() {
 
 		// limpia los jugadores de las celdas
 		for (VistaCelda celda : celdas) {
