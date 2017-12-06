@@ -1,9 +1,9 @@
 package fiuba.algo3.vista.vistasCeldas;
 
-public class VistaDisponible extends VistaCelda {
-	public VistaDisponible() {
+public class VistaJugadorActual extends VistaCelda {
+	public VistaJugadorActual() {
 
-	super.modificarLabel("Dinero Disponible");
+	super.modificarLabel("Jugador Actual");
 	String cssLayout =	"-fx-background-color: \r\n" + 
 			"        linear-gradient(#ffd65b, #e68400),\r\n" + 
 			"        linear-gradient(#ffef84, #f2ba44),\r\n" + 
@@ -13,7 +13,7 @@ public class VistaDisponible extends VistaCelda {
 			"    -fx-background-radius: 3;\r\n" + 
 			"    -fx-background-insets: 0,1,2,3,0;\r\n" + 
 			"    -fx-text-fill: #654b00;\r\n" + 
-			"-fx-opacity: 0.8;\r\n"+
+			"	 -fx-opacity: 0.8;\r\n"+
 			"    -fx-font-weight: bold;\r\n" + 
 			"    -fx-font-size: 12px;\r\n" + 
 			"    -fx-padding: 1 2 1 2;"; 

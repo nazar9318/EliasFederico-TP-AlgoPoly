@@ -22,7 +22,7 @@ public class VistaTablero extends GridPane {
 	public ArrayList<VistaCelda> celdas;
 	private AlgoPoly algo;
 	private VistaCelda dinero;
-
+	private VistaCelda actual;
 	public VistaTablero(AlgoPoly algopoly) {
 		this.celdas = new ArrayList<VistaCelda>();
 		this.algo = algopoly;
@@ -145,8 +145,12 @@ public class VistaTablero extends GridPane {
 		dinero = new VistaDisponible();
 		GridPane.setConstraints(dinero, 1, 4);
 		
+		//jugador actual
+		actual = new VistaJugadorActual();
+		GridPane.setConstraints(actual, 4, 4);
+		
 		this.getChildren().addAll(c00, c01, c02, c03, c04, c05, c10, c20, c30, c40, c50, c51, c52, c53, c54, c55, c15,
-				c25, c35, c45,dinero);
+				c25, c35, c45,dinero,actual);
 	}
 
 	public void actaulizarVista() {
@@ -160,7 +164,7 @@ public class VistaTablero extends GridPane {
 		for (Propiedad propiedad : algo.getPropiedades()) {
 			celdas.get(this.algo.getTablero().getCeldas().indexOf(propiedad)).modificarDinero("Alquiler $" + propiedad.getAlquiler());
 		}
-
+		actual.modificarDinero(playerid.get(algo.jugadorActual()));
 		for (Jugador jugador : this.algo.getJugadores()) {
 			dinero.modificarDinero(dinero.getDinero()+ playerid.get(jugador)+ ": " + jugador.obtenerDinero() + "\n ");
 			int pos = this.algo.getTablero().getPosicionEnTablero(jugador);
