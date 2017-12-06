@@ -1,6 +1,6 @@
 package fiuba.algo3.vista.eventos;
 
-import fiuba.algo3.AlgoPoly;
+import fiuba.algo3.modelo.AlgoPoly;
 import fiuba.algo3.modelo.ArrayPropiedad;
 import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.vista.BotonPropiedad;

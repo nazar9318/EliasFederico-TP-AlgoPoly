@@ -1,11 +1,9 @@
-package fiuba.algo3;
+package fiuba.algo3.modelo;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import fiuba.algo3.modelo.ArrayPropiedad;
+
 import fiuba.algo3.modelo.Command.Invoker;
-import fiuba.algo3.modelo.Jugador;
-import fiuba.algo3.modelo.Tablero;
 import fiuba.algo3.modelo.celdas.comprables.*;
 import fiuba.algo3.modelo.celdas.comprables.Servicios.*;
 import fiuba.algo3.modelo.celdas.especiales.*;

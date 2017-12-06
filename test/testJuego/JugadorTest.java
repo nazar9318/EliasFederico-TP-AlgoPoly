@@ -2,7 +2,6 @@ package testJuego;
 
 import static org.junit.Assert.*;
 
-import fiuba.algo3.AlgoPoly;
 import fiuba.algo3.modelo.Tablero;
 import fiuba.algo3.modelo.celdas.Visitable;
 import fiuba.algo3.modelo.celdas.comprables.Barrio;
@@ -15,6 +14,7 @@ import fiuba.algo3.modelo.excepciones.JugadorPerdioException;
 import org.junit.Assert;
 import org.junit.Test;
 
+import fiuba.algo3.modelo.AlgoPoly;
 import fiuba.algo3.modelo.Jugador;
 
 public class JugadorTest {

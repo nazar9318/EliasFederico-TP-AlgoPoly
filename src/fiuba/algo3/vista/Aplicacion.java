@@ -1,8 +1,8 @@
-package fiuba.algo3;
+package fiuba.algo3.vista;
 
 import java.io.File;
-import fiuba.algo3.vista.ContenedorBienvenidos;
-import fiuba.algo3.vista.ContenedorPrincipal;
+
+import fiuba.algo3.modelo.AlgoPoly;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;

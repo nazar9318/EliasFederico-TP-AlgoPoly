@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import fiuba.algo3.AlgoPoly;
+import fiuba.algo3.modelo.AlgoPoly;
 import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.Tablero;
 import fiuba.algo3.modelo.celdas.comprables.Barrio;

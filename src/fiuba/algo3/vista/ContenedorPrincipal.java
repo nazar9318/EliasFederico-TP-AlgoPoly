@@ -1,6 +1,6 @@
 package fiuba.algo3.vista;
 
-import fiuba.algo3.AlgoPoly;
+import fiuba.algo3.modelo.AlgoPoly;
 import fiuba.algo3.vista.eventos.BotonSalirHandler;
 import fiuba.algo3.vista.eventos.BotonTirarDadosHandler;
 import fiuba.algo3.vista.eventos.BotonVerPropiedadesHandler;

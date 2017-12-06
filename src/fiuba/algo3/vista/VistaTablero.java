@@ -3,7 +3,7 @@ package fiuba.algo3.vista;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import fiuba.algo3.AlgoPoly;
+import fiuba.algo3.modelo.AlgoPoly;
 import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.celdas.comprables.Propiedad;
 import fiuba.algo3.vista.vistasCeldas.*;

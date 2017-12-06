@@ -1,7 +1,6 @@
 package fiuba.algo3.modelo.celdas.especiales;
 
 import fiuba.algo3.modelo.Jugador;
-import fiuba.algo3.modelo.MovimientoDinamico;
 import fiuba.algo3.modelo.celdas.Visitable;
 
 public class AvanceDinamico implements Visitable {

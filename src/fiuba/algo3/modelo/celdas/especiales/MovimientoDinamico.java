@@ -1,4 +1,6 @@
-package fiuba.algo3.modelo;
+package fiuba.algo3.modelo.celdas.especiales;
+
+import fiuba.algo3.modelo.Jugador;
 
 public class MovimientoDinamico {
 	private int tope1;

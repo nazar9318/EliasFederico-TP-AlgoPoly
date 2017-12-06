@@ -1,8 +1,5 @@
-package fiuba.algo3;
+package fiuba.algo3.modelo;
 
-import fiuba.algo3.modelo.Dado;
-import fiuba.algo3.modelo.Jugador;
-import fiuba.algo3.modelo.Tablero;
 import fiuba.algo3.modelo.celdas.Visitable;
 import fiuba.algo3.modelo.excepciones.FinDelJuegoException;
 
