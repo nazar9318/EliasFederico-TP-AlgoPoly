@@ -2,6 +2,7 @@ package fiuba.algo3.vista.eventos;
 
 import fiuba.algo3.modelo.Command.Command;
 import fiuba.algo3.modelo.excepciones.JugadorNoPuedeSalirDeLaCarcelException;
+import fiuba.algo3.modelo.excepciones.JugadorNoTieneFondosParaConstruirEnTerreno;
 import fiuba.algo3.modelo.Jugador;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -34,6 +35,11 @@ public class BotonOpcionHandler extends BotonConSonido implements EventHandler<A
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Mensaje de informacion");
             alert.setHeaderText("No puede realizar esta accion desde la carcel!");
+            alert.show();
+    	}catch (JugadorNoTieneFondosParaConstruirEnTerreno e){
+    		Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Mensaje de informacion");
+            alert.setHeaderText("No tiene fondos para construir su edificacion!");
             alert.show();
     	}
     	

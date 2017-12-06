@@ -11,6 +11,7 @@ import fiuba.algo3.modelo.celdas.Casa;
 import fiuba.algo3.modelo.celdas.Hotel;
 import fiuba.algo3.modelo.celdas.Visitable;
 import fiuba.algo3.modelo.excepciones.BarrioSimpleNoPuedeConstruirHotelException;
+import fiuba.algo3.modelo.excepciones.JugadorNoTieneFondosParaConstruirEnTerreno;
 import fiuba.algo3.modelo.excepciones.JugadorNoTieneFondosParaPagarException;
 import fiuba.algo3.modelo.excepciones.JugadorPerdioException;
 import javafx.scene.control.Alert;
@@ -99,6 +100,12 @@ public abstract class Barrio extends Propiedad implements Visitable {
 	}
 	
 	private void construirCasa(Jugador jugador){
+		try{
+			jugador.pagar(precioCasa);
+		}catch (JugadorNoTieneFondosParaPagarException e){
+			throw new JugadorNoTieneFondosParaConstruirEnTerreno();
+		}
+		
 		Casa casa = null;
 		if(casas.size() == 0){
 			casa = new Casa(alquiler1);
@@ -106,7 +113,6 @@ public abstract class Barrio extends Propiedad implements Visitable {
 			casa = new Casa(alquiler2);
 		}
 		casas.add(casa);
-		jugador.pagar(precioCasa);
 	}
 	
 	private boolean barrioAsociadoTieneTodasLasCasasConstruidas(){
@@ -126,10 +132,14 @@ public abstract class Barrio extends Propiedad implements Visitable {
 	}
 
 	private void construirHotel(Jugador jugador){
+		try{
+			jugador.pagar(precioHotel);
+		}catch (JugadorNoTieneFondosParaPagarException e){
+			throw new JugadorNoTieneFondosParaConstruirEnTerreno();
+		}
 		Hotel hotel = new Hotel(alquilerHotel);
 		casas.clear();
 		hoteles.add(hotel);
-		jugador.pagar(precioHotel);
 	}
 
 	private boolean puedeConstruirHotel() {
