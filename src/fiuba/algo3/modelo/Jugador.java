@@ -168,4 +168,14 @@ public class Jugador implements Visitante {
 			this.tablero.ubicarJugadorEnCelda(this, visitable);
 		}		
 	}
+
+	public void venderPropiedadDeNombre(String nombreDePropiedad) {
+		boolean encontrada = false;
+		for (int i = 0; i<= this.propiedades.size()-1 && !encontrada;i++){
+			if(this.propiedades.get(i).getNombre() == nombreDePropiedad){
+				this.vender(this.propiedades.get(i));
+				encontrada = true;
+			}
+		}
+	}
 }

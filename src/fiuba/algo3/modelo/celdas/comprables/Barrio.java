@@ -1,6 +1,7 @@
 package fiuba.algo3.modelo.celdas.comprables;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 import fiuba.algo3.modelo.Command.Construir;
 import fiuba.algo3.modelo.Command.Respuesta;
@@ -12,6 +13,8 @@ import fiuba.algo3.modelo.celdas.Visitable;
 import fiuba.algo3.modelo.excepciones.BarrioSimpleNoPuedeConstruirHotelException;
 import fiuba.algo3.modelo.excepciones.JugadorNoTieneFondosParaPagarException;
 import fiuba.algo3.modelo.excepciones.JugadorPerdioException;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 
 public abstract class Barrio extends Propiedad implements Visitable {
     int maxCasas;
@@ -40,8 +43,8 @@ public abstract class Barrio extends Propiedad implements Visitable {
 			if(jugador.getCantidadDePropiedades() == 0)
 				throw new JugadorPerdioException();
 			else
-				//TODO: obligarVenta -> mostrarPropiedades -> opcionVender
-				cobrarAlquiler(jugador);
+				super.hacerVenderParaCubrirAlquiler(jugador);
+				this.cobrarAlquiler(jugador);
 		}
 		this.duenio.cobrar(getAlquiler() + this.getAlquilerDeEdificaciones() + this.getAlquilerHotel());
 	}
@@ -160,5 +163,5 @@ public abstract class Barrio extends Propiedad implements Visitable {
 			opciones.agregarOpcion(new Construir(this));
 
 		return opciones;
-	}
+	}	
 }

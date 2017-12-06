@@ -1,11 +1,17 @@
 package fiuba.algo3.modelo.celdas.comprables;
 
 import fiuba.algo3.modelo.Command.Respuesta;
+
+import java.util.ArrayList;
+import java.util.Optional;
+
 import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.celdas.Visitable;
 import fiuba.algo3.modelo.excepciones.JugadorNoCuentaConDineroSuficienteParaComprarException;
 import fiuba.algo3.modelo.excepciones.JugadorNoTieneFondosParaPagarException;
 import fiuba.algo3.modelo.excepciones.PropiedadConDuenioException;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 
 public abstract class Propiedad implements Visitable {
 
@@ -82,4 +88,24 @@ public abstract class Propiedad implements Visitable {
 	public abstract void cobrarAlquiler(Jugador jugador);
 
 	public abstract Respuesta getOpciones(Jugador jugador);
+	
+	protected void hacerVenderParaCubrirAlquiler(Jugador jugadorActual) {
+		Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Mensaje de informacion");
+        alert.setHeaderText("Debe vender una de sus propiedades para pagar alquiler, de lo contrario perdera");
+        //alert.show();
+        ArrayList<ButtonType> botonesDePropiedades = new ArrayList<ButtonType>();
+        for(int i = 0; i<= jugadorActual.getCantidadDePropiedades() -1; i++){
+        	ButtonType botonPropiedad = new ButtonType(jugadorActual.getPropiedades().get(i).getNombre());
+        	botonesDePropiedades.add(botonPropiedad);
+        }
+        alert.getButtonTypes().setAll(botonesDePropiedades);
+        
+        Optional<ButtonType> eleccion = alert.showAndWait();
+        hacerVenderEleccion(jugadorActual, eleccion);
+	}
+
+	protected void hacerVenderEleccion(Jugador jugadorActual, Optional<ButtonType> eleccion) {
+		jugadorActual.venderPropiedadDeNombre(eleccion.get().getText());
+	}
 }

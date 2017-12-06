@@ -30,8 +30,8 @@ public abstract class Servicio extends Propiedad implements Visitable {
 			if(jugador.getCantidadDePropiedades() == 0)
 				throw new JugadorPerdioException();
 			else
-				//TODO: obligarVenta -> mostrarPropiedades -> opcionVender
-				cobrarAlquiler(jugador);
+				super.hacerVenderParaCubrirAlquiler(jugador);
+				this.cobrarAlquiler(jugador);
 		}
 	}
 
