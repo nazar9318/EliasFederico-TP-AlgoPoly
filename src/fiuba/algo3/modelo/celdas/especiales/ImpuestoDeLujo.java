@@ -20,7 +20,7 @@ public class ImpuestoDeLujo implements Visitable {
 	public void aceptar(Jugador jugador) {
 		
 		int total = jugador.obtenerDinero();
-		acumulado = (int) (acumulado + total * valorImpuesto);
-		jugador.pagar(acumulado);
+		acumulado = (int)(total * valorImpuesto);
+		jugador.pagar((int)(total * valorImpuesto));
 	}
 }

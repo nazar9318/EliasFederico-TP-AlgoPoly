@@ -43,6 +43,7 @@ public class BotonTirarDadosHandler extends BotonConSonido implements EventHandl
 			mostrarMensajeConSonido("src/fiuba/algo3/vista/sonidos/alerta.mp3","Su dinero no es suficiente Para Realizar esta Compra");
 			algoPoly.cambiarJugadorActual();
 		} catch (FinDelJuegoException e) {
+			hacerSonarAlerta("src/fiuba/algo3/vista/sonidos/ganador.mp3");
 			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 			alert.setHeaderText("Fin Del Juego");
 			alert.setContentText("Felicidades!!! Ha Ganado El Juego. Desea Volver a Jugar?");
@@ -67,7 +68,7 @@ public class BotonTirarDadosHandler extends BotonConSonido implements EventHandl
 			if (result.get() == ButtonType.OK)
 				intentarCompra(aComprar);
 		} catch (JugadorNoPuedeSalirDeLaCarcelException e) {
-			mostrarMensajeConSonido("src/fiuba/algo3/vista/sonidos/alerta.mp3","Uste esta en La Carcel. Pierde El turno!");
+			mostrarMensajeConSonido("src/fiuba/algo3/vista/sonidos/alerta.mp3","Usted esta en La Carcel. Pierde El turno!");
 			algoPoly.cambiarJugadorActual();
 		} catch (JugadorFueTrasladadoALaCarcel e){
 			Alert alert = new Alert(Alert.AlertType.INFORMATION);
