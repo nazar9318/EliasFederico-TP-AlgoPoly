@@ -62,8 +62,15 @@ public class contenedorPrincipal extends BorderPane{
         botonVerPropiedades.setOnAction(verPropiedadesHandler);
 
         Button botonReiniciarJuego = new Button("Reiniciar Juego");
-        BotonReiniciarHandler botonReiniciarHandler = new BotonReiniciarHandler(algo);
-        botonReiniciarJuego.addEventFilter(ActionEvent.ACTION, botonReiniciarHandler);
+        botonReiniciarJuego.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+            	hacerSonar("src/fiuba/algo3/vista/sonidos/click.mp3");
+            	algo.reiniciarJuego();
+            	setCentro(algo);
+            	vistaTablero.actaulizarVista();
+            }
+        });
         
         Button botonSalir = new Button("Salir");
         BotonSalirHandler botonSalirHandler = new BotonSalirHandler();

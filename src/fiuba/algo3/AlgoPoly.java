@@ -45,7 +45,8 @@ public class AlgoPoly {
 
 	public void inicializarJuego(){
 		crearJugadores();
-		reiniciarJuego();
+		construirTablero();
+		agregarJugadoresEnTablero();
 		jugadorActual = jugadores.get(0);
 	}
 
@@ -120,11 +121,10 @@ public class AlgoPoly {
 	}
 
 	public void reiniciarJuego() {
-		if (jugadores.size() <3) crearJugadores();
-		else Collections.shuffle(jugadores);
+		this.propiedades = new ArrayPropiedad();
 		this.tablero = new Tablero();
-		construirTablero();
-		agregarJugadoresEnTablero();
+		this.jugadores = new ArrayList<Jugador>();
+		inicializarJuego();
 	}
 
 	public Invoker getInvoker() {
