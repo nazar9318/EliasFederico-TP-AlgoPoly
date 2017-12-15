@@ -29,16 +29,9 @@ public class Aplicacion extends Application {
 
         ContenedorBienvenidos contenedorBienvenidos = new ContenedorBienvenidos(stage, escenaJuego);
         Scene escenaBienvenidos = new Scene(contenedorBienvenidos, 1050, 650);
-        
-        String sound = "src/fiuba/algo3/vista/sonidos/sonidoInicio.mp3";
-        Media sonido = new Media(new File(sound).toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(sonido);
-        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-        mediaPlayer.play();
+
         
         stage.setScene(escenaBienvenidos);
-
         stage.show();
-
     }
 }
