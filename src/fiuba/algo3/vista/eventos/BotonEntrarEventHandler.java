@@ -5,7 +5,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class BotonEntrarEventHandler extends BotonConSonido implements EventHandler<ActionEvent> {
+public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
 
 	Stage stage;
     Scene proximaEscena;
@@ -17,7 +17,6 @@ public class BotonEntrarEventHandler extends BotonConSonido implements EventHand
 
     @Override
     public void handle(ActionEvent actionEvent) {
-    	super.sonido.play();
         stage.setScene(proximaEscena);
     }
 

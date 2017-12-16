@@ -93,7 +93,7 @@ public abstract class Propiedad implements Visitable {
 		Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Mensaje de informacion");
         alert.setHeaderText("Debe vender una de sus propiedades para pagar alquiler, de lo contrario perdera");
-        //alert.show();
+
         ArrayList<ButtonType> botonesDePropiedades = new ArrayList<ButtonType>();
         for(int i = 0; i<= jugadorActual.getCantidadDePropiedades() -1; i++){
         	ButtonType botonPropiedad = new ButtonType(jugadorActual.getPropiedades().get(i).getNombre());

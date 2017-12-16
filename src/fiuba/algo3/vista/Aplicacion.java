@@ -1,13 +1,9 @@
 package fiuba.algo3.vista;
 
-import java.io.File;
-
 import fiuba.algo3.modelo.AlgoPoly;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 public class Aplicacion extends Application {

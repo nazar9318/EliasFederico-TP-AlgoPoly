@@ -17,11 +17,13 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.GridPane;
 
 public class VistaTablero extends GridPane {
+
 	private HashMap<Jugador, String> playerid;
 	public ArrayList<VistaCelda> celdas;
 	private AlgoPoly algo;
 	private VistaCelda dinero;
 	private VistaCelda actual;
+
 	public VistaTablero(AlgoPoly algopoly) {
 		this.celdas = new ArrayList<VistaCelda>();
 		this.algo = algopoly;

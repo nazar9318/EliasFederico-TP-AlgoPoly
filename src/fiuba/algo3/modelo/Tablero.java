@@ -50,10 +50,6 @@ public class Tablero {
 		else
 			jugadores.put(j1, celdas.get(index+avance));
 		
-		/*if(this.celdas.indexOf(jugadores.get(j1)) == 15){
-			jugadores.put(j1, celdas.get(5));
-		}*/
-
 		return jugadores.get(j1);
 	}
 	

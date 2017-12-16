@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 import java.util.HashMap;
 
 
-public class BotonVerPropiedadesHandler extends BotonConSonido implements EventHandler<ActionEvent>{
+public class BotonVerPropiedadesHandler implements EventHandler<ActionEvent>{
 
     private ArrayPropiedad propiedades_;
     private Jugador jugador_;
@@ -62,7 +62,6 @@ public class BotonVerPropiedadesHandler extends BotonConSonido implements EventH
 
     @Override
     public void handle(ActionEvent event) {
-    	super.sonido.play();
 
         this.jugador_ = juego_.jugadorActual();
     	crearHandlerParaCadaPropiedad();

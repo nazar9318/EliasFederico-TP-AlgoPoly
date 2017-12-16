@@ -8,6 +8,7 @@ import fiuba.algo3.modelo.Jugador;
 import fiuba.algo3.modelo.Tablero;
 import fiuba.algo3.modelo.celdas.Visitable;
 import fiuba.algo3.modelo.celdas.especiales.AvanceDinamico;
+import sun.security.x509.AVA;
 
 public class AvanceDinamicoTest {
 
@@ -46,8 +47,10 @@ public class AvanceDinamicoTest {
 		dado1.setValor(1);
 		dado2.setValor(8);
 		jugador.setValorDeTiro(dado1.getValor() + dado2.getValor());
-		Visitable nueva = tablero.avanzarJugador(jugador, 1);
-		nueva.aceptar(jugador);
+		AvanceDinamico nueva = (AvanceDinamico) tablero.avanzarJugador(jugador, 1);
+
+		int avance = nueva.getMovimiento().calcularMovimiento(jugador);
+		jugador.moverJugador(avance);
 
 		Assert.assertEquals(esperado, tablero.getPosicionDeJugador(jugador));
 	}
@@ -70,8 +73,11 @@ public class AvanceDinamicoTest {
 		dado1.setValor(3);
 		dado2.setValor(8);
 		jugador.setValorDeTiro(dado1.getValor() + dado2.getValor());
-		Visitable nueva = tablero.avanzarJugador(jugador, 1);
-		nueva.aceptar(jugador);
+		AvanceDinamico nueva = (AvanceDinamico) tablero.avanzarJugador(jugador, 1);
+
+		int avance = nueva.getMovimiento().calcularMovimiento(jugador);
+		jugador.moverJugador(avance);
+
 		Visitable resultado = tablero.getPosicionDeJugador(jugador);
 
 		Assert.assertEquals(esperado, resultado);

@@ -19,13 +19,9 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-
-import java.io.File;
 
 public class ContenedorPrincipal extends BorderPane{
 	   VistaTablero vistaTablero;
@@ -48,7 +44,6 @@ public class ContenedorPrincipal extends BorderPane{
         botonTirarDados.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-            	hacerSonar("src/fiuba/algo3/vista/sonidos/click.mp3");
                 actualizarConsola("Valores de los dados:\n" + "Dado uno= " + algo.getTurno().getValorDado1() + "\n" + "Dado dos= " + algo.getTurno().getValorDado2());
             }
         });
@@ -64,7 +59,6 @@ public class ContenedorPrincipal extends BorderPane{
         botonReiniciarJuego.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-            	hacerSonar("src/fiuba/algo3/vista/sonidos/click.mp3");
             	algo.reiniciarJuego();
             	setCentro(algo);
             	vistaTablero.actualizarVista();
@@ -102,8 +96,6 @@ public class ContenedorPrincipal extends BorderPane{
         		"    -fx-background-radius: 20;\r\n" + 
         		"    -fx-background-insets: 0;\r\n" + 
         		"    -fx-text-fill: white;");
-        
-        hacerSonar("src/fiuba/algo3/vista/sonidos/consola.mp3");
 
         this.setBottom(contenedorConsola);		
 	}
@@ -129,11 +121,5 @@ public class ContenedorPrincipal extends BorderPane{
         contenedorConsola.setStyle("-fx-background-color: red;");
 
         this.setBottom(contenedorConsola);
-    }
-    
-    private void hacerSonar(String ruta) {
-        Media sonidoClick = new Media(new File(ruta).toURI().toString());
-        MediaPlayer consolaSonido = new MediaPlayer(sonidoClick);
-		consolaSonido.play();
     }
 }

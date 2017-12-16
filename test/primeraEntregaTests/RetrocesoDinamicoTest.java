@@ -1,5 +1,6 @@
 package primeraEntregaTests;
 
+import com.sun.org.apache.regexp.internal.RE;
 import fiuba.algo3.modelo.celdas.comprables.BuenosAiresSur;
 import org.junit.Assert;
 import org.junit.Test;
@@ -31,8 +32,10 @@ public class RetrocesoDinamicoTest {
 		dado2.setValor(1);
 		jugador.setValorDeTiro(dado1.getValor() + dado2.getValor());
 
-		Visitable nueva = tablero.avanzarJugador(jugador, 1);
-		nueva.aceptar(jugador);
+		RetrocesoDinamico nueva = (RetrocesoDinamico) tablero.avanzarJugador(jugador, 1);
+
+		int retroceso = nueva.getMovimiento().calcularMovimiento(jugador);
+		jugador.moverJugador(retroceso);
 
 		Assert.assertEquals(carcel, tablero.getPosicionDeJugador(jugador));
 	}
@@ -52,36 +55,11 @@ public class RetrocesoDinamicoTest {
 		jugador.setValorDeTiro(dado1.getValor() + dado2.getValor());
 		Visitable esperado = tablero.getPosicionDeJugador(jugador);
 
-		Visitable nueva = tablero.avanzarJugador(jugador, 1);
-		nueva.aceptar(jugador);
+		RetrocesoDinamico nueva = (RetrocesoDinamico) tablero.avanzarJugador(jugador, 1);
+
+		int retroceso = nueva.getMovimiento().calcularMovimiento(jugador);
+		jugador.moverJugador(retroceso);
 
 		Assert.assertEquals(esperado, tablero.getPosicionDeJugador(jugador));
 	}
-	
-	@Test
-	public void jugadorCaeEnRetrocesoDinamicoSumando11SuPosicionDeberiaRetroceder9() {
-		Tablero tablero = new Tablero();
-		RetrocesoDinamico retrocesoDinamico = new RetrocesoDinamico();
-		Visitable esperado = new Quini6();
-		Jugador jugador = new Jugador();
-		jugador.conocerTablero(tablero);
-		Dado dado1 = new Dado();
-		Dado dado2 = new Dado();
-
-		tablero.agregarCelda(retrocesoDinamico);
-		tablero.agregarCelda(esperado);
-		for (int i=0; i < 7; i++)
-			tablero.agregarCelda(new BuenosAiresSur());
-
-		tablero.agregarJugador(jugador);
-		dado1.setValor(3);
-		dado2.setValor(8);
-		jugador.setValorDeTiro(dado1.getValor() + dado2.getValor());
-
-		Visitable nueva = tablero.avanzarJugador(jugador, 1);
-		nueva.aceptar(jugador);
-
-		Assert.assertEquals(esperado, tablero.getPosicionDeJugador(jugador));
-	}
-
 }
